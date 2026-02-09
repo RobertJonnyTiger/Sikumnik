@@ -3,9 +3,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import chapterData from "@/data/chapters/chapter-12.json";
-import { ConceptCard } from "@/components/accounting/ConceptCard";
-import { CalculationBlock } from "@/components/accounting/CalculationBlock";
-import { InteractiveExercise } from "@/components/accounting/InteractiveExercise";
+import dynamic from "next/dynamic";
+const ConceptCard = dynamic(() => import("@/components/accounting/ConceptCard").then(m => m.ConceptCard), { ssr: true });
+const CalculationBlock = dynamic(() => import("@/components/accounting/CalculationBlock").then(m => m.CalculationBlock), { ssr: true });
+const InteractiveExercise = dynamic(() => import("@/components/accounting/InteractiveExercise").then(m => m.InteractiveExercise), { ssr: false });
 import {
     Search,
     GraduationCap,
@@ -89,7 +90,7 @@ export default function Chapter12Page() {
 
                 <nav className="flex-1 px-8 hidden md:block">
                     <p className="text-[10px] md:text-xs uppercase font-black tracking-[0.2em] text-[#3b82f6] font-sans opacity-70">
-                        <span className="opacity-40">Home &gt; Accounting &gt; </span>
+                        <span className="opacity-40">בית &gt; חשבונאות &gt; </span>
                         {chapterData.title}
                     </p>
                 </nav>
@@ -104,13 +105,13 @@ export default function Chapter12Page() {
                 </div>
             </header>
 
-            {/* Main Content Area */}
-            <main className="flex-1 max-w-7xl mx-auto w-full px-8 pt-16 pb-32 relative">
+            {/* Main Content Area - Increased Top Padding */}
+            <main className="flex-1 max-w-7xl mx-auto w-full px-8 pt-24 pb-32 relative">
 
                 {/* Visual Ambient - Subtle Glows */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[700px] bg-gradient-to-b from-[#3b82f6]/5 via-[#fbbf24]/2 to-transparent blur-[120px] -z-10 pointer-events-none opacity-40" />
 
-                <article className="space-y-20">
+                <article className="space-y-32">
 
                     {/* Chapter Header - Refined Size */}
                     <header className="space-y-4">
@@ -127,10 +128,10 @@ export default function Chapter12Page() {
                         </p>
                     </header>
 
-                    {/* Central Logic Card - Scaled Down */}
-                    <section className="relative max-w-3xl">
+                    {/* Central Logic Card - Scaled Down with Animation */}
+                    <section className="relative max-w-3xl animate-entry" style={{ animationDelay: '200ms' }}>
                         <div className="absolute -inset-1 bg-gradient-to-r from-[#3b82f6] via-[#fbbf24] to-[#3b82f6] rounded-[2rem] blur-xl opacity-10" />
-                        <div className="relative bg-[#1e293b]/60 backdrop-blur-3xl p-8 rounded-[2rem] border border-white/10 shadow-2xl">
+                        <div className="relative bg-[#1e293b]/60 backdrop-blur-3xl p-8 rounded-[2rem] border border-white/10 shadow-2xl hover-lift">
                             <div className="flex items-center gap-4 mb-6">
                                 <div className="bg-[#3b82f6] p-2.5 rounded-xl">
                                     <TrendingUp className="w-5 h-5 text-white" />
@@ -144,9 +145,9 @@ export default function Chapter12Page() {
                                     ההפרשה <span className="font-black text-[#fbbf24] underline decoration-[#fbbf24]/20 underline-offset-8">גבוהה יותר</span>
                                 </p>
                                 <div className="flex flex-wrap justify-center items-center gap-4">
-                                    <div className="px-6 py-3 bg-green-500/10 text-green-400 rounded-2xl border border-green-500/20 text-sm font-black font-sans shadow-lg">שוטף: 1-2%</div>
-                                    <div className="px-6 py-3 bg-orange-500/10 text-orange-400 rounded-2xl border border-orange-500/20 text-sm font-black font-sans shadow-lg">פיגור: 15-30%</div>
-                                    <div className="px-6 py-3 bg-red-500/10 text-red-400 rounded-2xl border border-red-500/20 text-sm font-black font-sans shadow-lg">אבוד: 60-80%</div>
+                                    <div className="px-6 py-3 bg-green-500/10 text-green-400 rounded-2xl border border-green-500/20 text-sm font-black font-sans shadow-lg hover:bg-green-500/20 transition-colors">שוטף: 1-2%</div>
+                                    <div className="px-6 py-3 bg-orange-500/10 text-orange-400 rounded-2xl border border-orange-500/20 text-sm font-black font-sans shadow-lg hover:bg-orange-500/20 transition-colors">פיגור: 15-30%</div>
+                                    <div className="px-6 py-3 bg-red-500/10 text-red-400 rounded-2xl border border-red-500/20 text-sm font-black font-sans shadow-lg hover:bg-red-500/20 transition-colors">אבוד: 60-80%</div>
                                 </div>
                             </div>
                         </div>
@@ -158,7 +159,7 @@ export default function Chapter12Page() {
                             if (section.type === "concept") {
                                 const currentConceptIndex = conceptIndex++;
                                 return (
-                                    <div key={index} className="lg:odd:col-span-1 lg:even:col-span-1">
+                                    <div key={index} className="lg:odd:col-span-1 lg:even:col-span-1 animate-entry" style={{ animationDelay: `${400 + index * 100}ms` }}>
                                         <ConceptCard
                                             index={currentConceptIndex}
                                             title={section.title}
@@ -349,12 +350,12 @@ export default function Chapter12Page() {
             <nav className="fixed bottom-0 left-0 w-full backdrop-blur-[40px] bg-[#0f172a]/80 border-t border-white/5 p-4 z-50">
                 <div className="max-w-3xl mx-auto flex items-center justify-between gap-6">
                     <Link href="/courses/accounting/chapter-11" className="flex-1">
-                        <button className="w-full flex items-center justify-center gap-4 py-4 rounded-[1.5rem] bg-white/5 hover:bg-white/10 text-slate-300 font-sans font-black transition-all border border-white/5 group shadow-xl">
+                        <button className="w-full flex items-center justify-center gap-4 py-3 rounded-[1.5rem] bg-white/5 hover:bg-white/10 text-slate-300 font-sans font-black transition-all border border-white/5 group shadow-xl">
                             <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                             <span className="text-lg">פרק 11</span>
                         </button>
                     </Link>
-                    <button className="flex-1 flex items-center justify-center gap-4 py-4 rounded-[1.5rem] bg-[#3b82f6] text-white font-sans font-black text-lg transition-all shadow-[0_0_20px_rgba(59,130,246,0.4)] active:scale-95 border border-[#3b82f6]/50 group">
+                    <button className="flex-1 flex items-center justify-center gap-4 py-3 rounded-[1.5rem] bg-[#3b82f6] text-white font-sans font-black text-lg transition-all shadow-[0_0_20px_rgba(59,130,246,0.4)] active:scale-95 border border-[#3b82f6]/50 group">
                         <span>סגור פרק</span>
                         <ArrowLeft className="w-6 h-6 group-hover:translate-x-[-4px] transition-transform" />
                     </button>

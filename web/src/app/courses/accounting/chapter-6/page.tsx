@@ -2,9 +2,10 @@
 
 import React from "react";
 import chapterData from "@/data/chapters/chapter-6.json";
-import { ConceptCard } from "@/components/accounting/ConceptCard";
-import { CalculationBlock } from "@/components/accounting/CalculationBlock";
-import { InteractiveExercise } from "@/components/accounting/InteractiveExercise";
+import dynamic from "next/dynamic";
+const ConceptCard = dynamic(() => import("@/components/accounting/ConceptCard").then(m => m.ConceptCard), { ssr: true });
+const CalculationBlock = dynamic(() => import("@/components/accounting/CalculationBlock").then(m => m.CalculationBlock), { ssr: true });
+const InteractiveExercise = dynamic(() => import("@/components/accounting/InteractiveExercise").then(m => m.InteractiveExercise), { ssr: false });
 import { RefreshCcw } from "lucide-react";
 
 interface Section {

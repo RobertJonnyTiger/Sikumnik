@@ -1,13 +1,18 @@
+"use client";
+
+import { memo } from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Calculator, ArrowDown, Lightbulb } from "lucide-react";
 import { CalculationBlock as CalculationType } from "@/types/accounting";
 import { FinancialStatement } from "./FinancialStatement";
 
+const BOLD_REGEX = /(\*\*.*?\*\*)/g;
+
 interface CalculationBlockProps {
     data: CalculationType;
 }
 
-export function CalculationBlock({ data }: CalculationBlockProps) {
+export const CalculationBlock = memo(function CalculationBlock({ data }: CalculationBlockProps) {
     // If we have distinct data rows, render the Financial Statement view instead of the formula view
     if (data.data && data.data.rows) {
         return (
@@ -29,7 +34,7 @@ export function CalculationBlock({ data }: CalculationBlockProps) {
 
     // Helper to parse bold markdown
     const parseBold = (text: string) => {
-        const parts = text.split(/(\*\*.*?\*\*)/g);
+        const parts = text.split(BOLD_REGEX);
         return parts.map((part, i) => {
             if (part.startsWith('**') && part.endsWith('**')) {
                 return <span key={i} className="font-bold text-white">{part.slice(2, -2)}</span>;
@@ -130,4 +135,4 @@ export function CalculationBlock({ data }: CalculationBlockProps) {
             )}
         </GlassCard>
     );
-}
+});

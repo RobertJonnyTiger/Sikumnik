@@ -2,9 +2,10 @@
 
 import React, { useState } from "react";
 import chapterData from "@/data/chapters/chapter-9.json";
-import { ConceptCard } from "@/components/accounting/ConceptCard";
-import { CalculationBlock } from "@/components/accounting/CalculationBlock";
-import { InteractiveExercise } from "@/components/accounting/InteractiveExercise";
+import dynamic from "next/dynamic";
+const ConceptCard = dynamic(() => import("@/components/accounting/ConceptCard").then(m => m.ConceptCard), { ssr: true });
+const CalculationBlock = dynamic(() => import("@/components/accounting/CalculationBlock").then(m => m.CalculationBlock), { ssr: true });
+const InteractiveExercise = dynamic(() => import("@/components/accounting/InteractiveExercise").then(m => m.InteractiveExercise), { ssr: false });
 import { GlassCard } from "@/components/ui/glass-card";
 import { Calculator, ChevronDown, ChevronUp, ArrowRightLeft } from "lucide-react";
 
@@ -141,8 +142,8 @@ export default function Chapter9Page() {
                                         <button
                                             onClick={() => setActiveTab('fifo')}
                                             className={`px-4 py-2 font-medium transition-colors ${activeTab === 'fifo'
-                                                    ? 'text-blue-400 border-b-2 border-blue-400'
-                                                    : 'text-slate-400 hover:text-slate-300'
+                                                ? 'text-blue-400 border-b-2 border-blue-400'
+                                                : 'text-slate-400 hover:text-slate-300'
                                                 }`}
                                         >
                                             📘 FIFO
@@ -150,8 +151,8 @@ export default function Chapter9Page() {
                                         <button
                                             onClick={() => setActiveTab('average')}
                                             className={`px-4 py-2 font-medium transition-colors ${activeTab === 'average'
-                                                    ? 'text-green-400 border-b-2 border-green-400'
-                                                    : 'text-slate-400 hover:text-slate-300'
+                                                ? 'text-green-400 border-b-2 border-green-400'
+                                                : 'text-slate-400 hover:text-slate-300'
                                                 }`}
                                         >
                                             📗 ממוצע
@@ -159,8 +160,8 @@ export default function Chapter9Page() {
                                         <button
                                             onClick={() => setActiveTab('comparison')}
                                             className={`px-4 py-2 font-medium transition-colors ${activeTab === 'comparison'
-                                                    ? 'text-purple-400 border-b-2 border-purple-400'
-                                                    : 'text-slate-400 hover:text-slate-300'
+                                                ? 'text-purple-400 border-b-2 border-purple-400'
+                                                : 'text-slate-400 hover:text-slate-300'
                                                 }`}
                                         >
                                             📊 השוואה

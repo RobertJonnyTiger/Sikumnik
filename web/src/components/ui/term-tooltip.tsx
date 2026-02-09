@@ -13,7 +13,7 @@ export function TermTooltip({ term, definition, children }: TermTooltipProps) {
     const [isVisible, setIsVisible] = useState(false);
 
     return (
-        <span
+        <div
             className="relative group cursor-help inline-block mx-1"
             onMouseEnter={() => setIsVisible(true)}
             onMouseLeave={() => setIsVisible(false)}
@@ -36,6 +36,6 @@ export function TermTooltip({ term, definition, children }: TermTooltipProps) {
                 </div>
                 <p className="text-slate-300 text-sm leading-relaxed font-light">{definition}</p>
             </div>
-        </span>
+        </div>
     );
 }

@@ -1,3 +1,6 @@
+"use client";
+
+import { memo } from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { ArrowRightLeft, Calendar } from "lucide-react";
 import { JournalEntryBlock } from "@/types/accounting";
@@ -7,7 +10,7 @@ interface JournalEntryProps {
     data: JournalEntryBlock;
 }
 
-export function JournalEntry({ data }: JournalEntryProps) {
+export const JournalEntry = memo(function JournalEntry({ data }: JournalEntryProps) {
     const totalDebit = data.entries.reduce((sum, e) => sum + e.debit, 0);
     const totalCredit = data.entries.reduce((sum, e) => sum + e.credit, 0);
 
@@ -79,4 +82,4 @@ export function JournalEntry({ data }: JournalEntryProps) {
             </div>
         </GlassCard>
     );
-}
+});

@@ -1,5 +1,11 @@
+"use client";
+
+import { memo } from "react";
 import { AnalogyBlock } from "./AnalogyBlock";
 import { TermTooltip } from "@/components/ui/term-tooltip";
+
+const NUMBERED_LINE_REGEX = /^(\d+\.)\s*(.*)/;
+const BOLD_TAG_REGEX = /(<b>.*?<\/b>)/g;
 
 interface ConceptCardProps {
     title: string;
@@ -8,15 +14,15 @@ interface ConceptCardProps {
     index: number;
 }
 
-export function ConceptCard({ title, academicText, analogyText, index }: ConceptCardProps) {
+export const ConceptCard = memo(function ConceptCard({ title, academicText, analogyText, index }: ConceptCardProps) {
 
     // Custom Parser to provide modern styling for terms and lists
     const renderAcademicText = () => {
         const lines = academicText.split("\n");
 
         return lines.map((line, lineIdx) => {
-            const numberedMatch = line.match(/^(\d+\.)\s*(.*)/);
-            const content = line.split(/(<b>.*?<\/b>)/g).map((part, i) => {
+            const numberedMatch = line.match(NUMBERED_LINE_REGEX);
+            const content = line.split(BOLD_TAG_REGEX).map((part, i) => {
                 if (part.startsWith("<b>") && part.endsWith("</b>")) {
                     const term = part.replace(/<\/?b>/g, "");
                     return (
@@ -37,7 +43,7 @@ export function ConceptCard({ title, academicText, analogyText, index }: Concept
                             {numberedMatch[1]}
                         </span>
                         <div className="flex-1 text-lg md:text-xl leading-relaxed font-sans">
-                            {line.substring(numberedMatch[1].length).split(/(<b>.*?<\/b>)/g).map((part, i) => {
+                            {line.substring(numberedMatch[1].length).split(BOLD_TAG_REGEX).map((part, i) => {
                                 if (part.startsWith("<b>") && part.endsWith("</b>")) {
                                     const term = part.replace(/<\/?b>/g, "");
                                     return <span key={i} className="text-white font-black underline decoration-[#fbbf24]/30 decoration-2 underline-offset-4">{term}</span>;
@@ -49,7 +55,7 @@ export function ConceptCard({ title, academicText, analogyText, index }: Concept
                 );
             }
 
-            return <p key={lineIdx} className="mb-6">{content}</p>;
+            return <div key={lineIdx} className="mb-6">{content}</div>;
         });
     };
 
@@ -74,4 +80,4 @@ export function ConceptCard({ title, academicText, analogyText, index }: Concept
             <AnalogyBlock text={analogyText} />
         </section>
     );
-}
+});

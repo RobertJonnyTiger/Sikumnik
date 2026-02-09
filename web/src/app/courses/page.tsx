@@ -11,7 +11,7 @@ export default function CoursesPage() {
         <div className="min-h-screen bg-[#0f172a] font-sans text-white pb-24 relative overflow-hidden" dir="rtl">
 
             {/* Sidebar Overlay */}
-            {isSidebarOpen && (
+            {isSidebarOpen ? (
                 <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex justify-end">
                     <div className="w-80 h-full bg-[#1e293b] border-r border-white/10 shadow-2xl animate-in slide-in-from-right duration-300">
                         <div className="p-6 border-b border-white/10 flex justify-between items-center">
@@ -41,7 +41,7 @@ export default function CoursesPage() {
                         </nav>
                     </div>
                 </div>
-            )}
+            ) : null}
 
             {/* Background Ambient Glows */}
             <div className="fixed inset-0 opacity-20 pointer-events-none">

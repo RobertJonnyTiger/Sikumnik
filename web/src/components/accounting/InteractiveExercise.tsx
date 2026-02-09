@@ -1,6 +1,12 @@
-import { useState } from "react";
+"use client";
+
+import { useState, memo } from "react";
 import { cn } from "@/lib/utils";
 import { HelpCircle, ChevronLeft, Sparkles } from "lucide-react";
+
+const TABLE_LINE_REGEX = /^([┌│├└])/;
+const ROW_CELL_REGEX = /│/g;
+const BOLD_FORMAT_REGEX = /(\*\*.*?\*\*|_.*?_|💡.*)/g;
 
 interface InteractiveExerciseProps {
     question: string;
@@ -10,7 +16,7 @@ interface InteractiveExerciseProps {
     tip?: string;
 }
 
-export function InteractiveExercise({ question, answer, solution, hint, tip }: InteractiveExerciseProps) {
+export const InteractiveExercise = memo(function InteractiveExercise({ question, answer, solution, hint, tip }: InteractiveExerciseProps) {
     const finalAnswer = answer || solution || "";
     const finalHint = hint || tip;
     const [showSolution, setShowSolution] = useState(false);
@@ -20,13 +26,13 @@ export function InteractiveExercise({ question, answer, solution, hint, tip }: I
         if (!text) return null;
 
         // Detect ASCII table patterns
-        const tableLines = text.split("\n").filter(l => l.trim().startsWith("┌") || l.trim().startsWith("│") || l.trim().startsWith("├") || l.trim().startsWith("└"));
+        const tableLines = text.split("\n").filter(l => TABLE_LINE_REGEX.test(l.trim()));
 
         if (tableLines.length > 5) {
             // It's an ASCII table. Let's find the rows.
             const rows = text.split("\n")
                 .filter(l => l.trim().startsWith("│"))
-                .map(l => l.split("│").filter(cell => cell.trim().length > 0 || l.includes("││")).map(c => c.trim()));
+                .map(l => l.split(ROW_CELL_REGEX).filter(cell => cell.trim().length > 0 || l.includes("││")).map(c => c.trim()));
 
             if (rows.length > 0) {
                 const header = rows[0];
@@ -64,7 +70,7 @@ export function InteractiveExercise({ question, answer, solution, hint, tip }: I
         return text.split("\n").map((line, i) => {
             if (line.trim().length === 0) return <div key={i} className="h-4" />;
 
-            const formattedLine = line.split(/(\*\*.*?\*\*|_.*?_|💡.*)/g).map((part, j) => {
+            const formattedLine = line.split(BOLD_FORMAT_REGEX).map((part, j) => {
                 if (part.startsWith("**") && part.endsWith("**")) {
                     return <strong key={j} className="text-white font-black underline decoration-[#fbbf24]/50 decoration-2 underline-offset-8">{part.slice(2, -2)}</strong>;
                 }
@@ -166,4 +172,4 @@ export function InteractiveExercise({ question, answer, solution, hint, tip }: I
             </div>
         </div>
     );
-}
+});

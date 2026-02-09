@@ -1,3 +1,6 @@
+"use client";
+
+import { memo } from "react";
 import { cn } from "@/lib/utils";
 import { Sparkles } from "lucide-react";
 
@@ -6,7 +9,7 @@ interface AnalogyBlockProps {
     className?: string;
 }
 
-export function AnalogyBlock({ text, className }: AnalogyBlockProps) {
+export const AnalogyBlock = memo(function AnalogyBlock({ text, className }: AnalogyBlockProps) {
     return (
         <div className={cn("relative group mt-10", className)}>
             {/* Multi-layered glow */}
@@ -41,4 +44,4 @@ export function AnalogyBlock({ text, className }: AnalogyBlockProps) {
             </div>
         </div>
     );
-}
+});

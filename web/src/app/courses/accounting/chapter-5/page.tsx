@@ -2,10 +2,11 @@
 
 import React, { useState } from "react";
 import chapterData from "@/data/chapters/chapter-5.json";
-import { ConceptCard } from "@/components/accounting/ConceptCard";
-import { CalculationBlock } from "@/components/accounting/CalculationBlock";
-import { JournalEntry } from "@/components/accounting/JournalEntry";
-import { InteractiveExercise } from "@/components/accounting/InteractiveExercise";
+import dynamic from "next/dynamic";
+const ConceptCard = dynamic(() => import("@/components/accounting/ConceptCard").then(m => m.ConceptCard), { ssr: true });
+const CalculationBlock = dynamic(() => import("@/components/accounting/CalculationBlock").then(m => m.CalculationBlock), { ssr: true });
+const JournalEntry = dynamic(() => import("@/components/accounting/JournalEntry").then(m => m.JournalEntry), { ssr: true });
+const InteractiveExercise = dynamic(() => import("@/components/accounting/InteractiveExercise").then(m => m.InteractiveExercise), { ssr: false });
 import { GlassCard } from "@/components/ui/glass-card";
 import { Scale, ChevronDown, ChevronUp, Calculator, CheckCircle2 } from "lucide-react";
 import { JournalEntryBlock } from "@/types/accounting";

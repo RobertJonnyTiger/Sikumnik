@@ -3,17 +3,20 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { NavigationWrapper } from "@/components/layout/NavigationWrapper";
 import { Playpen_Sans, Varela_Round } from "next/font/google";
+import { Agentation } from "agentation";
 
 const mainFont = Varela_Round({
-    subsets: ["hebrew", "latin"],
+    subsets: ["hebrew", "latin"] as any,
     variable: "--font-main",
     weight: "400",
+    display: "swap",
 });
 
 const handwriting = Playpen_Sans({
-    subsets: ["hebrew", "latin"],
+    subsets: ["hebrew", "latin"] as any,
     variable: "--font-handwriting",
     weight: ["400", "700"],
+    display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -39,6 +42,7 @@ export default function RootLayout({
                 <NavigationWrapper>
                     {children}
                 </NavigationWrapper>
+                <Agentation />
             </body>
         </html>
     );

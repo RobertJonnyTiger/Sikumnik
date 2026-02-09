@@ -1,5 +1,8 @@
-import { ConceptCard } from "@/components/accounting/ConceptCard";
-import { InteractiveExercise } from "@/components/ui/interactive-exercise";
+"use client";
+
+import dynamic from "next/dynamic";
+const ConceptCard = dynamic(() => import("@/components/accounting/ConceptCard").then(m => m.ConceptCard), { ssr: true });
+const InteractiveExercise = dynamic(() => import("@/components/ui/interactive-exercise").then(m => m.InteractiveExercise), { ssr: false });
 import courseData from "@/data/accounting-101.json";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";

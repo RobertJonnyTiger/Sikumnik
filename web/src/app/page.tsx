@@ -4,13 +4,17 @@ import Link from "next/link";
 import { useState } from "react";
 import { BookOpen, X, Menu } from "lucide-react";
 
+const HERO_GRADIENT_STYLE = {
+  background: 'radial-gradient(circle at top center, #2a1b6d 0%, #131022 70%)'
+};
+
 export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#131022] text-white" dir="rtl">
       {/* Sidebar Overlay */}
-      {isSidebarOpen && (
+      {isSidebarOpen ? (
         <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex justify-end">
           <div className="w-80 h-full bg-[#1c1836] border-r border-white/10 shadow-2xl animate-in slide-in-from-right duration-300">
             <div className="p-6 border-b border-white/10 flex justify-between items-center">
@@ -33,7 +37,7 @@ export default function Home() {
             </nav>
           </div>
         </div>
-      )}
+      ) : null}
 
       {/* Sticky Navigation */}
       <nav className="sticky top-0 z-50 w-full px-4 py-3 backdrop-blur-xl bg-white/[0.03] border-b border-white/5">
@@ -56,9 +60,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section with Temple Gradient */}
-      <header className="relative pt-12 pb-20 px-6 flex flex-col items-center text-center" style={{
-        background: 'radial-gradient(circle at top center, #2a1b6d 0%, #131022 70%)'
-      }}>
+      <header className="relative pt-12 pb-20 px-6 flex flex-col items-center text-center" style={HERO_GRADIENT_STYLE}>
         {/* Background Glows */}
         <div className="absolute top-20 left-1/2 -translate-x-1/2 w-72 h-72 bg-[#3713ec]/20 rounded-full blur-[120px] -z-10" />
         <div className="absolute bottom-0 right-0 w-40 h-40 bg-[#00f3ff]/10 rounded-full blur-[80px] -z-10" />
