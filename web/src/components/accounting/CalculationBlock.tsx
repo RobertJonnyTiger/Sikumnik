@@ -2,6 +2,7 @@
 
 import { memo } from "react";
 import { GlassCard } from "@/components/ui/glass-card";
+import { cn } from "@/lib/utils";
 import { Calculator, ArrowDown, Lightbulb } from "lucide-react";
 import { CalculationBlock as CalculationType } from "@/types/accounting";
 import { FinancialStatement } from "./FinancialStatement";
@@ -15,9 +16,33 @@ interface CalculationBlockProps {
 export const CalculationBlock = memo(function CalculationBlock({ data }: CalculationBlockProps) {
     // If we have distinct data rows, render the Financial Statement view instead of the formula view
     if (data.data && data.data.rows) {
+        const rows = data.data.rows;
+        const hasAssets = rows.some((r: any) => r.type === 'asset');
+        const hasLiabilitiesOrEquity = rows.some((r: any) => r.type === 'liability' || r.type === 'equity');
+
+        if (hasAssets && hasLiabilitiesOrEquity) {
+            const leftRows = rows.filter((r: any) => r.type === 'asset');
+            const rightRows = rows.filter((r: any) => r.type === 'liability' || r.type === 'equity');
+            return (
+                <div className="relative">
+                    <FinancialStatement title={data.title} leftRows={leftRows} rightRows={rightRows} note={data.analogy_note} />
+                    {/* Optional side hint if needed */}
+                    {data.analogy_note && (
+                        <div className="hidden xl:block absolute -left-64 top-0 w-56 p-4 bg-card border border-border rounded-xl text-sm text-foreground/40 font-handwriting shadow-premium animate-entry">
+                            <div className="flex items-center gap-2 mb-2 text-primary font-black">
+                                <Lightbulb className="w-4 h-4" />
+                                <span>שים לב</span>
+                            </div>
+                            {data.analogy_note}
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
         return (
             <div className="relative">
-                <FinancialStatement title={data.title} rows={data.data.rows} note={data.analogy_note} />
+                <FinancialStatement title={data.title} rows={rows} note={data.analogy_note} />
                 {/* Optional side hint if needed */}
                 {data.analogy_note && (
                     <div className="hidden xl:block absolute -left-64 top-0 w-56 p-4 bg-slate-900/80 border border-slate-800 rounded-lg text-sm text-slate-400 font-handwriting">
@@ -62,19 +87,19 @@ export const CalculationBlock = memo(function CalculationBlock({ data }: Calcula
             {data.variables.length > 0 && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                     {data.variables.map((v, i) => (
-                        <div key={i} className="bg-white/5 rounded-lg p-3 flex justify-between items-center">
+                        <div key={i} className="bg-foreground/5 border border-border rounded-2xl p-4 flex justify-between items-center hover:bg-foreground/10 transition-colors">
                             <div>
-                                <span className="block text-xs text-slate-400">{v.name}</span>
-                                <span className="text-sm text-slate-200">{v.desc}</span>
+                                <span className="block text-[10px] font-black text-primary uppercase tracking-widest mb-1">{v.name}</span>
+                                <span className="text-base text-foreground/70 font-medium font-handwriting">{v.desc}</span>
                             </div>
-                            <span className="font-mono text-emerald-400 font-bold">{v.value}</span>
+                            <span className="font-sans text-xl font-black text-primary">{v.value}</span>
                         </div>
                     ))}
                 </div>
             )}
 
             {/* Steps */}
-            <div className="space-y-0 mb-8">
+            <div className="space-y-2 mb-8">
                 {(() => {
                     let stepCounter = 0;
                     return data.steps.map((step, i) => {
@@ -83,41 +108,35 @@ export const CalculationBlock = memo(function CalculationBlock({ data }: Calcula
                         const type = !isString ? step.type : undefined;
                         const isJournal = !isString ? step.isJournal : false;
 
-                        // Handle empty steps (spacers)
-                        if (!text) {
-                            return (
-                                <div key={i} className="flex gap-4 h-6">
-                                    <div className="w-8 flex justify-center">
-                                        {i < data.steps.length - 1 && (
-                                            <div className="w-px h-full bg-slate-800/50" />
-                                        )}
-                                    </div>
-                                </div>
-                            );
-                        }
+                        if (!text) return <div key={i} className="h-4" />;
 
                         stepCounter++;
 
-                        const textColor = type === 'pnl' ? 'text-red-300' :
-                            type === 'bs' ? 'text-blue-300' :
-                                isJournal ? 'text-amber-300' :
-                                    'text-slate-300';
+                        const bgColor = type === 'pnl' ? 'bg-error/5 border-error/20' :
+                            type === 'bs' ? 'bg-primary/5 border-primary/20' :
+                                isJournal ? 'bg-accent/5 border-accent/20' :
+                                    'bg-foreground/5 border-border';
+
+                        const iconColor = type === 'pnl' ? 'bg-error text-white' :
+                            type === 'bs' ? 'bg-primary text-white' :
+                                isJournal ? 'bg-accent text-white' :
+                                    'bg-foreground text-background';
 
                         return (
-                            <div key={i} className="flex gap-4">
-                                <div className="flex flex-col items-center relative">
-                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold border z-10
-                                        ${type === 'pnl' ? 'bg-red-500/10 text-red-400 border-red-500/30' :
-                                            type === 'bs' ? 'bg-blue-500/10 text-blue-400 border-blue-500/30' :
-                                                'bg-slate-800 text-white border-slate-700'}`}>
-                                        {stepCounter}
-                                    </div>
-                                    {i < data.steps.length - 1 && (
-                                        <div className="w-px h-full bg-slate-800/50 absolute top-8" />
-                                    )}
+                            <div key={i} className={cn(
+                                "flex gap-6 p-4 rounded-3xl border transition-all hover:translate-x-[-4px]",
+                                bgColor
+                            )}>
+                                <div className={cn(
+                                    "w-10 h-10 rounded-2xl flex items-center justify-center text-sm font-black shrink-0 shadow-sm",
+                                    iconColor
+                                )}>
+                                    {stepCounter}
                                 </div>
-                                <div className={`pt-1 pb-6 text-sm leading-relaxed w-full whitespace-pre-wrap ${textColor}
-                                    ${isJournal ? 'bg-slate-900/50 p-3 rounded-lg border-l-2 border-amber-500/30 mt-1' : ''}`}>
+                                <div className={cn(
+                                    "pt-1 text-base leading-relaxed font-medium font-sans text-foreground/80",
+                                    isJournal && "font-mono text-sm bg-background/50 p-4 rounded-2xl border border-border"
+                                )}>
                                     {parseBold(text)}
                                 </div>
                             </div>
@@ -128,9 +147,12 @@ export const CalculationBlock = memo(function CalculationBlock({ data }: Calcula
 
             {/* Analogy Note */}
             {data.analogy_note && (
-                <div className="mt-6 bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4 flex gap-3 text-yellow-200/90 text-sm font-handwriting">
-                    <Lightbulb className="w-5 h-5 shrink-0 text-yellow-400" />
-                    <p>{data.analogy_note}</p>
+                <div className="mt-6 bg-accent/5 border border-accent/20 rounded-[2.5rem] p-8 flex gap-6 text-foreground/70 text-lg font-handwriting italic relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-accent/10 blur-2xl rounded-full" />
+                    <div className="bg-accent p-3 rounded-2xl shadow-lg shadow-accent/20 group-hover:scale-110 transition-transform shrink-0 self-start">
+                        <Lightbulb className="w-6 h-6 text-white" />
+                    </div>
+                    <p className="relative z-10 leading-relaxed pr-6 border-r-2 border-accent/30">{data.analogy_note}</p>
                 </div>
             )}
         </GlassCard>

@@ -20,16 +20,16 @@ export function InteractiveExercise({ question, answer, solution, hint, tip, cla
     const [isRevealed, setIsRevealed] = useState(false);
 
     return (
-        <GlassCard className={cn("border-t-4 border-t-pink-500", className)}>
+        <GlassCard className={cn("border-t-4 border-t-pink-500 p-6", className)}>
 
             {/* Label */}
-            <div className="flex items-center gap-2 mb-4 text-pink-400 text-xs font-bold uppercase tracking-widest">
+            <div className="flex items-center gap-2 mb-3 text-pink-400 text-sm font-bold uppercase tracking-widest">
                 <HelpCircle className="w-4 h-4" />
-                <span>בחן את עצמך</span>
+                <span>שאלה</span>
             </div>
 
             {/* Question */}
-            <h3 className="text-xl font-bold text-white mb-6">
+            <h3 className="text-2xl font-bold text-white mb-4">
                 {question}
             </h3>
 
@@ -40,7 +40,7 @@ export function InteractiveExercise({ question, answer, solution, hint, tip, cla
             >
                 {/* The Content (Blurred or Visible) */}
                 <div className={cn(
-                    "p-6 rounded-lg bg-slate-900/50 border border-slate-800 transition-all duration-500",
+                    "p-4 rounded-lg bg-slate-900/50 border border-slate-800 transition-all duration-500",
                     !isRevealed && "blur-md select-none opacity-50 grayscale",
                     isRevealed && "opacity-100 neon-border"
                 )}>

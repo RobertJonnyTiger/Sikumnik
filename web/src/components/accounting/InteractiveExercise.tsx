@@ -85,7 +85,7 @@ export const InteractiveExercise = memo(function InteractiveExercise({ question,
 
             return (
                 <p key={i} className={cn(
-                    "mb-4 leading-relaxed text-lg md:text-xl font-sans",
+                    "mb-4 leading-relaxed text-xl md:text-2xl font-sans",
                     line.includes(":") ? "text-white font-bold text-2xl mb-6" : "text-slate-200 font-light"
                 )}>
                     {formattedLine}
@@ -106,14 +106,14 @@ export const InteractiveExercise = memo(function InteractiveExercise({ question,
                 {/* Visual Header Strip */}
                 <div className="h-3 w-full bg-gradient-to-r from-[#3b82f6] via-[#fbbf24] to-[#3b82f6]" />
 
-                <div className="p-10 md:p-14">
+                <div className="p-6 md:p-8">
                     <div className="flex items-start gap-8">
                         <div className="bg-[#3b82f6] p-5 rounded-3xl shadow-xl shadow-[#3b82f6]/30 flex-shrink-0 animate-pulse">
                             <HelpCircle className="w-8 h-8 text-white" />
                         </div>
                         <div className="flex-1 space-y-8">
                             <div className="flex items-center gap-4">
-                                <span className="text-xs font-black text-[#93c5fd] uppercase tracking-[0.4em] font-sans">אתגר המקדש העליון</span>
+                                <span className="text-sm font-black text-[#93c5fd] uppercase tracking-widest font-sans">שאלה</span>
                                 <div className="h-[2px] flex-1 bg-gradient-to-r from-white/10 to-transparent" />
                             </div>
 

@@ -14,10 +14,10 @@ export default function AccountingPage() {
             {/* Navigation (Handled by Sidebar now) */}
             {/* <nav className="border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50"> ... </nav> */}
 
-            <main className="max-w-4xl mx-auto px-4 py-12">
+            <main className="w-full px-6 lg:px-12 xl:px-16 py-12">
 
                 {/* Header */}
-                <header className="mb-16 text-center">
+                <header className="mb-16 text-center max-w-4xl mx-auto">
                     <span className="inline-block px-4 py-1.5 bg-pink-500/10 text-pink-500 text-sm font-bold rounded-full mb-4 border border-pink-500/20">
                         {courseData.title}
                     </span>
@@ -32,8 +32,8 @@ export default function AccountingPage() {
                     </p>
                 </header>
 
-                {/* Concept Grid */}
-                <div className="grid gap-8">
+                {/* Concept Grid - 2 columns on large screens */}
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
                     {courseData.sections.map((section, index) => (
                         <ConceptCard
                             key={index}
@@ -44,8 +44,8 @@ export default function AccountingPage() {
                         />
                     ))}
 
-                    {/* Interactive Knowledge Check */}
-                    <div className="mt-16 border-t border-slate-800 pt-12">
+                    {/* Interactive Knowledge Check - spans full width */}
+                    <div className="xl:col-span-2 mt-16 border-t border-slate-800 pt-12">
                         <h2 className="text-3xl font-bold mb-8 text-center">
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-500 ">
                                 בוא נראה אם הקשבת...

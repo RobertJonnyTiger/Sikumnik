@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { NavigationWrapper } from "@/components/layout/NavigationWrapper";
-import { Playpen_Sans, Varela_Round } from "next/font/google";
+import { Playpen_Sans_Hebrew, Varela_Round } from "next/font/google";
 import { Agentation } from "agentation";
 
 const mainFont = Varela_Round({
@@ -12,7 +12,7 @@ const mainFont = Varela_Round({
     display: "swap",
 });
 
-const handwriting = Playpen_Sans({
+const handwriting = Playpen_Sans_Hebrew({
     subsets: ["hebrew", "latin"] as any,
     variable: "--font-handwriting",
     weight: ["400", "700"],
@@ -34,7 +34,7 @@ export default function RootLayout({
             <body
                 suppressHydrationWarning={true}
                 className={cn(
-                    "min-h-screen bg-[#0f172a] font-main antialiased",
+                    "min-h-screen bg-background font-main antialiased",
                     mainFont.variable,
                     handwriting.variable
                 )}

@@ -73,7 +73,7 @@ export const ConceptCard = memo(function ConceptCard({ title, academicText, anal
                 </h3>
             </header>
 
-            <div className="text-xl md:text-2xl font-light text-slate-200 leading-relaxed max-w-4xl border-r-4 border-[#3b82f6]/30 pr-8 py-4 font-sans">
+            <div className="text-xl md:text-2xl font-light text-slate-200 leading-relaxed max-w-4xl border-r-4 border-[#3b82f6]/30 pr-8 py-4 font-sans text-justify">
                 {renderAcademicText()}
             </div>
 
