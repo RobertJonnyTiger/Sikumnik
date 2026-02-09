@@ -48,17 +48,17 @@ export function Sidebar({ className }: { className?: string }) {
     const pathname = usePathname();
 
     return (
-        <aside className={cn("bg-[#0a051e] border-l border-white/5 flex flex-col h-screen sticky top-0 overflow-y-auto w-72 shrink-0 z-50", className)}>
+        <aside className={cn("bg-[#0f172a] border-l border-white/5 flex flex-col h-screen sticky top-0 overflow-y-auto w-72 shrink-0 z-50", className)}>
 
             {/* Brand / Logo */}
             <div className="p-6 border-b border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent">
                 <Link href="/" className="flex items-center gap-3 group">
-                    <div className="w-10 h-10 rounded-xl bg-[#3713ec] flex items-center justify-center shadow-[0_0_20px_rgba(55,19,236,0.4)] group-hover:scale-105 transition-transform duration-300">
+                    <div className="w-10 h-10 rounded-xl bg-[#3b82f6] flex items-center justify-center shadow-[0_0_20px_rgba(59,130,246,0.4)] group-hover:scale-105 transition-transform duration-300">
                         <GraduationCap className="w-6 h-6 text-white" />
                     </div>
                     <div>
                         <span className="font-black text-xl text-white tracking-tight block">Sikumnik</span>
-                        <span className="text-[10px] font-bold text-[#3713ec] uppercase tracking-widest">Inner Sanctum</span>
+                        <span className="text-[10px] font-bold text-[#3b82f6] uppercase tracking-widest">Inner Sanctum</span>
                     </div>
                 </Link>
             </div>
@@ -73,12 +73,12 @@ export function Sidebar({ className }: { className?: string }) {
                         className={cn(
                             "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all group relative overflow-hidden",
                             pathname === "/"
-                                ? "text-white bg-[#3713ec]/10 border border-[#3713ec]/30"
+                                ? "text-white bg-[#3b82f6]/10 border border-[#3b82f6]/30"
                                 : "text-slate-500 hover:text-slate-200 hover:bg-white/5"
                         )}
                     >
-                        {pathname === "/" && <div className="absolute inset-y-0 right-0 w-1 bg-[#3713ec]" />}
-                        <LayoutDashboard className={cn("w-5 h-5", pathname === "/" ? "text-[#3713ec]" : "text-slate-600")} />
+                        {pathname === "/" && <div className="absolute inset-y-0 right-0 w-1 bg-[#3b82f6]" />}
+                        <LayoutDashboard className={cn("w-5 h-5", pathname === "/" ? "text-[#3b82f6]" : "text-slate-600")} />
                         <span>לוח בקרה</span>
                     </Link>
                 </div>
@@ -99,7 +99,7 @@ export function Sidebar({ className }: { className?: string }) {
                                         course.locked ? "opacity-40 cursor-not-allowed" : "cursor-pointer hover:bg-white/5 text-slate-300 hover:text-white"
                                     )}>
                                         <div className="flex items-center gap-3">
-                                            <div className={cn("w-2 h-2 rounded-full", course.locked ? "bg-slate-700" : "bg-[#3713ec] shadow-[0_0_8px_rgba(55,19,236,0.6)]")} />
+                                            <div className={cn("w-2 h-2 rounded-full", course.locked ? "bg-slate-700" : "bg-[#3b82f6] shadow-[0_0_8px_rgba(59,130,246,0.6)]")} />
                                             <span className="font-bold tracking-tight">{course.title}</span>
                                         </div>
                                         {course.locked ? <Lock className="w-3 h-3 text-slate-800" /> : <ChevronDown className="w-4 h-4 text-slate-600" />}
@@ -117,12 +117,12 @@ export function Sidebar({ className }: { className?: string }) {
                                                         className={cn(
                                                             "block px-3 py-2 text-xs rounded-lg transition-all relative group/item",
                                                             isActive
-                                                                ? "text-[#00f3ff] bg-[#00f3ff]/5 font-bold"
+                                                                ? "text-[#fbbf24] bg-[#fbbf24]/5 font-bold"
                                                                 : "text-slate-500 hover:text-slate-300"
                                                         )}
                                                     >
                                                         <div className="flex items-center gap-2">
-                                                            {isActive && <div className="w-1 h-1 rounded-full bg-[#00f3ff] animate-pulse" />}
+                                                            {isActive && <div className="w-1 h-1 rounded-full bg-[#fbbf24] animate-pulse" />}
                                                             <span>{chapter.title}</span>
                                                         </div>
                                                     </Link>
@@ -139,10 +139,10 @@ export function Sidebar({ className }: { className?: string }) {
 
             {/* AI Assistant Indicator */}
             <div className="px-6 pb-4">
-                <div className="p-4 rounded-2xl bg-gradient-to-br from-[#3713ec]/10 to-[#00f3ff]/10 border border-white/5 relative overflow-hidden group/ai">
-                    <div className="absolute top-0 right-0 w-16 h-16 bg-[#3713ec]/10 blur-xl opacity-0 group-hover/ai:opacity-100 transition-opacity" />
+                <div className="p-4 rounded-2xl bg-gradient-to-br from-[#3b82f6]/10 to-[#fbbf24]/10 border border-white/5 relative overflow-hidden group/ai">
+                    <div className="absolute top-0 right-0 w-16 h-16 bg-[#3b82f6]/10 blur-xl opacity-0 group-hover/ai:opacity-100 transition-opacity" />
                     <div className="flex items-center gap-3 relative z-10">
-                        <Sparkles className="w-4 h-4 text-[#3713ec]" />
+                        <Sparkles className="w-4 h-4 text-[#3b82f6]" />
                         <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">AI Sanctum Active</span>
                     </div>
                 </div>
@@ -151,9 +151,9 @@ export function Sidebar({ className }: { className?: string }) {
             {/* User Profile */}
             <div className="p-6 border-t border-white/5 bg-black/20">
                 <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#3713ec] to-[#00f3ff] p-[2px]">
-                        <div className="w-full h-full rounded-full bg-[#0a051e] flex items-center justify-center overflow-hidden">
-                            <div className="w-full h-full bg-[#3713ec]/20 flex items-center justify-center text-xs font-bold text-white uppercase italic">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#3b82f6] to-[#fbbf24] p-[2px]">
+                        <div className="w-full h-full rounded-full bg-[#0f172a] flex items-center justify-center overflow-hidden">
+                            <div className="w-full h-full bg-[#3b82f6]/20 flex items-center justify-center text-xs font-bold text-white uppercase italic">
                                 S
                             </div>
                         </div>

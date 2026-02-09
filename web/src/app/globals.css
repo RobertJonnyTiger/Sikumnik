@@ -16,38 +16,31 @@
   --color-glass: var(--glass);
 
   /* Fonts */
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: var(--font-main);
+  --font-handwriting: var(--font-handwriting);
 }
 
 :root {
-  /* Inner Sanctum: Temple of Knowledge Theme */
-  --background: #0a051e;
-  /* Deep "Sacred" Purple */
+  --background: #0f172a;
   --foreground: #f8fafc;
-  /* slate-50 */
-
-  --primary: #3713ec;
-  /* Royal "Knowledge" Blue */
-  --secondary: #1e1933;
-  /* Muted Purple Surface */
-  --accent: #00f3ff;
-  /* Neon Cyan "Spark" */
-
-  --success: #34d399;
-  /* emerald-400 */
+  --primary: #3b82f6;
+  --secondary: #1d4ed8;
+  --accent: #fbbf24;
+  --success: #10b981;
   --error: #f43f5e;
-  /* rose-500 */
+  --card: #1e293b;
+  --glass: rgba(15, 23, 42, 0.6);
 
-  --card: #1e1836;
-  /* Deeper Glass Purple */
-  --glass: rgba(10, 5, 30, 0.6);
+  /* Default fonts if variables not set */
+  --font-main: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-handwriting: cursive;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   direction: rtl;
-  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-main), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -55,19 +48,19 @@ body {
 /* --- Inner Sanctum Utilities --- */
 
 .glass-card {
-  @apply bg-[#1e1933]/60 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl;
+  @apply bg-[#1e293b]/60 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl;
 }
 
 .temple-glow {
-  box-shadow: 0 0 30px rgba(55, 19, 236, 0.15);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
 }
 
 .neon-glow {
-  box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
 }
 
 .knowledge-text {
-  background: linear-gradient(135deg, #fff 0%, #a78bfa 100%);
+  background: linear-gradient(135deg, #fff 0%, #93c5fd 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -77,17 +70,17 @@ body {
 html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: #3713ec #0a051e;
+  scrollbar-color: #3b82f6 #0f172a;
 }
 
 ::selection {
-  background: rgba(55, 19, 236, 0.3);
-  color: #00f3ff;
+  background: rgba(59, 130, 246, 0.3);
+  color: #fbbf24;
 }
 
 /* Better table styles */
 .temple-table-header {
-  @apply font-black text-xs md:text-sm uppercase tracking-[0.2em] text-[#a78bfa] border-b border-white/10;
+  @apply font-black text-xs md:text-sm uppercase tracking-[0.2em] text-[#93c5fd] border-b border-white/10;
 }
 
 .temple-table-row {

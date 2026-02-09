@@ -15,7 +15,7 @@ export function CalculationBlock({ data }: CalculationBlockProps) {
                 <FinancialStatement title={data.title} rows={data.data.rows} note={data.analogy_note} />
                 {/* Optional side hint if needed */}
                 {data.analogy_note && (
-                    <div className="hidden xl:block absolute -left-64 top-0 w-56 p-4 bg-slate-900/80 border border-slate-800 rounded-lg text-sm text-slate-400">
+                    <div className="hidden xl:block absolute -left-64 top-0 w-56 p-4 bg-slate-900/80 border border-slate-800 rounded-lg text-sm text-slate-400 font-handwriting">
                         <div className="flex items-center gap-2 mb-2 text-indigo-400 font-bold">
                             <Lightbulb className="w-4 h-4" />
                             <span>שים לב</span>
@@ -123,7 +123,7 @@ export function CalculationBlock({ data }: CalculationBlockProps) {
 
             {/* Analogy Note */}
             {data.analogy_note && (
-                <div className="mt-6 bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4 flex gap-3 text-yellow-200/90 text-sm">
+                <div className="mt-6 bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4 flex gap-3 text-yellow-200/90 text-sm font-handwriting">
                     <Lightbulb className="w-5 h-5 shrink-0 text-yellow-400" />
                     <p>{data.analogy_note}</p>
                 </div>
