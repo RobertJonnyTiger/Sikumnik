@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Search, User, ChevronDown, Filter, BookOpen, Calculator, TrendingUp, Landmark, Brain, MessageSquare, Settings, Bookmark, Sparkles, Menu, X } from "lucide-react";
+import { Search, User, ChevronDown, Filter, BookOpen, Calculator, TrendingUp, Landmark, Brain, MessageSquare, Settings, Bookmark, Sparkles, Menu, X, GraduationCap } from "lucide-react";
 
 export default function CoursesPage() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -60,10 +60,10 @@ export default function CoursesPage() {
                             <Menu className="w-6 h-6" />
                         </button>
                         <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-all">
-                            <div className="bg-[#3713ec] p-2 rounded-lg flex items-center justify-center shadow-lg shadow-[#3713ec]/30">
-                                <span className="text-white text-xl">🎓</span>
+                            <div className="bg-[#3713ec] p-2.5 rounded-xl flex items-center justify-center shadow-lg shadow-[#3713ec]/30 scale-90 group-hover:scale-100 transition-transform">
+                                <GraduationCap className="w-5 h-5 text-white" />
                             </div>
-                            <h1 className="text-xl font-bold tracking-tight text-white transition-all">סנקטואריום הקורסים</h1>
+                            <h1 className="text-xl font-black tracking-tight text-white font-sans">Discovery Sanctuary</h1>
                         </Link>
                     </div>
                     <div className="flex items-center gap-2">
@@ -98,8 +98,8 @@ export default function CoursesPage() {
 
             <main className="p-4 space-y-8 relative z-10">
                 <section className="space-y-1">
-                    <h2 className="text-xs font-medium text-[#3713ec] uppercase tracking-widest">Digital Sanctuary</h2>
-                    <p className="text-2xl font-bold text-white">איזה ידע נכבוש היום?</p>
+                    <h2 className="text-[10px] font-black text-[#3713ec] uppercase tracking-[0.4em] font-sans">Digital Knowledge Base</h2>
+                    <p className="text-2xl font-black text-white font-sans">איזה ידע נכבוש היום?</p>
                 </section>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

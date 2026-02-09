@@ -7,12 +7,16 @@ import { cn } from "@/lib/utils";
 
 interface InteractiveExerciseProps {
     question: string;
-    answer: string;
+    answer?: string;
+    solution?: string;
     hint?: string;
+    tip?: string;
     className?: string;
 }
 
-export function InteractiveExercise({ question, answer, hint, className }: InteractiveExerciseProps) {
+export function InteractiveExercise({ question, answer, solution, hint, tip, className }: InteractiveExerciseProps) {
+    const finalAnswer = answer || solution || "";
+    const finalHint = hint || tip;
     const [isRevealed, setIsRevealed] = useState(false);
 
     return (
@@ -41,7 +45,7 @@ export function InteractiveExercise({ question, answer, hint, className }: Inter
                     isRevealed && "opacity-100 neon-border"
                 )}>
                     <p className="text-lg text-slate-200 leading-relaxed">
-                        {answer}
+                        {finalAnswer}
                     </p>
                 </div>
 
@@ -58,9 +62,9 @@ export function InteractiveExercise({ question, answer, hint, className }: Inter
             </div>
 
             {/* Footer / Hint */}
-            {hint && (
+            {finalHint && (
                 <div className="mt-4 text-xs text-slate-500">
-                    <span className="font-bold text-indigo-400">רמז:</span> {hint}
+                    <span className="font-bold text-indigo-400">רמז:</span> {finalHint}
                 </div>
             )}
 

@@ -4,11 +4,15 @@ import { HelpCircle, ChevronLeft, Sparkles } from "lucide-react";
 
 interface InteractiveExerciseProps {
     question: string;
-    answer: string;
+    answer?: string;
+    solution?: string;
     hint?: string;
+    tip?: string;
 }
 
-export function InteractiveExercise({ question, answer, hint }: InteractiveExerciseProps) {
+export function InteractiveExercise({ question, answer, solution, hint, tip }: InteractiveExerciseProps) {
+    const finalAnswer = answer || solution || "";
+    const finalHint = hint || tip;
     const [showSolution, setShowSolution] = useState(false);
 
     // Advanced Parser to detect ASCII tables and render them as HTML
@@ -75,7 +79,7 @@ export function InteractiveExercise({ question, answer, hint }: InteractiveExerc
 
             return (
                 <p key={i} className={cn(
-                    "mb-4 leading-relaxed text-lg md:text-xl font-rubik",
+                    "mb-4 leading-relaxed text-lg md:text-xl font-sans",
                     line.includes(":") ? "text-white font-bold text-2xl mb-6" : "text-slate-200 font-light"
                 )}>
                     {formattedLine}
@@ -103,7 +107,7 @@ export function InteractiveExercise({ question, answer, hint }: InteractiveExerc
                         </div>
                         <div className="flex-1 space-y-8">
                             <div className="flex items-center gap-4">
-                                <span className="text-xs font-black text-[#a78bfa] uppercase tracking-[0.4em] font-rubik">אתגר המקדש העליון</span>
+                                <span className="text-xs font-black text-[#a78bfa] uppercase tracking-[0.4em] font-sans">אתגר המקדש העליון</span>
                                 <div className="h-[2px] flex-1 bg-gradient-to-r from-white/10 to-transparent" />
                             </div>
 
@@ -125,16 +129,16 @@ export function InteractiveExercise({ question, answer, hint }: InteractiveExerc
                                     <ChevronLeft className={cn("w-6 h-6 transition-transform duration-500", showSolution && "rotate-[-90deg]", !showSolution && "group-hover/btn:translate-x-[-4px]")} />
                                 </button>
 
-                                {hint && !showSolution && (
+                                {finalHint && !showSolution && (
                                     <div className="flex items-center gap-4 text-slate-400 hover:text-[#00f3ff] transition-all cursor-help group/hint px-6 py-3 rounded-2xl hover:bg-white/5 border border-transparent hover:border-[#00f3ff]/20">
                                         <Sparkles className="w-5 h-5 text-[#a78bfa] animate-pulse" />
-                                        <span className="text-xs font-black uppercase tracking-[0.2em] font-rubik underline underline-offset-4">לחש רמז קדום</span>
-                                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-6 w-80 p-6 bg-[#0a051e] border border-white/10 rounded-[2rem] text-sm text-slate-100 font-rubik font-light hidden group-hover/hint:block animate-in fade-in zoom-in-95 duration-300 shadow-3xl z-50">
+                                        <span className="text-xs font-black uppercase tracking-[0.2em] font-sans underline underline-offset-4">לחש רמז קדום</span>
+                                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-6 w-80 p-6 bg-[#0a051e] border border-white/10 rounded-[2rem] text-sm text-slate-100 font-sans font-light hidden group-hover/hint:block animate-in fade-in zoom-in-95 duration-300 shadow-3xl z-50">
                                             <div className="flex items-center gap-3 mb-3 border-b border-white/5 pb-2">
                                                 <div className="w-2 h-2 rounded-full bg-[#00f3ff]" />
                                                 <span className="text-[10px] font-black uppercase tracking-widest text-[#00f3ff]">Wisdom Drop</span>
                                             </div>
-                                            {hint}
+                                            {finalHint}
                                         </div>
                                     </div>
                                 )}
@@ -148,11 +152,11 @@ export function InteractiveExercise({ question, answer, hint }: InteractiveExerc
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-4 mb-10">
-                                        <h4 className="text-xs font-black text-[#00f3ff] uppercase tracking-[0.5em] font-rubik leading-none">הפתרון הנגלה</h4>
+                                        <h4 className="text-xs font-black text-[#00f3ff] uppercase tracking-[0.5em] font-sans leading-none">הפתרון הנגלה</h4>
                                         <div className="h-[1px] w-12 bg-[#00f3ff]/20" />
                                     </div>
                                     <div className="space-y-6">
-                                        {renderContent(answer)}
+                                        {renderContent(finalAnswer)}
                                     </div>
                                 </div>
                             )}

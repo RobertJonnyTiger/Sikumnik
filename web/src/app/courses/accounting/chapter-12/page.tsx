@@ -33,7 +33,7 @@ export default function Chapter12Page() {
             return (
                 <div className="flex gap-6 items-start group/step hover:translate-x-[-8px] transition-transform duration-500 py-3">
                     <span className="text-[#00f3ff] font-black text-2xl italic bg-[#00f3ff]/10 px-3 py-1 rounded-xl min-w-[50px] text-center shadow-[0_0_15px_rgba(0,243,255,0.1)]">{numberedMatch[1]}</span>
-                    <span className="text-slate-100 font-rubik font-medium text-2xl leading-relaxed flex-1">
+                    <span className="text-slate-100 font-sans font-medium text-2xl leading-relaxed flex-1">
                         {renderRichText(numberedMatch[2])}
                     </span>
                 </div>
@@ -47,14 +47,14 @@ export default function Chapter12Page() {
                     <span className="text-[#3713ec] mt-2.5 shrink-0">
                         {text.startsWith("📌") ? <Sparkles className="w-5 h-5" /> : <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-[#3713ec] to-[#00f3ff]" />}
                     </span>
-                    <span className="text-slate-100 font-rubik font-bold text-2xl leading-relaxed">
+                    <span className="text-slate-100 font-sans font-bold text-2xl leading-relaxed">
                         {renderRichText(text.replace(/^[•\-📌]\s*/, ""))}
                     </span>
                 </div>
             );
         }
 
-        return <p className="text-slate-300 font-rubik font-light text-2xl leading-relaxed py-3 pr-10">{renderRichText(text)}</p>;
+        return <p className="text-slate-300 font-sans font-light text-2xl leading-relaxed py-3 pr-10">{renderRichText(text)}</p>;
     };
 
     const renderRichText = (text: string) => {
@@ -76,117 +76,118 @@ export default function Chapter12Page() {
     return (
         <div className="min-h-screen bg-[#0a051e] text-slate-100 flex flex-col font-sans selection:bg-[#3713ec]/40 selection:text-[#00f3ff]" dir="rtl">
 
-            {/* Top Navigation Bar - Switched to Rubik */}
-            <header className="sticky top-0 z-50 backdrop-blur-2xl bg-[#0a051e]/80 border-b border-white/5 px-8 py-6 flex items-center justify-between">
-                <div className="flex items-center gap-6">
-                    <Link href="/" className="flex items-center gap-4 hover:opacity-80 transition-opacity group">
-                        <div className="bg-[#3713ec] p-3 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(55,19,236,0.6)] group-hover:scale-110 transition-transform duration-700">
-                            <GraduationCap className="w-8 h-8 text-white" />
+            {/* Top Navigation Bar - Compact and Modern */}
+            <header className="sticky top-0 z-50 backdrop-blur-2xl bg-[#0a051e]/80 border-b border-white/5 px-6 py-4 flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                    <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity group">
+                        <div className="bg-[#3713ec] p-2 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(55,19,236,0.4)] group-hover:scale-110 transition-transform duration-500">
+                            <GraduationCap className="w-6 h-6 text-white" />
                         </div>
-                        <span className="font-rubik font-black text-3xl tracking-tighter text-white">SIKUMNIK</span>
+                        <span className="font-sans font-black text-xl tracking-tighter text-white">SIKUMNIK</span>
                     </Link>
                 </div>
 
-                <nav className="flex-1 px-12 hidden md:block">
-                    <p className="text-[10px] md:text-sm uppercase font-black tracking-[0.3em] text-[#3713ec] font-rubik">
-                        <span className="opacity-30">Home &gt; Accounting &gt; </span>
+                <nav className="flex-1 px-8 hidden md:block">
+                    <p className="text-[10px] md:text-xs uppercase font-black tracking-[0.2em] text-[#3713ec] font-sans opacity-70">
+                        <span className="opacity-40">Home &gt; Accounting &gt; </span>
                         {chapterData.title}
                     </p>
                 </nav>
 
-                <div className="flex items-center gap-4">
-                    <button className="w-12 h-12 flex items-center justify-center rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all group">
-                        <Search className="w-6 h-6 text-slate-400 group-hover:text-white group-hover:scale-110 transition-all" />
+                <div className="flex items-center gap-3">
+                    <button className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all">
+                        <Search className="w-5 h-5 text-slate-400" />
                     </button>
-                    <div className="w-12 h-12 rounded-full border-2 border-[#3713ec]/30 overflow-hidden bg-gradient-to-tr from-[#3713ec] to-[#00f3ff] p-[2px] cursor-pointer hover:border-[#00f3ff]/50 transition-all">
+                    <div className="w-10 h-10 rounded-full border border-[#3713ec]/30 overflow-hidden bg-gradient-to-tr from-[#3713ec] to-[#00f3ff] p-[2px]">
                         <div className="w-full h-full rounded-full bg-[#0a051e] flex items-center justify-center text-[10px] font-black italic">SA</div>
                     </div>
                 </div>
             </header>
 
             {/* Main Content Area */}
-            <main className="flex-1 max-w-4xl mx-auto w-full px-8 pt-24 pb-48 relative">
+            <main className="flex-1 max-w-7xl mx-auto w-full px-8 pt-16 pb-32 relative">
 
-                {/* Visual Ambient - Modern Glows */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[160%] h-[1000px] bg-gradient-to-b from-[#3713ec]/10 via-[#00f3ff]/5 to-transparent blur-[160px] -z-10 pointer-events-none opacity-40" />
+                {/* Visual Ambient - Subtle Glows */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[700px] bg-gradient-to-b from-[#3713ec]/5 via-[#00f3ff]/2 to-transparent blur-[120px] -z-10 pointer-events-none opacity-40" />
 
-                <article className="space-y-32">
+                <article className="space-y-20">
 
-                    {/* Chapter Header - Pure Modern Rubik */}
-                    <header className="space-y-8">
-                        <div className="flex items-center gap-4">
-                            <span className="bg-[#3713ec]/20 text-[#00f3ff] font-black text-xs md:text-sm px-6 py-2 rounded-full border border-[#00f3ff]/20 tracking-[0.3em] uppercase font-rubik">
+                    {/* Chapter Header - Refined Size */}
+                    <header className="space-y-4">
+                        <div className="flex items-center gap-3">
+                            <span className="bg-[#3713ec]/20 text-[#00f3ff] font-black text-[10px] px-4 py-1.5 rounded-full border border-[#00f3ff]/20 tracking-[0.2em] uppercase font-sans">
                                 PERAK 12
                             </span>
                         </div>
-                        <h1 className="text-6xl md:text-8xl font-black text-white tracking-tight leading-[0.9] font-rubik">
+                        <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-tight font-sans">
                             {chapterData.title}
                         </h1>
-                        <p className="text-2xl md:text-4xl text-slate-400 font-rubik font-light leading-relaxed max-w-3xl">
+                        <p className="text-lg md:text-xl text-slate-400 font-sans font-light leading-relaxed max-w-2xl">
                             {chapterData.summary}
                         </p>
                     </header>
 
-                    {/* Central Logic Card */}
-                    <section className="relative">
-                        <div className="absolute -inset-2 bg-gradient-to-r from-[#3713ec] via-[#00f3ff] to-[#3713ec] rounded-[3rem] blur-2xl opacity-10 animate-pulse" />
-                        <div className="relative bg-[#1e1933]/60 backdrop-blur-3xl p-14 rounded-[3.5rem] border border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.6)]">
-                            <div className="flex items-center gap-6 mb-12">
-                                <div className="bg-[#3713ec] p-4 rounded-3xl shadow-xl shadow-[#3713ec]/40">
-                                    <TrendingUp className="w-8 h-8 text-white" />
+                    {/* Central Logic Card - Scaled Down */}
+                    <section className="relative max-w-3xl">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-[#3713ec] via-[#00f3ff] to-[#3713ec] rounded-[2rem] blur-xl opacity-10" />
+                        <div className="relative bg-[#1e1933]/60 backdrop-blur-3xl p-8 rounded-[2rem] border border-white/10 shadow-2xl">
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className="bg-[#3713ec] p-2.5 rounded-xl">
+                                    <TrendingUp className="w-5 h-5 text-white" />
                                 </div>
-                                <h3 className="text-3xl font-black text-white tracking-widest uppercase font-rubik">שיטת העבודה</h3>
+                                <h3 className="text-xl font-black text-white tracking-widest uppercase font-sans">שיטת העבודה</h3>
                             </div>
-                            <div className="text-center space-y-12">
-                                <p className="text-4xl md:text-6xl text-slate-100 font-rubik font-light leading-snug">
-                                    ככל שהחוב <span className="font-black text-[#00f3ff] underline decoration-[#00f3ff]/20 underline-offset-[16px]">ישן יותר</span> <br />
-                                    <span className="text-4xl opacity-20 inline-block rotate-90 md:rotate-0 my-4">→</span>
-                                    ההפרשה <span className="font-black text-[#00f3ff] underline decoration-[#00f3ff]/20 underline-offset-[16px]">גבוהה יותר</span>
+                            <div className="text-center space-y-6">
+                                <p className="text-2xl md:text-3xl text-slate-100 font-sans font-light leading-snug">
+                                    ככל שהחוב <span className="font-black text-[#00f3ff] underline decoration-[#00f3ff]/20 underline-offset-8">ישן יותר</span>
+                                    <span className="text-2xl opacity-20 mx-4">→</span>
+                                    ההפרשה <span className="font-black text-[#00f3ff] underline decoration-[#00f3ff]/20 underline-offset-8">גבוהה יותר</span>
                                 </p>
-                                <div className="flex flex-wrap justify-center items-center gap-6">
-                                    <div className="px-8 py-4 bg-green-500/10 text-green-400 rounded-3xl border border-green-500/20 text-lg font-black font-rubik shadow-2xl">שוטף: 1-2%</div>
-                                    <div className="px-8 py-4 bg-orange-500/10 text-orange-400 rounded-3xl border border-orange-500/20 text-lg font-black font-rubik shadow-2xl">פיגור: 15-30%</div>
-                                    <div className="px-8 py-4 bg-red-500/10 text-red-400 rounded-3xl border border-red-500/20 text-lg font-black font-rubik shadow-2xl">אבוד: 60-80%</div>
+                                <div className="flex flex-wrap justify-center items-center gap-4">
+                                    <div className="px-6 py-3 bg-green-500/10 text-green-400 rounded-2xl border border-green-500/20 text-sm font-black font-sans shadow-lg">שוטף: 1-2%</div>
+                                    <div className="px-6 py-3 bg-orange-500/10 text-orange-400 rounded-2xl border border-orange-500/20 text-sm font-black font-sans shadow-lg">פיגור: 15-30%</div>
+                                    <div className="px-6 py-3 bg-red-500/10 text-red-400 rounded-2xl border border-red-500/20 text-sm font-black font-sans shadow-lg">אבוד: 60-80%</div>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* Main Content Sections */}
-                    <div className="space-y-32">
+                    {/* Main Content Sections - 2 Column Grid */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16">
                         {(chapterData.sections as any[]).map((section: any, index: number) => {
                             if (section.type === "concept") {
                                 const currentConceptIndex = conceptIndex++;
                                 return (
-                                    <ConceptCard
-                                        key={index}
-                                        index={currentConceptIndex}
-                                        title={section.title}
-                                        academicText={section.academic_text || ""}
-                                        analogyText={section.analogy_text || ""}
-                                    />
+                                    <div key={index} className="lg:odd:col-span-1 lg:even:col-span-1">
+                                        <ConceptCard
+                                            index={currentConceptIndex}
+                                            title={section.title}
+                                            academicText={section.academic_text || ""}
+                                            analogyText={section.analogy_text || ""}
+                                        />
+                                    </div>
                                 );
                             }
                             if (section.type === "calculation") {
                                 return (
-                                    <section key={index} className="scroll-mt-32">
+                                    <section key={index} className="scroll-mt-32 lg:col-span-2">
                                         <CalculationBlock data={section as any} />
                                     </section>
                                 );
                             }
                             if (section.type === "table") {
                                 return (
-                                    <div key={index} className="space-y-12">
-                                        <div className="flex items-center gap-6">
-                                            <div className="w-2 h-10 bg-gradient-to-b from-[#3713ec] to-[#00f3ff] rounded-full shadow-[0_0_25px_rgba(55,19,236,0.8)]" />
-                                            <h3 className="text-4xl md:text-5xl font-black text-white tracking-tight font-rubik">{section.title}</h3>
+                                    <div key={index} className="space-y-6 lg:col-span-2">
+                                        <div className="flex items-center gap-4">
+                                            <div className="w-1.5 h-8 bg-gradient-to-b from-[#3713ec] to-[#00f3ff] rounded-full" />
+                                            <h3 className="text-2xl font-black text-white tracking-tight font-sans">{section.title}</h3>
                                         </div>
-                                        <div className="overflow-x-auto rounded-[3.5rem] border border-white/10 bg-[#1e1933]/50 backdrop-blur-3xl shadow-[0_40px_80px_rgba(0,0,0,0.5)]">
-                                            <table className="w-full text-xl md:text-2xl border-collapse">
+                                        <div className="overflow-x-auto rounded-[2rem] border border-white/10 bg-[#1e1933]/50 backdrop-blur-3xl shadow-xl">
+                                            <table className="w-full text-base md:text-lg border-collapse">
                                                 <thead>
                                                     <tr className="bg-white/[0.03]">
                                                         {section.headers?.map((h: string, i: number) => (
-                                                            <th key={i} className="text-right py-10 px-10 temple-table-header text-lg font-black bg-[#3713ec]/10">{h}</th>
+                                                            <th key={i} className="text-right py-5 px-6 temple-table-header text-xs font-black bg-[#3713ec]/10">{h}</th>
                                                         ))}
                                                     </tr>
                                                 </thead>
@@ -195,8 +196,8 @@ export default function Chapter12Page() {
                                                         <tr key={i} className="temple-table-row group">
                                                             {row.map((cell: string, j: number) => (
                                                                 <td key={j} className={cn(
-                                                                    "temple-table-cell py-10 px-10 font-rubik",
-                                                                    i === section.rows.length - 1 && "font-black text-3xl text-white bg-[#00f3ff]/5"
+                                                                    "temple-table-cell py-5 px-6 font-sans",
+                                                                    i === section.rows.length - 1 && "font-black text-xl text-white bg-[#00f3ff]/5"
                                                                 )}>
                                                                     {cell}
                                                                 </td>
@@ -228,8 +229,8 @@ export default function Chapter12Page() {
                                             <Sparkles className="w-10 h-10 text-white" />
                                         </div>
                                         <div>
-                                            <span className="block text-[#00f3ff] font-black text-xs md:text-sm uppercase tracking-[0.5em] mb-3 opacity-70 font-rubik">The Master Sanctuary Guide</span>
-                                            <span className="block text-white font-black text-4xl md:text-5xl tracking-tight font-rubik">{chapterData.worked_example.title}</span>
+                                            <span className="block text-[#00f3ff] font-black text-xs md:text-sm uppercase tracking-[0.5em] mb-3 opacity-70 font-sans">The Master Sanctuary Guide</span>
+                                            <span className="block text-white font-black text-4xl md:text-5xl tracking-tight font-sans">{chapterData.worked_example.title}</span>
                                         </div>
                                     </div>
                                     <div className="bg-white/5 p-4 rounded-full border border-white/10 group-hover:bg-[#3713ec] group-hover:scale-110 transition-all duration-700">
@@ -239,7 +240,7 @@ export default function Chapter12Page() {
 
                                 {showWorkedExample && (
                                     <div className="p-14 pt-0 space-y-16 animate-in fade-in slide-in-from-top-12 duration-1000">
-                                        <div className="text-2xl md:text-3xl text-slate-200 font-rubik font-light leading-relaxed border-t border-white/5 pt-16 border-dashed">
+                                        <div className="text-2xl md:text-3xl text-slate-200 font-sans font-light leading-relaxed border-t border-white/5 pt-16 border-dashed">
                                             <p className="border-r-8 border-[#3713ec]/40 pr-8 italic bg-white/[0.02] py-8 rounded-l-3xl">"{chapterData.worked_example.scenario}"</p>
                                         </div>
 
@@ -247,30 +248,30 @@ export default function Chapter12Page() {
                                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                                             {chapterData.worked_example.data.map((item: any, i: number) => (
                                                 <div key={i} className="bg-white/[0.03] p-10 rounded-[2.5rem] border border-white/10 hover:border-[#3713ec]/50 transition-all hover:translate-y-[-8px] group/data">
-                                                    <span className="block text-xs font-black text-slate-500 uppercase tracking-[0.2em] mb-4 group-hover/data:text-[#00f3ff] transition-colors font-rubik">{item.item}</span>
-                                                    <span className="block text-3xl text-white font-black font-rubik">{item.value}</span>
+                                                    <span className="block text-xs font-black text-slate-500 uppercase tracking-[0.2em] mb-4 group-hover/data:text-[#00f3ff] transition-colors font-sans">{item.item}</span>
+                                                    <span className="block text-3xl text-white font-black font-sans">{item.value}</span>
                                                 </div>
                                             ))}
                                         </div>
 
                                         {/* Deep Solution Steps */}
-                                        <div className="space-y-14">
-                                            <div className="flex items-center gap-6">
-                                                <div className="w-16 h-[2px] bg-gradient-to-l from-[#3713ec] to-transparent" />
-                                                <h4 className="text-white font-black text-4xl font-rubik tracking-tight">נתיב הפתרון</h4>
+                                        <div className="space-y-10">
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-12 h-[2px] bg-gradient-to-l from-[#3713ec] to-transparent" />
+                                                <h4 className="text-white font-black text-2xl font-sans tracking-tight">נתיב הפתרון</h4>
                                             </div>
-                                            <div className="space-y-10">
+                                            <div className="space-y-6">
                                                 {(chapterData.worked_example.solution_steps as any[]).map((step, i) => {
                                                     if (typeof step === "string" && step.trim().length > 0) {
                                                         return <div key={i} className="px-4">{formatStepText(step)}</div>;
                                                     }
                                                     if (step.type === "table") {
                                                         return (
-                                                            <div key={i} className="my-14 overflow-x-auto rounded-[3rem] border border-white/10 bg-black/60 shadow-[inset_0_0_50px_rgba(0,0,0,0.5)] group/table">
-                                                                <table className="w-full text-xl md:text-2xl">
+                                                            <div key={i} className="my-8 overflow-x-auto rounded-[2rem] border border-white/10 bg-black/60 shadow-inner group/table">
+                                                                <table className="w-full text-lg md:text-xl">
                                                                     <thead>
-                                                                        <tr className="border-b border-white/10 bg-[#3713ec]/20 font-black text-[#a78bfa] uppercase text-xs md:text-sm tracking-[0.4em] font-rubik">
-                                                                            {step.headers.map((h: string, j: number) => <th key={j} className="py-8 px-10 text-right whitespace-nowrap">{h}</th>)}
+                                                                        <tr className="border-b border-white/10 bg-[#3713ec]/20 font-black text-[#a78bfa] uppercase text-[10px] tracking-[0.2em] font-sans">
+                                                                            {step.headers.map((h: string, j: number) => <th key={j} className="py-6 px-6 text-right whitespace-nowrap">{h}</th>)}
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
@@ -278,8 +279,8 @@ export default function Chapter12Page() {
                                                                             <tr key={j} className="border-b border-white/5 last:border-0 hover:bg-white/[0.05] transition-all">
                                                                                 {row.map((cell: string, k: number) => (
                                                                                     <td key={k} className={cn(
-                                                                                        "py-8 px-10 text-slate-100 font-medium whitespace-nowrap font-rubik",
-                                                                                        cell.includes("**") && "text-[#00f3ff] font-black text-3xl"
+                                                                                        "py-6 px-6 text-slate-100 font-medium whitespace-nowrap font-sans",
+                                                                                        cell.includes("**") && "text-[#00f3ff] font-black text-xl"
                                                                                     )}>
                                                                                         {cell.replace(/\*\*/g, "")}
                                                                                     </td>
@@ -304,10 +305,10 @@ export default function Chapter12Page() {
                                                     <Lightbulb className="w-10 h-10 text-[#3713ec]" />
                                                 </div>
                                                 <div className="space-y-4">
-                                                    <p className="text-white font-black text-3xl md:text-4xl leading-snug font-rubik">
+                                                    <p className="text-white font-black text-3xl md:text-4xl leading-snug font-sans">
                                                         {chapterData.worked_example.key_insight}
                                                     </p>
-                                                    <p className="text-[#a78bfa] text-sm font-black uppercase tracking-[0.6em] opacity-40 font-rubik">Priesthood Wisdom</p>
+                                                    <p className="text-[#a78bfa] text-sm font-black uppercase tracking-[0.6em] opacity-40 font-sans">Priesthood Wisdom</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -319,17 +320,17 @@ export default function Chapter12Page() {
 
                     {/* Exercises Section */}
                     {chapterData.exercises && (
-                        <section className="pt-40 space-y-24">
-                            <div className="flex flex-col items-center text-center space-y-12">
-                                <div className="w-3 h-20 bg-gradient-to-b from-[#3713ec] to-[#00f3ff] rounded-full animate-pulse" />
-                                <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-none font-rubik">
+                        <section className="pt-24 space-y-16">
+                            <div className="flex flex-col items-center text-center space-y-8">
+                                <div className="w-2 h-12 bg-gradient-to-b from-[#3713ec] to-[#00f3ff] rounded-full animate-pulse" />
+                                <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none font-sans">
                                     קרב מוחות
                                 </h2>
-                                <p className="text-slate-500 font-rubik font-light text-2xl md:text-3xl max-w-2xl">
+                                <p className="text-slate-500 font-sans font-light text-xl md:text-2xl max-w-xl">
                                     הוכח את שליטתך בנבכי ההפרשה לחומ"ס
                                 </p>
                             </div>
-                            <div className="space-y-16">
+                            <div className="space-y-12">
                                 {chapterData.exercises.map((exercise: any, idx: number) => (
                                     <InteractiveExercise
                                         key={idx}
@@ -344,18 +345,18 @@ export default function Chapter12Page() {
                 </article>
             </main>
 
-            {/* Fixed Navigation: Journey Controls */}
-            <nav className="fixed bottom-0 left-0 w-full backdrop-blur-[60px] bg-[#0a051e]/90 border-t border-white/5 p-8 z-50">
-                <div className="max-w-4xl mx-auto flex items-center justify-between gap-10">
+            {/* Fixed Navigation: Journey Controls - Compact Footprint */}
+            <nav className="fixed bottom-0 left-0 w-full backdrop-blur-[40px] bg-[#0a051e]/80 border-t border-white/5 p-4 z-50">
+                <div className="max-w-3xl mx-auto flex items-center justify-between gap-6">
                     <Link href="/courses/accounting/chapter-11" className="flex-1">
-                        <button className="w-full flex items-center justify-center gap-6 py-8 rounded-[2.5rem] bg-white/5 hover:bg-white/10 text-slate-300 font-rubik font-black transition-all border border-white/10 group shadow-2xl">
-                            <ArrowRight className="w-8 h-8 group-hover:translate-x-2 transition-transform duration-500" />
-                            <span className="text-2xl">פרק 11</span>
+                        <button className="w-full flex items-center justify-center gap-4 py-4 rounded-[1.5rem] bg-white/5 hover:bg-white/10 text-slate-300 font-sans font-black transition-all border border-white/5 group shadow-xl">
+                            <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                            <span className="text-lg">פרק 11</span>
                         </button>
                     </Link>
-                    <button className="flex-1 flex items-center justify-center gap-6 py-8 rounded-[2.5rem] bg-gradient-to-r from-[#3713ec] to-[#3713ec]/80 text-white font-rubik font-black text-2xl transition-all shadow-[0_20px_50px_rgba(55,19,236,0.6)] active:scale-95 border border-[#3713ec]/50 group">
+                    <button className="flex-1 flex items-center justify-center gap-4 py-4 rounded-[1.5rem] bg-[#3713ec] text-white font-sans font-black text-lg transition-all shadow-[0_0_20px_rgba(55,19,236,0.4)] active:scale-95 border border-[#3713ec]/50 group">
                         <span>סגור פרק</span>
-                        <ArrowLeft className="w-8 h-8 group-hover:translate-x-[-8px] transition-transform duration-500" />
+                        <ArrowLeft className="w-6 h-6 group-hover:translate-x-[-4px] transition-transform" />
                     </button>
                 </div>
             </nav>

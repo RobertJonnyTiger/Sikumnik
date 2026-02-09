@@ -32,15 +32,15 @@ export function ConceptCard({ title, academicText, analogyText, index }: Concept
 
             if (numberedMatch) {
                 return (
-                    <div key={lineIdx} className="flex gap-6 items-start mb-8 group/list hover:translate-x-[-8px] transition-transform duration-500">
-                        <span className="text-[#00f3ff] font-black italic bg-[#00f3ff]/20 px-4 py-1 rounded-[1rem] text-3xl min-w-[60px] text-center shadow-[0_0_20px_rgba(0,243,255,0.2)]">
+                    <div key={lineIdx} className="flex gap-4 items-start mb-6 group/list hover:translate-x-[-4px] transition-transform duration-500">
+                        <span className="text-[#00f3ff] font-black italic bg-[#00f3ff]/20 px-3 py-0.5 rounded-lg text-xl min-w-[40px] text-center shadow-[0_0_15px_rgba(0,243,255,0.15)]">
                             {numberedMatch[1]}
                         </span>
-                        <div className="flex-1 text-2xl md:text-3xl leading-relaxed font-rubik">
+                        <div className="flex-1 text-lg md:text-xl leading-relaxed font-sans">
                             {line.substring(numberedMatch[1].length).split(/(<b>.*?<\/b>)/g).map((part, i) => {
                                 if (part.startsWith("<b>") && part.endsWith("</b>")) {
                                     const term = part.replace(/<\/?b>/g, "");
-                                    return <span key={i} className="text-white font-black underline decoration-[#00f3ff]/30 decoration-4 underline-offset-8">{term}</span>;
+                                    return <span key={i} className="text-white font-black underline decoration-[#00f3ff]/30 decoration-2 underline-offset-4">{term}</span>;
                                 }
                                 return <span key={i}>{part}</span>;
                             })}
@@ -49,25 +49,25 @@ export function ConceptCard({ title, academicText, analogyText, index }: Concept
                 );
             }
 
-            return <p key={lineIdx} className="mb-8">{content}</p>;
+            return <p key={lineIdx} className="mb-6">{content}</p>;
         });
     };
 
     return (
-        <section className="space-y-12 group scroll-mt-32">
-            <header className="flex flex-col gap-6">
-                <div className="flex items-center gap-6">
-                    <span className="text-[#00f3ff] font-black text-9xl md:text-[12rem] opacity-[0.05] leading-none select-none group-hover:opacity-20 group-hover:scale-110 transition-all duration-1000 font-rubik">
+        <section className="space-y-6 group scroll-mt-32">
+            <header className="flex flex-col gap-4">
+                <div className="flex items-center gap-4">
+                    <span className="text-[#00f3ff] font-black text-6xl md:text-8xl opacity-[0.05] leading-none select-none group-hover:opacity-15 group-hover:scale-105 transition-all duration-1000 font-sans">
                         {String(index + 1).padStart(2, '0')}
                     </span>
-                    <div className="w-24 h-[4px] bg-gradient-to-r from-[#00f3ff] to-transparent opacity-30 rounded-full" />
+                    <div className="w-12 h-[2px] bg-gradient-to-r from-[#00f3ff] to-transparent opacity-20 rounded-full" />
                 </div>
-                <h3 className="text-5xl md:text-7xl font-black text-white tracking-tight leading-tight font-rubik -mt-16 relative z-10">
+                <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight font-sans -mt-10 relative z-10">
                     {title}
                 </h3>
             </header>
 
-            <div className="text-3xl md:text-4xl font-light text-slate-200 leading-[1.6] max-w-4xl border-r-8 border-[#3713ec]/30 pr-12 py-8 font-rubik">
+            <div className="text-xl md:text-2xl font-light text-slate-200 leading-relaxed max-w-4xl border-r-4 border-[#3713ec]/30 pr-8 py-4 font-sans">
                 {renderAcademicText()}
             </div>
 
