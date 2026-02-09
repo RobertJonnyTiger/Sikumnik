@@ -1,293 +1,106 @@
 ---
 name: brand-guidelines
 description: >
-  Visual and tonal guidelines for TLV Academic course content.
-  Defines voices, language standards, emoji usage, and formatting rules.
+  Visual and tonal guidelines for Sikumnik content.
+  Defines the 23 "Truths" of the design system, language standards, and formatting.
 ---
 
-# Brand Guidelines — TLV Academic
+# Brand Guidelines — Truth 2.0 (Sikumnik)
+
+## The 23 Truths (Systemic Rules)
+
+These 23 rules are GLOBAL and MANDATORY for all components and chapters.
+
+| # | Truth | Implementation Details |
+|---|---|---|
+| 1 | **Hebrew Only** | Absolutely NO English words, even in parentheses. No names, no acronyms. |
+| 2 | **No English Acronyms** | GAAP/IFRS -> תקינה חשבונאית. NO exceptions. |
+| 3 | **Voice Consistency** | Stick to the assigned voice (Conductor, Professor, Workshop Master). |
+| 4 | **No Wall of Text** | Use semantic blocks. Max 3 sentences per paragraph. |
+| 5 | **Sentence-Level Highlighting** | Every sentence MUST have important concepts highlighted (primary/accent). |
+| 6 | **Multi-line Formatting** | Break complex thoughts into lists or separate lines. |
+| 7 | **No Semicolons** | Use new lines or bullet points instead of `;`. |
+| 8 | **No Boring Text** | Every block of text should be wrapped in a semantic component (Card, Box, etc.). |
+| 9 | **No Italics** | Use bolding or background highlighting for emphasis. |
+| 10 | **Calm Dark Theme** | All pages must use the `bg-background` (Dark Slate) with subtle ambient glows. |
+| 11 | **High Contrast** | Main text must be `text-white` or `text-foreground/95`. Subtext `text-foreground/70`. |
+| 12 | **Font Primacy** | Use `font-main` for all text. `font-handwriting` ONLY for ad-hoc student notes. |
+| 13 | **Boosted Font Sizes** | Defaults: `text-xl` (small), `text-2xl` (body), `text-3xl+` (headings). |
+| 14 | **Semantic Highlighting** | `text-primary` for assets/positives. `text-accent` for liabs/equities. |
+| 15 | **Red for Errors** | `CommonMistakes` and 'Incorrect' UI MUST use a deep red/error theme. |
+| 16 | **Premium Glassmorphism** | Use `GlassCard`, `backdrop-blur-3xl`, and `shadow-premium`. |
+| 17 | **Ambient Glows** | Use blur-3xl backgrounds and `shadow-neon` for interactive states. |
+| 18 | **Uniform Column Design** | In grids (like QuickReference), use identical bolding and layout weights. |
+| 19 | **GraduationCap Iconography** | Use `GraduationCap` for definitions and exam appearance stats. |
+| 20 | **No Sub-headers in ToneBreak** | Keep `ToneBreak` pure: One calm message on a large background. |
+| 21 | **Major Title (H1)** | Use `PageMap` style: Major white title, high contrast. |
+| 22 | **High-Contrast Logic Boards** | Formula boards and calculations must be centered, large, and high-contrast. |
+| 23 | **Truth 2.0 Compliance** | All 23 rules above must be verified before any chapter is marked 'Done'. |
+
+---
 
 ## Voice & Tone
 
 ### Three Voices
 
-1. **Conductor** — warm, relatable, Tel Aviv vibes
-   - Sections: 1, 2, 3, 5, 10, 14, 15
-   - Feels like: a friendly tutor at a coffee shop
-
-2. **Professor** — strict academic, textbook Hebrew
-   - Sections: 4, 6, 7, 13
-   - Feels like: a university lecture, formal but clear
-
-3. **Workshop Master** — encouraging, instructional
-   - Sections: 8, 9, 11, 12
-   - Feels like: a TA in a practice session
-
-### Voice Rules
-
-- Each section has ONE voice
-- Never blend voices within a section
-- Transition between voices happens BETWEEN sections, not within
+1. **Conductor** — warm, relatable, Tel Aviv vibes. Relatable analogies (Wolt, traffic, rent).
+2. **Professor** — strict academic, textbook Hebrew. Used for formal definitions.
+3. **Workshop Master** — encouraging, instructional. Used for exercises.
 
 ---
 
-## Language
+## Language & Typography
 
 ### Hebrew Standards
+- **Strictly RTL** throughout all content.
+- **NO English references**: English translations in parentheses are strictly forbidden.
+- **Acronyms**: Must be translated to their full Hebrew meaning.
 
-- RTL throughout all content
-- Academic terms: keep original language (English/Latin/Greek) with Hebrew explanation
-- Mathematical notation: LaTeX format where applicable
-- Proper grammar in formal sections
-- Relaxed grammar allowed in casual sections
-
-### Casual Sections (3, 5, 10)
-
-Allowed and encouraged:
-- Slang and colloquial Hebrew
-- Humor (relevant to topic)
-- Direct address ("אתה", "בוא נראה")
-- Short punchy sentences
-- Questions to the reader
-
-Analogies must reference Tel Aviv student life:
-- Wolt deliveries and waiting times
-- Bus lines (especially the 5, Dan, traffic)
-- Roommates and shared apartments
-- Rent prices and landlords
-- Coffee shops and coworking
-- Dizengoff, Rothschild, campus life
-- Bars and nightlife
-- Dating apps
-- Part-time jobs
-- Exam stress and all-nighters
-
-### Formal Sections (4, 6, 7, 13)
-
-Required:
-- Textbook Hebrew
-- Full proper sentences
-- Third person or passive voice
-- Technical precision
-- No slang whatsoever
-- No humor
-- No emojis
-- No direct reader address
+### Typography
+- **Primary Font**: `font-main` (Sikumnik standard). Used for 95% of content.
+- **Handwriting Font**: `font-handwriting`. Used ONLY for "scribbled" notes or ad-hoc thinking steps. Never for body text or help blocks.
+- **Weight**: Use `font-black` for headers and important amounts.
 
 ---
 
-## Emojis
+## Visual Design Components
 
-### Where Emojis Are Allowed
+### Glass Cards
+- All content sections are wrapped in `GlassCard`.
+- Border-top or Border-right highlighting (4px-8px) for semantic grouping.
+- Rounding: Use `rounded-4xl` or `rounded-[3rem]` for containers.
 
-- Section 3: Teaser Analogy
-- Section 5: Tone Break
-- Section 8: Interactive Element
-- Section 9: Checkpoint
-- Section 10: Street Summary
-- Section 11: Guided Exercises (sparingly)
-- Section 12: Independent Exercises (sparingly)
-- Section 14: Trivia
-- Section 15: Bridge
+### Highlighting System
+- **Auto-Highlighting**: Key terms (ש"ח, סה"כ, נכסים, etc.) should be colored automatically.
+- **Bold Boxes**: Use `bg-primary/20` with a 2px bottom border for "Keyword Boxes".
 
-### Where Emojis Are Forbidden
-
-- Section 4: Formal Definitions
-- Section 6: Deep Dive
-- Section 7: Common Mistakes (except the markers below)
-- Section 13: Quick Reference
-
-### Functional Emoji Set
-
-Use these consistently across all content:
-
-| Emoji | Meaning | Usage |
-|-------|---------|-------|
-| 📌 | Important point | Highlighting key info |
-| ⚠️ | Warning | Common mistakes, cautions |
-| 💡 | Tip or insight | Helpful hints |
-| 🎯 | Learning objective | Goals and targets |
-| ✅ | Correct | Right answers, good examples |
-| ❌ | Incorrect | Wrong answers, mistakes |
-| 📝 | Step | Exercise steps |
-| 💭 | Thinking | Approach and reasoning |
-| 🎲 | Fun fact | Trivia items |
-| ➡️ | Next | Bridge to next chapter |
-
-### Emoji Density
-
-- Casual sections: 3-5 emojis per section maximum
-- Workshop sections: 1-2 per exercise maximum
-- Never use emojis decoratively — only functionally
+### Financial Statements
+- High contrast: White text for important totals.
+- No italics in balance sheet notes.
+- Use `Success` (Greenish) for Assets and `Error` (Reddish) for Liabilities/Equity if appropriate, or keep consistent with `Primary`/`Accent`.
 
 ---
 
-## Formatting
+## Formatting Rules
 
-### Tooltips
-
-Purpose: Define new or uncommon terms inline
-
-Rules:
-- Apply on FIRST appearance only
-- Never tooltip the same term twice
-- One sentence maximum per tooltip
-- Format: **term** [tooltip: brief definition]
-
-Example:
-- First use: **פחת נצבר** [tooltip: סכום הפחת שנרשם מיום הרכישה]
-- Later uses: פחת נצבר (no tooltip)
-
-### Collapsible Sections
-
-Use collapsible reveals for:
-- Exercise steps (reveal one at a time)
-- Hints in independent exercises
-- Answers in independent exercises
-- Checkpoint answers
-- Thinking direction in guided exercises
-
-Format in JSON: mark with "collapsible": true
-Format in HTML: use details/summary pattern
+### Tooltips & Definitions
+- Use on first appearance only.
+- One sentence maximum.
 
 ### Difficulty Ratings
+- Mandatory for exercises: ⭐ to ⭐⭐⭐⭐.
 
-Always present on exercises. Use consistently:
-
-| Rating | Level | Meaning |
-|--------|-------|---------|
-| ⭐ | Basic | Direct application of concept |
-| ⭐⭐ | Intermediate | Requires thinking and connection |
-| ⭐⭐⭐ | Exam level | Typical exam difficulty |
-| ⭐⭐⭐⭐ | Challenge | Above exam level, for strong students |
-
-Display format: "⭐⭐⭐ רמת מבחן" or just the stars
-
-### Section Headers
-
-Every section header includes:
-1. Section number in brackets
-2. Emoji marker
-3. Hebrew title
-4. English subtitle (optional, for code reference)
-
-Example: [4] 📚 הגדרות פורמליות — FORMAL DEFINITIONS
-
-### Lists and Bullets
-
-- Use bullets for unordered items
-- Use numbers for sequential steps or ranked items
-- Use checkboxes for checklists
-- Indent sub-items consistently
+### Checkpoints
+- Exactly 2 questions per checkpoint.
+- Must include a "Reveal Answer" interaction.
 
 ---
 
-## Visual Design Principles
-
-### Layout
-
-- Compact: avoid unnecessary whitespace
-- Clean: no clutter, clear hierarchy
-- Scannable: headers, bullets, short paragraphs
-- Consistent: same patterns across all chapters
-
-### Section Separation
-
-- Clear visual break between sections
-- Each section could stand alone
-- Consider collapsibility for returning students
-
-### Responsiveness
-
-- Mobile-first thinking
-- Tables should scroll horizontally on mobile
-- Collapsibles especially important on mobile
-
-### Accessibility
-
-- Sufficient color contrast
-- Alt text for images/diagrams
-- Logical heading hierarchy (h1 > h2 > h3)
-- Screen reader friendly structures
-
----
-
-## Content Density
-
-### Paragraph Length
-
-- Formal sections: 3-5 sentences per paragraph
-- Casual sections: 1-3 sentences per paragraph
-- Never wall-of-text
-
-### Section Length Guidelines
-
-| Section | Target Length |
-|---------|---------------|
-| Page Map | 10-15 lines |
-| Introduction | 2-3 paragraphs |
-| Teaser Analogy | 3-5 sentences |
-| Formal Definitions | As needed, comprehensive |
-| Tone Break | 1-2 paragraphs |
-| Deep Dive | Longest section, detailed |
-| Common Mistakes | 3-5 items |
-| Interactive Element | 1 element, complete |
-| Checkpoint | 2 questions exactly |
-| Street Summary | 2-3 paragraphs |
-| Guided Exercises | 2-3 exercises |
-| Independent Exercises | 2-3 exercises |
-| Quick Reference | Fits one printed page |
-| Trivia | 1-2 facts |
-| Bridge | 1-2 sentences |
-
----
-
-## Terminology Consistency
-
-### Standard Terms (use these exact terms)
-
-| Concept | Hebrew Term |
-|---------|-------------|
-| Assets | נכסים |
-| Liabilities | התחייבויות |
-| Equity | הון עצמי |
-| Current | שוטף |
-| Non-current | לא שוטף |
-| Depreciation | פחת |
-| Accumulated depreciation | פחת נצבר |
-| Net | נטו |
-| Gross | ברוטו |
-| Balance sheet | מאזן |
-| Income statement | דוח רווח והפסד |
-| Journal entry | פקודת יומן |
-
-### Acronyms
-
-- First use: full term + acronym in parentheses
-- Later uses: acronym only
-- Example: "כללי חשבונאות מקובלים (GAAP)" then "GAAP"
-
----
-
-## Quality Signals
-
-### Good Content Has
-
-- Clear learning objectives upfront
-- Smooth transitions between sections
-- Examples that build on each other
-- Callbacks to previous chapters
-- Foreshadowing of future chapters
-- Balance of formal and casual
-- Practical exam preparation
-
-### Red Flags
-
-- Wall of text without breaks
-- Emojis in formal sections
-- Slang in formal sections
-- Missing exam appearance info
-- Exercises without difficulty ratings
-- No connection to student life
-- Tooltips repeated for same term
-- Sections out of order
+## Quality Checklist (Truth 2.0)
+- [ ] Is there ANY English text left? (Check parentheses)
+- [ ] Are font sizes too small? (Minimum `text-xl`)
+- [ ] Is there a "Wall of Text"?
+- [ ] Are important words highlighted in EVERY sentence?
+- [ ] Is the theme "Calm Dark"?
+- [ ] Is there any `font-handwriting` used for help/body text? (Should be `font-main`)
+- [ ] Is there any use of semicolons?

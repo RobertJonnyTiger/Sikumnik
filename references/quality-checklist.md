@@ -129,3 +129,11 @@ Every item must pass. If one fails, fix before delivery.
 - [ ] Existing content reorganized (not deleted)
 - [ ] No duplicate information
 - [ ] No contradictions with previous chapters
+
+## Pre-Delivery Checks
+
+- [ ] grep for hardcoded colors (no #ffffff, #000000, etc.)
+- [ ] grep for hardcoded fonts (no font-family inline)
+- [ ] grep for old font names (Varela, etc.)
+- [ ] visual check: all text readable on all backgrounds
+- [ ] visual check: correct font in correct places

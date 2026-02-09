@@ -1,30 +1,40 @@
 @import "tailwindcss";
 
 @theme {
-  /* Core Semantic Tokens - OKLCH */
-  --color-background: oklch(14.5% 0.025 264);
-  --color-foreground: oklch(98% 0.01 264);
+  /* Core Semantic Tokens - Approved "Calm Dark" */
+  --color-background: #020617;
+  /* Slate-950 */
+  --color-foreground: #f8fafc;
+  /* Slate-50 */
+  --color-text-secondary: #e2e8f0;
+  /* Slate-200 */
 
-  --color-primary: oklch(60% 0.2 250);
-  --color-primary-foreground: oklch(98% 0.01 264);
+  --color-primary: #2dd4bf;
+  /* Teal-400 */
+  --color-primary-foreground: #042f2e;
+  /* Teal-950 for contrast */
 
-  --color-secondary: oklch(35% 0.15 264);
-  --color-accent: oklch(85% 0.2 90);
-  --color-success: oklch(70% 0.18 150);
-  --color-error: oklch(62% 0.19 23);
+  --color-secondary: #1e293b;
+  /* Slate-800 */
+  --color-accent: #fb923c;
+  /* Orange-400 */
+  --color-success: #22c55e;
+  --color-error: #ef4444;
 
   /* Surfaces */
-  --color-card: oklch(22% 0.02 264);
-  --color-glass: oklch(14.5% 0.025 264 / 60%);
-  --color-border: oklch(98% 0.01 264 / 10%);
+  --color-card: #0f172a;
+  /* Slate-900 */
+  --color-glass: rgba(15, 23, 42, 0.6);
+  --color-border: #1e293b;
+  /* Slate-800 */
 
-  /* Fonts (References theme inline variables set in standard v4) */
+  /* Fonts */
   --font-sans: var(--font-main);
   --font-handwriting: var(--font-handwriting);
 
   /* Custom Glows */
-  --shadow-temple: 0 0 30px oklch(60% 0.2 250 / 15%);
-  --shadow-neon: 0 0 15px oklch(85% 0.2 90 / 30%);
+  --shadow-temple: 0 0 30px rgba(45, 212, 191, 0.1);
+  --shadow-neon: 0 0 15px rgba(251, 146, 60, 0.2);
 }
 
 @layer base {

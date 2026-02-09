@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { NavigationWrapper } from "@/components/layout/NavigationWrapper";
-import { Playpen_Sans_Hebrew, Varela_Round } from "next/font/google";
+import { Playpen_Sans_Hebrew, Noto_Sans_Hebrew } from "next/font/google";
 import { Agentation } from "agentation";
 
-const mainFont = Varela_Round({
+const mainFont = Noto_Sans_Hebrew({
     subsets: ["hebrew", "latin"] as any,
     variable: "--font-main",
-    weight: "400",
+    weight: ["400", "500", "700", "900"],
     display: "swap",
 });
 

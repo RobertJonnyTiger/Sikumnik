@@ -15,18 +15,18 @@ export const JournalEntry = memo(function JournalEntry({ data }: JournalEntryPro
     const totalCredit = data.entries.reduce((sum, e) => sum + e.credit, 0);
 
     return (
-        <GlassCard className="group border-r-4 border-r-indigo-500/50">
+        <GlassCard className="group border-r-8 border-primary/40 p-10 md:p-14 rounded-[3rem]">
             {/* Header */}
-            <div className="flex items-center justify-between mb-6 border-b border-white/10 pb-4">
-                <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-400">
-                        <ArrowRightLeft className="w-6 h-6" />
+            <div className="flex items-center justify-between mb-12 border-b-2 border-border/40 pb-8">
+                <div className="flex items-center gap-6">
+                    <div className="p-4 rounded-2xl bg-primary/10 text-primary border border-primary/20 shadow-premium">
+                        <ArrowRightLeft className="w-10 h-10" />
                     </div>
                     <div>
-                        <h3 className="text-xl font-bold text-white">{data.title}</h3>
+                        <h3 className="text-3xl md:text-4xl font-black text-white">{data.title}</h3>
                         {data.date && (
-                            <div className="flex items-center gap-1 text-xs text-slate-400 mt-1">
-                                <Calendar className="w-3 h-3" />
+                            <div className="flex items-center gap-2 text-sm text-primary font-black uppercase tracking-[0.2em] mt-2">
+                                <Calendar className="w-4 h-4" />
                                 <span>{data.date}</span>
                             </div>
                         )}
@@ -34,31 +34,31 @@ export const JournalEntry = memo(function JournalEntry({ data }: JournalEntryPro
                 </div>
             </div>
 
-            {/* Grid Header */}
-            <div className="grid grid-cols-12 text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 px-2">
+            {/* Grid Header - No English as per Truth 2.0 */}
+            <div className="grid grid-cols-12 text-sm font-black text-muted-foreground uppercase tracking-[0.3em] mb-4 px-6">
                 <div className="col-span-6">חשבון</div>
-                <div className="col-span-3 text-left pl-2 text-emerald-500/80">חובה (Debit)</div>
-                <div className="col-span-3 text-left pl-2 text-pink-500/80">זכות (Credit)</div>
+                <div className="col-span-3 text-left pl-4 text-success pr-2 border-r border-border/20">חובה</div>
+                <div className="col-span-3 text-left pl-4 text-accent pr-2">זכות</div>
             </div>
 
             {/* Entries */}
-            <div className="space-y-1 mb-6">
+            <div className="space-y-3 mb-12">
                 {data.entries.map((entry, i) => (
                     <div
                         key={i}
                         className={cn(
-                            "grid grid-cols-12 items-center p-3 rounded-md transition-colors",
-                            "hover:bg-white/5 border border-transparent hover:border-white/5",
-                            entry.debit > 0 ? "bg-emerald-500/5" : "bg-pink-500/5"
+                            "grid grid-cols-12 items-center p-6 rounded-2xl transition-all duration-300",
+                            "hover:bg-foreground/5 border-2 border-transparent hover:border-primary/20 hover:translate-x-[-4px]",
+                            entry.debit > 0 ? "bg-success/5 border-success/10" : "bg-accent/5 border-accent/10"
                         )}
                     >
-                        <div className="col-span-6 font-medium text-slate-200">
+                        <div className="col-span-6 font-main text-xl font-black text-white px-2">
                             {entry.account}
                         </div>
-                        <div className={cn("col-span-3 text-left pl-2 font-mono", entry.debit > 0 ? "text-emerald-400 font-bold" : "text-slate-600")}>
+                        <div className={cn("col-span-3 text-left pl-4 font-main text-2xl font-black border-r border-border/20 h-full flex items-center justify-end pr-4", entry.debit > 0 ? "text-success" : "text-muted-foreground/10")}>
                             {entry.debit > 0 ? entry.debit.toLocaleString() : "-"}
                         </div>
-                        <div className={cn("col-span-3 text-left pl-2 font-mono", entry.credit > 0 ? "text-pink-400 font-bold" : "text-slate-600")}>
+                        <div className={cn("col-span-3 text-left pl-4 font-main text-2xl font-black h-full flex items-center justify-end pr-4", entry.credit > 0 ? "text-accent" : "text-muted-foreground/10")}>
                             {entry.credit > 0 ? entry.credit.toLocaleString() : "-"}
                         </div>
                     </div>
@@ -66,20 +66,28 @@ export const JournalEntry = memo(function JournalEntry({ data }: JournalEntryPro
             </div>
 
             {/* Total Line */}
-            <div className="grid grid-cols-12 items-center p-3 border-t border-indigo-500/30 bg-indigo-500/5 rounded-b-lg">
-                <div className="col-span-6 font-bold text-indigo-300">סה"כ</div>
-                <div className="col-span-3 text-left pl-2 font-mono font-bold text-indigo-300">
+            <div className="grid grid-cols-12 items-center p-6 border-4 border-primary/30 bg-primary/10 rounded-4xl shadow-premium">
+                <div className="col-span-6 font-black text-2xl text-primary uppercase tracking-widest pl-4">סה"כ פקודה</div>
+                <div className="col-span-3 text-left pl-4 font-main text-2xl font-black text-white border-r-2 border-primary/20">
                     {totalDebit.toLocaleString()}
                 </div>
-                <div className="col-span-3 text-left pl-2 font-mono font-bold text-indigo-300">
+                <div className="col-span-3 text-left pl-4 font-main text-2xl font-black text-white">
                     {totalCredit.toLocaleString()}
                 </div>
             </div>
 
-            {/* Explanation */}
-            <div className="mt-4 text-xs text-slate-500 italic px-2">
-                {data.explanation}
-            </div>
+            {/* Explanation - Truth 2.0: No italics, increased size */}
+            {data.explanation && (
+                <div className="mt-8 bg-background/40 p-6 rounded-3xl border border-border/20 border-r-8 border-r-primary shadow-inner">
+                    <div className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.4em] mb-3">ביאור הפעולה</div>
+                    <p className="text-lg md:text-xl text-foreground/90 font-medium leading-relaxed font-main">
+                        {data.explanation.split(' ').map((word, i) => {
+                            const isHigh = i % 8 === 0 || word.includes('חשבון') || word.includes('פעולה');
+                            return <span key={i} className={isHigh ? "text-primary font-black" : ""}>{word} </span>;
+                        })}
+                    </p>
+                </div>
+            )}
         </GlassCard>
     );
 });
