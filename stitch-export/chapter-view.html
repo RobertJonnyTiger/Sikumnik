@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="he"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Hebrew:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3713ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0a051e", // Deeper purple/black for "Inner Sanctum"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans Hebrew", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Noto Sans Hebrew', 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-card {
+            background: rgba(30, 25, 51, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .digital-scroll {
+            mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+        }
+        .knowledge-pulse {
+            box-shadow: 0 0 0 0 rgba(55, 19, 236, 0.7);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(55, 19, 236, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(55, 19, 236, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(55, 19, 236, 0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 glass-card border-b border-white/5 px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl">school</span>
+<span class="font-bold text-lg tracking-tight dark:text-white">Sikumnik</span>
+</div>
+<nav class="flex-1 px-4">
+<p class="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 font-medium truncate">
+                בית &gt; כלכלה &gt; פרק 1: גמישות הביקוש
+            </p>
+</nav>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10">
+<span class="material-symbols-outlined text-slate-400">search</span>
+</button>
+</header>
+<!-- Main Content: Digital Scroll Area -->
+<main class="flex-1 max-w-2xl mx-auto w-full px-6 pt-12 pb-32">
+<article class="space-y-8 leading-relaxed">
+<!-- Chapter Header -->
+<header>
+<span class="text-primary font-bold text-sm tracking-widest uppercase">פרק 1</span>
+<h1 class="text-4xl font-bold mt-2 mb-6 dark:text-white tracking-tight">גמישות הביקוש</h1>
+</header>
+<!-- Reading Section -->
+<section class="space-y-6 text-lg font-light dark:text-slate-300">
+<p>
+                    גמישות הביקוש היא אחד המושגים הבסיסיים ביותר בכלכלה. היא מודדת את המידה שבה הכמות המבוקשת של מוצר משתנה בתגובה לשינוי במחירו. 
+                </p>
+<!-- Marginalia / Knowledge Bubble -->
+<div class="relative group py-2">
+<p class="inline">
+                        כאשר אנחנו מדברים על <span class="border-b-2 border-primary/50 font-medium dark:text-white">אלסטיות</span>, 
+                    </p>
+<div class="absolute -right-8 top-1/2 -translate-y-1/2">
+<div class="w-3 h-3 bg-primary rounded-full knowledge-pulse cursor-pointer"></div>
+</div>
+<!-- Hover/Tap Card (Simulated Visible for Design) -->
+<div class="mt-4 glass-card p-4 rounded-xl border-l-4 border-primary shadow-xl">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">lightbulb</span>
+<p class="text-sm italic text-slate-400 leading-snug">
+                                כמה הלקוחות שלך יברחו לבית קפה אחר אם תעלה את מחיר הקפה בשקל? זה בדיוק מה שהמדד הזה בודק.
+                            </p>
+</div>
+</div>
+</div>
+<p>
+                    הבנת האלסטיות מאפשרת לעסקים לקבוע מחירים בצורה אופטימלית ולממשלות לחזות את ההשפעה של מיסים חדשים על הצריכה. בפרק זה נלמד כיצד לחשב את הגמישות ומהם הגורמים המשפיעים עליה.
+                </p>
+</section>
+<!-- Calculation Block (Glassmorphic Card) -->
+<section class="my-12">
+<div class="glass-card p-6 rounded-2xl border border-white/10 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-purple-600"></div>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">function</span>
+<h3 class="font-bold text-xl dark:text-white">תרגול מהרחוב</h3>
+</div>
+<div class="bg-black/20 p-4 rounded-lg mb-6 text-center font-mono">
+<p class="text-xl text-primary font-bold">P = 10 - 2Q</p>
+<p class="text-sm text-slate-500 mt-2">חשב את גמישות הביקוש כאשר המחיר הוא 4 ש"ח</p>
+</div>
+<button class="w-full py-3 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(55,19,236,0.3)] border border-primary/50">
+                        הצג פתרון
+                    </button>
+</div>
+</section>
+<section class="space-y-6 text-lg font-light dark:text-slate-300">
+<p>
+                    הגורמים המשפיעים על הגמישות כוללים את קיומם של תחליפים קרובים, חלקו של המוצר בתקציב הצרכן, והגדרת השוק. ככל שיש יותר תחליפים, כך הביקוש נוטה להיות אלסטי יותר.
+                </p>
+<div class="w-full h-48 rounded-2xl overflow-hidden my-8 relative">
+<img alt="Economic Graph Visualization" class="w-full h-full object-cover opacity-60" data-alt="Abstract economic line graph showing demand curve shifts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeAEXraPFowa9WRrVKQyAe-0KQmRNQymP5Py122EwwqWgUjR3LATl9ZmSuvBp6HykCpLSc5Lvoq3ZVMFvXgFeBaxKeQcohDsnqiiBPobV6XAuQEsPvdjLIbC0kJVIPWtFCXKPVEIQeyIvFfymf_HsJ75_-94riTAN-l_cT6gIBQvDj5e9bH2yp4ES-bWh5P9ZydhcBSiJMpJtzgcgm0USEgh-pfkCafIsglN2moe-HRAb4Ympiqgssywe86IWofLa_wxfsigKbPmc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent"></div>
+</div>
+<p>
+                    לדוגמה, אם מחיר התפוחים יעלה, צרכנים יכולים בקלות לעבור לאגסים. לכן, הביקוש לתפוחים הוא אלסטי יחסית. לעומת זאת, הביקוש לתרופות מצילות חיים הוא קשיח לחלוטין.
+                </p>
+</section>
+</article>
+</main>
+<!-- Fixed Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 w-full glass-card border-t border-white/5 p-4 safe-area-bottom">
+<div class="max-w-2xl mx-auto flex items-center justify-between gap-4">
+<button class="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 font-medium transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+<span>פרק קודם</span>
+</button>
+<button class="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-primary text-white font-bold transition-transform active:scale-95">
+<span>פרק הבא</span>
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+</div>
+</nav>
+<!-- Mini AI Bubble -->
+<button class="fixed bottom-24 left-6 w-14 h-14 bg-slate-800/80 backdrop-blur-md rounded-full border border-white/10 flex items-center justify-center shadow-2xl group transition-all hover:w-32">
+<div class="flex items-center gap-2 px-3 overflow-hidden">
+<span class="material-symbols-outlined text-primary group-hover:text-white">smart_toy</span>
+<span class="hidden group-hover:block text-xs font-bold text-white whitespace-nowrap">שאל את סיקומניק</span>
+</div>
+</button>
+</body></html>

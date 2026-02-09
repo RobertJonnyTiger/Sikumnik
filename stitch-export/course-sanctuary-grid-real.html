@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="he"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sikumnik Course Sanctuary Grid</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3713ec",
+                        "neon-cyan": "#00f3ff",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0a0a14",
+                        "glass": "rgba(255, 255, 255, 0.05)",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(55, 19, 236, 0.3);
+            box-shadow: 0 0 15px rgba(55, 19, 236, 0.1);
+        }
+        .neon-border:hover {
+            border-color: #3713ec;
+            box-shadow: 0 0 20px rgba(55, 19, 236, 0.4);
+        }
+        .knowledge-bubble {
+            background: linear-gradient(90deg, rgba(55, 19, 236, 0.2), rgba(0, 243, 255, 0.1));
+            border-bottom: 2px dashed #00f3ff;
+            cursor: help;
+        }
+        .ai-glow {
+            box-shadow: 0 0 25px rgba(55, 19, 236, 0.6);
+        }
+        /* Custom scrollbar for horizontal filters */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white min-h-screen pb-24 transition-colors duration-300">
+<!-- Sticky Header -->
+<header class="sticky top-0 z-50 w-full bg-background-dark/80 backdrop-blur-lg border-b border-white/5">
+<div class="flex items-center justify-between px-4 py-3">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg flex items-center justify-center shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-white text-2xl">school</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-white">סנקטואריום הקורסים</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-white">search</span>
+</button>
+<button class="p-2 rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-white text-3xl leading-none">account_circle</span>
+</button>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="flex gap-3 px-4 pb-4 overflow-x-auto no-scrollbar">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-5 text-white shadow-lg shadow-primary/20">
+<span class="text-sm font-semibold">הכל</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-glass border border-white/10 px-5 text-white/80 hover:bg-white/5">
+<span class="text-sm font-medium">פקולטה</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-glass border border-white/10 px-5 text-white/80 hover:bg-white/5">
+<span class="text-sm font-medium">רמת קושי</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-glass border border-white/10 px-5 text-white/80 hover:bg-white/5">
+<span class="text-sm font-medium">פופולריות</span>
+<span class="material-symbols-outlined text-sm">filter_list</span>
+</button>
+</div>
+</header>
+<main class="p-4 space-y-6">
+<!-- Hero Section/Greeting -->
+<section class="space-y-1">
+<h2 class="text-sm font-medium text-primary uppercase tracking-widest">Digital Sanctuary</h2>
+<p class="text-2xl font-bold text-white">איזה ידע נכבוש היום?</p>
+</section>
+<!-- Course Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Card 1: Economics -->
+<div class="glass-card rounded-xl p-5 neon-border transition-all group relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-primary/20 p-3 rounded-lg border border-primary/30">
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+<span class="text-xs font-medium text-neon-cyan px-2 py-1 rounded-full bg-neon-cyan/10 border border-neon-cyan/20">מומלץ לך</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">מבוא לכלכלה</h3>
+<p class="text-white/60 text-sm leading-relaxed mb-4">
+                    איך לנהל את הכיסים שלך כששכר הדירה בפלורנטין חונק והבירה בבר התייקרה. 
+                    מושג מפתח: <span class="knowledge-bubble relative group/tip px-1 rounded">אינפלציה
+                        <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-[#1e1e2e] text-xs text-white/90 rounded-lg shadow-2xl opacity-0 group-hover/tip:opacity-100 transition-opacity pointer-events-none border border-white/10 z-10">
+                            זה כשהשווארמה שעלה 30 שקל פתאום עולה 50 בלי שום סיבה מוצדקת.
+                        </span>
+</span>.
+                </p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
+<div class="flex -space-x-2 space-x-reverse">
+<div class="w-6 h-6 rounded-full border border-background-dark bg-slate-600 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Student profile icon minimalist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCB5XP2vq1Iv90steZ3JO1JkYFOLdj-xlUGD0zK3Ve5LgP88XXuQ1aNUAnsjdFnuN3txXA7BsahT7ZlACo8_o7sWrmgCCcNVqLr4eMlIRcwJ9SsDAME-XG1kuU3wrcqI_mbx56TZIj0NICJGDA4Ndxu7Qik7I_IVzuACY76pMCe9RzMwM-JlOVCG9zjlrh86adXGKAiV1sTg3a78OGnZLmTy_KHQ3IcdPkPykNjhMnTUQHYwMouTbt_MZyBcpKQYW7vXfGkBeH_v8"/>
+</div>
+<div class="w-6 h-6 rounded-full border border-background-dark bg-slate-500 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Student profile icon minimalist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9Ssb9eiAtYCl0ySQEeNUxgQ9FZqbghISTRne8RNVRYi9nRRKg2r8LvyViwrZiZAuqwqA4D2EY7tIsnKbGZ5NjjVP0rbfHNDDu76Un00AMpeGphoWHsfIspVzrf0CqC49AT5OKjphOXCHWe-_4NoXJCCa9988jmtb0LTZqFZ0g6ZTPEqEkSslASk0dFi9EiCLtfKgpAJNPPX0kQMAIe_pUDi6BpM50QiT1rtUAi6lvuxp1tNPxLUuBjxFoJNLDoQY-jfXdpDF2BdQ"/>
+</div>
+</div>
+<button class="text-primary text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        לצפייה בסילבוס
+                        <span class="material-symbols-outlined text-sm">arrow_back</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Statistics -->
+<div class="glass-card rounded-xl p-5 neon-border transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-primary/20 p-3 rounded-lg border border-primary/30">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<span class="text-xs font-medium text-white/40 px-2 py-1 rounded-full bg-white/5 border border-white/10">בינוני</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">סטטיסטיקה א׳</h3>
+<p class="text-white/60 text-sm leading-relaxed mb-4">
+                    להבין למה המרצה אומר שיש סיכוי של 95% שתכשל, ואיך להוכיח לו שהוא טועה בעזרת <span class="knowledge-bubble relative group/tip px-1 rounded">התפלגות נורמלית
+                        <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-[#1e1e2e] text-xs text-white/90 rounded-lg shadow-2xl opacity-0 group-hover/tip:opacity-100 transition-opacity pointer-events-none border border-white/10 z-10">
+                            כשרוב האנשים נופלים באמצע, ואתה מקווה להיות בקצה הימני הגבוה.
+                        </span>
+</span>.
+                </p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
+<div class="flex -space-x-2 space-x-reverse">
+<div class="w-6 h-6 rounded-full border border-background-dark bg-slate-600 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4AEPhAUjXaTw6B1UA__2Zwk_may1kqz9T9332iY62fZ2BQDWAD6jrD24nZW5xD7CBMhrASmU81tU6kMt_As_jOy7J6DfkIGj1kpIwXKM-4Ht5sVi2wIwNTMA3ONXOGgd-jgLucsU-m52j-srJkHZ0XZV1ucDWJRW6YVpAnM8KHKDSFRM5oTPfOqJi-Pb33u6fmKgotQ4SPHbGEdsblqu5SRkFV1sMJqYOSdWjpgcgsg912ojs7Ip4FQh2QNsP06vVMXRnUAHg_t0"/>
+</div>
+</div>
+<button class="text-primary text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        לצפייה בסילבוס
+                        <span class="material-symbols-outlined text-sm">arrow_back</span>
+</button>
+</div>
+</div>
+<!-- Card 3: Finance -->
+<div class="glass-card rounded-xl p-5 neon-border transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-primary/20 p-3 rounded-lg border border-primary/30">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+</div>
+<span class="text-xs font-medium text-white/40 px-2 py-1 rounded-full bg-white/5 border border-white/10">מתקדם</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">מימון חברות</h3>
+<p class="text-white/60 text-sm leading-relaxed mb-4">
+                    איך להחליט אם שווה להשקיע בסטארטאפ של חבר שלך או פשוט לשים הכל על <span class="knowledge-bubble relative group/tip px-1 rounded">S&amp;P 500
+                        <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-[#1e1e2e] text-xs text-white/90 rounded-lg shadow-2xl opacity-0 group-hover/tip:opacity-100 transition-opacity pointer-events-none border border-white/10 z-10">
+                            סל של 500 החברות הכי גדולות בארה"ב. הימור די בטוח לטווח ארוך.
+                        </span>
+</span> וללכת לישון בשקט.
+                </p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
+<div class="flex -space-x-2 space-x-reverse">
+<div class="w-6 h-6 rounded-full border border-background-dark bg-slate-400 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User avatar icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDha2W6H522MKoXjUSkh-TnB80k1q6OslzuBgLCsxL5XBY3lBeUpfXy1AadchelkeZdvVAgwdflvjgYtg_2xi7k_hbzsfiqT_fWX9yEB8MnjUko61M2dgPnp_rrzqK3TtN4UNLM4WKWD1gQwZoFwi6cf9ZheXvkSBSl7KRYTiW23onBqkF8_rKFCs4JtSTRzp8NiYpc1qF_63Lb7I55ROrltuHeNmDXc6JTundUpRHJ0abj0bdhrX8flGmuh-Xh7gsODwnRFGCtiKM"/>
+</div>
+</div>
+<button class="text-primary text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        לצפייה בסילבוס
+                        <span class="material-symbols-outlined text-sm">arrow_back</span>
+</button>
+</div>
+</div>
+<!-- Card 4: Psych -->
+<div class="glass-card rounded-xl p-5 neon-border transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-primary/20 p-3 rounded-lg border border-primary/30">
+<span class="material-symbols-outlined text-primary">psychology</span>
+</div>
+<span class="text-xs font-medium text-white/40 px-2 py-1 rounded-full bg-white/5 border border-white/10">קל</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">מבוא לפסיכולוגיה</h3>
+<p class="text-white/60 text-sm leading-relaxed mb-4">
+                    למה אנחנו עושים את מה שאנחנו עושים, ואיך להשתמש בזה כדי לשכנע את אמא שלך שאתה לא עצלן, אתה פשוט ב<span class="knowledge-bubble relative group/tip px-1 rounded">שימור אנרגיה
+                        <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-[#1e1e2e] text-xs text-white/90 rounded-lg shadow-2xl opacity-0 group-hover/tip:opacity-100 transition-opacity pointer-events-none border border-white/10 z-10">
+                            הישרדות אבולוציונית. המוח מנסה לא לבזבז קלוריות על למידה למבחן.
+                        </span>
+</span>.
+                </p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
+<div class="flex -space-x-2 space-x-reverse">
+<div class="w-6 h-6 rounded-full border border-background-dark bg-slate-700 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Abstract face avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9qlsYcQIXCUfvsJM8T6kvrVtz87NQYRNibR5ZDvcX3dURHqpa-c4B6GzVkdm-aJMy3c9albUN63uqzsPA2ikWmu0UM3m6ftwrkY5s6l433rPo-SDRPyJ1lJZbTZ0NaW-haNDzNMu9n_b6y-L9UYGu6r78KLgflBtAiYbNv37SrzJkf5WhXftmRFcRP35XpyUaHjYb3GdYFAVsV1gJIv1I_qpI5Ydo-GU255tmPb4tF1CWcWR_0dzPL-LwN5bZzKkM-qnXP5j6sEw"/>
+</div>
+</div>
+<button class="text-primary text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        לצפייה בסילבוס
+                        <span class="material-symbols-outlined text-sm">arrow_back</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating AI Bubble -->
+<div class="fixed bottom-24 left-6 z-40">
+<button class="w-14 h-14 rounded-full bg-primary ai-glow flex items-center justify-center text-white transition-transform hover:scale-110 active:scale-95">
+<span class="material-symbols-outlined text-3xl">auto_awesome</span>
+<div class="absolute -top-1 -right-1 w-4 h-4 bg-neon-cyan rounded-full border-2 border-background-dark"></div>
+</button>
+</div>
+<!-- iOS Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 h-20 bg-background-dark/80 backdrop-blur-xl border-t border-white/5 flex items-center justify-around px-4 pb-4">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="text-[10px] font-bold">קורסים</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-white/40 hover:text-white transition-colors">
+<span class="material-symbols-outlined">bookmark_manager</span>
+<span class="text-[10px] font-medium">שמורים</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-white/40 hover:text-white transition-colors">
+<span class="material-symbols-outlined">forum</span>
+<span class="text-[10px] font-medium">צ'אט</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-white/40 hover:text-white transition-colors">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">הגדרות</span>
+</button>
+<!-- Home Indicator -->
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/20 rounded-full"></div>
+</nav>
+</body></html>

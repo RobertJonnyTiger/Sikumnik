@@ -1,6 +1,4 @@
-import { GlassCard } from "@/components/ui/glass-card";
 import { AnalogyBlock } from "./AnalogyBlock";
-import { BookOpen, Quote } from "lucide-react";
 import { TermTooltip } from "@/components/ui/term-tooltip";
 
 interface ConceptCardProps {
@@ -12,57 +10,68 @@ interface ConceptCardProps {
 
 export function ConceptCard({ title, academicText, analogyText, index }: ConceptCardProps) {
 
-    // Custom Parser to replace <b> tags with Tooltips
+    // Custom Parser to provide modern styling for terms and lists
     const renderAcademicText = () => {
-        const parts = academicText.split(/(<b>.*?<\/b>)/g);
+        const lines = academicText.split("\n");
 
-        return parts.map((part, i) => {
-            if (part.startsWith("<b>") && part.endsWith("</b>")) {
-                const term = part.replace(/<\/?b>/g, "");
-                // In a real app, we'd look up the definition from a dictionary. 
-                // For now, we use a generic placeholder or the term itself as the tooltip title.
+        return lines.map((line, lineIdx) => {
+            const numberedMatch = line.match(/^(\d+\.)\s*(.*)/);
+            const content = line.split(/(<b>.*?<\/b>)/g).map((part, i) => {
+                if (part.startsWith("<b>") && part.endsWith("</b>")) {
+                    const term = part.replace(/<\/?b>/g, "");
+                    return (
+                        <TermTooltip key={i} term={term} definition="מושג חשבונאי מרכזי.">
+                            <span className="border-b-4 border-[#00f3ff]/40 font-black text-white hover:text-[#00f3ff] transition-all cursor-help px-2 bg-[#00f3ff]/10 rounded-lg">
+                                {term}
+                            </span>
+                        </TermTooltip>
+                    );
+                }
+                return <span key={i}>{part}</span>;
+            });
+
+            if (numberedMatch) {
                 return (
-                    <TermTooltip key={i} term={term} definition="מושג חשבונאי מרכזי. לחץ לפרטים נוספים (בקרוב).">
-                        {term}
-                    </TermTooltip>
+                    <div key={lineIdx} className="flex gap-6 items-start mb-8 group/list hover:translate-x-[-8px] transition-transform duration-500">
+                        <span className="text-[#00f3ff] font-black italic bg-[#00f3ff]/20 px-4 py-1 rounded-[1rem] text-3xl min-w-[60px] text-center shadow-[0_0_20px_rgba(0,243,255,0.2)]">
+                            {numberedMatch[1]}
+                        </span>
+                        <div className="flex-1 text-2xl md:text-3xl leading-relaxed font-rubik">
+                            {line.substring(numberedMatch[1].length).split(/(<b>.*?<\/b>)/g).map((part, i) => {
+                                if (part.startsWith("<b>") && part.endsWith("</b>")) {
+                                    const term = part.replace(/<\/?b>/g, "");
+                                    return <span key={i} className="text-white font-black underline decoration-[#00f3ff]/30 decoration-4 underline-offset-8">{term}</span>;
+                                }
+                                return <span key={i}>{part}</span>;
+                            })}
+                        </div>
+                    </div>
                 );
             }
-            return <span key={i}>{part}</span>;
+
+            return <p key={lineIdx} className="mb-8">{content}</p>;
         });
     };
 
     return (
-        <GlassCard className="group hover:neon-glow transition-all duration-500">
-
-            {/* Header */}
-            <div className="flex items-center justify-between mb-6 border-b border-slate-800 pb-4">
-                <h3 className="text-2xl font-black text-white group-hover:text-pink-500 transition-colors">
+        <section className="space-y-12 group scroll-mt-32">
+            <header className="flex flex-col gap-6">
+                <div className="flex items-center gap-6">
+                    <span className="text-[#00f3ff] font-black text-9xl md:text-[12rem] opacity-[0.05] leading-none select-none group-hover:opacity-20 group-hover:scale-110 transition-all duration-1000 font-rubik">
+                        {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <div className="w-24 h-[4px] bg-gradient-to-r from-[#00f3ff] to-transparent opacity-30 rounded-full" />
+                </div>
+                <h3 className="text-5xl md:text-7xl font-black text-white tracking-tight leading-tight font-rubik -mt-16 relative z-10">
                     {title}
                 </h3>
-                <span className="text-6xl font-black text-slate-800/50 group-hover:text-pink-500/10 transition-colors select-none">
-                    {index + 1}
-                </span>
+            </header>
+
+            <div className="text-3xl md:text-4xl font-light text-slate-200 leading-[1.6] max-w-4xl border-r-8 border-[#3713ec]/30 pr-12 py-8 font-rubik">
+                {renderAcademicText()}
             </div>
 
-            {/* Academic Definition */}
-            <div className="mb-8 relative">
-                <div className="flex items-center gap-2 mb-4 text-slate-500 text-xs font-bold uppercase tracking-widest justify-center">
-                    <BookOpen className="w-4 h-4" />
-                    <span>הגדרה יבשה</span>
-                </div>
-
-                <div className="relative px-8 py-2">
-                    <Quote className="absolute top-0 right-0 w-8 h-8 text-slate-700/30 -scale-x-100" />
-                    <div className="text-slate-300 leading-relaxed text-2xl font-david font-medium text-center relative z-10">
-                        {renderAcademicText()}
-                    </div>
-                    <Quote className="absolute bottom-0 left-0 w-8 h-8 text-slate-700/30" />
-                </div>
-            </div>
-
-            {/* The Analogy */}
             <AnalogyBlock text={analogyText} />
-
-        </GlassCard>
+        </section>
     );
 }

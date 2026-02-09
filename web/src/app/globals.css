@@ -4,58 +4,97 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Accents */
+  /* Inner Sanctum Accents */
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
   --color-success: var(--success);
   --color-error: var(--error);
 
-  /* Surfaes */
+  /* Surfaces */
   --color-card: var(--card);
   --color-glass: var(--glass);
 }
 
 :root {
-  /* Tel Aviv Noir Theme */
-  --background: #020617;
-  /* slate-950 */
+  /* Inner Sanctum: Temple of Knowledge Theme */
+  --background: #0a051e;
+  /* Deep "Sacred" Purple */
   --foreground: #f8fafc;
   /* slate-50 */
 
-  --primary: #ec4899;
-  /* pink-500 */
-  --secondary: #6366f1;
-  /* indigo-500 */
+  --primary: #3713ec;
+  /* Royal "Knowledge" Blue */
+  --secondary: #1e1933;
+  /* Muted Purple Surface */
+  --accent: #00f3ff;
+  /* Neon Cyan "Spark" */
+
   --success: #34d399;
   /* emerald-400 */
   --error: #f43f5e;
   /* rose-500 */
 
-  --card: #0f172a;
-  /* slate-900 */
-  --glass: rgba(0, 0, 0, 0.5);
+  --card: #1e1836;
+  /* Deeper Glass Purple */
+  --glass: rgba(10, 5, 30, 0.6);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   direction: rtl;
-  /* RTL First */
+  font-family: var(--font-heebo), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Utilities */
+/* --- Inner Sanctum Utilities --- */
+
 .glass-card {
-  @apply bg-slate-900/60 backdrop-blur-md border border-slate-800 rounded-xl shadow-xl;
+  @apply bg-[#1e1933]/60 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl;
+}
+
+.temple-glow {
+  box-shadow: 0 0 30px rgba(55, 19, 236, 0.15);
 }
 
 .neon-glow {
-  box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
 }
 
-.font-david {
-  font-family: "David", var(--font-david), serif;
+.font-rubik {
+  font-family: var(--font-rubik), sans-serif;
 }
 
-.neon-text {
-  text-shadow: 0 0 10px theme('colors.pink.500'), 0 0 20px theme('colors.indigo.500');
+.knowledge-text {
+  background: linear-gradient(135deg, #fff 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Smooth digital scroll feeling */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #3713ec #0a051e;
+}
+
+::selection {
+  background: rgba(55, 19, 236, 0.3);
+  color: #00f3ff;
+}
+
+/* Better table styles */
+.temple-table-header {
+  @apply font-black text-xs md:text-sm uppercase tracking-[0.2em] text-[#a78bfa] border-b border-white/10;
+}
+
+.temple-table-row {
+  @apply border-b border-white/5 last:border-0 hover:bg-white/[0.03] transition-colors;
+}
+
+.temple-table-cell {
+  @apply py-6 px-8 text-slate-200 font-medium;
 }

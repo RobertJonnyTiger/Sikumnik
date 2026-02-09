@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Heebo } from "next/font/google";
+import { Heebo, Rubik } from "next/font/google"; // Swapped David for Rubik
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { NavigationWrapper } from "@/components/layout/NavigationWrapper";
 
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
@@ -9,12 +10,9 @@ const heebo = Heebo({
   display: "swap",
 });
 
-import { David_Libre } from "next/font/google"; // Import David Libre
-
-const david = David_Libre({
-  weight: ["400", "500", "700"],
+const rubik = Rubik({
   subsets: ["hebrew", "latin"],
-  variable: "--font-david",
+  variable: "--font-rubik",
   display: "swap",
 });
 
@@ -22,8 +20,6 @@ export const metadata: Metadata = {
   title: "Sikumnik Platform",
   description: "The Hall of Knowledge for Tel Aviv Students",
 };
-
-import { Sidebar } from "@/components/layout/Sidebar";
 
 export default function RootLayout({
   children,
@@ -35,17 +31,14 @@ export default function RootLayout({
       <body
         suppressHydrationWarning={true}
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-[#0a051e] font-sans antialiased",
           heebo.className,
-          david.variable
+          rubik.variable
         )}
       >
-        <div className="flex min-h-screen">
-          <Sidebar className="hidden md:flex w-72 shrink-0 border-l border-slate-800" />
-          <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-            {children}
-          </div>
-        </div>
+        <NavigationWrapper>
+          {children}
+        </NavigationWrapper>
       </body>
     </html>
   );
