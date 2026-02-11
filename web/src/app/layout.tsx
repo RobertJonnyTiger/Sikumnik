@@ -20,8 +20,25 @@ const handwriting = Playpen_Sans_Hebrew({
 });
 
 export const metadata: Metadata = {
-    title: "Sikumnik Platform",
-    description: "The Hall of Knowledge for Tel Aviv Students",
+    metadataBase: new URL("https://sikumnik.co.il"),
+    title: {
+        default: "סיכומניק — פלטפורמת לימוד חשבונאות",
+        template: "%s | סיכומניק",
+    },
+    description: "סיכומים, תרגילים ומדריכים לסטודנטים בחשבונאות — פלטפורמת לימוד בעברית",
+    keywords: ["חשבונאות", "סיכומים", "מבוא לחשבונאות", "לימודים", "סטודנטים", "אוניברסיטה"],
+    authors: [{ name: "סיכומניק" }],
+    openGraph: {
+        type: "website",
+        locale: "he_IL",
+        siteName: "סיכומניק",
+        title: "סיכומניק — פלטפורמת לימוד חשבונאות",
+        description: "סיכומים, תרגילים ומדריכים לסטודנטים בחשבונאות",
+    },
+    robots: {
+        index: true,
+        follow: true,
+    },
 };
 
 export default function RootLayout({
