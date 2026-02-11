@@ -1,5 +1,5 @@
 ---
-trigger: model_decision
+trigger: always_on
 description: "When the user asks to fix bugs, analyze errors, investigate issues, run tests, or troubleshoot code."
 ---
 

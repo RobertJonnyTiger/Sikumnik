@@ -1,4 +1,4 @@
-export type ContentBlockType = 'concept' | 'calculation' | 'journal_entry' | 'case_study';
+export type ContentBlockType = 'concept' | 'calculation' | 'journal_entry' | 'case_study' | 'pitfalls';
 
 export interface BaseBlock {
     type: ContentBlockType;
@@ -22,7 +22,7 @@ export interface CalculationBlock extends BaseBlock {
     formula_visual: string;
     variables: Variable[];
     steps: (string | { text: string; type?: 'pnl' | 'bs' | 'info'; isJournal?: boolean })[];
-    analogy_note: string;
+    analogy_note: string; // Made optional to handle cases where it might be missing
     data?: { // For custom visualizations like P&L tables
         rows: Array<{
             label: string;
@@ -52,7 +52,14 @@ export interface CaseStudyBlock extends BaseBlock {
     questions: { q: string; a: string }[];
 }
 
-export type ContentBlock = ConceptBlock | CalculationBlock | JournalEntryBlock | CaseStudyBlock;
+export interface CommonMistakesBlock extends BaseBlock {
+    type: 'pitfalls';
+    mistakes: string[];
+    tips: string[];
+    traps: string[];
+}
+
+export type ContentBlock = ConceptBlock | CalculationBlock | JournalEntryBlock | CaseStudyBlock | CommonMistakesBlock;
 
 export interface Section {
     id: string;
@@ -67,10 +74,19 @@ export interface Exercise {
     tip?: string;
 }
 
+export interface Tab {
+    id: string;
+    title: string;
+    content: ContentBlock[];
+}
+
 export interface Chapter {
     id: string;
     title: string;
     summary: string;
-    sections: Section[]; // Note: In the JSON, the top level array contains "Sections" which actually act like "Sub-Chapters" or "Topics"
+    tabs?: Tab[];
+    sections?: Section[]; // Note: In the JSON, the top level array contains "Sections" which actually act like "Sub-Chapters" or "Topics"
     exercises?: Exercise[];
+    worked_example?: any; // Keeping the existing structure for now to avoid breaking too much
+    pageMap?: any;
 }
