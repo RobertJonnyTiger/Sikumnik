@@ -19,8 +19,10 @@ import {
     ChevronUp
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { PageMap } from "@/components/accounting/PageMap";
 
 export default function Chapter12Page() {
+    const data: any = chapterData;
     const [showWorkedExample, setShowWorkedExample] = useState(false);
     let conceptIndex = 0;
 
@@ -75,7 +77,7 @@ export default function Chapter12Page() {
     };
 
     return (
-        <div className="min-h-screen bg-[#0f172a] text-slate-100 flex flex-col font-sans selection:bg-[#3b82f6]/40 selection:text-[#fbbf24]" dir="rtl">
+        <div className="min-h-screen bg-card text-slate-100 flex flex-col font-sans selection:bg-[#3b82f6]/40 selection:text-[#fbbf24]" dir="rtl">
 
             {/* Top Navigation Bar - Compact and Modern */}
             <header className="sticky top-0 z-50 backdrop-blur-2xl bg-[#0f172a]/80 border-b border-white/5 px-6 py-4 flex items-center justify-between">
@@ -113,20 +115,14 @@ export default function Chapter12Page() {
 
                 <article className="space-y-32">
 
-                    {/* Chapter Header - Refined Size */}
-                    <header className="space-y-4">
-                        <div className="flex items-center gap-3">
-                            <span className="bg-[#3b82f6]/20 text-[#fbbf24] font-black text-[10px] px-4 py-1.5 rounded-full border border-[#fbbf24]/20 tracking-[0.2em] uppercase font-sans">
-                                PERAK 12
-                            </span>
-                        </div>
-                        <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-tight font-sans">
-                            {chapterData.title}
-                        </h1>
-                        <p className="text-lg md:text-xl text-slate-400 font-sans font-light leading-relaxed max-w-2xl">
-                            {chapterData.summary}
-                        </p>
-                    </header>
+                    {/* Chapter Header - PageMap */}
+                    <PageMap
+                        title={data.title}
+                        summary={data.summary}
+                        data={data.pageMap}
+                        currentChapter={data.chapterNumber}
+                        totalChapters={data.totalChapters}
+                    />
 
                     {/* Central Logic Card - Scaled Down with Animation */}
                     <section className="relative max-w-3xl animate-entry" style={{ animationDelay: '200ms' }}>

@@ -8,7 +8,8 @@ const CalculationBlock = dynamic(() => import("@/components/accounting/Calculati
 const JournalEntry = dynamic(() => import("@/components/accounting/JournalEntry").then(m => m.JournalEntry), { ssr: true });
 const InteractiveExercise = dynamic(() => import("@/components/accounting/InteractiveExercise").then(m => m.InteractiveExercise), { ssr: false });
 import { GlassCard } from "@/components/ui/glass-card";
-import { Scale, ChevronDown, ChevronUp, Calculator, CheckCircle2 } from "lucide-react";
+import { ChevronDown, ChevronUp, Calculator, CheckCircle2 } from "lucide-react";
+import { PageMap } from "@/components/accounting/PageMap";
 import { JournalEntryBlock } from "@/types/accounting";
 
 interface JournalLine {
@@ -35,6 +36,7 @@ interface TrialBalanceAccount {
 }
 
 export default function Chapter5Page() {
+    const data: any = chapterData;
     const [openTransactions, setOpenTransactions] = useState<Set<number>>(new Set());
 
     const toggleTransaction = (index: number) => {
@@ -50,23 +52,16 @@ export default function Chapter5Page() {
     };
 
     return (
-        <div className="max-w-4xl mx-auto">
-            {/* Header */}
-            <div className="mb-12">
-                <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500/20 to-indigo-500/20 border border-purple-500/30">
-                        <Scale className="w-8 h-8 text-purple-400" />
-                    </div>
-                    <div>
-                        <h1 className="text-3xl font-bold text-white">{chapterData.title}</h1>
-                        <p className="text-slate-400 mt-1">Trial Balance</p>
-                    </div>
-                </div>
-                <p className="text-lg text-slate-300 leading-relaxed">{chapterData.summary}</p>
-            </div>
+        <div className="w-full px-6 lg:px-12 xl:px-16 py-8 max-w-[1600px] mx-auto">
+            <PageMap
+                title={data.title}
+                summary={data.summary}
+                data={data.pageMap}
+                currentChapter={data.chapterNumber}
+                totalChapters={data.totalChapters}
+            />
 
-            {/* Sections */}
-            <div className="space-y-8">
+            <div className="max-w-5xl mx-auto space-y-8">
                 {chapterData.sections.map((section: any, index: number) => {
                     if (section.type === "concept") {
                         return (

@@ -9,18 +9,24 @@ interface Prerequisite {
     description: string;
 }
 
-interface PageMapProps {
-    title: string;
-    data: {
-        learningObjectives: string[];
-        prerequisites: Prerequisite[];
-        estimatedTime: string;
-    };
-    currentChapter: number;
-    totalChapters: number;
+interface PageMapData {
+    learningObjectives?: string[];
+    prerequisites?: Prerequisite[];
+    estimatedTime?: string;
 }
 
-export const PageMap: React.FC<PageMapProps> = ({ title, data, currentChapter, totalChapters }) => {
+interface PageMapProps {
+    title: string;
+    data?: PageMapData;
+    summary?: string;
+    currentChapter: number;
+    totalChapters?: number;
+}
+
+export const PageMap: React.FC<PageMapProps> = ({ title, data, summary, currentChapter, totalChapters = 12 }) => {
+    const objectives = data?.learningObjectives ?? [];
+    const prerequisites = data?.prerequisites ?? [];
+    const estimatedTime = data?.estimatedTime ?? "30 דקות";
     return (
         <div className="w-full mb-16">
             {/* Major H1 Title - Truth 2.0 Requirement */}
@@ -34,6 +40,9 @@ export const PageMap: React.FC<PageMapProps> = ({ title, data, currentChapter, t
                 <h1 className="text-5xl md:text-7xl font-black text-white leading-tight transition-all duration-300 hover:tracking-tight">
                     {title}
                 </h1>
+                {summary && (
+                    <p className="text-lg text-slate-300 leading-relaxed mt-4 max-w-3xl">{summary}</p>
+                )}
             </div>
 
             <div className="bg-card/50 backdrop-blur-md rounded-2xl border border-border/40 p-6 md:p-10 shadow-2xl relative overflow-hidden group">
@@ -74,33 +83,35 @@ export const PageMap: React.FC<PageMapProps> = ({ title, data, currentChapter, t
 
                 <div className="grid md:grid-cols-2 gap-10">
                     {/* Objectives */}
-                    <div className="space-y-6">
-                        <div className="flex items-center gap-3">
-                            <div className="h-8 w-1 bg-primary rounded-full" />
-                            <h3 className="text-xl font-black text-foreground">בפרק הזה נפצח:</h3>
+                    {objectives.length > 0 && (
+                        <div className="space-y-6">
+                            <div className="flex items-center gap-3">
+                                <div className="h-8 w-1 bg-primary rounded-full" />
+                                <h3 className="text-xl font-black text-foreground">בפרק הזה נפצח:</h3>
+                            </div>
+                            <ul className="space-y-4 pr-2">
+                                {objectives.map((objective, idx) => (
+                                    <li key={idx} className="flex items-start gap-4 group/item">
+                                        <div className="mt-2 h-2 w-2 rounded-full bg-primary/40 group-hover/item:bg-primary transition-colors shrink-0 shadow-sm" />
+                                        <span className="text-lg text-foreground/90 font-medium leading-relaxed group-hover/item:text-foreground transition-colors">
+                                            {objective}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-                        <ul className="space-y-4 pr-2">
-                            {data.learningObjectives.map((objective, idx) => (
-                                <li key={idx} className="flex items-start gap-4 group/item">
-                                    <div className="mt-2 h-2 w-2 rounded-full bg-primary/40 group-hover/item:bg-primary transition-colors shrink-0 shadow-sm" />
-                                    <span className="text-lg text-foreground/90 font-medium leading-relaxed group-hover/item:text-foreground transition-colors">
-                                        {objective}
-                                    </span>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                    )}
 
                     {/* Metadata */}
                     <div className="space-y-8">
-                        {data.prerequisites.length > 0 && (
+                        {prerequisites.length > 0 && (
                             <div className="space-y-4">
                                 <div className="flex items-center gap-3">
                                     <div className="h-8 w-1 bg-accent rounded-full" />
                                     <h3 className="text-sm font-black text-muted-foreground uppercase tracking-[0.2em]">דרישות קדם</h3>
                                 </div>
                                 <div className="space-y-3">
-                                    {data.prerequisites.map((req, idx) => (
+                                    {prerequisites.map((req, idx) => (
                                         <div key={idx} className="bg-muted/20 hover:bg-muted/30 transition-colors border border-border/20 rounded-xl p-4 group/req">
                                             <div className="font-bold text-foreground group-hover/req:text-primary transition-colors">{req.title}</div>
                                             <div className="text-sm text-muted-foreground mt-1">{req.description}</div>
@@ -117,7 +128,7 @@ export const PageMap: React.FC<PageMapProps> = ({ title, data, currentChapter, t
                                 </div>
                                 <div>
                                     <div className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">זמן למידה</div>
-                                    <div className="text-lg font-black text-foreground">{data.estimatedTime}</div>
+                                    <div className="text-lg font-black text-foreground">{estimatedTime}</div>
                                 </div>
                             </div>
                             <div className="text-xs font-bold text-primary/60 border border-primary/20 px-3 py-1 rounded-full bg-primary/5">

@@ -7,7 +7,8 @@ const ConceptCard = dynamic(() => import("@/components/accounting/ConceptCard").
 const CalculationBlock = dynamic(() => import("@/components/accounting/CalculationBlock").then(m => m.CalculationBlock), { ssr: true });
 const InteractiveExercise = dynamic(() => import("@/components/accounting/InteractiveExercise").then(m => m.InteractiveExercise), { ssr: false });
 import { GlassCard } from "@/components/ui/glass-card";
-import { Package, ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { PageMap } from "@/components/accounting/PageMap";
 
 interface Section {
     type: string;
@@ -28,27 +29,21 @@ interface WorkedData {
 }
 
 export default function Chapter8Page() {
+    const data: any = chapterData;
     const [showWorkedExample, setShowWorkedExample] = useState(false);
     let conceptIndex = 0;
 
     return (
-        <div className="max-w-4xl mx-auto">
-            {/* Header */}
-            <div className="mb-12">
-                <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30">
-                        <Package className="w-8 h-8 text-emerald-400" />
-                    </div>
-                    <div>
-                        <h1 className="text-3xl font-bold text-white">{chapterData.title}</h1>
-                        <p className="text-slate-400 mt-1">מבוא לשיטות חישוב מלאי</p>
-                    </div>
-                </div>
-                <p className="text-lg text-slate-300 leading-relaxed">{chapterData.summary}</p>
-            </div>
+        <div className="w-full px-6 lg:px-12 xl:px-16 py-8 max-w-[1600px] mx-auto">
+            <PageMap
+                title={data.title}
+                summary={data.summary}
+                data={data.pageMap}
+                currentChapter={data.chapterNumber}
+                totalChapters={data.totalChapters}
+            />
 
-            {/* Content Sections */}
-            <div className="space-y-8">
+            <div className="max-w-5xl mx-auto space-y-8">
                 {chapterData.sections.map((section: Section, index: number) => {
                     if (section.type === "concept") {
                         const currentConceptIndex = conceptIndex++;
