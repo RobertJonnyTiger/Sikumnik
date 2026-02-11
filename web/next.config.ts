@@ -1,9 +1,14 @@
 import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    optimizePackageImports: ["lucide-react"],
-  },
+  /* config options here */
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+  // Add markdown plugins here, as desired
+});
+
+// Merge MDX config with Next.js config
+export default withMDX(nextConfig);
