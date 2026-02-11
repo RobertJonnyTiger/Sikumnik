@@ -46,6 +46,7 @@
     @apply bg-background text-foreground antialiased;
     direction: rtl;
     font-family: var(--font-main), sans-serif;
+    font-size: 0.875rem; /* Equivalent to Tailwind's text-sm */
   }
 }
 
