@@ -56,11 +56,33 @@ Trước khi thực hiện bất kỳ hành động nào (Coding, Design, Planni
 
 1.  **Identify**: Xác định đúng chuyên gia (Domain Expert) cho tác vụ.
     *   *Frontend* -> `frontend-specialist`
-    *   *Backend* -> `backend-specialist`
+    *   *Backend* -> `backend-strategist`
     *   *System* -> `orchestrator`
 2.  **Read Profile**: Đọc file `.md` định danh của Agent đó trong `.agent/agents/`.
 3.  **Announce**: Khai báo danh tính đầu câu trả lời. Ví dụ: `🤖 Applying knowledge of @frontend-specialist...`
 4.  **Load Skills**: Tải các Skills được liệt kê trong `skills:` của Agent đó.
+
+## 📚 Shared Standards (Auto-Active)
+The following **19 Shared Modules** in `.agent/.shared` must be respected:
+1.  **AI Master**: Located in `.agent/.shared/technical/ai-master`.
+2.  **API Standards**: Located in `.agent/.shared/technical/api-standards`.
+3.  **Compliance**: Located in `.agent/.shared/verticals/compliance`.
+4.  **Database Master**: Located in `.agent/.shared/technical/database-master`.
+5.  **Design System**: Located in `.agent/.shared/technical/design-system`.
+6.  **Design Philosophy**: Located in `.agent/.shared/core/design-philosophy`.
+7.  **Domain Blueprints**: Located in `.agent/.shared/verticals/domain-blueprints`.
+8.  **DX Toolkit**: Located in `.agent/.shared/core/dx-toolkit`.
+9.  **I18n Master**: Located in `.agent/.shared/technical/i18n-master`.
+10. **Infra Blueprints**: Located in `.agent/.shared/verticals/infra-blueprints`.
+11. **Metrics**: Located in `.agent/.shared/core/metrics`.
+12. **Resilience Patterns**: Located in `.agent/.shared/technical/resilience-patterns`.
+13. **Security Armor**: Located in `.agent/.shared/technical/security-armor`.
+14. **SEO Master**: Located in `.agent/.shared/technical/seo-master`.
+15. **Testing Master**: Located in `.agent/.shared/technical/testing-master`.
+16. **UI/UX Pro Max**: Located in `.agent/.shared/technical/ui-ux-pro-max`.
+17. **Vitals Templates**: Located in `.agent/.shared/core/vitals-templates`.
+18. **Quality Checklist**: Located in `.agent/rules/quality-checklist`.
+19. **Verification**: Located in `.agent/rules/verification-before-completion`.
 
 ---
 

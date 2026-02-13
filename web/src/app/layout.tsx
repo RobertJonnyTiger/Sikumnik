@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { NavigationWrapper } from "@/components/layout/NavigationWrapper";
-import { Playpen_Sans_Hebrew, Noto_Sans_Hebrew } from "next/font/google";
+import { Playpen_Sans_Hebrew, Noto_Sans_Hebrew, JetBrains_Mono, Assistant, Heebo } from "next/font/google";
 import { Agentation } from "agentation";
 
 const mainFont = Noto_Sans_Hebrew({
@@ -12,10 +12,30 @@ const mainFont = Noto_Sans_Hebrew({
     display: "swap",
 });
 
+const assistant = Assistant({
+    subsets: ["hebrew", "latin"],
+    variable: "--font-assistant",
+    weight: ["200", "300", "400", "500", "600", "700", "800"],
+    display: "swap",
+});
+
+const heebo = Heebo({
+    subsets: ["hebrew", "latin"],
+    variable: "--font-heebo",
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+    display: "swap",
+});
+
 const handwriting = Playpen_Sans_Hebrew({
     subsets: ["hebrew", "latin"] as any,
     variable: "--font-handwriting",
     weight: ["400", "700"],
+    display: "swap",
+});
+
+const mono = JetBrains_Mono({
+    subsets: ["latin"],
+    variable: "--font-mono",
     display: "swap",
 });
 
@@ -53,7 +73,10 @@ export default function RootLayout({
                 className={cn(
                     "min-h-screen bg-background font-main antialiased",
                     mainFont.variable,
-                    handwriting.variable
+                    assistant.variable,
+                    heebo.variable,
+                    handwriting.variable,
+                    mono.variable
                 )}
             >
                 <NavigationWrapper>

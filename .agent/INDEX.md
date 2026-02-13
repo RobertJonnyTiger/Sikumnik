@@ -6,6 +6,7 @@
 | `.gitignore` | Core | Specifies files and directories for Git to ignore. |
 | **AGENTS** | | |
 | `frontend-specialist` | Agents | Specializes in frontend development tasks. |
+| `backend-strategist` | Agents | Sikumnik - Ruthless Architectural Auditor & Strategist. |
 | `mobile-developer` | Agents | Specializes in mobile application development. |
 | `product-manager` | Agents | Handles product-related decisions and planning. |
 | `project-planner` | Agents | Helps plan and structure projects. |
@@ -14,6 +15,8 @@
 | `docs-update` | Rules | Specifies when and how documentation should be updated. |
 | `frontend` | Rules | Contains guidelines specific to frontend development. |
 | `gemini-core-constitution` | Rules | My fundamental constitution and core operating principles. |
+| `quality-checklist` | Rules | Defines standards for Master Page system excellence. |
+| `verification-before-completion` | Rules | Enforces quality verification before task completion. |
 | **SKILLS** | | |
 | `academic-content-generator` | Skills | Generates Hebrew EdTech academic content, exercises, and examples. |
 | `academic-content-writer` | Skills | Generates academic content. |

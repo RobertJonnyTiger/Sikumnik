@@ -29,7 +29,9 @@
   /* Slate-800 */
 
   /* Fonts */
-  --font-sans: var(--font-main);
+  --font-sans: var(--font-assistant);
+  --font-heading: var(--font-heebo);
+  --font-mono: var(--font-mono);
   --font-handwriting: var(--font-handwriting);
 
   /* Custom Glows */

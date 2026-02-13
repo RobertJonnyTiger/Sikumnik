@@ -1,15 +1,19 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { Sidebar } from "./Sidebar";
+import { Sidebar } from "@/components/layout/Sidebar"; // Ensure correct import path if needed
 
 export function NavigationWrapper({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
-    // Hide sidebar on the landing page and the courses grid
-    const isFullWidthPage = pathname === "/" || pathname === "/courses";
+
+    // Hide sidebar on landing page, courses grid, and standalone prototypes (Zen Mode)
+    const isFullWidthPage =
+        pathname === "/" ||
+        pathname === "/courses" ||
+        pathname?.startsWith("/golden-prototype");
 
     return (
-        <div className="flex min-h-screen">
+        <div className="flex min-h-screen relative">
             {!isFullWidthPage && (
                 <Sidebar className="hidden md:flex" />
             )}

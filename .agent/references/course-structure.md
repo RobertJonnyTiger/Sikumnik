@@ -1,4 +1,5 @@
-# Course Structure — 15 Sections Template
+
+
 
 Every lesson page has exactly 15 sections, in this exact order.
 No skipping. No merging. No reordering.
@@ -15,7 +16,6 @@ No skipping. No merging. No reordering.
 - Progress indicator: "פרק X מתוך Y"
 - Learning objectives: 3-5 bullet points
 - Prerequisites: reference earlier chapters (or "אין דרישות מקדימות")
-- Estimated time: "כ-X דקות"
 
 ### Example:📍 חשבונאות > יסודות > פרק 2: עריכת מאזן
 ████████░░░░ פרק 2 מתוך 12
@@ -26,7 +26,6 @@ No skipping. No merging. No reordering.
 • איך מחשבים יחס שוטף
 
 📋 דרישות קדם: פרק 1 — מושגי יסוד בחשבונאות
-⏱️ זמן משוער: 45 דקות
 
 
 ---
@@ -248,13 +247,13 @@ Every formal concept should get a one-liner casual translation.
 ## [10] 🗣️ סיכום בגובה העיניים — STREET-LEVEL SUMMARY
 
 **Hat**: 🎭 Conductor  
-**Tone**: Friend-to-friend, casual
+**Tone**: Casual Tel Aviv Student (29-year-old style)
 
 ### Must Include:
-- Summarize EVERYTHING covered so far (sections 1-9)
-- Extended Tel Aviv analogy (richer than section [3])
-- Build a mini-story or scenario covering all concepts
-- Use "תחשוב על זה ככה..." / "זה כמו ש..."
+- A personal recap of the chapter's "vibe" and core logic.
+- "In my own words" explanation: no academic fluff.
+- Authentic street Hebrew (but clean).
+- "How I think about this" simplified mental models.
 
 ### Goal:
 This is the "click" moment — where everything connects.
