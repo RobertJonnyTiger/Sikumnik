@@ -18,7 +18,7 @@ import { DeepDive } from "@/components/core/enhanced/DeepDive";
 import { CommonMistakes } from "@/components/core/enhanced/CommonMistakes";
 import { CheckpointQuiz } from "@/components/core/master-page/CheckpointQuiz";
 import { StreetLevelSummary } from "@/components/core/master-page/StreetLevelSummary";
-import { GuidedExercises } from "@/components/core/enhanced/GuidedExercises";
+import { GuidedExercises } from "@/components/core/master-page/GuidedExercises";
 import { IndependentExercise } from "@/components/core/master-page/IndependentExercise";
 import { ReferenceCard } from "@/components/core/master-page/ReferenceCard";
 import { TriviaCard } from "@/components/core/master-page/TriviaCard";

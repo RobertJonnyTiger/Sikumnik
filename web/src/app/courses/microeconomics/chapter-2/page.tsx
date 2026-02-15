@@ -6,7 +6,7 @@ import { MasterChapterTemplate } from "@/components/core/master-page/MasterChapt
 import { ChapterData } from "@/types/chapter";
 
 // Domain Specific
-import { PPFGraph } from "@/components/microeconomics/PPFGraph";
+import { PPFGraph } from "@/components/core/interactive/PPFGraph";
 
 export default function MicroChapter2Page() {
     // Cast strict type
