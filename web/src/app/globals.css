@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@theme {
+  /* Core Semantic Tokens - Approved "Calm Dark" */
+  --color-background: #020617;
+  /* Slate-950 */
+  --color-foreground: #f8fafc;
+  /* Slate-50 */
+  --color-text-secondary: #e2e8f0;
+  /* Slate-200 */
+
+  --color-primary: #2dd4bf;
+  /* Teal-400 */
+  --color-primary-foreground: #042f2e;
+  /* Teal-950 for contrast */
+
+  --color-secondary: #1e293b;
+  /* Slate-800 */
+  --color-accent: #fb923c;
+  /* Orange-400 */
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+
+  /* Surfaces */
+  --color-card: #0f172a;
+  /* Slate-900 */
+  --color-glass: rgba(15, 23, 42, 0.6);
+  --color-border: #1e293b;
+  /* Slate-800 */
+
+  /* Fonts */
+  --font-sans: var(--font-assistant);
+  --font-heading: var(--font-heebo);
+  --font-mono: var(--font-mono);
+  --font-handwriting: var(--font-handwriting);
+
+  /* Custom Glows */
+  --shadow-temple: 0 0 30px rgba(45, 212, 191, 0.1);
+  --shadow-neon: 0 0 15px rgba(251, 146, 60, 0.2);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    direction: rtl;
+    font-family: var(--font-main), sans-serif;
+    font-size: 0.875rem;
+    /* Equivalent to Tailwind's text-sm */
+  }
+}
+
+/* --- Inner Sanctum Utilities --- */
+
+.glass-card {
+  @apply bg-glass backdrop-blur-xl border border-border rounded-2xl shadow-2xl;
+}
+
+.temple-glow {
+  box-shadow: var(--shadow-temple);
+}
+
+.neon-glow {
+  box-shadow: var(--shadow-neon);
+}
+
+/* --- Premium Micro-interactions --- */
+
+.hover-lift {
+  @apply transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-temple cursor-pointer;
+}
+
+@keyframes entry-fade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-entry {
+  animation: entry-fade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Accessibility: Respect motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
+
+.knowledge-text {
+  background: linear-gradient(135deg, #fff 0%, #93c5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Smooth digital scroll feeling */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 #0f172a;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: #fbbf24;
+}
+
+/* Better table styles */
+.temple-table-header {
+  @apply font-black text-xs md:text-sm uppercase tracking-[0.2em] text-[#93c5fd] border-b border-white/10;
+}
+
+.temple-table-row {
+  @apply border-b border-white/5 last:border-0 hover:bg-white/3 transition-colors;
+}
+
+.temple-table-cell {
+  @apply py-6 px-8 text-slate-200 font-medium;
+}

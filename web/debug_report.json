@@ -1,0 +1,90 @@
+[
+    {
+        "id": "ERR-001",
+        "type": "CSS/Syntax",
+        "file": "src/app/globals.css",
+        "message": "Deprecated opacity modifier syntax [0.03]",
+        "resolution": "Updated to Tailwind v4 syntax /3",
+        "status": "RESOLVED"
+    },
+    {
+        "id": "ERR-002",
+        "type": "CSS/Optimization",
+        "file": "src/app/globals.css",
+        "message": "Unknown at rule @theme / @apply",
+        "resolution": "Confirmed Tailwind v4 usage; warnings are likely tooling lag but syntax is valid. Addressed specific syntax optimizations.",
+        "status": "VERIFIED"
+    },
+    {
+        "id": "ERR-003",
+        "type": "CSS/Deprecation",
+        "file": "src/components/core/master-page/CommonMistakes.tsx",
+        "message": "Deprecated utility bg-gradient-to-r",
+        "resolution": "Replaced with bg-linear-to-r",
+        "status": "RESOLVED"
+    },
+    {
+        "id": "ERR-004",
+        "type": "CSS/Syntax",
+        "file": "src/components/core/master-page/CommonMistakes.tsx",
+        "message": "Deprecated opacity modifiers [0.02], [0.04], [0.05]",
+        "resolution": "Updated to slash syntax /2, /4, /5",
+        "status": "RESOLVED"
+    },
+    {
+        "id": "ERR-005",
+        "type": "CSS/Deprecation",
+        "file": "src/components/core/master-page/DefinitionBlock.tsx",
+        "message": "Deprecated utility bg-gradient-to-r",
+        "resolution": "Replaced with bg-linear-to-r",
+        "status": "RESOLVED"
+    },
+    {
+        "id": "ERR-006",
+        "type": "CSS/Optimization",
+        "file": "src/components/core/master-page/DefinitionBlock.tsx",
+        "message": "Suboptimal rounded-[2rem]",
+        "resolution": "Replaced with rounded-4xl",
+        "status": "RESOLVED"
+    },
+    {
+        "id": "ERR-007",
+        "type": "CSS/Syntax",
+        "file": "src/components/core/master-page/InteractiveEquation.tsx",
+        "message": "Deprecated opacity modifier [0.02]",
+        "resolution": "Updated to /2",
+        "status": "RESOLVED"
+    },
+    {
+        "id": "ERR-008",
+        "type": "CSS/Optimization",
+        "file": "src/components/core/master-page/Introduction.tsx",
+        "message": "Suboptimal rounded-[2rem]",
+        "resolution": "Replaced with rounded-4xl",
+        "status": "RESOLVED"
+    },
+    {
+        "id": "ERR-009",
+        "type": "CSS/Deprecation",
+        "file": "src/components/core/master-page/TriviaCard.tsx",
+        "message": "Deprecated utility bg-gradient-to-r",
+        "resolution": "Replaced with bg-linear-to-r",
+        "status": "RESOLVED"
+    },
+    {
+        "id": "ERR-010",
+        "type": "TSX/Layout",
+        "file": "src/components/layout/Sidebar.tsx",
+        "message": "Conflicting layout properties 'flex' and 'hidden'",
+        "resolution": "Refactored to 'hidden md:flex' to ensure correct responsive behavior",
+        "status": "RESOLVED"
+    },
+    {
+        "id": "ERR-011",
+        "type": "CSS/Optimization",
+        "file": "src/components/core/master-page/ClassificationGame.tsx",
+        "message": "Suboptimal rounded-[2rem]",
+        "resolution": "Replaced with rounded-4xl",
+        "status": "RESOLVED"
+    }
+]
