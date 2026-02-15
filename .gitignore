@@ -9,6 +9,7 @@ venv/
 
 # Node
 node_modules/
+.next/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -16,10 +17,9 @@ yarn-error.log*
 # OS
 .DS_Store
 Thumbs.db
+nul
 
 # Project specific
-output/
-.tmp/
 .env
-credentials.json
-token.json
+.tmp/
+full_structure.txt
