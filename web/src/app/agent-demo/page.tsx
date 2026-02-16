@@ -1,5 +1,5 @@
 import React from 'react';
-import { SunkCostDemo } from '@/components/accounting/SunkCostDemo';
+import { SunkCostDemo } from '@/components/core/interactive/accounting/SunkCostDemo';
 
 export default function AgentDemoPage() {
     return (

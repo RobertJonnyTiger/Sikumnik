@@ -1,6 +1,8 @@
-import chapterData from "@/data/chapters/microeconomics/chapter-4.json";
 import { ChapterTemplate } from "@/components/core/ChapterTemplate";
+import type { ChapterData } from "@/types/chapter";
+import chapterData from "@/data/chapters/microeconomics/chapter-4.json";
 
 export default function Chapter4Page() {
-  return <ChapterTemplate data={chapterData} />;
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
 }
