@@ -8,21 +8,13 @@ This document tracks skills and workflows to potentially rebuild in the future.
 
 These skills existed in the old setup but were removed because they targeted different projects. Rebuild when needed for Sikumnik content creation.
 
-### Content Creation Skills
+### 🧠 Knowledge Engine (New Architecture)
 
-| Skill | Purpose | Priority |
-|-------|---------|----------|
-| `academic-content-writer/` | Write academic content in Hebrew with proper tone | Medium |
-| `academic-content-generator/` | Generate structured academic explanations | Medium |
-| `interactive-exercise-builder/` | Build interactive exercises and quizzes | High |
-| `exercise-researcher/` | Research and create practice problems | Medium |
-
-### Document Handling
-
-| Skill | Purpose | Priority |
-|-------|---------|----------|
-| `docx/` | Generate Word documents from content | Low |
-| `pdf/` | Handle PDF generation/conversion | Low |
+| Skill | Purpose | Priority | Status |
+|-------|---------|----------|--------|
+| `knowledge-ingestion/` | **The Librarian**: Ingest PDFs/Docs -> Markdown Knowledge Base | High | ✅ Restored (`librarian/`) |
+| `sikumnik-lecturer/` | **The Lecturer**: Read Knowledge Base -> Write Educational Content | High | ✅ Restored (`lecturer/`) |
+| `exercise-researcher/` | Research and create practice problems | Medium | ✅ Skill Created |
 
 ### Testing
 
@@ -43,9 +35,6 @@ These skills existed in the old setup but were removed because they targeted dif
 | Skill | Purpose | Priority |
 |-------|---------|----------|
 | `prompt-engineer/` | Prompt engineering utilities | Low |
-| `react-components/` | Component generation (different project) | Low |
-| `remotion/` | Video generation (different project) | Low |
-| `stitch-loop/` | Different project workflow | Low |
 
 ---
 
@@ -116,4 +105,5 @@ When you want to rebuild a skill:
 
 # Future Improvements & Technical Debt
 
-- [ ] Fix broken links in `.agent/agents/frontend-specialist.md`: The file references `.agent/.shared` and `.agent/rules`, which no longer exist.
+- [x] Fix broken links in `.agent/agents/frontend-specialist.md`: The file references `.agent/.shared` and `.agent/rules`, which no longer exist.
+- [x] Install `using-superpowers` skill (Installed manually from GitHub to `.agent/skills/using-superpowers`).

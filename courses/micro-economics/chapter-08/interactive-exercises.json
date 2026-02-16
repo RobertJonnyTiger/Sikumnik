@@ -1,0 +1,110 @@
+[
+    {
+        "type": "interactive",
+        "componentId": "arcade-speed-sorter",
+        "config": {
+            "title": "נורמלי, נחות או ניטרלי?",
+            "timerSeconds": 45,
+            "categories": [
+                {
+                    "id": "normal",
+                    "label": "מוצר נורמלי",
+                    "color": "green"
+                },
+                {
+                    "id": "inferior",
+                    "label": "מוצר נחות",
+                    "color": "red"
+                },
+                {
+                    "id": "neutral",
+                    "label": "מוצר ניטרלי",
+                    "color": "gray"
+                }
+            ],
+            "items": [
+                {
+                    "text": "חופשה בחו\"ל (כשהשכר עולה טסים יותר)",
+                    "categoryId": "normal"
+                },
+                {
+                    "text": "לחם אחיד (כשהשכר עולה קונים פחות)",
+                    "categoryId": "inferior"
+                },
+                {
+                    "text": "מלח (קונים אותו דבר תמיד)",
+                    "categoryId": "neutral"
+                },
+                {
+                    "text": "סושי יוקרתי",
+                    "categoryId": "normal"
+                },
+                {
+                    "text": "נסיעה באוטובוסים",
+                    "categoryId": "inferior"
+                },
+                {
+                    "text": "תרופות מצילות חיים",
+                    "categoryId": "neutral"
+                }
+            ]
+        }
+    },
+    {
+        "type": "interactive",
+        "componentId": "arcade-prediction-market",
+        "config": {
+            "scenario": "אתה המנכ\"ל של חברת סטרימינג. הביקוש לשירות שלך הוא *גמיש* (E > 1).",
+            "question": "אם תעלה את מחיר המנוי ב-10%, מה יקרה להכנסות החברה?",
+            "options": [
+                {
+                    "id": "down",
+                    "text": "ההכנסות ירדו בצורה חדה!",
+                    "isCorrect": true,
+                    "payoutMultiplier": 2
+                },
+                {
+                    "id": "up",
+                    "text": "ההכנסות יעלו",
+                    "isCorrect": false,
+                    "payoutMultiplier": 0
+                },
+                {
+                    "id": "same",
+                    "text": "ההכנסות יישארו ללא שינוי",
+                    "isCorrect": false,
+                    "payoutMultiplier": 0
+                }
+            ],
+            "initialCoins": 100
+        }
+    },
+    {
+        "type": "interactive",
+        "componentId": "arcade-flashcard-blitz",
+        "config": {
+            "pairs": [
+                {
+                    "term": "מוצר תחליפי",
+                    "definition": "קולה ופפסי (אם אחד מתייקר, קונים את השני)"
+                },
+                {
+                    "term": "מוצר משלים",
+                    "definition": "קפה וחלב (הולכים ביחד)"
+                },
+                {
+                    "term": "מוצר בלתי תלוי",
+                    "definition": "מחירי העגבניות ומחירי המכוניות"
+                },
+                {
+                    "term": "ביקוש קשיח",
+                    "definition": "צרכנים לא רגישים לשינוי במחיר"
+                },
+                {
+                    "term": "ביקוש גמיש",
+                    "definition": "שינוי קטן במחיר גורם לשינוי גדול בכמות"
+                }
+            ]
+        }
+    }
+]

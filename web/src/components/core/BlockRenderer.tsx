@@ -17,6 +17,8 @@ import { Callout } from "./blocks/Callout";
 import { ChapterImage } from "./blocks/ChapterImage";
 import { CheckpointQuiz } from "./blocks/CheckpointQuiz";
 import { TopicSummary } from "./blocks/TopicSummary";
+import { Hook } from "./blocks/Hook";
+import { Prerequisite } from "./blocks/Prerequisite";
 
 interface BlockRendererProps {
     block: ContentBlock;
@@ -57,8 +59,15 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
                     thinkingDirection={block.thinkingDirection}
                     steps={block.steps}
                     finalAnswer={block.finalAnswer}
+                    phases={block.phases}
                 />
             );
+
+        case "hook":
+            return <Hook opener={block.opener} question={block.question} context={block.context} />;
+
+        case "prerequisite":
+            return <Prerequisite concept={block.concept} briefReview={block.briefReview} whyNeeded={block.whyNeeded} />;
 
         case "interactive":
             if (interactiveRegistry && interactiveRegistry[block.componentId]) {

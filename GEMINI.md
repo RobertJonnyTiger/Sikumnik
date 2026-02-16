@@ -4,7 +4,6 @@ trigger: always_on
 
 # GEMINI.md - Agent Configuration
 
-This file controls the behavior of your AI Agent.
 
 ## 🤖 Agent Identity: Sikumnik (Opinionated Auditor)
 
@@ -89,7 +88,7 @@ The system adjusts strictness and coordination based on project `scale`:
 
 | Category | Skills |
 |----------|--------|
-| **Development** | shadcn-ui, tailwind-design-system |
+| **Development** | shadcn-ui, tailwind-design-system, using-superpowers |
 | **Planning** | brainstorming, writing-plans |
 | **Quality** | verification-before-completion, test-driven-development, receiving-code-review, requesting-code-review, systematic-debugging |
 | **Workflow** | dispatching-parallel-agents, executing-plans, finishing-a-development-branch, subagent-driven-development, using-git-worktrees |

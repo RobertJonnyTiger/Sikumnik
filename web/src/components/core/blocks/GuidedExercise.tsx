@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { BrainCircuit, Calculator, Flag, ChevronDown } from "lucide-react";
-import type { Step } from "@/types/chapter";
+import { BrainCircuit, Calculator, Flag, ChevronDown, Hand, Users, Zap } from "lucide-react";
+import type { Step, GuidedExercisePhase } from "@/types/chapter";
 
 interface GuidedExerciseProps {
     difficulty: number;
@@ -10,6 +10,7 @@ interface GuidedExerciseProps {
     thinkingDirection: string;
     steps: Step[];
     finalAnswer: string;
+    phases?: GuidedExercisePhase[];
 }
 
 const difficultyLabel = (d: number) => {
@@ -18,12 +19,21 @@ const difficultyLabel = (d: number) => {
     return { text: "מתקדם", color: "text-red-400" };
 };
 
+const phaseIcon = (type: "i-do" | "we-do" | "you-do") => {
+    switch (type) {
+        case "i-do": return { icon: <Zap className="w-4 h-4" />, label: "אני עושה", color: "bg-blue-500/10 border-blue-500/20 text-blue-400" };
+        case "we-do": return { icon: <Users className="w-4 h-4" />, label: "אנחנו עושים", color: "bg-amber-500/10 border-amber-500/20 text-amber-400" };
+        case "you-do": return { icon: <Hand className="w-4 h-4" />, label: "אתה עושה", color: "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" };
+    }
+};
+
 export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
     difficulty,
     question,
     thinkingDirection,
     steps,
     finalAnswer,
+    phases,
 }) => {
     const [revealedSteps, setRevealedSteps] = useState<Set<number>>(new Set());
     const [showAnswer, setShowAnswer] = useState(false);
@@ -57,6 +67,25 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
                     <p className="text-sm text-foreground/60">{thinkingDirection}</p>
                 </div>
             </div>
+
+            {/* Phases (I do / We do / You do) */}
+            {phases && phases.length > 0 && (
+                <div className="px-6 pb-4 space-y-3">
+                    <p className="text-xs font-bold text-violet-400 uppercase tracking-wider mb-2">שלבי התרגיל</p>
+                    {phases.map((phase, idx) => {
+                        const phaseInfo = phaseIcon(phase.type);
+                        return (
+                            <div key={idx} className={`p-4 rounded-xl border ${phaseInfo.color}`}>
+                                <div className="flex items-center gap-2 mb-2">
+                                    {phaseInfo.icon}
+                                    <span className="text-xs font-bold uppercase">{phaseInfo.label}</span>
+                                </div>
+                                <p className="text-foreground/80 text-sm">{phase.content}</p>
+                            </div>
+                        );
+                    })}
+                </div>
+            )}
 
             {/* Steps */}
             <div className="px-6 pb-4 space-y-2">

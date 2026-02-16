@@ -22,7 +22,9 @@ export type ContentBlock =
     | CalloutBlock
     | ImageBlock
     | CheckpointBlock
-    | SummaryBlock;
+    | SummaryBlock
+    | HookBlock
+    | PrerequisiteBlock;
 
 export interface ExplanationBlock {
     type: "explanation";
@@ -77,6 +79,11 @@ export interface MistakeBlock {
     why: string;
 }
 
+export interface GuidedExercisePhase {
+    type: "i-do" | "we-do" | "you-do";
+    content: string;
+}
+
 export interface GuidedExerciseBlock {
     type: "guided-exercise";
     difficulty: number;
@@ -84,6 +91,7 @@ export interface GuidedExerciseBlock {
     thinkingDirection: string;
     steps: Step[];
     finalAnswer: string;
+    phases?: GuidedExercisePhase[];
 }
 
 export interface InteractiveBlock {
@@ -114,6 +122,20 @@ export interface SummaryBlock {
     type: "summary";
     content: string;
     keyPoints?: string[];
+}
+
+export interface HookBlock {
+    type: "hook";
+    opener: string;
+    question?: string;
+    context?: string;
+}
+
+export interface PrerequisiteBlock {
+    type: "prerequisite";
+    concept: string;
+    briefReview: string;
+    whyNeeded: string;
 }
 
 // ── Supporting Types ──────────────────────────────────────
