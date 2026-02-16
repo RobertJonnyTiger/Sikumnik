@@ -1,0 +1,90 @@
+{
+    "id": "micro-ch2-metrics",
+    "course": "מיקרו-כלכלה",
+    "chapterNumber": 2,
+    "totalChapters": 12,
+    "title": "יחסי עלות-תועלת והעקומה",
+    "pageMap": {
+        "learningObjectives": [
+            "Understand Opportunity Cost in depth",
+            "Calculate MC (Marginal Cost)",
+            12345
+        ],
+        "estimatedTime": 60
+    },
+    "introduction": {
+        "whyItMatters": "Why calculating costs matters..."
+    },
+    "topics": [
+        {
+            "id": "topic-1",
+            "title": "עלות הזדמנות בעומק",
+            "blocks": [
+                {
+                    "type": "definition",
+                    "content": "Missing term field here"
+                },
+                {
+                    "type": "explanation"
+                },
+                {
+                    "type": "invalid-block-type",
+                    "content": "This block type doesn't exist"
+                },
+                {
+                    "type": "formula",
+                    "title": "עלות שולית",
+                    "formula": "MC = ΔTC/ΔQ",
+                    "variables": [
+                        {
+                            "symbol": "MC",
+                            "name": "עלות שולית"
+                        }
+                    ]
+                },
+                {
+                    "type": "callout",
+                    "variant": "invalid-variant",
+                    "content": "This variant doesn't exist"
+                },
+                {
+                    "type": "guided-exercise",
+                    "difficulty": 8,
+                    "question": "חישוב MC",
+                    "thinkingDirection": "חשבו",
+                    "steps": [],
+                    "finalAnswer": "60 ש״ח"
+                },
+                {
+                    "type": "example",
+                    "title": "דוגמה",
+                    "scenario": "תרחיש...",
+                    "solution": "פתרון...",
+                    "wrongField": "extra field that shouldn't be here"
+                }
+            ]
+        },
+        {
+            "id": "topic-2",
+            "title": "Missing blocks field"
+        }
+    ],
+    "checkpoint": [
+        {
+            "question": "Missing id, options, correctIndex, explanation",
+            "options": ["א", "ב", "ג"],
+            "correctIndex": 5
+        }
+    ],
+    "independentExercises": [
+        {
+            "difficulty": "hard",
+            "question": "שאלה..."
+        }
+    ],
+    "bridge": {
+        "nextChapterTitle": "פרק 3",
+        "content": "תוכן המעבר..."
+    },
+    "unknownField": "This field is not in the schema"
+}
