@@ -53,7 +53,7 @@ const navigationData: Degree[] = [
                         id: "foundations",
                         title: "יסודות החשבונאות",
                         items: [
-                            { title: "פרק 1: מבוא ומושגי יסוד", href: "/courses/accounting/intro" },
+                            { title: "פרק 0: מבוא ומושגי יסוד", href: "/courses/accounting/chapter-0" },
                             { title: "פרק 2: עריכת מאזן", href: "/courses/accounting/chapter-2" },
                         ]
                     },

@@ -105,7 +105,7 @@ export default function CoursesPage() {
                 </section>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gap-y-10">
-                    <Link href="/courses/accounting/intro" className="group">
+                    <Link href="/courses/accounting/chapter-0" className="group">
                         <div className="relative overflow-hidden bg-card border border-border p-10 rounded-[3rem] hover:border-primary/40 hover:shadow-premium transition-all flex flex-col h-full group-hover:translate-y-[-8px] duration-500">
                             {/* Decorative Corner */}
                             <div className="absolute top-0 left-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2 group-hover:bg-primary/10 transition-colors" />

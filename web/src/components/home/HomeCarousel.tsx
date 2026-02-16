@@ -23,7 +23,7 @@ export function HomeCarousel() {
             icon: Calculator,
             color: "primary",
             progress: 65,
-            href: "/courses/accounting/intro"
+            href: "/courses/accounting/chapter-0"
         },
         {
             id: "micro",

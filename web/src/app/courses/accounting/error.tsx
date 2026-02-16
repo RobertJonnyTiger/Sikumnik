@@ -38,7 +38,7 @@ export default function CourseError({
                         נסה שוב
                     </button>
                     <Link
-                        href="/courses/accounting/intro"
+                        href="/courses/accounting/chapter-0"
                         className="px-6 py-3 bg-secondary text-foreground rounded-xl font-bold hover:opacity-90 transition-opacity"
                     >
                         חזרה לקורס

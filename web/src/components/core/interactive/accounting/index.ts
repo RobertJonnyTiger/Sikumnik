@@ -4,6 +4,5 @@
 export { FinancialStatement } from './FinancialStatement';
 export { JournalEntry } from './JournalEntry';
 export { BalanceSheetQuadrant } from './BalanceSheetQuadrant';
-export { SunkCostDemo } from './SunkCostDemo';
 export { ClassificationGame } from './ClassificationGame';
 export { InteractiveExercise } from './InteractiveExercise';

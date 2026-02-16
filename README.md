@@ -1,27 +1,128 @@
-# סיכומניק (Sikumnik) 📚
+# Sikumnik סיכומניק
 
-**סיכומניק** הוא פרויקט שנועד לאגד את כל החומר הנלמד בתואר למקום אחד מסודר, נגיש ומודרני. הוא נולד מתוך ההבנה שלעיתים קרובות סטודנטים מוצאים את עצמם מבזבזים זמן יקר לפני מבחנים בניסיון לאתר, לארגן ולסדר את החומר, במקום להתמקד בלמידה עצמה.
+Hebrew education platform for university-level economics and accounting.
 
-## 🎯 הבעיה והפתרון
-### הבעיה
-- 🤯 **חוסר סדר וארגון:** החומר מפוזר בין מחברות, מצגות וקבצים שונים.
-- ⏳ **בזבוז זמן:** זמן יקר מתבזבז על איסוף החומר לפני תקופת מבחנים.
-- 📉 **פערי ידע:** סכנה לאובדן חומר קריטי או למידה חלקית עקב חוסר בסיכומים מלאים.
+## Quick Start
 
-### הפתרון
-סיכומניק משמש כ**מקדש של ידע** – מקום מרכזי שבו כל האינפורמציה מאוגדת, מסוכמת ומונגשת בצורה ברורה. המטרה היא לאפשר לסטודנט לגשת לבחינה בביטחון מלא, כשהוא יודע שכל החומר נמצא בידיו.
+```bash
+cd web
+npm run dev
+```
 
-## 🧠 גישת הלימוד
-האתר לא נועד ללמד את החומר מאפס, אלא לשמש ככלי ל**סיכום, רענון והטמעה**:
-- **תמצות ומיקוד:** החומר מוגש בצורה מסכמת וממוקדת, אידיאלית לחזרה לפני מבחן.
-- **תרגום לשפת היומיום (תל אביב סטייל):** מעבר להגדרות האקדמיות היבשות, האתר מציע "תרגום" לשפה מדוברת ופשוטה.
-- **אנלוגיות מהחיים:** שימוש באנלוגיות מחיי הסטודנט התל-אביבי (שכר דירה, בתי קפה, חיי לילה) כדי להמחיש עקרונות מופשטים ולהפוך אותם לזכירים ואינטואיטיביים.
+Visit `http://localhost:3000`
 
-## ✨ פיצ'רים מרכזיים
-- **עיצוב מודרני ונגיש:** חווית משתמש (UX) נקייה עם ניווט היררכי ברור.
-- **חלוקה לפרקים:** כל נושא מחולק לפרקים מסודרים וקלים להתמצאות.
-- **פתרונות מלאים:** דוגמאות פתורות (Worked Examples) לתרגילים ולנושאים מורכבים.
-- **בחן את עצמך:** אזור תרגול אינטראקטיבי בסוף כל פרק. השאלות מוצגות עם **תשובות נסתרות**, אותן ניתן לחשוף בלחיצת כפתור לקבלת משוב מיידי.
+## Tech Stack
 
----
-*פרויקט זה נבנה באמצעות שילוב של טכנולוגיות Web מודרניות (React, Next.js) ובינה מלאכותית (AI) לעיבוד והנגשת התוכן.*
+- **Framework:** Next.js 15 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS + Framer Motion
+- **Math:** KaTeX for LaTeX rendering
+- **Icons:** Lucide React
+
+## Project Structure
+
+```
+web/src/
+├── app/                    # Next.js routes
+│   └── courses/
+│       ├── accounting/     # 12 chapters
+│       └── microeconomics/ # 5 chapters
+├── components/
+│   └── core/
+│       ├── blocks/         # 13 content block components
+│       │   ├── DefinitionCard.tsx
+│       │   ├── Explanation.tsx
+│       │   ├── DeepDive.tsx
+│       │   └── ...
+│       └── interactive/    # Domain-specific components
+│           └── accounting/
+├── data/
+│   └── chapters/
+│       ├── accounting/    # JSON chapter data
+│       └── microeconomics/
+└── types/
+    └── chapter.ts         # ChapterData schema
+```
+
+## Adding a New Chapter
+
+1. **Create data file:** `data/chapters/[course]/chapter-N.json`
+2. **Use schema:** See `types/chapter.ts` for the ChapterData interface
+3. **Create page:** `app/courses/[course]/chapter-N/page.tsx`
+
+```tsx
+import { ChapterTemplate } from "@/components/core/ChapterTemplate";
+import type { ChapterData } from "@/types/chapter";
+import chapterData from "@/data/chapters/[course]/chapter-N.json";
+
+export default function ChapterNPage() {
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
+}
+```
+
+## Chapter Schema
+
+Each chapter JSON follows this structure:
+
+```json
+{
+  "id": "unique-chapter-id",
+  "course": "חשבונאות",
+  "chapterNumber": 3,
+  "title": "Chapter Title",
+  "topics": [
+    {
+      "id": "topic-1",
+      "title": "Topic Title",
+      "blocks": [
+        { "type": "explanation", "content": "..." },
+        { "type": "definition", "term": "...", "content": "..." },
+        { "type": "formula", "formula": "...", "variables": [...] },
+        { "type": "analogy", "content": "..." },
+        { "type": "callout", "variant": "warning", "content": "..." }
+      ]
+    }
+  ]
+}
+```
+
+### Block Types
+
+| Type | Purpose |
+|------|---------|
+| `explanation` | Core content |
+| `definition` | Formal definitions with tooltips |
+| `formula` | Mathematical formulas |
+| `analogy` | Real-world analogies |
+| `tone-break` | Casual "street smart" explanations |
+| `deep-dive` | Extended analysis |
+| `example` | Worked examples |
+| `common-mistake` | Error warnings |
+| `checkpoint` | Quiz questions |
+| `guided-exercise` | Step-by-step exercises |
+| `callout` | Info/warning boxes |
+
+## Development
+
+```bash
+# Development
+npm run dev
+
+# Build
+npm run build
+
+# Lint
+npm run lint
+```
+
+## Architecture
+
+The platform uses a **Teaching-First** component system:
+- `ChapterTemplate` renders dynamic tabs
+- Content blocks are defined in JSON data
+- Domain-specific components live in `interactive/`
+
+## License
+
+MIT

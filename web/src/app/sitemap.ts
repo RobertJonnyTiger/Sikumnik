@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
         },
         {
-            url: `${BASE_URL}/courses/accounting/intro`,
+            url: `${BASE_URL}/courses/accounting/chapter-0`,
             lastModified: new Date(),
             changeFrequency: "monthly",
             priority: 0.9,
