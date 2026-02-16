@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { ChapterData } from "@/types/chapter";
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Legacy: will be removed during chapter migration
+type ChapterData = any;
 
 // Core Master Page System
 import { MasterPageLayout } from "@/components/core/master-page/MasterPageLayout";
@@ -106,7 +107,8 @@ export const MasterChapterTemplate: React.FC<MasterChapterTemplateProps> = ({
 
                 {/* 8. Checkpoint Quiz */}
                 <CheckpointQuiz
-                    questions={data.checkpoint.map((q, i) => ({
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Legacy template, will be removed
+                    questions={data.checkpoint.map((q: any, i: number) => ({
                         id: q.id || `q${i}`,
                         text: q.text || q.question || "",
                         options: q.options || [],
@@ -122,7 +124,8 @@ export const MasterChapterTemplate: React.FC<MasterChapterTemplateProps> = ({
                 {/* 10. Independent Exercises */}
                 <SectionWrapper id="independent-exercise" sectionNumber={10} title="תרגול עצמאי (אתגר למקצוענים)">
                     <div className="space-y-8">
-                        {data.independentExercises.map((ex, idx) => (
+                        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any -- Legacy template, will be removed */}
+                        {data.independentExercises.map((ex: any, idx: number) => (
                             <IndependentExercise
                                 key={idx}
                                 title={`תרגיל ${idx + 1}`} // Added title prop

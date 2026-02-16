@@ -1,65 +1,11 @@
 "use client";
 
-import dynamic from "next/dynamic";
-const ConceptCard = dynamic(() => import("@/components/accounting/ConceptCard").then(m => m.ConceptCard), { ssr: true });
-const InteractiveExercise = dynamic(() => import("@/components/ui/interactive-exercise").then(m => m.InteractiveExercise), { ssr: false });
-import courseData from "@/data/accounting-101.json";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { ChapterTemplate } from "@/components/core/ChapterTemplate";
+import type { ChapterData } from "@/types/chapter";
+import chapterData from "@/data/chapters/accounting/intro.json";
 
-export default function AccountingPage() {
-    return (
-        <div className="min-h-screen bg-slate-950 text-slate-200">
-
-            {/* Navigation (Handled by Sidebar now) */}
-            {/* <nav className="border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50"> ... </nav> */}
-
-            <main className="w-full px-6 lg:px-12 xl:px-16 py-12">
-
-                {/* Header */}
-                <header className="mb-16 text-center max-w-4xl mx-auto">
-                    <span className="inline-block px-4 py-1.5 bg-pink-500/10 text-pink-500 text-sm font-bold rounded-full mb-4 border border-pink-500/20">
-                        {courseData.title}
-                    </span>
-                    <h1 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
-                        למה רואי חשבון הם האנשים <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-500 neon-text">
-                            הכי פרנואידים בעולם?
-                        </span>
-                    </h1>
-                    <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                        {courseData.summary}
-                    </p>
-                </header>
-
-                {/* Concept Grid - 2 columns on large screens */}
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-                    {courseData.sections.map((section, index) => (
-                        <ConceptCard
-                            key={index}
-                            index={index}
-                            title={section.concept_title}
-                            academicText={section.academic_text}
-                            analogyText={section.analogy_text}
-                        />
-                    ))}
-
-                    {/* Interactive Knowledge Check - spans full width */}
-                    <div className="xl:col-span-2 mt-16 border-t border-slate-800 pt-12">
-                        <h2 className="text-3xl font-bold mb-8 text-center">
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-500 ">
-                                בוא נראה אם הקשבת...
-                            </span>
-                        </h2>
-                        <InteractiveExercise
-                            question="אם שילמתי מראש על מנוי לחדר כושר לשנה שלמה, האם זו הוצאה של החודש הנוכחי?"
-                            answer="❌ ממש לא! לפי עקרון ההקבלה, ההוצאה נרשמת רק כשאנחנו צורכים את השירות. התשלום מראש הוא בכלל 'נכס' (הוצאה מראש) והוא יהפוך להוצאה טיפה-טיפה כל חודש במשך השנה. כמו שלא משמינים המבורגר אחד, לא רושמים הוצאה שנתית ביום אחד."
-                            hint="תחשוב על עקרון ההקבלה (ה'האנגאובר'). מתי נהנים מהשירות?"
-                        />
-                    </div>
-                </div>
-
-            </main>
-        </div>
-    );
+export default function AccountingIntroPage() {
+  // Type assertion needed because JSON imports infer wide types
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
 }

@@ -1,0 +1,117 @@
+"use client";
+
+import React, { useState } from "react";
+import { BrainCircuit, Calculator, Flag, ChevronDown } from "lucide-react";
+import type { Step } from "@/types/chapter";
+
+interface GuidedExerciseProps {
+    difficulty: number;
+    question: string;
+    thinkingDirection: string;
+    steps: Step[];
+    finalAnswer: string;
+}
+
+const difficultyLabel = (d: number) => {
+    if (d <= 2) return { text: "בסיסי", color: "text-emerald-400" };
+    if (d <= 4) return { text: "בינוני", color: "text-amber-400" };
+    return { text: "מתקדם", color: "text-red-400" };
+};
+
+export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
+    difficulty,
+    question,
+    thinkingDirection,
+    steps,
+    finalAnswer,
+}) => {
+    const [revealedSteps, setRevealedSteps] = useState<Set<number>>(new Set());
+    const [showAnswer, setShowAnswer] = useState(false);
+    const diff = difficultyLabel(difficulty);
+
+    const toggleStep = (idx: number) => {
+        const next = new Set(revealedSteps);
+        if (next.has(idx)) next.delete(idx);
+        else next.add(idx);
+        setRevealedSteps(next);
+    };
+
+    return (
+        <div className="bg-violet-950/20 border border-violet-500/20 rounded-2xl overflow-hidden my-6">
+            {/* Header */}
+            <div className="p-6 pb-4">
+                <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                        <div className="bg-violet-500/10 p-2 rounded-lg border border-violet-500/20">
+                            <BrainCircuit className="w-4 h-4 text-violet-400" />
+                        </div>
+                        <h4 className="text-sm font-black text-violet-400 uppercase tracking-wider">תרגיל מודרך</h4>
+                    </div>
+                    <span className={`text-xs font-bold ${diff.color}`}>{diff.text}</span>
+                </div>
+
+                <p className="text-lg text-foreground/90 font-medium mb-3">{question}</p>
+
+                <div className="bg-violet-500/5 border-r-2 border-violet-500/30 px-4 py-2 rounded-l-lg">
+                    <p className="text-xs font-bold text-violet-400 mb-1">🧭 כיוון חשיבה</p>
+                    <p className="text-sm text-foreground/60">{thinkingDirection}</p>
+                </div>
+            </div>
+
+            {/* Steps */}
+            <div className="px-6 pb-4 space-y-2">
+                {steps.map((step, idx) => (
+                    <div key={idx} className="border border-violet-500/10 rounded-xl overflow-hidden">
+                        <button
+                            onClick={() => toggleStep(idx)}
+                            className="w-full px-4 py-3 flex items-center justify-between text-right hover:bg-violet-500/5 transition-colors"
+                        >
+                            <div className="flex items-center gap-3">
+                                <span className="w-7 h-7 rounded-full bg-violet-500/10 text-violet-400 text-xs font-bold flex items-center justify-center">
+                                    {idx + 1}
+                                </span>
+                                <span className="font-medium text-foreground/80">{step.title}</span>
+                            </div>
+                            <ChevronDown
+                                className={`w-4 h-4 text-violet-400 transition-transform duration-300 ${revealedSteps.has(idx) ? "rotate-180" : ""}`}
+                            />
+                        </button>
+                        {revealedSteps.has(idx) && (
+                            <div className="px-4 pb-4 space-y-2 animate-in fade-in-0 duration-300">
+                                <p className="text-foreground/70 text-sm">{step.action}</p>
+                                <p className="text-foreground/50 text-sm italic">{step.reasoning}</p>
+                                {step.calculation && (
+                                    <div className="bg-slate-900/50 px-3 py-2 rounded-lg">
+                                        <p className="font-mono text-teal-400 text-sm" dir="ltr">
+                                            <Calculator className="w-3 h-3 inline mr-1" />
+                                            {step.calculation}
+                                        </p>
+                                    </div>
+                                )}
+                                <p className="text-emerald-400 font-bold text-sm">→ {step.result}</p>
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
+
+            {/* Final Answer */}
+            <div className="border-t border-violet-500/10">
+                <button
+                    onClick={() => setShowAnswer(!showAnswer)}
+                    className="w-full px-6 py-3 flex items-center gap-2 text-sm font-bold text-violet-400 hover:bg-violet-500/5 transition-colors"
+                >
+                    <Flag className="w-4 h-4" />
+                    {showAnswer ? "הסתר תשובה סופית" : "הצג תשובה סופית"}
+                </button>
+                {showAnswer && (
+                    <div className="px-6 pb-6 animate-in fade-in-0 duration-300">
+                        <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl px-4 py-3">
+                            <p className="text-emerald-400 font-bold">{finalAnswer}</p>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};

@@ -252,43 +252,55 @@ export * from './interactive'
 
 ---
 
-## Phase 3: Accounting Component Migration
+## Phase 3: Systematic Migration & Consolidation
 
-> The `components/accounting/` directory has 24 components that are **actively used** by chapter pages. They need to be migrated to the Gold Standard system, not just deleted.
+> **The Problem:** We have 3 layers of component duplication:
+> 1. `components/accounting/` (Legacy, used by 12 chapters)
+> 2. `components/core/enhanced/` (Failed rewrite, used by mixed chapters)
+> 3. `components/core/blocks/` (The New Standard)
+>
+> **The Goal:** Move ALL 17 chapters (12 Accounting, 5 Micro) to the New Standard and delete the other two layers.
 
-### Task 8: Audit Accounting Chapter Dependencies
+### Task 8: The Great Component Audit
 
-**Step 1: Map all imports**
-```powershell
-Select-String -Path src/app/courses/accounting/*/page.tsx -Pattern "from.*components" | Select-Object Filename, Line
-```
+**Step 1: Feature Parity Check**
+Before migrating, verify `core/blocks/` covers all features of legacy components:
+- [ ] Does `MistakeCard` cover all `CommonMistakes` features?
+- [ ] Does `GuidedExercise` cover all `InteractiveExercise` logic?
+- [ ] Does `DefinitionCard` cover `ConceptCard`?
+- [ ] Does `DeepDive` cover the legacy `DeepDive`?
 
-**Step 2: For each accounting component, document:**
-- Which chapters use it
-- Whether a `core/molecules/` equivalent exists
-- Migration path (swap import vs. rewrite)
-
-**Output:** `docs/plans/accounting-migration-map.md`
-
----
-
-### Task 9: Migrate Per-Chapter (Loop)
-
-For each chapter (2-12) still importing from `components/accounting/`:
-
-**Step 1:** Update imports to core equivalents
-**Step 2:** If no equivalent exists, promote the accounting component to `core/molecules/`
-**Step 3:** Build + test the specific chapter
-**Step 4:** Commit per-chapter
+**Step 2: Map the Migration**
+Create a strict replacement map:
+- `components/accounting/DeepDive` -> `components/core/blocks/DeepDive`
+- `components/accounting/ConceptCard` -> `components/core/blocks/DefinitionCard`
+- ...and so on for all 24 legacy components.
 
 ---
 
-### Task 10: Delete `components/accounting/`
+### Task 9: Chapter Migration (The Grind)
 
-After all chapters migrated:
-**Step 1:** Verify zero imports remain
-**Step 2:** Delete the directory
-**Step 3:** Build + Commit
+**Scope:** 17 Chapters
+- Accounting: Intro + Chapters 2-12
+- Microeconomics: Chapters 1-4 (Ch5 is already v2)
+
+**For EACH Chapter:**
+1.  **Data Transform:** Convert old JSON (arrays of mixed objects) to New Schema (Topic Tabs + Block types).
+2.  **Page Rewrite:** Replace `page.tsx` boilerplate with standard `ChapterTemplate` implementation.
+3.  **Verify:** Check rendering locally.
+4.  **Commit:** "migrate: accounting-chX to core architecture"
+
+---
+
+### Task 10: Delete Legacy Layers
+
+**Once ALL chapters are migrated:**
+1.  **Delete** `components/accounting/` (24 files)
+2.  **Delete** `components/core/enhanced/` (5 files)
+3.  **Delete** `components/core/master-page/` (32 files)
+4.  **Verify** build is clean.
+
+**Result:** Single source of truth in `components/core/blocks`.
 
 ---
 

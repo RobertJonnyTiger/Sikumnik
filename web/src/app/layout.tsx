@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import "./globals.css";
 // import "katex/dist/katex.min.css"; // Moved to CDN in head for reliability
 import { cn } from "@/lib/utils";
 import { NavigationWrapper } from "@/components/layout/NavigationWrapper";

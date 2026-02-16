@@ -1,95 +1,205 @@
-export interface ChapterData {
+// ============================================================
+// Sikumnik Teaching-First Chapter Schema v2
+// ============================================================
+// Every chapter is a sequence of Topics rendered as tabs.
+// Every topic is a sequence of ContentBlocks rendered in order.
+// The template renders what the data provides — nothing more.
+// ============================================================
+
+// ── Content Block Types (Discriminated Union) ──────────────
+
+export type ContentBlock =
+    | ExplanationBlock
+    | AnalogyBlock
+    | DefinitionBlock
+    | FormulaBlock
+    | ExampleBlock
+    | DeepDiveBlock
+    | ToneBreakBlock
+    | MistakeBlock
+    | GuidedExerciseBlock
+    | InteractiveBlock
+    | CalloutBlock
+    | ImageBlock
+    | CheckpointBlock
+    | SummaryBlock;
+
+export interface ExplanationBlock {
+    type: "explanation";
+    content: string;
+    highlight?: string;
+}
+
+export interface AnalogyBlock {
+    type: "analogy";
+    content: string;
+    icon?: string;
+}
+
+export interface DefinitionBlock {
+    type: "definition";
+    term: string;
+    content: string;
+    tooltips?: Record<string, string>;
+}
+
+export interface FormulaBlock {
+    type: "formula";
+    title: string;
+    formula: string; // LaTeX
+    variables?: Variable[];
+}
+
+export interface ExampleBlock {
+    type: "example";
+    title: string;
+    scenario: string;
+    solution: string;
+    calculation?: string;
+}
+
+export interface DeepDiveBlock {
+    type: "deep-dive";
+    title: string;
+    sections: { title: string; content: string; example?: string }[];
+}
+
+export interface ToneBreakBlock {
+    type: "tone-break";
+    opener: string;
+    content: string;
+}
+
+export interface MistakeBlock {
+    type: "common-mistake";
+    mistake: string;
+    correct: string;
+    why: string;
+}
+
+export interface GuidedExerciseBlock {
+    type: "guided-exercise";
+    difficulty: number;
+    question: string;
+    thinkingDirection: string;
+    steps: Step[];
+    finalAnswer: string;
+}
+
+export interface InteractiveBlock {
+    type: "interactive";
+    componentId: string;
+    config?: Record<string, unknown>;
+}
+
+export interface CalloutBlock {
+    type: "callout";
+    variant: "tip" | "warning" | "note";
+    content: string;
+}
+
+export interface ImageBlock {
+    type: "image";
+    src: string;
+    alt: string;
+    caption?: string;
+}
+
+export interface CheckpointBlock {
+    type: "checkpoint";
+    questions: QuizQuestion[];
+}
+
+export interface SummaryBlock {
+    type: "summary";
+    content: string;
+    keyPoints?: string[];
+}
+
+// ── Supporting Types ──────────────────────────────────────
+
+export interface QuizQuestion {
     id: string;
+    question: string;
+    options: string[];
+    correctIndex: number;
+    explanation: string;
+}
+
+export interface Step {
+    title: string;
+    action: string;
+    reasoning: string;
+    calculation: string;
+    result: string;
+}
+
+export interface Variable {
+    symbol: string;
+    name: string;
+    desc: string;
+}
+
+export interface Exercise {
+    difficulty: number;
+    question: string;
+    hint: string;
+    answer: string;
+    options?: string[];
+    isExamStyle?: boolean;
+}
+
+// ── Topic (one tab) ───────────────────────────────────────
+
+export interface Topic {
+    id: string;
+    title: string;
+    blocks: ContentBlock[];
+}
+
+// ── Chapter (the full page) ───────────────────────────────
+
+export interface ChapterData {
+    // Required
+    id: string;
+    title: string;
     chapterNumber: number;
     totalChapters: number;
-    title: string;
-    navigation: {
+    course: string;
+
+    // Navigation
+    navigation?: {
         previous?: { id: string; title: string };
         next?: { id: string; title: string };
     };
-    pageMap: {
+
+    // Chapter-level preamble
+    pageMap?: {
         learningObjectives: string[];
-        prerequisites?: { chapterId: string; title: string; description: string }[];
+        prerequisites?: { chapterId: string; title: string }[];
         estimatedTime: string;
     };
-    prerequisiteReview?: {
+
+    introduction?: {
         content: string;
-        items: { term: string; description: string }[];
+        whyItMatters?: string;
+        hook?: string;
     };
-    introduction: {
-        content: string;
-        whyItMatters: string;
-        realWorldConnection?: string;
-    };
-    teaserAnalogy: {
-        content: string;
-    };
-    formalDefinitions: {
-        concepts: {
-            title: string;
-            content: string;
-            tooltips?: Record<string, string>;
-        }[];
-        formulas?: {
-            title: string;
-            formula: string;
-            alternativeForm?: string;
-            variables?: { symbol: string; name: string; desc: string }[];
-            benchmark?: string;
-        }[];
-    };
-    toneBreak: {
-        opener: string;
-        content: string;
-        academicTitle?: string;
-        academicContent?: string;
-    };
-    deepDive: any; // Using any for flexibility until strict deep dive schema is consolidated
-    commonMistakes: {
-        mistake: string;
-        correct: string;
-        why: string;
-    }[];
-    interactiveElement?: any; // Slot for dynamic data
-    checkpoint: {
-        id?: string;
-        type: "multipleChoice" | "trueFalse";
-        text?: string;
-        question?: string;
-        options?: string[];
-        correctIndex?: number;
-        correct?: boolean;
-        explanation: string;
-    }[];
-    streetSummary: {
-        content: string;
-    };
-    guidedExercises: any[];
-    independentExercises: {
-        difficulty: number;
-        question: string;
-        options?: string[]; // Added strict options array
-        hint: string;
-        answer: string;
-        isExamStyle?: boolean;
-    }[];
-    quickReference: {
-        formulas: {
-            name: string;
-            formula: string;
-            label?: string; // Enhanced display
-            subtext?: string; // Enhanced display
-        }[];
+
+    // THE CORE: topics → tabs
+    topics: Topic[];
+
+    // Chapter-level wrap-up
+    checkpoint?: QuizQuestion[];
+    independentExercises?: Exercise[];
+    quickReference?: {
+        formulas: { name: string; formula: string }[];
         definitions: { term: string; definition: string }[];
     };
-    trivia: {
-        fact: string;
-        type: string;
-        source?: string;
-    }[];
-    bridge: {
+    trivia?: { fact: string; source?: string }[];
+    bridge?: {
         nextChapterTitle: string;
         content: string;
-        nextChapter: string; // ID
+        nextChapter: string;
     };
 }

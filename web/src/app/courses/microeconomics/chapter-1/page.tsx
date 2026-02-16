@@ -1,23 +1,6 @@
-"use client";
+import chapterData from "@/data/chapters/microeconomics/chapter-1.json";
+import { ChapterTemplate } from "@/components/core/ChapterTemplate";
 
-import * as React from "react";
-import chapterData from "../../../../data/chapters/micro-ch1.json";
-import { MasterChapterTemplate } from "@/components/core/master-page/MasterChapterTemplate";
-import { ChapterData } from "@/types/chapter";
-import { ClassificationGame } from "@/components/core/master-page/ClassificationGame";
-
-export default function MicroChapter1Page() {
-    const data = chapterData as unknown as ChapterData;
-
-    return (
-        <MasterChapterTemplate
-            data={data}
-            interactiveComponent={
-                <ClassificationGame
-                    data={chapterData.interactiveElement}
-                />
-            }
-            interactiveTitle="המעבדה הכלכלית: סיווג מוצרים"
-        />
-    );
+export default function Chapter1Page() {
+  return <ChapterTemplate data={chapterData} />;
 }
