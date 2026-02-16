@@ -113,3 +113,7 @@ When you want to rebuild a skill:
 ---
 
 *Last updated: 2026-02-16*
+
+# Future Improvements & Technical Debt
+
+- [ ] Fix broken links in `.agent/agents/frontend-specialist.md`: The file references `.agent/.shared` and `.agent/rules`, which no longer exist.
