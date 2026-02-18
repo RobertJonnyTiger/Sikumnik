@@ -115,7 +115,38 @@ const navigationData: Degree[] = [
                     }
                 ]
             },
-            { title: "סטטיסטיקה א'", courseId: "stat-a", href: "/courses/statistics", locked: true }
+            { title: "סטטיסטיקה א'", courseId: "stat-a", href: "/courses/statistics", locked: true },
+            {
+                title: "התנהגות ארגונית",
+                courseId: "organizational-behavior",
+                href: "/courses/organizational-behavior",
+                topics: [
+                    {
+                        id: "ob-foundations",
+                        title: "יסודות",
+                        items: [
+                            { title: "פרק 1: מבוא להתנהגות ארגונית", href: "/courses/organizational-behavior/chapter-1" },
+                            { title: "פרק 2: תפיסה וקבלת החלטות", href: "/courses/organizational-behavior/chapter-2" },
+                            { title: "פרק 3: מוטיבציה", href: "/courses/organizational-behavior/chapter-3" },
+                        ]
+                    },
+                    {
+                        id: "ob-groups",
+                        title: "התנהגות קבוצתית",
+                        items: [
+                            { title: "פרק 4: התנהגות קבוצתית", href: "/courses/organizational-behavior/chapter-4" },
+                        ]
+                    },
+                    {
+                        id: "ob-leadership",
+                        title: "מנהיגות",
+                        items: [
+                            { title: "פרק 5: מנהיגות", href: "/courses/organizational-behavior/chapter-5" },
+                            { title: "פרק 6: תרגול וסיכום", href: "/courses/organizational-behavior/chapter-6" },
+                        ]
+                    }
+                ]
+            }
         ]
     }
 ];

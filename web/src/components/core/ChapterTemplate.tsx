@@ -8,6 +8,7 @@ import { ChapterHeader } from "./ChapterHeader";
 import { ChapterFooter } from "./ChapterFooter";
 import { CheckpointQuiz } from "./blocks/CheckpointQuiz";
 import { TopicSummary } from "./blocks/TopicSummary";
+import { AiLecturer } from "@/components/ai/AiLecturer";
 
 interface ChapterTemplateProps {
     data: ChapterData;
@@ -30,15 +31,17 @@ export const ChapterTemplate: React.FC<ChapterTemplateProps> = ({
 
     return (
         <div className="min-h-screen bg-background text-foreground font-main" dir="rtl">
-            {/* Chapter Header */}
-            <ChapterHeader
-                title={data.title}
-                course={data.course}
-                chapterNumber={data.chapterNumber}
-                totalChapters={data.totalChapters}
-                pageMap={data.pageMap}
-                introduction={data.introduction}
-            />
+            {/* Chapter Header - Only show on first tab */}
+            {activeTab === 0 && (
+                <ChapterHeader
+                    title={data.title}
+                    course={data.course}
+                    chapterNumber={data.chapterNumber}
+                    totalChapters={data.totalChapters}
+                    pageMap={data.pageMap}
+                    introduction={data.introduction}
+                />
+            )}
 
             {/* Topic Tabs Navigation */}
             <nav className="sticky top-0 z-40 bg-background/80 backdrop-blur-xl border-b border-border/40">
@@ -101,6 +104,9 @@ export const ChapterTemplate: React.FC<ChapterTemplateProps> = ({
                 bridge={data.bridge}
                 trivia={data.trivia}
             />
+
+            {/* AI Lecturer Chat */}
+            <AiLecturer context={data} />
         </div>
     );
 };

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Search, User, ChevronDown, Filter, BookOpen, Calculator, TrendingUp, Landmark, Brain, MessageSquare, Settings, Bookmark, Sparkles, Menu, X, GraduationCap, LayoutDashboard, ChevronLeft, Lock } from "lucide-react";
+import { Search, User, ChevronDown, Filter, BookOpen, Calculator, TrendingUp, Landmark, Brain, MessageSquare, Settings, Bookmark, Sparkles, Menu, X, GraduationCap, LayoutDashboard, ChevronLeft, Lock, Users } from "lucide-react";
 
 export default function CoursesPage() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -128,6 +128,37 @@ export default function CoursesPage() {
                                 <div className="flex -space-x-3">
                                     <div className="w-10 h-10 rounded-2xl border-4 border-card bg-primary text-[11px] font-black text-white flex items-center justify-center shadow-sm">AJ</div>
                                     <div className="w-10 h-10 rounded-2xl border-4 border-card bg-accent text-[11px] font-black text-white flex items-center justify-center shadow-sm">RS</div>
+                                </div>
+                                <div className="flex items-center gap-3 text-primary text-base font-black group-hover:gap-5 transition-all">
+                                    <span>לסילבוס</span>
+                                    <ChevronLeft className="w-6 h-6 rotate-180" />
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+
+                    <Link href="/courses/organizational-behavior/chapter-1" className="group">
+                        <div className="relative overflow-hidden bg-card border border-border p-10 rounded-[3rem] hover:border-primary/40 hover:shadow-premium transition-all flex flex-col h-full group-hover:translate-y-[-8px] duration-500">
+                            {/* Decorative Corner */}
+                            <div className="absolute top-0 left-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2 group-hover:bg-primary/10 transition-colors" />
+
+                            <div className="flex justify-between items-start mb-10 relative z-10">
+                                <div className="bg-primary/10 p-4 rounded-2xl border border-primary/10 group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm">
+                                    <Users className="w-8 h-8" />
+                                </div>
+                                <span className="text-[11px] font-black text-emerald-600 px-4 py-2 rounded-xl bg-emerald-50 border border-emerald-200 uppercase tracking-widest shadow-sm">חדש</span>
+                            </div>
+
+                            <h3 className="text-3xl font-black text-foreground mb-4 group-hover:text-primary transition-colors font-sans tracking-tight">התנהגות ארגונית</h3>
+                            <p className="text-foreground/60 text-lg leading-relaxed mb-10 font-medium">
+                                למה עובדים באותה חברה מתנהגים כל כך שונה? מה הופך צוות אחד למצליח ואחר לכושל?
+                                <br />
+                                <span className="inline-block mt-4 text-emerald-600 font-black underline underline-offset-8 decoration-emerald-300 decoration-2 italic">להבין אנשים בארגון</span>
+                            </p>
+
+                            <div className="mt-auto pt-8 border-t border-border flex items-center justify-between">
+                                <div className="flex -space-x-3">
+                                    <div className="w-10 h-10 rounded-2xl border-4 border-card bg-emerald-500 text-[11px] font-black text-white flex items-center justify-center shadow-sm">OB</div>
                                 </div>
                                 <div className="flex items-center gap-3 text-primary text-base font-black group-hover:gap-5 transition-all">
                                     <span>לסילבוס</span>
