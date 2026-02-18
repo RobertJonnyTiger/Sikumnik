@@ -24,7 +24,43 @@ export type ContentBlock =
     | CheckpointBlock
     | SummaryBlock
     | HookBlock
+    | KnowledgeChallengeBlock
+    | RealWorldExampleBlock
+    | ExamTipBlock
+    | ListBlock
+    | MaslowPyramidBlock
     | PrerequisiteBlock;
+
+export interface ListBlock {
+    type: "list";
+    items: string[];
+}
+
+export interface KnowledgeChallengeBlock {
+    type: "knowledge-challenge";
+    question: string;
+    options: string[];
+    correctIndex: number;
+    points: number;
+    reasoning: {
+        correct: string;
+        wrong: Record<string, string>;
+    };
+}
+
+export interface RealWorldExampleBlock {
+    type: "real-world-example";
+    title: string;
+    scenario: string;
+    connection: string;
+    source?: string;
+}
+
+export interface ExamTipBlock {
+    type: "exam-tip";
+    content: string;
+    importance: "high" | "medium";
+}
 
 export interface ExplanationBlock {
     type: "explanation";
@@ -102,7 +138,7 @@ export interface InteractiveBlock {
 
 export interface CalloutBlock {
     type: "callout";
-    variant: "tip" | "warning" | "note";
+    variant: "tip" | "warning" | "note" | "important";
     content: string;
 }
 
@@ -136,6 +172,10 @@ export interface PrerequisiteBlock {
     concept: string;
     briefReview: string;
     whyNeeded: string;
+}
+
+export interface MaslowPyramidBlock {
+    type: "maslow-pyramid";
 }
 
 // ── Supporting Types ──────────────────────────────────────

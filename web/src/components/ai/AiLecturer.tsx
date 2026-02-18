@@ -49,7 +49,7 @@ export function AiLecturer({ context }: AiLecturerProps) {
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
-                        className="fixed bottom-24 right-6 w-96 h-[600px] bg-background border border-border rounded-xl shadow-2xl flex flex-col z-50 overflow-hidden font-main"
+                        className="fixed bottom-24 left-6 w-96 h-[600px] bg-background border border-border rounded-xl shadow-2xl flex flex-col z-50 overflow-hidden font-main"
                         dir="rtl"
                     >
                         {/* Header */}
@@ -73,13 +73,14 @@ export function AiLecturer({ context }: AiLecturerProps) {
 
                         {/* Messages */}
                         <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-muted/30">
-                            {messages.length === 0 && (
-                                <div className="text-center text-muted-foreground mt-8 text-sm">
-                                    <p>שלום! אני המרצה הווירטואלי שלך.</p>
-                                    <p>אני מכיר את כל החומר בפרק הזה.</p>
-                                    <p>שאל אותי כל דבר!</p>
+                            <div className="text-center text-muted-foreground mt-8 text-sm px-6">
+                                <p className="mb-4">היי! שאל אותי כל דבר על הנושא הזה — מה שעולה לך בראש.</p>
+                                <p className="mb-2">אני אענה בשתי דרכים:</p>
+                                <div className="space-y-3 pt-2">
+                                    <p>🎓 <strong>טון מרצה</strong> — שפה אקדמית, פורמלית, מדויקת.</p>
+                                    <p>🍺 <strong>שיחת בר</strong> — עברית של אנשים, הסבר רחוב, ישיר לעניין.</p>
                                 </div>
-                            )}
+                            </div>
                             {messages.map((m: UIMessage) => (
                                 <div
                                     key={m.id}
@@ -87,8 +88,8 @@ export function AiLecturer({ context }: AiLecturerProps) {
                                 >
                                     <div
                                         className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm shadow-sm ${m.role === "user"
-                                                ? "bg-primary text-primary-foreground rounded-br-none"
-                                                : "bg-background border border-border rounded-bl-none"
+                                            ? "bg-primary text-primary-foreground rounded-br-none"
+                                            : "bg-background border border-border rounded-bl-none"
                                             }`}
                                     >
                                         <div className="prose-container rtl text-right">
@@ -156,35 +157,46 @@ export function AiLecturer({ context }: AiLecturerProps) {
                 )}
             </AnimatePresence>
 
-            {/* Toggle Button */}
-            <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setIsOpen(!isOpen)}
-                className="fixed bottom-6 right-6 w-14 h-14 bg-primary text-primary-foreground rounded-full shadow-lg flex items-center justify-center z-50 hover:shadow-xl transition-shadow"
-            >
-                <AnimatePresence mode="wait">
-                    {isOpen ? (
-                        <motion.div
-                            key="close"
-                            initial={{ rotate: -90, opacity: 0 }}
-                            animate={{ rotate: 0, opacity: 1 }}
-                            exit={{ rotate: 90, opacity: 0 }}
-                        >
-                            <X size={24} />
-                        </motion.div>
-                    ) : (
-                        <motion.div
-                            key="chat"
-                            initial={{ rotate: 90, opacity: 0 }}
-                            animate={{ rotate: 0, opacity: 1 }}
-                            exit={{ rotate: -90, opacity: 0 }}
-                        >
-                            <MessageCircle size={28} />
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </motion.button>
+            {/* Toggle Button Container */}
+            <div className="fixed bottom-6 left-6 z-50 flex flex-col items-center gap-2">
+                {!isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider bg-background/80 backdrop-blur-sm px-2 py-0.5 rounded-full border border-border shadow-sm whitespace-nowrap mb-1"
+                    >
+                        שאל אותי כל דבר על הנושא
+                    </motion.div>
+                )}
+                <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="w-14 h-14 bg-primary text-primary-foreground rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-shadow"
+                >
+                    <AnimatePresence mode="wait">
+                        {isOpen ? (
+                            <motion.div
+                                key="close"
+                                initial={{ rotate: -90, opacity: 0 }}
+                                animate={{ rotate: 0, opacity: 1 }}
+                                exit={{ rotate: 90, opacity: 0 }}
+                            >
+                                <X size={24} />
+                            </motion.div>
+                        ) : (
+                            <motion.div
+                                key="chat"
+                                initial={{ rotate: 90, opacity: 0 }}
+                                animate={{ rotate: 0, opacity: 1 }}
+                                exit={{ rotate: -90, opacity: 0 }}
+                            >
+                                <MessageCircle size={28} />
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </motion.button>
+            </div>
         </>
     );
 }

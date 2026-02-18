@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import { CheckCircle, XCircle, HelpCircle } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import type { QuizQuestion } from "@/types/chapter";
 
 interface CheckpointQuizProps {
@@ -50,10 +52,10 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
 
                     return (
                         <div key={q.id}>
-                            <p className="text-foreground/90 font-medium mb-4">
-                                <span className="text-primary font-bold ml-2">{qIdx + 1}.</span>
-                                {q.question}
-                            </p>
+                            <div className="text-foreground/90 font-medium mb-4 flex items-start gap-2 markdown-content">
+                                <span className="text-primary font-bold">{qIdx + 1}.</span>
+                                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{q.question}</ReactMarkdown>
+                            </div>
 
                             <div className="space-y-2 mb-3">
                                 {q.options.map((opt, optIdx) => {
@@ -91,12 +93,12 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
                                 </button>
                             )}
 
-                            {isSubmitted && (
-                                <div className={`mt-3 px-4 py-3 rounded-lg text-sm ${isCorrect ? "bg-emerald-500/10 text-emerald-400" : "bg-red-500/10 text-red-400"}`}>
-                                    <p className="font-bold mb-1">{isCorrect ? "נכון! ✓" : "לא נכון ✗"}</p>
-                                    <p className="text-foreground/60">{q.explanation}</p>
+                            <div className={`mt-3 px-4 py-3 rounded-lg text-sm ${isCorrect ? "bg-emerald-500/10 text-emerald-400" : "bg-red-500/10 text-red-400"}`}>
+                                <p className="font-bold mb-1">{isCorrect ? "נכון! ✓" : "לא נכון ✗"}</p>
+                                <div className="text-foreground/60 markdown-content">
+                                    <ReactMarkdown rehypePlugins={[rehypeRaw]}>{q.explanation}</ReactMarkdown>
                                 </div>
-                            )}
+                            </div>
                         </div>
                     );
                 })}

@@ -2,6 +2,8 @@
 
 import React from "react";
 import { AlertTriangle, CheckCircle, XCircle } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 interface MistakeCardProps {
     mistake: string;
@@ -19,14 +21,26 @@ export const MistakeCard: React.FC<MistakeCardProps> = ({ mistake, correct, why 
             <div className="p-6 space-y-4">
                 <div className="flex items-start gap-3">
                     <XCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
-                    <p className="text-foreground/80"><span className="font-bold text-red-400">טעות: </span>{mistake}</p>
+                    <div className="text-foreground/80 markdown-content">
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                            {`**טעות:** ${mistake}`}
+                        </ReactMarkdown>
+                    </div>
                 </div>
                 <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                    <p className="text-foreground/80"><span className="font-bold text-emerald-400">נכון: </span>{correct}</p>
+                    <div className="text-foreground/80 markdown-content">
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                            {`**נכון:** ${correct}`}
+                        </ReactMarkdown>
+                    </div>
                 </div>
                 <div className="bg-muted/20 border-r-2 border-amber-500/40 px-4 py-3 rounded-l-lg">
-                    <p className="text-sm text-foreground/60"><span className="font-bold text-amber-400">למה? </span>{why}</p>
+                    <div className="text-sm text-foreground/60 markdown-content">
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                            {`**למה?** ${why}`}
+                        </ReactMarkdown>
+                    </div>
                 </div>
             </div>
         </div>

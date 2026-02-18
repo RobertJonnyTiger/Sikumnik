@@ -2,6 +2,8 @@
 
 import React from "react";
 import { Lightbulb } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 interface HookProps {
     opener: string;
@@ -18,14 +20,20 @@ export const Hook: React.FC<HookProps> = ({ opener, question, context }) => {
                 </div>
                 <p className="text-xs font-black text-violet-400 uppercase tracking-[0.2em]">פתיחה</p>
             </div>
-            <p className="text-lg font-bold text-foreground/90 mb-2">{opener}</p>
+            <div className="text-lg font-bold text-foreground/90 mb-2 markdown-content">
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{opener}</ReactMarkdown>
+            </div>
             {question && (
-                <div className="bg-violet-500/10 rounded-xl p-4 mt-3 border border-violet-500/20">
-                    <p className="text-foreground/80 font-medium italic">"{question}"</p>
+                <div className="bg-violet-500/10 rounded-xl p-4 mt-3 border border-violet-500/20 markdown-content">
+                    <div className="text-foreground/80 font-medium italic">
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{`"${question}"`}</ReactMarkdown>
+                    </div>
                 </div>
             )}
             {context && (
-                <p className="text-sm text-foreground/60 mt-3">{context}</p>
+                <div className="text-sm text-foreground/60 mt-3 markdown-content">
+                    <ReactMarkdown rehypePlugins={[rehypeRaw]}>{context}</ReactMarkdown>
+                </div>
             )}
         </div>
     );

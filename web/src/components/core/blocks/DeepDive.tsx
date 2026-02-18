@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import { ChevronDown, Microscope } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 interface DeepDiveProps {
     title: string;
@@ -36,11 +38,15 @@ export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections }) => {
                         </button>
                         {openIdx === idx && (
                             <div className="px-4 pb-4 space-y-3 animate-in fade-in-0 duration-300">
-                                <p className="text-foreground/70 leading-relaxed">{section.content}</p>
+                                <div className="text-foreground/70 leading-relaxed markdown-content">
+                                    <ReactMarkdown rehypePlugins={[rehypeRaw]}>{section.content}</ReactMarkdown>
+                                </div>
                                 {section.example && (
                                     <div className="bg-indigo-500/5 border-r-2 border-indigo-500/30 px-4 py-3 rounded-l-lg">
                                         <p className="text-xs font-bold text-indigo-400 mb-1">דוגמה</p>
-                                        <p className="text-foreground/70 text-sm">{section.example}</p>
+                                        <div className="text-foreground/70 text-sm markdown-content">
+                                            <ReactMarkdown rehypePlugins={[rehypeRaw]}>{section.example}</ReactMarkdown>
+                                        </div>
                                     </div>
                                 )}
                             </div>

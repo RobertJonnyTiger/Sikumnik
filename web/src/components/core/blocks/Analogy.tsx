@@ -2,6 +2,8 @@
 
 import React from "react";
 import { Lightbulb } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 interface AnalogyProps {
     content: string;
@@ -20,7 +22,9 @@ export const Analogy: React.FC<AnalogyProps> = ({ content, icon }) => {
                     <p className="text-xs font-black text-amber-400 uppercase tracking-[0.2em] mb-2">
                         {icon || "💡"} רגע של אנלוגיה
                     </p>
-                    <p className="text-foreground/80 leading-relaxed text-base">{content}</p>
+                    <div className="text-foreground/80 leading-relaxed text-base markdown-content">
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content.replace(/→/g, '←')}</ReactMarkdown>
+                    </div>
                 </div>
             </div>
         </div>

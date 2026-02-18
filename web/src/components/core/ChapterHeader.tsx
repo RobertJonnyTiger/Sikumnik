@@ -2,6 +2,8 @@
 
 import React from "react";
 import { BookOpen, Clock, Target } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 interface ChapterHeaderProps {
     title: string;
@@ -48,9 +50,9 @@ export const ChapterHeader: React.FC<ChapterHeaderProps> = ({
 
                 {/* Hook */}
                 {introduction?.hook && (
-                    <p className="text-xl text-muted-foreground font-medium leading-relaxed max-w-2xl mb-8">
-                        {introduction.hook}
-                    </p>
+                    <div className="text-xl text-muted-foreground font-medium leading-relaxed max-w-2xl mb-8 markdown-content">
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{introduction.hook}</ReactMarkdown>
+                    </div>
                 )}
 
                 {/* Meta Bar */}
@@ -82,7 +84,9 @@ export const ChapterHeader: React.FC<ChapterHeaderProps> = ({
                                     <span className="shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center mt-0.5">
                                         {idx + 1}
                                     </span>
-                                    <span className="leading-relaxed">{obj}</span>
+                                    <div className="leading-relaxed markdown-content">
+                                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{obj}</ReactMarkdown>
+                                    </div>
                                 </li>
                             ))}
                         </ul>
@@ -91,15 +95,17 @@ export const ChapterHeader: React.FC<ChapterHeaderProps> = ({
 
                 {/* Introduction Content */}
                 {introduction?.content && (
-                    <div className="mt-8 text-lg text-foreground/80 leading-relaxed">
-                        {introduction.content}
+                    <div className="mt-8 text-lg text-foreground/80 leading-relaxed markdown-content">
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{introduction.content}</ReactMarkdown>
                     </div>
                 )}
 
                 {introduction?.whyItMatters && (
                     <div className="mt-4 bg-primary/5 border-r-4 border-primary p-4 rounded-l-xl">
                         <p className="font-bold text-primary text-sm mb-1">למה זה חשוב?</p>
-                        <p className="text-foreground/80 leading-relaxed">{introduction.whyItMatters}</p>
+                        <div className="text-foreground/80 leading-relaxed markdown-content">
+                            <ReactMarkdown rehypePlugins={[rehypeRaw]}>{introduction.whyItMatters}</ReactMarkdown>
+                        </div>
                     </div>
                 )}
             </div>

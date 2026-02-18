@@ -18,7 +18,12 @@ import { ChapterImage } from "./blocks/ChapterImage";
 import { CheckpointQuiz } from "./blocks/CheckpointQuiz";
 import { TopicSummary } from "./blocks/TopicSummary";
 import { Hook } from "./blocks/Hook";
+import { KnowledgeChallenge } from "./blocks/KnowledgeChallenge";
+import { RealWorldExample } from "./blocks/RealWorldExample";
+import { ExamTip } from "./blocks/ExamTip";
 import { Prerequisite } from "./blocks/Prerequisite";
+import { List } from "./blocks/List";
+import { MaslowPyramid } from "./blocks/MaslowPyramid";
 
 interface BlockRendererProps {
     block: ContentBlock;
@@ -69,6 +74,33 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
         case "prerequisite":
             return <Prerequisite concept={block.concept} briefReview={block.briefReview} whyNeeded={block.whyNeeded} />;
 
+        case "knowledge-challenge":
+            return (
+                <KnowledgeChallenge
+                    question={block.question}
+                    options={block.options}
+                    correctIndex={block.correctIndex}
+                    points={block.points}
+                    reasoning={block.reasoning}
+                />
+            );
+
+        case "real-world-example":
+            return (
+                <RealWorldExample
+                    title={block.title}
+                    scenario={block.scenario}
+                    connection={block.connection}
+                    source={block.source}
+                />
+            );
+
+        case "exam-tip":
+            return <ExamTip content={block.content} importance={block.importance} />;
+
+        case "list":
+            return <List items={block.items} />;
+
         case "interactive":
             if (interactiveRegistry && interactiveRegistry[block.componentId]) {
                 return <>{interactiveRegistry[block.componentId]}</>;
@@ -80,6 +112,9 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
 
         case "image":
             return <ChapterImage src={block.src} alt={block.alt} caption={block.caption} />;
+
+        case "maslow-pyramid":
+            return <MaslowPyramid />;
 
         case "checkpoint":
             return <CheckpointQuiz questions={block.questions} />;
