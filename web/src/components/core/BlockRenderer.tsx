@@ -28,6 +28,7 @@ import { ExamQuestionBlock as ExamQuestionsComponent } from "./blocks/ExamQuesti
 import { AttributionFlowchart } from "./interactive/AttributionFlowchart";
 import { DiagnosticCaseStudy } from "./interactive/DiagnosticCaseStudy";
 import { AcademicDefinition } from "./blocks/AcademicDefinition";
+import { SituationalLeadershipGuide } from "./interactive/SituationalLeadershipGuide";
 
 interface BlockRendererProps {
     block: ContentBlock;
@@ -165,6 +166,9 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
                     showIcon={block.showIcon}
                 />
             );
+
+        case "situational-leadership-guide":
+            return <SituationalLeadershipGuide />;
 
         default:
             return null;

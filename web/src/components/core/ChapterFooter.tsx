@@ -27,7 +27,8 @@ export const ChapterFooter: React.FC<ChapterFooterProps> = ({
         <footer className="max-w-4xl mx-auto px-4 py-12 space-y-8">
             {/* Bridge to Next Chapter */}
             {bridge && (
-                <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-2xl p-8">
+                <div className="relative overflow-hidden border border-primary/20 rounded-2xl p-8">
+                    <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent pointer-events-none" />
                     <h3 className="text-lg font-bold text-primary mb-3">
                         בפרק הבא: {bridge.nextChapterTitle}
                     </h3>

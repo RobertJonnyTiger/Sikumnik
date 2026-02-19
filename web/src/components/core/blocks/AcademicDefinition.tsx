@@ -38,7 +38,7 @@ export const AcademicDefinition: React.FC<AcademicDefinitionProps> = ({
                         <div className="absolute top-0 right-0 opacity-10">
                             <Quote className="w-12 h-12 text-[#1877F2]" />
                         </div>
-                        <div className="relative bg-gradient-to-br from-[#1877F2]/5 to-transparent rounded-lg p-6 border border-[#1877F2]/20">
+                        <div className="relative bg-linear-to-br from-[#1877F2]/5 to-transparent rounded-lg p-6 border border-[#1877F2]/20">
                             <div className="text-xl leading-relaxed text-foreground font-medium markdown-content">
                                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
                             </div>

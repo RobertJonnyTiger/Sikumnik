@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-    Stethoscope, Brain, Users, Target, Lightbulb, AlertTriangle, 
+import {
+    Stethoscope, Brain, Users, Target, Lightbulb, AlertTriangle,
     CheckCircle2, XCircle, ArrowRight, ArrowLeft, RotateCcw,
     Sparkles, BookOpen, MessageSquare, Scale, Battery, Crown,
     ChevronUp, ChevronDown
@@ -31,6 +31,10 @@ interface AnalysisSection {
         options: string[];
         correctIndex: number;
         explanation: string;
+        feedback?: {
+            correct: string;
+            wrong: Record<number, string>;
+        };
     }[];
 }
 
@@ -65,7 +69,7 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
     const checkAnswer = (sectionId: string, questionIndex: number) => {
         const key = `${sectionId}-${questionIndex}`;
         setShowResults({ ...showResults, [key]: true });
-        
+
         // Mark section as completed if all questions answered correctly
         const section = sections.find(s => s.id === sectionId);
         if (section) {
@@ -75,7 +79,7 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                 const correctAnswer = section.questions[idx].correctIndex;
                 return userAnswer === correctAnswer;
             });
-            
+
             if (allQuestions.every(Boolean) && !completedSections.includes(sectionId)) {
                 setCompletedSections([...completedSections, sectionId]);
             }
@@ -103,10 +107,10 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                         <div className="text-xs text-white/70">הושלם</div>
                     </div>
                 </div>
-                
+
                 {/* Progress Bar */}
                 <div className="mt-4 h-2 bg-white/20 rounded-full overflow-hidden">
-                    <motion.div 
+                    <motion.div
                         className="h-full bg-white rounded-full"
                         initial={{ width: 0 }}
                         animate={{ width: `${progress}%` }}
@@ -128,7 +132,7 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                         </div>
                         {expandedScenario ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                     </button>
-                    
+
                     <AnimatePresence>
                         {expandedScenario && (
                             <motion.div
@@ -153,7 +157,7 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                         <Sparkles className="w-5 h-5 text-amber-500" />
                         נקודות מבט אבחנתיות
                     </h4>
-                    
+
                     {sections.map((section, idx) => (
                         <motion.div
                             key={section.id}
@@ -162,7 +166,7 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                             transition={{ delay: idx * 0.1 }}
                             className={cn(
                                 "border-2 rounded-xl overflow-hidden transition-all",
-                                activeSection === section.id 
+                                activeSection === section.id
                                     ? "border-violet-400 dark:border-violet-500 shadow-lg"
                                     : "border-slate-200 dark:border-slate-700",
                                 completedSections.includes(section.id) && "border-emerald-400 dark:border-emerald-500"
@@ -173,15 +177,15 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                                 onClick={() => setActiveSection(activeSection === section.id ? null : section.id)}
                                 className={cn(
                                     "w-full px-6 py-4 flex items-center justify-between transition-colors",
-                                    activeSection === section.id 
-                                        ? "bg-violet-50 dark:bg-violet-900/20" 
+                                    activeSection === section.id
+                                        ? "bg-violet-50 dark:bg-violet-900/20"
                                         : "bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700"
                                 )}
                             >
                                 <div className="flex items-center gap-3">
                                     <div className={cn(
                                         "p-2 rounded-lg",
-                                        completedSections.includes(section.id) 
+                                        completedSections.includes(section.id)
                                             ? "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400"
                                             : "bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400"
                                     )}>
@@ -238,17 +242,18 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                                                     <MessageSquare className="w-4 h-4 text-indigo-500" />
                                                     בדיקת הבנה
                                                 </h5>
-                                                
+
                                                 {section.questions.map((q, qIdx) => {
                                                     const key = `${section.id}-${qIdx}`;
                                                     const isAnswered = answers[key] !== undefined;
                                                     const isCorrect = answers[key] === q.correctIndex;
                                                     const showResult = showResults[key];
+                                                    const userAns = answers[key];
 
                                                     return (
                                                         <div key={qIdx} className="bg-white dark:bg-slate-800 rounded-lg p-4 border border-slate-200 dark:border-slate-700">
                                                             <p className="font-medium text-slate-800 dark:text-slate-100 mb-3">{q.question}</p>
-                                                            
+
                                                             <div className="space-y-2">
                                                                 {q.options.map((option, optIdx) => (
                                                                     <button
@@ -257,13 +262,13 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                                                                         disabled={showResult}
                                                                         className={cn(
                                                                             "w-full text-right px-4 py-3 rounded-lg border-2 transition-all",
-                                                                            !showResult && answers[key] === optIdx 
+                                                                            !showResult && answers[key] === optIdx
                                                                                 ? "border-violet-400 bg-violet-50 dark:bg-violet-900/20"
                                                                                 : "border-slate-200 dark:border-slate-700 hover:border-violet-300",
-                                                                            showResult && optIdx === q.correctIndex 
-                                                                                && "border-emerald-400 bg-emerald-50 dark:bg-emerald-900/20",
-                                                                            showResult && answers[key] === optIdx && optIdx !== q.correctIndex 
-                                                                                && "border-red-400 bg-red-50 dark:bg-red-900/20"
+                                                                            showResult && optIdx === q.correctIndex
+                                                                            && "border-emerald-400 bg-emerald-50 dark:bg-emerald-900/20",
+                                                                            showResult && answers[key] === optIdx && optIdx !== q.correctIndex
+                                                                            && "border-red-400 bg-red-50 dark:bg-red-900/20"
                                                                         )}
                                                                     >
                                                                         <div className="flex items-center gap-2">
@@ -295,12 +300,29 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                                                                     "mt-3 p-3 rounded-lg",
                                                                     isCorrect ? "bg-emerald-50 dark:bg-emerald-900/20" : "bg-amber-50 dark:bg-amber-900/20"
                                                                 )}>
-                                                                    <p className={cn(
-                                                                        "text-sm",
+                                                                    <div className={cn(
+                                                                        "text-sm whitespace-pre-line",
                                                                         isCorrect ? "text-emerald-700 dark:text-emerald-300" : "text-amber-700 dark:text-amber-300"
                                                                     )}>
-                                                                        {q.explanation}
-                                                                    </p>
+                                                                        {(() => {
+                                                                            if (q.feedback) {
+                                                                                if (isCorrect) {
+                                                                                    return q.feedback.correct;
+                                                                                } else if (userAns !== undefined) {
+                                                                                    const wrongFeedback = q.feedback.wrong[userAns];
+                                                                                    return (
+                                                                                        <>
+                                                                                            {wrongFeedback && <span className="font-bold block mb-2">{wrongFeedback}</span>}
+                                                                                            <span className="block border-t border-amber-200 dark:border-amber-800 pt-2 mt-2">
+                                                                                                <span className="font-bold">התשובה הנכונה:</span> {q.feedback.correct}
+                                                                                            </span>
+                                                                                        </>
+                                                                                    );
+                                                                                }
+                                                                            }
+                                                                            return q.explanation;
+                                                                        })()}
+                                                                    </div>
                                                                 </div>
                                                             )}
                                                         </div>
@@ -324,7 +346,7 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                     <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
                         {conclusion}
                     </p>
-                    
+
                     <div className="bg-white dark:bg-slate-800 rounded-lg p-4 border border-slate-200 dark:border-slate-700">
                         <h5 className="font-bold text-slate-800 dark:text-slate-100 mb-3 text-sm">נקודות למידה מרכזיות:</h5>
                         <ul className="space-y-2">

@@ -10,7 +10,9 @@ import {
   Trophy,
   ArrowLeft,
   PlayCircle,
-  MoreHorizontal
+  MoreHorizontal,
+  Sparkles,
+  Calendar
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";

@@ -31,7 +31,7 @@ export const ChapterHeader: React.FC<ChapterHeaderProps> = ({
     introduction,
 }) => {
     return (
-        <header className="relative overflow-hidden bg-gradient-to-b from-primary/10 via-background to-background pb-8">
+        <header className="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden bg-linear-to-b from-slate-900 to-slate-950">
 
 
             <div className="relative max-w-4xl mx-auto px-4 pt-10">

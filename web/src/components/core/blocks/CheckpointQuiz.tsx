@@ -93,12 +93,14 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
                                 </button>
                             )}
 
-                            <div className={`mt-3 px-4 py-3 rounded-lg text-sm ${isCorrect ? "bg-emerald-500/10 text-emerald-400" : "bg-red-500/10 text-red-400"}`}>
-                                <p className="font-bold mb-1">{isCorrect ? "נכון! ✓" : "לא נכון ✗"}</p>
-                                <div className="text-foreground/60 markdown-content">
-                                    <ReactMarkdown rehypePlugins={[rehypeRaw]}>{q.explanation}</ReactMarkdown>
+                            {isSubmitted && (
+                                <div className={`mt-3 px-4 py-3 rounded-lg text-sm ${isCorrect ? "bg-emerald-500/10 text-emerald-400" : "bg-red-500/10 text-red-400"}`}>
+                                    <p className="font-bold mb-1">{isCorrect ? "נכון! ✓" : "לא נכון ✗"}</p>
+                                    <div className="text-foreground/60 markdown-content">
+                                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{q.explanation}</ReactMarkdown>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                     );
                 })}

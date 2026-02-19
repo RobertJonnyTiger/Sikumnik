@@ -54,6 +54,7 @@ const navigationData: Degree[] = [
                 title: "חשבונאות א'",
                 courseId: "accounting-a",
                 href: "/courses/accounting",
+                locked: true,
                 topics: [
                     {
                         id: "foundations",
@@ -106,7 +107,7 @@ const navigationData: Degree[] = [
                 ]
             },
             {
-                title: "מיקרו כלכלה", courseId: "micro", href: "/courses/microeconomics",
+                title: "מיקרו כלכלה", courseId: "micro", href: "/courses/microeconomics", locked: true,
                 topics: [
                     {
                         id: "foundations",
@@ -149,6 +150,7 @@ const navigationData: Degree[] = [
                         title: "מנהיגות וסיכום",
                         items: [
                             { title: "פרק 6: מנהיגות", href: "/courses/organizational-behavior/chapter-6" },
+                            { title: "כלי עזר: מנהיגות מצבית", href: "/courses/organizational-behavior/situational-leadership" },
                             { title: "פרק 7: תרגול וסיכום", href: "/courses/organizational-behavior/chapter-7" },
                         ]
                     },
@@ -158,6 +160,7 @@ const navigationData: Degree[] = [
                         items: [
                             { title: "מבחן סימולציה", href: "/courses/organizational-behavior/exam-simulation" },
                             { title: "סדנת אבחון מקרים", href: "/courses/organizational-behavior/diagnostic-workshop" },
+                            { title: "סיום וסטטיסטיקות", href: "/courses/organizational-behavior/summary" },
                         ]
                     }
                 ]
@@ -269,7 +272,7 @@ export function Sidebar({ className }: { className?: string }) {
                 {/* Toggle Button (Desktop) */}
                 <button
                     onClick={toggleSidebar}
-                    className="absolute -left-3 top-24 w-6 h-6 bg-card border border-border rounded-full flex items-center justify-center text-muted-foreground hover:text-primary hover:scale-110 transition-all shadow-sm hidden md:flex z-50"
+                    className="absolute -left-3 top-24 w-6 h-6 bg-card border border-border rounded-full items-center justify-center text-muted-foreground hover:text-primary hover:scale-110 transition-all shadow-sm hidden md:flex z-50"
                 >
                     <ChevronLeft className={cn("w-3 h-3 transition-transform", isCollapsed ? "rotate-180" : "")} />
                 </button>
@@ -449,7 +452,15 @@ export function Sidebar({ className }: { className?: string }) {
     );
 }
 
-function NavItem({ href, icon: Icon, label, isCollapsed, isActive }: any) {
+interface NavItemProps {
+    href: string;
+    icon: React.ElementType;
+    label: string;
+    isCollapsed: boolean;
+    isActive: boolean;
+}
+
+function NavItem({ href, icon: Icon, label, isCollapsed, isActive }: NavItemProps) {
     return (
         <Link
             href={href}

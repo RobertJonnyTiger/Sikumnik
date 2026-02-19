@@ -16,7 +16,7 @@ export function GlassCard({ children, className, gradient = false, ...props }: G
             {...props}
         >
             {gradient && (
-                <div className="absolute top-0 right-0 w-1 h-full bg-gradient-to-b from-pink-500 to-indigo-500 opacity-80" />
+                <div className="absolute top-0 right-0 w-1 h-full bg-linear-to-b from-pink-500 to-indigo-500 opacity-80" />
             )}
             <div className="p-6 relative z-10">{children}</div>
         </div>

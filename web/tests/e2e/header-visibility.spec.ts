@@ -2,10 +2,10 @@ import { test, expect } from '@playwright/test';
 
 test('ChapterHeader visibility on tabs', async ({ page }) => {
     // Navigate to Chapter 2
-    await page.goto('http://localhost:3001/courses/organizational-behavior/chapter-2');
+    await page.goto('/courses/organizational-behavior/chapter-2');
 
     // 1. Initial state (Tab 1): Header SHOULD be visible
-    const header = page.locator('header.relative.overflow-hidden');
+    const header = page.locator('header').first();
     await expect(header).toBeVisible();
     await expect(page.locator('h1')).toContainText('תפיסה וקבלת החלטות');
 

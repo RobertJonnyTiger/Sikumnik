@@ -33,7 +33,8 @@ export type ContentBlock =
     | ExamQuestionBlock
     | AttributionFlowchartBlock
     | DiagnosticCaseStudyBlock
-    | AcademicDefinitionBlock;
+    | AcademicDefinitionBlock
+    | SituationalLeadershipGuideBlock;
 
 export interface ListBlock {
     type: "list";
@@ -223,6 +224,10 @@ export interface DiagnosticCaseStudyBlock {
             options: string[];
             correctIndex: number;
             explanation: string;
+            feedback?: {
+                correct: string;
+                wrong: Record<number, string>;
+            };
         }>;
     }>;
     conclusion: string;
@@ -236,6 +241,10 @@ export interface AcademicDefinitionBlock {
     source?: string;
     category?: string;
     showIcon?: boolean;
+}
+
+export interface SituationalLeadershipGuideBlock {
+    type: "situational-leadership-guide";
 }
 
 // ── Supporting Types ──────────────────────────────────────

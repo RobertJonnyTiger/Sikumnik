@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { GraduationCap, Facebook, Twitter, Instagram, Github, Mail } from "lucide-react";
+import { GraduationCap, Facebook, Twitter, Instagram, Github } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function GlobalFooter() {
@@ -81,29 +81,20 @@ export function GlobalFooter() {
                     </ul>
                 </div>
 
-                {/* Contact/Support */}
-                <div>
-                    <h4 className="text-[11px] font-black text-primary uppercase tracking-[0.3em] mb-8">תמיכה וקשר</h4>
-                    <div className="p-6 rounded-3xl bg-linear-to-br from-primary/5 to-accent/5 border border-white/5">
-                        <p className="text-xs text-foreground/60 leading-relaxed mb-4">
-                            נתקלת בבעיה? יש לך הצעה לשיפור? אנחנו כאן בשבילך.
-                        </p>
-                        <a
-                            href="mailto:support@sikumnik.co.il"
-                            className="flex items-center gap-3 text-primary hover:text-primary/80 transition-colors font-bold text-sm"
-                        >
-                            <Mail className="w-4 h-4" />
-                            <span>support@sikumnik.co.il</span>
-                        </a>
-                    </div>
-                </div>
+                {/* Contact/Support - Removed as per request */}
+
             </div>
 
             {/* Bottom Bar */}
             <div className="max-w-7xl mx-auto px-8 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-                <p className="text-[10px] font-black text-foreground/30 uppercase tracking-[0.2em]">
-                    © {currentYear} SIKUMNIK — ALL RIGHTS RESERVED
-                </p>
+                <div className="flex flex-col gap-1">
+                    <p className="text-[11px] font-bold text-foreground/50">
+                        נוצר ע״י רוברט תיגר, בית-הספר לכלכלה וניהול, האקדמית תל-אביב, 2026
+                    </p>
+                    <p className="text-[10px] font-black text-foreground/30 uppercase tracking-[0.2em]">
+                        © {currentYear} SIKUMNIK — ALL RIGHTS RESERVED
+                    </p>
+                </div>
                 <div className="flex gap-8">
                     <a href="#" className="text-[10px] font-black text-foreground/30 hover:text-foreground/60 transition-colors uppercase tracking-[0.2em]">תנאי שימוש</a>
                     <a href="#" className="text-[10px] font-black text-foreground/30 hover:text-foreground/60 transition-colors uppercase tracking-[0.2em]">פרטיות</a>

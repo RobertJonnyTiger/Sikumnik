@@ -4,7 +4,7 @@ export interface TriviaFact {
     fact: string;
     category: string;
     source?: string;
-    icon?: any;
+    icon?: React.ElementType;
 }
 
 export const triviaBank: Record<string, TriviaFact[]> = {

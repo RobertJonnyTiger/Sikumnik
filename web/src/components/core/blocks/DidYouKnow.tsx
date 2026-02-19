@@ -67,9 +67,15 @@ const DidYouKnow: React.FC<DidYouKnowProps> = ({ facts: staticFacts, topicData, 
                 });
 
                 if (!response.ok) {
-                    const errorData = await response.json();
-                    console.error('Trivia API Error:', errorData);
-                    throw new Error(errorData.details || errorData.error || 'Failed to generate facts');
+                    const status = response.status;
+                    let errorData = {};
+                    try {
+                        errorData = await response.json();
+                    } catch (e) {
+                        // Ignore syntax errors from non-JSON error bodies
+                    }
+                    console.error(`Trivia API Error (${status}):`, errorData);
+                    throw new Error((errorData as any).details || (errorData as any).error || `Request failed with status ${status}`);
                 }
 
                 const data = await response.json();
@@ -153,7 +159,7 @@ const DidYouKnow: React.FC<DidYouKnowProps> = ({ facts: staticFacts, topicData, 
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-[#2dd4bf]"></span>
                         </span>
                         <span className="text-[#f8fafc] font-bold text-sm">גילית משהו חדש?</span>
-                        <Lightbulb className="w-5 h-5 text-[#fb923c]" />
+                        <Lightbulb className="w-5 h-5 text-accent" />
                     </motion.button>
                 ) : (
                     <motion.div
@@ -164,8 +170,8 @@ const DidYouKnow: React.FC<DidYouKnowProps> = ({ facts: staticFacts, topicData, 
                         className="relative w-full max-w-2xl bg-[#0f172a]/90 backdrop-blur-xl border border-[#1e293b] rounded-2xl overflow-hidden shadow-2xl"
                     >
                         {/* Glow effects */}
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#2dd4bf]/10 blur-3xl rounded-full pointer-events-none" />
-                        <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#fb923c]/10 blur-3xl rounded-full pointer-events-none" />
+                        <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 w-32 h-32 bg-accent/10 blur-3xl rounded-full pointer-events-none" />
 
                         {/* Close button */}
                         <button
@@ -208,7 +214,7 @@ const DidYouKnow: React.FC<DidYouKnowProps> = ({ facts: staticFacts, topicData, 
                                         <p className="text-red-400">{error}</p>
                                     ) : currentFact ? (
                                         <p className="text-lg md:text-xl text-[#f8fafc] leading-relaxed font-medium">
-                                            <span className="text-[#fb923c] font-bold ml-2">{currentFact.category}:</span>
+                                            <span className="text-accent font-bold ml-2">{currentFact.category}:</span>
                                             {currentFact.fact}
                                         </p>
                                     ) : null}
