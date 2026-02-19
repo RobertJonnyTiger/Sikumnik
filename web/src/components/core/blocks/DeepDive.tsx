@@ -79,7 +79,7 @@ export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections }) => {
                             {isOpen && (
                                 <div className="px-5 pb-6 pt-2 border-t border-white/5 animate-in slide-in-from-top-2 duration-300">
                                     <div className="pr-14">
-                                        <div className="text-base leading-relaxed text-[#cbd5e1] mb-6 markdown-content">
+                                        <div className="text-base leading-relaxed text-[#cbd5e1] markdown-content">
                                             <ReactMarkdown rehypePlugins={[rehypeRaw]}>{section.content}</ReactMarkdown>
                                         </div>
 

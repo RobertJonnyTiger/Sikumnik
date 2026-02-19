@@ -39,7 +39,7 @@ Always respond in Hebrew.
 `;
 
         // Using standard google initialization to let the SDK handle versioning.
-        // gemini-1.5-flash is the recommended free-tier model.
+        // gemini-2.5-flash is the recommended free-tier model.
         const result = streamText({
             model: google('gemini-2.5-flash'),
             system: systemPrompt,
