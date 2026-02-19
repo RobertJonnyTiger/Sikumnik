@@ -2,6 +2,8 @@
 
 import React from "react";
 import { Coffee } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 interface ToneBreakProps {
     opener: string;
@@ -17,8 +19,12 @@ export const ToneBreak: React.FC<ToneBreakProps> = ({ opener, content }) => {
                 </div>
                 <p className="text-xs font-black text-orange-400 uppercase tracking-[0.2em]">הפסקה מהפורמליות</p>
             </div>
-            <p className="text-lg font-bold text-foreground/90 mb-2">{opener}</p>
-            <p className="text-foreground/70 leading-relaxed">{content}</p>
+            <div className="text-lg font-bold text-foreground/90 mb-2 markdown-content">
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{opener}</ReactMarkdown>
+            </div>
+            <div className="text-foreground/70 leading-relaxed markdown-content">
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
+            </div>
         </div>
     );
 };

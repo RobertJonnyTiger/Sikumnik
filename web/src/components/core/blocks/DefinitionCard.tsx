@@ -2,6 +2,8 @@
 
 import React from "react";
 import { BookOpen } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 interface DefinitionCardProps {
     term: string;
@@ -19,7 +21,9 @@ export const DefinitionCard: React.FC<DefinitionCardProps> = ({ term, content })
                 <h4 className="text-sm font-black text-sky-400 uppercase tracking-wider">הגדרה</h4>
             </div>
             <p className="text-xl font-bold text-foreground mb-2">{term}</p>
-            <p className="text-foreground/70 leading-relaxed">{content}</p>
+            <div className="text-foreground/70 leading-relaxed markdown-content">
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
+            </div>
         </div>
     );
 };

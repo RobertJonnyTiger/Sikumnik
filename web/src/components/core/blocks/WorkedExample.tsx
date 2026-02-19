@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import { Calculator, Eye } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 interface WorkedExampleProps {
     title: string;
@@ -22,12 +24,20 @@ export const WorkedExample: React.FC<WorkedExampleProps> = ({ title, scenario, s
                     </div>
                     <h4 className="text-sm font-black text-emerald-400 uppercase tracking-wider">{title}</h4>
                 </div>
-                <p className="text-foreground/80 leading-relaxed text-base">{scenario}</p>
+                <div className="text-foreground/80 leading-relaxed text-base markdown-content">
+                    <ReactMarkdown rehypePlugins={[rehypeRaw]}>{scenario}</ReactMarkdown>
+                </div>
             </div>
 
             {calculation && (
-                <div className="bg-slate-900/50 px-6 py-3 border-t border-emerald-500/10">
-                    <p className="font-mono text-emerald-400 text-lg" dir="ltr">{calculation}</p>
+                <div className="bg-slate-900/50 px-6 py-4 border-t border-emerald-500/10">
+                    <ol className="font-mono text-emerald-400 text-lg list-decimal list-inside space-y-2">
+                        {calculation.split('\n').map((line, idx) => (
+                            <li key={idx} className="leading-relaxed">
+                                {line.replace(/^\d+[\.\)]\s*/, '')}
+                            </li>
+                        ))}
+                    </ol>
                 </div>
             )}
 
@@ -39,11 +49,9 @@ export const WorkedExample: React.FC<WorkedExampleProps> = ({ title, scenario, s
                     <Eye className="w-4 h-4" />
                     {showSolution ? "הסתר פתרון" : "הצג פתרון"}
                 </button>
-                {showSolution && (
-                    <div className="px-6 pb-6 text-foreground/80 leading-relaxed animate-in fade-in-0 duration-300">
-                        {solution}
-                    </div>
-                )}
+                <div className="px-6 pb-6 text-foreground/80 leading-relaxed animate-in fade-in-0 duration-300 markdown-content">
+                    <ReactMarkdown rehypePlugins={[rehypeRaw]}>{solution}</ReactMarkdown>
+                </div>
             </div>
         </div>
     );

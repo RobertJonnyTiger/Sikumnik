@@ -3,6 +3,7 @@ import "./globals.css";
 // import "katex/dist/katex.min.css"; // Moved to CDN in head for reliability
 import { cn } from "@/lib/utils";
 import { NavigationWrapper } from "@/components/layout/NavigationWrapper";
+import { GlobalFooter } from "@/components/layout/GlobalFooter";
 import { Playpen_Sans_Hebrew, Noto_Sans_Hebrew, JetBrains_Mono, Assistant, Heebo } from "next/font/google";
 import { Agentation } from "agentation";
 
@@ -91,6 +92,7 @@ export default function RootLayout({
                 <NavigationWrapper>
                     {children}
                 </NavigationWrapper>
+                <GlobalFooter />
                 <Agentation />
             </body>
         </html>

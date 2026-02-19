@@ -13,7 +13,7 @@ export const FormulaCard: React.FC<FormulaCardProps> = ({ title, formula, variab
     return (
         <div className="bg-slate-900 border border-slate-700/50 rounded-2xl p-6 my-4 text-center">
             <h4 className="text-sm font-bold text-teal-400 uppercase tracking-wider mb-4">{title}</h4>
-            <div className="font-mono text-2xl md:text-3xl text-white font-bold py-4" dir="ltr">
+            <div className="font-mono text-2xl md:text-3xl text-white font-bold py-4">
                 {formula}
             </div>
             {variables && variables.length > 0 && (
@@ -25,7 +25,7 @@ export const FormulaCard: React.FC<FormulaCardProps> = ({ title, formula, variab
                                     {v.symbol}
                                 </span>
                                 <span className="text-muted-foreground">=</span>
-                                <span className="text-foreground/70">{v.name}</span>
+                                <p className="text-foreground/70 text-[14px] leading-relaxed">{v.name}</p>
                             </div>
                         ))}
                     </div>

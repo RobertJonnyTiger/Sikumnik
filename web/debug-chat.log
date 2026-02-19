@@ -1,0 +1,19 @@
+2026-02-18T01:39:36.434Z - API Hit - Messages count: 1
+2026-02-18T01:39:36.439Z - Converted Messages: [
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Test message"
+      }
+    ]
+  }
+]
+2026-02-18T01:39:36.443Z - System Prompt set
+2026-02-18T01:39:36.449Z - Stream started
+2026-02-18T01:40:34.429Z - API Hit - Messages count: 1
+2026-02-18T01:40:34.434Z - Chat API Error: {
+  "message": "Cannot read properties of undefined (reading 'map')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'map')\n    at convertToModelMessages (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\.next\\dev\\server\\chunks\\node_modules_ai_dist_index_mjs_b0116780._.js:7762:48)\n    at POST (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\.next\\dev\\server\\chunks\\[root-of-the-server]__1abeafae._.js:77:222)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async AppRouteRouteModule.do (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\node_modules\\next\\dist\\compiled\\next-server\\app-route-turbo.runtime.dev.js:5:37866)\n    at async AppRouteRouteModule.handle (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\node_modules\\next\\dist\\compiled\\next-server\\app-route-turbo.runtime.dev.js:5:45156)\n    at async responseGenerator (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\.next\\dev\\server\\chunks\\node_modules_next_dist_cadae1cb._.js:9757:38)\n    at async AppRouteRouteModule.handleResponse (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\node_modules\\next\\dist\\compiled\\next-server\\app-route-turbo.runtime.dev.js:1:191938)\n    at async handleResponse (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\.next\\dev\\server\\chunks\\node_modules_next_dist_cadae1cb._.js:9820:32)\n    at async Module.handler (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\.next\\dev\\server\\chunks\\node_modules_next_dist_cadae1cb._.js:9873:13)\n    at async DevServer.renderToResponseWithComponentsImpl (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\node_modules\\next\\dist\\server\\base-server.js:1442:9)\n    at async DevServer.renderPageComponent (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\node_modules\\next\\dist\\server\\base-server.js:1494:24)\n    at async DevServer.renderToResponseImpl (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\node_modules\\next\\dist\\server\\base-server.js:1544:32)\n    at async DevServer.pipeImpl (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\node_modules\\next\\dist\\server\\base-server.js:1038:25)\n    at async NextNodeServer.handleCatchallRenderRequest (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\node_modules\\next\\dist\\server\\next-server.js:395:17)\n    at async DevServer.handleRequestImpl (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\node_modules\\next\\dist\\server\\base-server.js:929:17)\n    at async C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\node_modules\\next\\dist\\server\\dev\\next-dev-server.js:387:20\n    at async Span.traceAsyncFn (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\node_modules\\next\\dist\\trace\\trace.js:157:20)\n    at async DevServer.handleRequest (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\node_modules\\next\\dist\\server\\dev\\next-dev-server.js:383:24)\n    at async invokeRender (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\node_modules\\next\\dist\\server\\lib\\router-server.js:248:21)\n    at async handleRequest (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\node_modules\\next\\dist\\server\\lib\\router-server.js:447:24)\n    at async requestHandlerImpl (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\node_modules\\next\\dist\\server\\lib\\router-server.js:496:13)\n    at async Server.requestListener (C:\\Users\\rober\\AI Projects\\Sikumnik\\web\\node_modules\\next\\dist\\server\\lib\\start-server.js:226:13)"
+}

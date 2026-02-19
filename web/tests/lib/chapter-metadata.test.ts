@@ -22,7 +22,7 @@ describe("createChapterMetadata", () => {
 
         expect(meta.openGraph).toBeDefined();
         expect(meta.openGraph!.locale).toBe("he_IL");
-        expect(meta.openGraph!.type).toBe("article");
+        expect((meta.openGraph as any).type).toBe("article");
         expect(meta.openGraph!.title).toBe("פרק 5: מאזן בוחן");
     });
 });

@@ -1,0 +1,199 @@
+{
+    "id": "ob-ch2-challenges",
+    "course": "התנהגות ארגונית",
+    "chapterNumber": 2,
+    "totalChapters": 7,
+    "title": "הפרט בארגון: אתגרים והזדמנויות",
+    "pageMap": {
+        "learningObjectives": [
+            "הבנת ארבעת הכוחות המעצבים את הארגון המודרני",
+            "ניתוח הדילמה בין רווחה (Well-being) לבין 'כלוב הזהב'",
+            "לימוד מודל 'הבצל' לניתוח הפרט: ביוגרפיה, אישיות ותפיסה"
+        ],
+        "estimatedTime": "45 דקות"
+    },
+    "introduction": {
+        "hook": "תחשבו על הפעם האחרונה שבדקתם מייל של העבודה ב-23:00 בלילה, או העליתם סטורי מהמשרד. הגבולות נמחקו, והארגון של היום הוא ג'ונגל מסוג חדש.",
+        "whyItMatters": "מי שלא מבין את חוקי המשחק החדשים - גלובליזציה, שחיקה וטשטוש גבולות - ימצא את עצמו מהר מאוד מחוץ למשחק (או סתם שחוק).",
+        "content": "בפרק זה נצא למסע בשני חלקים: תחילה נבין את הזירה ('העולם החדש') ואז נצלול פנימה אל השחקן הראשי - אתם (הפרט). נלמד איך לשרוד בג'ונגל הארגוני ואיך לנתח את האנשים סביבכם."
+    },
+    "topics": [
+        {
+            "id": "modern-jungle",
+            "title": "הג'ונגל המודרני: 4 הכוחות",
+            "blocks": [
+                {
+                    "type": "explanation",
+                    "content": "הארגון של היום הוא לא המפעל של צ'ארלי צ'פלין. הוא דינמי, הוא כאוטי, והוא מונע על ידי ארבעה כוחות מרכזיים שמשנים את כל מה שידענו על עבודה."
+                },
+                {
+                    "type": "deep-dive",
+                    "title": "1. גלובליזציה: העולם שטוח (ולחוץ)",
+                    "sections": [
+                        {
+                            "title": "הזדמנות אינסופית",
+                            "content": "היום אתם יכולים לגור בתל אביב, לעבוד עבור חברה בניו יורק, ולנהל צוות בהודו. השוק שלכם הוא העולם כולו."
+                        },
+                        {
+                            "title": "המחיר הנסתר",
+                            "content": "התחרות היא לא רק מול השכן ממול, אלא מול כל טאלנט בעולם. בנוסף, מנהלים נדרשים ל'אינטליגנציה תרבותית' - להבין שמה שנחשב אסרטיבי בישראל, נחשב גס רוח בקנדה."
+                        }
+                    ]
+                },
+                {
+                    "type": "real-world-example",
+                    "title": "הצוות שלא ישן",
+                    "scenario": "חברת אינטל מנהלת פרויקטים בשיטת 'Follow the Sun': כשהמהנדסים בחיפה הולכים לישון, הצוות בקליפורניה מתחיל לעבוד על אותו קוד בדיוק.",
+                    "connection": "זוהי הגלובליזציה בפעולה: ניצול מקסימלי של הזמן, אבל אתגר ניהולי עצום של סנכרון ותקשורת.",
+                    "source": "Intel"
+                },
+                {
+                    "type": "tone-break",
+                    "opener": "רגע של כנות 📱",
+                    "content": "פתחו את הווטסאפ שלכם. כמה קבוצות עבודה יש שם? האם הבוס יכול לראות מתי נראיתם לאחרונה? זה מוביל אותנו לכוח השני."
+                },
+                {
+                    "type": "explanation",
+                    "content": "**2. המדיה החברתית והעולם השקוף:**\nפעם, מה שקרה במשרד נשאר במשרד. היום? הלקוחות מצייצים תלונות בטוויטר, והעובדים מתייגים את המשרד באינסטגרם. הארגון הפך לבית זכוכית. זה מחייב מנהלים להיות 'שומרי סף' של המוניטין, ועובדים להיות 'שגרירים' של המותג - גם כשהם לא בעבודה."
+                },
+                {
+                    "type": "common-mistake",
+                    "mistake": "לחשוב ש-Well-being (רווחה) זה רק פינוקים",
+                    "correct": "זו אסטרטגיה עסקית קרה",
+                    "why": "ארגונים לא נותנים מסאז'ים כי הם נחמדים. הם עושים את זה כי שחיקה (Burnout) עולה להם מיליארדים באובדן תפוקה ובתחלופת עובדים."
+                },
+                {
+                    "type": "deep-dive",
+                    "title": "3. מלכודת 'כלוב הזהב'",
+                    "sections": [
+                        {
+                            "title": "הפיתוי",
+                            "content": "שכר גבוה, תנאים מפליגים, רכב צמוד, חדר כושר, ארוחות שף. הכל כדי שלא תצטרכו לצאת מהמשרד."
+                        },
+                        {
+                            "title": "המחיר",
+                            "content": "הציפייה לזמינות 24/7. הגבול בין חיים לעבודה נמחק לחלוטין. העובד הופך ל'נכס' של הארגון, ולעיתים מאבד את הזהות שלו מחוץ לעבודה."
+                        }
+                    ]
+                },
+                {
+                    "type": "knowledge-challenge",
+                    "question": "מנהלת ה-HR בחברת סטארטאפ החליטה להקים מכבסה ומספרה בתוך המשרד. איזה אינטרס ארגוני סמוי זה משרת בעיקר?",
+                    "options": [
+                        "שיפור ההיגיינה של העובדים",
+                        "יצירת 'כלוב זהב' המצמצם את הצורך לצאת מהמשרד",
+                        "תמיכה בעסקים מקומיים קטנים",
+                        "עמידה בתקני ISO בינלאומיים"
+                    ],
+                    "correctIndex": 1,
+                    "points": 20,
+                    "reasoning": {
+                        "correct": "בדיוק. ככל שהשירותים במשרד רבים יותר, כך הסיבות לצאת ממנו פוחתות, ושעות העבודה בפועל מתארכות.",
+                        "wrong": {
+                            "0": "זו אולי תוצאת לוואי, אבל לא המטרה העסקית.",
+                            "2": "זה לא קשור לאסטרטגיה פנים-ארגונית.",
+                            "3": "אין תקן שמחייב מספרה במשרד :)"
+                        }
+                    }
+                },
+                {
+                    "type": "callout",
+                    "variant": "warning",
+                    "content": "VISUAL CONCEPT: תמונה של דינוזאור מול חללית. הכוח הרביעי הוא **דרוויניזם ארגוני**: מי שלא מסתגל במהירות (Agility) - נכחד. ארגונים כבדים ובירוקרטיים יוחלפו על ידי ארגונים רזים ומהירים."
+                }
+            ]
+        },
+        {
+            "id": "micro-onion",
+            "title": "רמת המיקרו: לקלף את הבצל",
+            "blocks": [
+                {
+                    "type": "explanation",
+                    "content": "אחרי שהבנו את הסביבה, בואו נתמקד בכם. בהתנהגות ארגונית אנחנו מנתחים את הפרט כמו בצל, מהשכבה החיצונית והגלויה ביותר, פנימה אל הליבה העמוקה."
+                },
+                {
+                    "type": "callout",
+                    "variant": "note",
+                    "content": "VISUAL CONCEPT: תרשים מעגלים (בצל). מעגל חיצוני: מאפיינים ביוגרפיים. מעגל אמצעי: אישיות. מעגל פנימי (ליבה): תפיסה וקבלת החלטות."
+                },
+                {
+                    "type": "deep-dive",
+                    "title": "שתי השכבות הראשונות",
+                    "sections": [
+                        {
+                            "title": "1. המעגל החיצוני: ביוגרפיה",
+                            "content": "גיל, מגדר, ותק, מצב משפחתי. אלו נתונים אובייקטיביים. קל למדוד אותם, אבל יכולת הניבוי שלהם מוגבלת. (האם כל בן 25 הוא אותו דבר? ברור שלא)."
+                        },
+                        {
+                            "title": "2. המעגל האמצעי: אישיות (Personality)",
+                            "content": "כאן זה נהיה מעניין. אלו התכונות היציבות יחסית שאנחנו מביאים איתנו. האם האדם מוחצן (Extrovert)? האם הוא מצפוני? זה ה'מנוע' הפנימי."
+                        }
+                    ]
+                },
+                {
+                    "type": "tone-break",
+                    "opener": "שאלה למחשבה 🤔",
+                    "content": "אם האישיות שלנו יציבה וקשה לשינוי, למה אנחנו בכלל לומדים עליה? כי בתור מנהלים, אנחנו לא מנסים לשנות את האנשים, אלא **להציב אותם במקום שבו האישיות שלהם תהיה יתרון** (למשל: לא לשים אדם ביישן במכירות פרונטליות)."
+                },
+                {
+                    "type": "explanation",
+                    "content": "**3. הליבה: תפיסה (Perception)**\nזו השכבה הקריטית ביותר. תפיסה היא המשקפיים שדרכם אנחנו רואים את העולם. שני עובדים יכולים לראות בדיוק את אותו אירוע (למשל, הבוס לא אמר שלום בבוקר) ולפרש אותו הפוך לגמרי (אחד יחשוב 'הוא כועס עלי', השני יחשוב 'הוא בטח עסוק'). בפרק הבא נצלול לעומק התפיסה."
+                },
+                {
+                    "type": "exam-tip",
+                    "content": "במבחן, היזהרו לא להתבלבל: אם השאלה עוסקת ב'נתונים יבשים' (גיל, השכלה) - זה ביוגרפי. אם היא עוסקת ב'אופי' או 'טמפרמנט' - זו אישיות. אם היא עוסקת ב'פרשנות' או 'שיפוט' - זו תפיסה.",
+                    "importance": "high"
+                },
+                {
+                    "type": "knowledge-challenge",
+                    "question": "יוסי תמיד מגיע בזמן לעבודה כי הוא חושש שהבוס יחשוב שהוא מזלזל. איזו רמה של המודל זה מתאר?",
+                    "options": [
+                        "רמה ביוגרפית (ותק)",
+                        "רמת התפיסה (פרשנות המציאות)",
+                        "רמת הארגון (תרבות)",
+                        "רמת הקבוצה (לחץ חברתי)"
+                    ],
+                    "correctIndex": 1,
+                    "points": 15,
+                    "reasoning": {
+                        "correct": "נכון מאוד! הפחד של יוסי נובע מהפרשנות שלו ('הבוס יחשוב שאני מזלזל'), וזוהי בדיוק ההגדרה של תפיסה.",
+                        "wrong": {
+                            "0": "ההגעה בזמן היא עובדה, אבל המניע הוא פנימי-פרשני.",
+                            "2": "השאלה מתמקדת במניע האישי של יוסי, לא במדיניות הארגון.",
+                            "3": "אין כאן אזכור לקולגות או ללחץ קבוצתי."
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "navigation": {
+        "previous": {
+            "title": "פרק 1: מבוא להתנהגות ארגונית",
+            "href": "/courses/organizational-behavior/chapter-1"
+        },
+        "next": {
+            "title": "פרק 3: תפיסה וקבלת החלטות",
+            "href": "/courses/organizational-behavior/chapter-3"
+        }
+    },
+    "summary": {
+        "keyTakeaways": [
+            "העולם הישן מת. אנחנו בארגון גלובלי, שקוף ומהיר.",
+            "'כלוב הזהב' הוא מלכודת דבש: תנאים מעולים תמורת הזמן והנשמה שלכם.",
+            "הפרט הוא כמו בצל: אי אפשר להבין אותו רק לפי הנתונים היבשים (ביוגרפיה), חייבים להבין את האישיות והתפיסה שלו.",
+            "תפיסה היא המפתח: היא קובעת איך העובד מפרש את המציאות ואיך הוא יגיב אליה."
+        ]
+    },
+    "narrativeSummary": {
+        "content": "אוקיי, נכנסנו לג'ונגל. פרק 2 הוא על 'השחקן הראשי' - אתם. הבנו שהעולם השתנה (גלובליזציה, טשטוש גבולות), אבל האנשים? נשארו אותם אנשים. דיברנו על מודל 'הבצל' - מה שרואים בחוץ (התנהגות) זה רק קצה הקרחון. בפנים יש אישיות, ערכים ורגשות שאסור להתעלם מהם.",
+        "tip": {
+            "title": "טיפ של אלופים",
+            "content": "מודל 5 התכונות הגדולות (Big 5) הוא התנ\"ך של האישיות. מצפוניות (Conscientiousness) היא המנבא הכי חזק להצלחה בעבודה. תזכרו את זה לחיים (ולמבחן)."
+        },
+        "pitfall": {
+            "title": "הבור שכולם נופלים בו",
+            "content": "לחשוב שאפשר לשנות אישיות של עובד. אישיות היא די קבועה. כמנהלים, התפקיד שלכם הוא לא לשנות אנשים, אלא לשבץ אותם בתפקיד שמתאים לאופי שלהם (התאמה בין אדם לארגון)."
+        }
+    }
+}

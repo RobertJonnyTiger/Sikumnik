@@ -1,0 +1,47 @@
+digraph sikumnik_audit {
+    rankdir=TB;
+
+    // Entry
+    "Audit triggered" [shape=doublecircle, style=filled, fillcolor=lightgreen];
+
+    // Phase nodes
+    "Phase 0: Secrets" [shape=box];
+    "Phase 1: Build" [shape=box];
+    "Phase 2: Navigation" [shape=box];
+    "Phase 3: Quiz Logic" [shape=box];
+    "Phase 4: AI Chat" [shape=box];
+    "Phase 5: Hebrew RTL" [shape=box];
+    "Phase 6: Vercel Config" [shape=box];
+    "Phase 7: Tests" [shape=box];
+
+    // Decision nodes
+    "Keys exposed in git?" [shape=diamond];
+    "All phases complete?" [shape=diamond];
+    "Any blockers?" [shape=diamond];
+
+    // Warnings
+    "STOP: Rotate keys. Audit ends." [shape=octagon, style=filled, fillcolor=red, fontcolor=white];
+
+    // Terminals
+    "Write final report" [shape=box];
+    "NOT READY FOR DEPLOYMENT" [shape=doublecircle, style=filled, fillcolor=red, fontcolor=white];
+    "READY FOR DEPLOYMENT" [shape=doublecircle, style=filled, fillcolor=lightgreen];
+
+    // Flow
+    "Audit triggered" -> "Phase 0: Secrets";
+    "Phase 0: Secrets" -> "Keys exposed in git?" [label="check git log"];
+    "Keys exposed in git?" -> "STOP: Rotate keys. Audit ends." [label="yes"];
+    "Keys exposed in git?" -> "Phase 1: Build" [label="no"];
+    "Phase 1: Build" -> "Phase 2: Navigation";
+    "Phase 2: Navigation" -> "Phase 3: Quiz Logic";
+    "Phase 3: Quiz Logic" -> "Phase 4: AI Chat";
+    "Phase 4: AI Chat" -> "Phase 5: Hebrew RTL";
+    "Phase 5: Hebrew RTL" -> "Phase 6: Vercel Config";
+    "Phase 6: Vercel Config" -> "Phase 7: Tests";
+    "Phase 7: Tests" -> "All phases complete?";
+    "All phases complete?" -> "Write final report" [label="yes"];
+    "All phases complete?" -> "Write final report" [label="no — mark ✗"];
+    "Write final report" -> "Any blockers?";
+    "Any blockers?" -> "NOT READY FOR DEPLOYMENT" [label="yes"];
+    "Any blockers?" -> "READY FOR DEPLOYMENT" [label="no"];
+}

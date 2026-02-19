@@ -17,6 +17,18 @@ import { Callout } from "./blocks/Callout";
 import { ChapterImage } from "./blocks/ChapterImage";
 import { CheckpointQuiz } from "./blocks/CheckpointQuiz";
 import { TopicSummary } from "./blocks/TopicSummary";
+import { Hook } from "./blocks/Hook";
+import { KnowledgeChallenge } from "./blocks/KnowledgeChallenge";
+import { RealWorldExample } from "./blocks/RealWorldExample";
+import { ExamTip } from "./blocks/ExamTip";
+import { Prerequisite } from "./blocks/Prerequisite";
+import { List } from "./blocks/List";
+import { MaslowPyramid } from "./blocks/MaslowPyramid";
+import { ExamQuestionBlock as ExamQuestionsComponent } from "./blocks/ExamQuestionBlock";
+import { AttributionFlowchart } from "./interactive/AttributionFlowchart";
+import { DiagnosticCaseStudy } from "./interactive/DiagnosticCaseStudy";
+import { AcademicDefinition } from "./blocks/AcademicDefinition";
+import { SituationalLeadershipGuide } from "./interactive/SituationalLeadershipGuide";
 
 interface BlockRendererProps {
     block: ContentBlock;
@@ -57,8 +69,42 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
                     thinkingDirection={block.thinkingDirection}
                     steps={block.steps}
                     finalAnswer={block.finalAnswer}
+                    phases={block.phases}
                 />
             );
+
+        case "hook":
+            return <Hook opener={block.opener} question={block.question} context={block.context} />;
+
+        case "prerequisite":
+            return <Prerequisite concept={block.concept} briefReview={block.briefReview} whyNeeded={block.whyNeeded} />;
+
+        case "knowledge-challenge":
+            return (
+                <KnowledgeChallenge
+                    question={block.question}
+                    options={block.options}
+                    correctIndex={block.correctIndex}
+                    points={block.points}
+                    reasoning={block.reasoning}
+                />
+            );
+
+        case "real-world-example":
+            return (
+                <RealWorldExample
+                    title={block.title}
+                    scenario={block.scenario}
+                    connection={block.connection}
+                    source={block.source}
+                />
+            );
+
+        case "exam-tip":
+            return <ExamTip content={block.content} importance={block.importance} />;
+
+        case "list":
+            return <List items={block.items} />;
 
         case "interactive":
             if (interactiveRegistry && interactiveRegistry[block.componentId]) {
@@ -72,11 +118,57 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
         case "image":
             return <ChapterImage src={block.src} alt={block.alt} caption={block.caption} />;
 
+        case "maslow-pyramid":
+            return <MaslowPyramid />;
+
         case "checkpoint":
             return <CheckpointQuiz questions={block.questions} />;
 
         case "summary":
             return <TopicSummary content={block.content} keyPoints={block.keyPoints} />;
+
+        case "exam-questions":
+            return (
+                <ExamQuestionsComponent
+                    questions={block.questions}
+                    showAnswersAtEnd={block.showAnswersAtEnd}
+                />
+            );
+
+        case "attribution-flowchart":
+            return (
+                <AttributionFlowchart
+                    mode={block.mode}
+                />
+            );
+
+        case "diagnostic-case-study":
+            return (
+                <DiagnosticCaseStudy
+                    title={block.title}
+                    subtitle={block.subtitle}
+                    scenario={block.scenario}
+                    sections={block.sections}
+                    conclusion={block.conclusion}
+                    keyTakeaways={block.keyTakeaways}
+                />
+            );
+
+
+
+        case "academic-definition":
+            return (
+                <AcademicDefinition
+                    title={block.title}
+                    content={block.content}
+                    source={block.source}
+                    category={block.category}
+                    showIcon={block.showIcon}
+                />
+            );
+
+        case "situational-leadership-guide":
+            return <SituationalLeadershipGuide />;
 
         default:
             return null;

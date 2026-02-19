@@ -22,7 +22,50 @@ export type ContentBlock =
     | CalloutBlock
     | ImageBlock
     | CheckpointBlock
-    | SummaryBlock;
+    | SummaryBlock
+    | HookBlock
+    | KnowledgeChallengeBlock
+    | RealWorldExampleBlock
+    | ExamTipBlock
+    | ListBlock
+    | MaslowPyramidBlock
+    | PrerequisiteBlock
+    | ExamQuestionBlock
+    | AttributionFlowchartBlock
+    | DiagnosticCaseStudyBlock
+    | AcademicDefinitionBlock
+    | SituationalLeadershipGuideBlock;
+
+export interface ListBlock {
+    type: "list";
+    items: string[];
+}
+
+export interface KnowledgeChallengeBlock {
+    type: "knowledge-challenge";
+    question: string;
+    options: string[];
+    correctIndex: number;
+    points: number;
+    reasoning: {
+        correct: string;
+        wrong: Record<string, string>;
+    };
+}
+
+export interface RealWorldExampleBlock {
+    type: "real-world-example";
+    title: string;
+    scenario: string;
+    connection: string;
+    source?: string;
+}
+
+export interface ExamTipBlock {
+    type: "exam-tip";
+    content: string;
+    importance: "high" | "medium";
+}
 
 export interface ExplanationBlock {
     type: "explanation";
@@ -77,6 +120,11 @@ export interface MistakeBlock {
     why: string;
 }
 
+export interface GuidedExercisePhase {
+    type: "i-do" | "we-do" | "you-do";
+    content: string;
+}
+
 export interface GuidedExerciseBlock {
     type: "guided-exercise";
     difficulty: number;
@@ -84,6 +132,7 @@ export interface GuidedExerciseBlock {
     thinkingDirection: string;
     steps: Step[];
     finalAnswer: string;
+    phases?: GuidedExercisePhase[];
 }
 
 export interface InteractiveBlock {
@@ -94,7 +143,7 @@ export interface InteractiveBlock {
 
 export interface CalloutBlock {
     type: "callout";
-    variant: "tip" | "warning" | "note";
+    variant: "tip" | "warning" | "note" | "important";
     content: string;
 }
 
@@ -114,6 +163,88 @@ export interface SummaryBlock {
     type: "summary";
     content: string;
     keyPoints?: string[];
+}
+
+export interface HookBlock {
+    type: "hook";
+    opener: string;
+    question?: string;
+    context?: string;
+}
+
+export interface PrerequisiteBlock {
+    type: "prerequisite";
+    concept: string;
+    briefReview: string;
+    whyNeeded: string;
+}
+
+export interface MaslowPyramidBlock {
+    type: "maslow-pyramid";
+}
+
+export interface ExamQuestion {
+    id: string;
+    number: number;
+    type: "multiple-choice" | "open-ended" | "multiple-select";
+    question: string;
+    points: number;
+    options?: string[];
+    correctIndex?: number; // For single choice
+    correctIndices?: number[]; // For multiple select
+    modelAnswer?: string; // For open ended
+    gradingCriteria?: string[]; // For open ended
+}
+
+export interface ExamQuestionBlock {
+    type: "exam-questions";
+    questions: ExamQuestion[];
+    showAnswersAtEnd?: boolean;
+}
+
+export interface AttributionFlowchartBlock {
+    type: "attribution-flowchart";
+    mode?: "reference" | "quiz";
+}
+
+export interface DiagnosticCaseStudyBlock {
+    type: "diagnostic-case-study";
+    title: string;
+    subtitle: string;
+    scenario: string;
+    sections: Array<{
+        id: string;
+        title: string;
+        icon?: string;
+        theory: string;
+        analysis: string;
+        evidence: string[];
+        questions: Array<{
+            question: string;
+            options: string[];
+            correctIndex: number;
+            explanation: string;
+            feedback?: {
+                correct: string;
+                wrong: Record<number, string>;
+            };
+        }>;
+    }>;
+    conclusion: string;
+    keyTakeaways: string[];
+}
+
+export interface AcademicDefinitionBlock {
+    type: "academic-definition";
+    title?: string;
+    content: string;
+    source?: string;
+    category?: string;
+    showIcon?: boolean;
+}
+
+export interface SituationalLeadershipGuideBlock {
+    type: "situational-leadership-guide";
 }
 
 // ── Supporting Types ──────────────────────────────────────
@@ -169,8 +300,8 @@ export interface ChapterData {
 
     // Navigation
     navigation?: {
-        previous?: { id: string; title: string };
-        next?: { id: string; title: string };
+        previous?: { href: string; title: string };
+        next?: { href: string; title: string };
     };
 
     // Chapter-level preamble
@@ -201,5 +332,10 @@ export interface ChapterData {
         nextChapterTitle: string;
         content: string;
         nextChapter: string;
+    };
+    narrativeSummary?: {
+        content: string;
+        tip: { title: string; content: string };
+        pitfall: { title: string; content: string };
     };
 }

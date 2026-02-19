@@ -1,0 +1,87 @@
+[
+    {
+        "type": "interactive",
+        "componentId": "arcade-speed-sorter",
+        "config": {
+            "title": "Supply Shift Blitz",
+            "timerSeconds": 30,
+            "categories": [
+                {
+                    "id": "left",
+                    "label": "Shift Left (Decrease)",
+                    "color": "red"
+                },
+                {
+                    "id": "right",
+                    "label": "Shift Right (Increase)",
+                    "color": "green"
+                }
+            ],
+            "items": [
+                {
+                    "text": "Bad weather",
+                    "categoryId": "left"
+                },
+                {
+                    "text": "Higher costs",
+                    "categoryId": "left"
+                },
+                {
+                    "text": "Taxes",
+                    "categoryId": "left"
+                },
+                {
+                    "text": "Good weather",
+                    "categoryId": "right"
+                },
+                {
+                    "text": "Lower costs",
+                    "categoryId": "right"
+                },
+                {
+                    "text": "Subsidies",
+                    "categoryId": "right"
+                }
+            ]
+        }
+    },
+    {
+        "type": "interactive",
+        "componentId": "arcade-flashcard-blitz",
+        "config": {
+            "pairs": [
+                {
+                    "term": "Supply Curve",
+                    "definition": "A graph showing the relationship between price and quantity supplied."
+                },
+                {
+                    "term": "Equilibrium",
+                    "definition": "The point where supply equals demand."
+                }
+            ]
+        }
+    },
+    {
+        "type": "interactive",
+        "componentId": "arcade-prediction-market",
+        "config": {
+            "scenario": "The price of coffee beans rises.",
+            "question": "What happens to the Supply Curve?",
+            "options": [
+                {
+                    "id": "A",
+                    "text": "Shifts Left",
+                    "isCorrect": true,
+                    "payoutMultiplier": 2
+                },
+                {
+                    "id": "B",
+                    "text": "Shifts Right",
+                    "isCorrect": false,
+                    "payoutMultiplier": 0
+                }
+            ],
+            "initialCoins": 100
+        }
+    }
+]

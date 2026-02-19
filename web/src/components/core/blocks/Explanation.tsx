@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 interface ExplanationProps {
     content: string;
@@ -15,8 +17,8 @@ export const Explanation: React.FC<ExplanationProps> = ({ content, highlight }) 
                     <p className="text-primary font-bold text-sm">{highlight}</p>
                 </div>
             )}
-            <div className="text-lg text-foreground/85 leading-[1.9] whitespace-pre-line">
-                {content}
+            <div className="text-lg text-foreground/85 leading-[1.9] whitespace-pre-line markdown-content">
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
             </div>
         </div>
     );
