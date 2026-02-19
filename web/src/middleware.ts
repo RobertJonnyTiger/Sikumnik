@@ -11,8 +11,9 @@ export function middleware(request: NextRequest) {
         '/courses/statistics'
     ];
 
-    // Check if current path starts with any locked path
-    const isLocked = lockedPaths.some(path => pathname.startsWith(path));
+    // Check if current path is a sub-path of a locked course (e.g. specific chapter)
+    // We strictly check for the path followed by a slash to only lock children
+    const isLocked = lockedPaths.some(path => pathname.startsWith(`${path}/`));
 
     // Allow next.js internals, api, static files
     if (pathname.startsWith('/_next') || pathname.startsWith('/api') || pathname.startsWith('/static')) {
