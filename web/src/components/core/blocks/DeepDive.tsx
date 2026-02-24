@@ -15,7 +15,7 @@ export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections }) => {
     const accentColors = ["#DC2626", "#D97706", "#059669", "#2563EB", "#7C3AED"];
 
     return (
-        <div className="bg-[#0b0f1a] border border-[#1e293b] rounded-2xl overflow-hidden my-6" dir="rtl">
+        <div className="bg-background border border-secondary rounded-2xl overflow-hidden my-6" dir="rtl">
             <div className="p-6 pb-4">
                 <div className="flex items-center gap-3">
                     <div className="border-r-4 border-orange-500 pr-3">
@@ -38,7 +38,7 @@ export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections }) => {
                     return (
                         <div
                             key={idx}
-                            className={`border rounded-2xl overflow-hidden transition-all duration-300 ${isOpen ? 'border-orange-500/40 bg-[#16213e]/40 shadow-xl' : 'border-[#1e293b] bg-[#16213e]/20 hover:bg-[#16213e]/30'
+                            className={`border rounded-2xl overflow-hidden transition-all duration-300 ${isOpen ? 'border-orange-500/40 bg-secondary/40 shadow-xl' : 'border-secondary bg-secondary/20 hover:bg-secondary/30'
                                 }`}
                         >
                             <button
@@ -79,7 +79,7 @@ export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections }) => {
                             {isOpen && (
                                 <div className="px-5 pb-6 pt-2 border-t border-white/5 animate-in slide-in-from-top-2 duration-300">
                                     <div className="pr-14">
-                                        <div className="text-base leading-relaxed text-[#cbd5e1] markdown-content">
+                                        <div className="text-base leading-relaxed text-slate-300 markdown-content">
                                             <ReactMarkdown rehypePlugins={[rehypeRaw]}>{section.content}</ReactMarkdown>
                                         </div>
 
@@ -93,7 +93,7 @@ export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections }) => {
                                                     {examples.map((ex, i) => (
                                                         <span
                                                             key={i}
-                                                            className="px-3 py-1.5 rounded-lg text-sm font-medium bg-white/5 border border-white/10 text-[#cbd5e1] hover:bg-white/10 transition-colors"
+                                                            className="px-3 py-1.5 rounded-lg text-sm font-medium bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-colors"
                                                         >
                                                             {ex}
                                                         </span>

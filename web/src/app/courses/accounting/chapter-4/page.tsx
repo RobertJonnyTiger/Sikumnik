@@ -2,7 +2,7 @@
 
 import { ChapterTemplate } from "@/components/core/ChapterTemplate";
 import type { ChapterData } from "@/types/chapter";
-import chapterData from "@/data/chapters/accounting/chapter-4.json";
+import chapterData from "@/data/accounting/chapters/chapter-4.json";
 
 export default function Chapter4Page() {
   // Type assertion needed because JSON imports infer wide types

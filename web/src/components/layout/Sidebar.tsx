@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
     ChevronDown,
@@ -58,7 +58,7 @@ const navigationData: Degree[] = [
                         id: "foundations",
                         title: "יסודות החשבונאות",
                         items: [
-                            { title: "פרק 0: מבוא ומושגי יסוד", href: "/courses/accounting/chapter-0" },
+                            { title: "פרק 1: מבוא ומושגי יסוד", href: "/courses/accounting/chapter-0" },
                             { title: "פרק 2: עריכת מאזן", href: "/courses/accounting/chapter-2" },
                         ]
                     },
@@ -116,6 +116,14 @@ const navigationData: Degree[] = [
                             { title: "פרק 3: גורמי ייצור ויתרון יחסי", href: "/courses/microeconomics/chapter-3" },
                             { title: "פרק 4: צמיחה ומענקים", href: "/courses/microeconomics/chapter-4" },
                             { title: "פרק 5: מסחר בינלאומי א'", href: "/courses/microeconomics/chapter-5" },
+                            { title: "פרק 8: הביקוש", href: "/courses/microeconomics/chapter-8" },
+                        ]
+                    },
+                    {
+                        id: "assessment",
+                        title: "הערכה וסימולציה",
+                        items: [
+                            { title: "סימולציית מבחן א׳", href: "/courses/microeconomics/exam" },
                         ]
                     }
                 ]
@@ -169,6 +177,7 @@ const navigationData: Degree[] = [
 
 export function Sidebar({ className }: { className?: string }) {
     const pathname = usePathname();
+    const router = useRouter();
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [expandedCourses, setExpandedCourses] = useState<string[]>([]);
     const [expandedTopics, setExpandedTopics] = useState<string[]>([]);
@@ -218,11 +227,13 @@ export function Sidebar({ className }: { className?: string }) {
         });
     };
 
-    const toggleCourse = (courseId: string) => {
+    const toggleCourse = (course: Course) => {
         if (isCollapsed) setIsCollapsed(false);
+        const courseId = course.courseId;
         setExpandedCourses(prev =>
             prev.includes(courseId) ? prev.filter(id => id !== courseId) : [...prev, courseId]
         );
+        router.push(course.href);
     };
 
     const toggleTopic = (topicId: string) => {
@@ -322,7 +333,7 @@ export function Sidebar({ className }: { className?: string }) {
                                             <div key={course.courseId} className="space-y-1">
                                                 {/* Course Header */}
                                                 <button
-                                                    onClick={() => toggleCourse(course.courseId)}
+                                                    onClick={() => toggleCourse(course)}
                                                     className={cn(
                                                         "w-full flex items-center gap-3 p-2 rounded-xl transition-all group relative overflow-hidden",
                                                         isActive ? "bg-primary/5 text-primary" : "text-foreground/70 hover:bg-muted/50 hover:text-foreground",

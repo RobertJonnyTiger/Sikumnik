@@ -38,9 +38,9 @@ export const ConceptAccordion: React.FC<ConceptAccordionProps> = ({ sectionTitle
                         <div
                             key={concept.id}
                             className={`group transition-all duration-500 rounded-2xl border ${isActive
-                                ? `bg-[#0a0f1d] border-slate-700/50 shadow-2xl ${theme.glow}`
-                                : 'bg-[#0f172a]/40 border-slate-800/50 hover:border-slate-700/80'
-                                }`}
+                                ? `bg-background border-slate-700/50 shadow-2xl ${theme.glow}`
+                                : 'bg-popover/40 border-slate-800/50 hover:border-slate-700/80'
+                            }`}
                         >
                             {/* Header / Trigger */}
                             <button

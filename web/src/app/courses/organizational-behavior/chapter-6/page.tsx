@@ -2,7 +2,7 @@
 
 import { ChapterTemplate } from "@/components/core/ChapterTemplate";
 import type { ChapterData } from "@/types/chapter";
-import chapterData from "@/data/chapters/organizational-behavior/chapter-6.json";
+import chapterData from "@/data/organizational-behavior/chapters/chapter-6.json";
 
 export default function Chapter6Page() {
   const data = chapterData as unknown as ChapterData;

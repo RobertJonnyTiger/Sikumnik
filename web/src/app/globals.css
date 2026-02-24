@@ -1,45 +1,45 @@
 @import "tailwindcss";
 
 @theme {
-  /* Core Semantic Tokens - Approved "Calm Dark" */
-  --color-background: #020617;
+  /* Core Semantic Tokens - Approved "Calm Dark" - OKLCH */
+  --color-background: oklch(0.01 0.02 260);
   /* Slate-950 */
-  --color-foreground: #f8fafc;
+  --color-foreground: oklch(0.985 0.01 240);
   /* Slate-50 */
-  --color-text-secondary: #e2e8f0;
+  --color-text-secondary: oklch(0.92 0.02 240);
   /* Slate-200 */
 
-  --color-primary: #2dd4bf;
+  --color-primary: oklch(0.7 0.2 170);
   /* Teal-400 */
-  --color-primary-foreground: #042f2e;
+  --color-primary-foreground: oklch(0.02 0.03 170);
   /* Teal-950 for contrast */
 
-  --color-secondary: #1e293b;
+  --color-secondary: oklch(0.15 0.05 240);
   /* Slate-800 */
-  --color-accent: #fb923c;
+  --color-accent: oklch(0.75 0.15 40);
   /* Orange-400 */
-  --color-success: #22c55e;
-  --color-error: #ef4444;
+  --color-success: oklch(0.72 0.15 150);
+  --color-error: oklch(0.65 0.2 25);
 
   /* Surfaces */
-  --color-card: #0f172a;
+  --color-card: oklch(0.08 0.03 260);
   /* Slate-900 */
-  --color-glass: rgba(15, 23, 42, 0.6);
-  --color-border: #1e293b;
+  --color-glass: oklch(0.08 0.03 260 / 0.6);
+  --color-border: oklch(0.15 0.05 240);
   /* Slate-800 */
-  --color-input: #1e293b;
-  --color-ring: #2dd4bf;
+  --color-input: oklch(0.15 0.05 240);
+  --color-ring: oklch(0.7 0.2 170);
 
   /* UI Tokens */
-  --color-muted: #1e293b;
-  --color-muted-foreground: #94a3b8;
-  --color-popover: #0f172a;
-  --color-popover-foreground: #f8fafc;
-  --color-destructive: #ef4444;
-  --color-destructive-foreground: #f8fafc;
-  --color-secondary-foreground: #f8fafc;
-  --color-accent-foreground: #0f172a;
-  --color-card-foreground: #f8fafc;
+  --color-muted: oklch(0.15 0.05 240);
+  --color-muted-foreground: oklch(0.7 0.03 250);
+  --color-popover: oklch(0.08 0.03 260);
+  --color-popover-foreground: oklch(0.985 0.01 240);
+  --color-destructive: oklch(0.65 0.2 25);
+  --color-destructive-foreground: oklch(0.985 0.01 240);
+  --color-secondary-foreground: oklch(0.985 0.01 240);
+  --color-accent-foreground: oklch(0.08 0.03 260);
+  --color-card-foreground: oklch(0.985 0.01 240);
 
   /* Fonts */
   --font-sans: var(--font-assistant);
@@ -140,7 +140,7 @@
 }
 
 .knowledge-text {
-  background: linear-gradient(135deg, #fff 0%, #93c5fd 100%);
+  background: linear-gradient(135deg, oklch(1 0 0) 0%, oklch(0.85 0.08 240) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -150,17 +150,17 @@
 html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: #3b82f6 #0f172a;
+  scrollbar-color: oklch(0.7 0.15 240) oklch(0.08 0.03 260);
 }
 
 ::selection {
-  background: rgba(59, 130, 246, 0.3);
-  color: #fbbf24;
+  background: oklch(0.7 0.15 240 / 0.3);
+  color: oklch(0.85 0.15 45);
 }
 
 /* Better table styles */
 .temple-table-header {
-  @apply font-black text-xs md:text-sm uppercase tracking-[0.2em] text-[#93c5fd] border-b border-white/10;
+  @apply font-black text-xs md:text-sm uppercase tracking-[0.2em] text-sky-300 border-b border-white/10;
 }
 
 .temple-table-row {

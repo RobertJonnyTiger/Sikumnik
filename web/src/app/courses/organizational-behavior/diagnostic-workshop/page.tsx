@@ -2,7 +2,7 @@
 
 import { ChapterTemplate } from "@/components/core/ChapterTemplate";
 import type { ChapterData } from "@/types/chapter";
-import chapterData from "@/data/chapters/organizational-behavior/diagnostic-workshop.json";
+import chapterData from "@/data/organizational-behavior/chapters/diagnostic-workshop.json";
 
 export default function DiagnosticWorkshopPage() {
     const data = chapterData as unknown as ChapterData;

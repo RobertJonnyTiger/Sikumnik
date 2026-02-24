@@ -152,13 +152,13 @@ const DidYouKnow: React.FC<DidYouKnowProps> = ({ facts: staticFacts, topicData, 
                             y: { repeat: hasBeenSeen ? Infinity : 0, duration: 2, repeatDelay: 1 }
                         }}
                         onClick={toggleOpen}
-                        className="group flex items-center gap-3 px-6 py-3 rounded-full bg-[#1e293b] border border-[#2dd4bf]/30 shadow-[0_0_15px_rgba(45,212,191,0.15)] hover:shadow-[0_0_25px_rgba(45,212,191,0.3)] hover:border-[#2dd4bf]/50 transition-all duration-300"
+                        className="group flex items-center gap-3 px-6 py-3 rounded-full bg-secondary border border-primary/30 shadow-[0_0_15px_rgba(45,212,191,0.15)] hover:shadow-[0_0_25px_rgba(45,212,191,0.3)] hover:border-primary/50 transition-all duration-300"
                     >
                         <span className="relative flex h-3 w-3">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2dd4bf] opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#2dd4bf]"></span>
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
                         </span>
-                        <span className="text-[#f8fafc] font-bold text-sm">גילית משהו חדש?</span>
+                        <span className="text-foreground font-bold text-sm">גילית משהו חדש?</span>
                         <Lightbulb className="w-5 h-5 text-accent" />
                     </motion.button>
                 ) : (
@@ -167,7 +167,7 @@ const DidYouKnow: React.FC<DidYouKnowProps> = ({ facts: staticFacts, topicData, 
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
-                        className="relative w-full max-w-2xl bg-[#0f172a]/90 backdrop-blur-xl border border-[#1e293b] rounded-2xl overflow-hidden shadow-2xl"
+                        className="relative w-full max-w-2xl bg-popover/90 backdrop-blur-xl border border-secondary rounded-2xl overflow-hidden shadow-2xl"
                     >
                         {/* Glow effects */}
                         <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent pointer-events-none" />
@@ -186,15 +186,15 @@ const DidYouKnow: React.FC<DidYouKnowProps> = ({ facts: staticFacts, topicData, 
                                 {/* Header */}
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-3">
-                                        <div className="p-2.5 rounded-xl bg-[#1e293b] border border-[#2dd4bf]/20 shadow-[0_0_15px_rgba(45,212,191,0.1)]">
+                                        <div className="p-2.5 rounded-xl bg-secondary border border-primary/20 shadow-[0_0_15px_rgba(45,212,191,0.1)]">
                                             {isLoading ? (
-                                                <RefreshCw className="w-5 h-5 text-[#2dd4bf] animate-spin" />
+                                                <RefreshCw className="w-5 h-5 text-primary animate-spin" />
                                             ) : (
-                                                <IconComponent className="w-5 h-5 text-[#2dd4bf]" />
+                                                <IconComponent className="w-5 h-5 text-primary" />
                                             )}
                                         </div>
                                         <div className="flex flex-col">
-                                            <span className="text-[10px] font-black uppercase tracking-widest text-[#2dd4bf]">הידעת?</span>
+                                            <span className="text-[10px] font-black uppercase tracking-widest text-primary">הידעת?</span>
                                             <span className="text-xs text-slate-400">לחץ כדי לגלות עוד</span>
                                         </div>
                                     </div>
@@ -213,7 +213,7 @@ const DidYouKnow: React.FC<DidYouKnowProps> = ({ facts: staticFacts, topicData, 
                                     ) : error ? (
                                         <p className="text-red-400">{error}</p>
                                     ) : currentFact ? (
-                                        <p className="text-lg md:text-xl text-[#f8fafc] leading-relaxed font-medium">
+                                        <p className="text-lg md:text-xl text-foreground leading-relaxed font-medium">
                                             <span className="text-accent font-bold ml-2">{currentFact.category}:</span>
                                             {currentFact.fact}
                                         </p>

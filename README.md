@@ -1,6 +1,6 @@
 # Sikumnik סיכומניק
 
-Hebrew education platform for university-level economics and accounting.
+Hebrew education platform for university-level economics, accounting, and organizational behavior.
 
 ## Quick Start
 
@@ -9,51 +9,56 @@ cd web
 npm run dev
 ```
 
-Visit `http://localhost:3000`
+Visit `http://localhost:3001`
 
 ## Tech Stack
 
-- **Framework:** Next.js 15 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS + Framer Motion
+- **Framework:** Next.js 16.1.6 (App Router)
+- **Language:** TypeScript (strict mode)
+- **Styling:** Tailwind CSS v4 + Framer Motion
+- **UI Primitives:** Radix UI
 - **Math:** KaTeX for LaTeX rendering
 - **Icons:** Lucide React
+- **Testing:** Vitest
 
 ## Project Structure
 
 ```
 web/src/
-├── app/                    # Next.js routes
+├── app/                    # Next.js App Router
 │   └── courses/
-│       ├── accounting/     # 12 chapters
-│       └── microeconomics/ # 5 chapters
+│       ├── accounting/      # 13 chapters
+│       ├── microeconomics/  # 6 chapters
+│       └── organizational-behavior/ # 7 chapters
 ├── components/
-│   └── core/
-│       ├── blocks/         # 13 content block components
-│       │   ├── DefinitionCard.tsx
-│       │   ├── Explanation.tsx
-│       │   ├── DeepDive.tsx
-│       │   └── ...
-│       └── interactive/    # Domain-specific components
-│           └── accounting/
+│   ├── core/
+│   │   ├── blocks/          # 25+ content block components
+│   │   │   ├── DefinitionCard.tsx
+│   │   │   ├── Explanation.tsx
+│   │   │   ├── FormulaCard.tsx
+│   │   │   └── ...
+│   │   └── interactive/      # Domain-specific components
+│   │       ├── accounting/
+│   │       ├── microeconomics/
+│   │       └── organizational-behavior/
+│   ├── ui/                  # Reusable UI primitives
+│   └── layout/              # Layout components
 ├── data/
-│   └── chapters/
-│       ├── accounting/    # JSON chapter data
-│       └── microeconomics/
+│   └── [course]/chapters/   # JSON chapter data
 └── types/
-    └── chapter.ts         # ChapterData schema
+    └── chapter.ts           # ChapterData schema
 ```
 
 ## Adding a New Chapter
 
-1. **Create data file:** `data/chapters/[course]/chapter-N.json`
-2. **Use schema:** See `types/chapter.ts` for the ChapterData interface
-3. **Create page:** `app/courses/[course]/chapter-N/page.tsx`
+1. **Create data file:** `web/src/data/[course]/chapters/chapter-N.json`
+2. **Use schema:** See `web/src/types/chapter.ts` for the ChapterData interface
+3. **Create page:** `web/src/app/courses/[course]/chapter-N/page.tsx`
 
 ```tsx
 import { ChapterTemplate } from "@/components/core/ChapterTemplate";
 import type { ChapterData } from "@/types/chapter";
-import chapterData from "@/data/chapters/[course]/chapter-N.json";
+import chapterData from "@/data/[course]/chapters/chapter-N.json";
 
 export default function ChapterNPage() {
   const data = chapterData as unknown as ChapterData;
@@ -93,20 +98,35 @@ Each chapter JSON follows this structure:
 |------|---------|
 | `explanation` | Core content |
 | `definition` | Formal definitions with tooltips |
+| `academic-definition` | Academic-style definitions |
 | `formula` | Mathematical formulas |
 | `analogy` | Real-world analogies |
 | `tone-break` | Casual "street smart" explanations |
 | `deep-dive` | Extended analysis |
 | `example` | Worked examples |
+| `real-world-example` | Practical examples |
 | `common-mistake` | Error warnings |
+| `mistake-card` | Mistake explanations |
 | `checkpoint` | Quiz questions |
+| `knowledge-challenge` | Interactive challenges |
 | `guided-exercise` | Step-by-step exercises |
 | `callout` | Info/warning boxes |
+| `did-you-know` | Fun facts |
+| `exam-tip` | Exam preparation tips |
+| `exam-question` | Sample exam questions |
+| `hook` | Attention-grabbing openings |
+| `prerequisite` | Prerequisites |
+| `chapter-image` | Images with captions |
+| `list` | Styled lists |
+| `maslow-pyramid` | Maslow hierarchy visualization |
+| `narrative-summary` | Story-style summaries |
+| `topic-summary` | Topic recaps |
+| `topic-navigation` | In-topic navigation |
 
 ## Development
 
 ```bash
-# Development
+# Development (runs on port 3001)
 npm run dev
 
 # Build
@@ -114,6 +134,10 @@ npm run build
 
 # Lint
 npm run lint
+
+# Test
+npm run test         # Run all tests
+npm run test:watch   # Watch mode
 ```
 
 ## Architecture

@@ -133,7 +133,7 @@ export default function Home() {
               להמשיך ללמוד
             </h2>
             <Link href={continueLearning.href}>
-              <div className="group relative overflow-hidden rounded-3xl bg-linear-to-br from-[#0f172a] to-[#1e293b] border border-white/10 shadow-xl transition-all hover:shadow-2xl hover:scale-[1.01]">
+              <div className="group relative overflow-hidden rounded-3xl bg-linear-to-br from-background to-secondary border border-white/10 shadow-xl transition-all hover:shadow-2xl hover:scale-[1.01]">
 
                 {/* Background Glow */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/30 transition-colors" />
