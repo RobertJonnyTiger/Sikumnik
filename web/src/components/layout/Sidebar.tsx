@@ -34,7 +34,6 @@ interface Course {
     title: string;
     courseId: string;
     href: string;
-    locked?: boolean;
     topics?: Topic[];
 }
 
@@ -54,7 +53,6 @@ const navigationData: Degree[] = [
                 title: "חשבונאות א'",
                 courseId: "accounting-a",
                 href: "/courses/accounting",
-                locked: true,
                 topics: [
                     {
                         id: "foundations",
@@ -107,7 +105,7 @@ const navigationData: Degree[] = [
                 ]
             },
             {
-                title: "מיקרו כלכלה", courseId: "micro", href: "/courses/microeconomics", locked: true,
+                title: "מיקרו כלכלה", courseId: "micro", href: "/courses/microeconomics",
                 topics: [
                     {
                         id: "foundations",
@@ -122,7 +120,7 @@ const navigationData: Degree[] = [
                     }
                 ]
             },
-            { title: "סטטיסטיקה א'", courseId: "stat-a", href: "/courses/statistics", locked: true },
+            { title: "סטטיסטיקה א'", courseId: "stat-a", href: "/courses/statistics" },
             {
                 title: "התנהגות ארגונית",
                 courseId: "organizational-behavior",
@@ -324,12 +322,10 @@ export function Sidebar({ className }: { className?: string }) {
                                             <div key={course.courseId} className="space-y-1">
                                                 {/* Course Header */}
                                                 <button
-                                                    onClick={() => !course.locked && toggleCourse(course.courseId)}
-                                                    disabled={course.locked}
+                                                    onClick={() => toggleCourse(course.courseId)}
                                                     className={cn(
                                                         "w-full flex items-center gap-3 p-2 rounded-xl transition-all group relative overflow-hidden",
                                                         isActive ? "bg-primary/5 text-primary" : "text-foreground/70 hover:bg-muted/50 hover:text-foreground",
-                                                        course.locked && "opacity-50 cursor-not-allowed",
                                                         isCollapsed && "justify-center p-3"
                                                     )}
                                                 >
@@ -343,16 +339,14 @@ export function Sidebar({ className }: { className?: string }) {
                                                     {!isCollapsed && (
                                                         <>
                                                             <span className="flex-1 text-sm font-bold truncate text-right">{course.title}</span>
-                                                            {!course.locked && (
-                                                                <ChevronDown className={cn("w-4 h-4 text-muted-foreground transition-transform duration-300", isExpanded ? "rotate-180" : "")} />
-                                                            )}
+                                                            <ChevronDown className={cn("w-4 h-4 text-muted-foreground transition-transform duration-300", isExpanded ? "rotate-180" : "")} />
                                                         </>
                                                     )}
                                                 </button>
 
                                                 {/* Topics & Chapters (Accordion) */}
                                                 <AnimatePresence>
-                                                    {isExpanded && !isCollapsed && !course.locked && (
+                                                    {isExpanded && !isCollapsed && (
                                                         <motion.div
                                                             initial={{ height: 0, opacity: 0 }}
                                                             animate={{ height: "auto", opacity: 1 }}

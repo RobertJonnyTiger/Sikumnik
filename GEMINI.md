@@ -62,7 +62,7 @@ Before performing any action (Coding, Design, Planning), the Agent MUST self-ass
     - *Frontend* -> `frontend-specialist`
     - *Planning* -> `project-planner`
     - *Product* -> `product-manager`
-2. **Read Profile**: Read the identifying `.md` file of that Agent within `.agent/agents/`.
+2. **Read Profile**: Read the identifying `.md` file of that Agent within `.agents/agents/`.
 3. **Announce**: Declare identity at the beginning of the response using the specified header format.
 4. **Load Skills**: Load the Skills listed in the Agent's `skills:` section.
 
@@ -96,10 +96,19 @@ Default to **Solo-Ninja** unless explicitly told otherwise. The `📚 Why:` teac
 
 | Skill | Description |
 |-------|-------------|
+| `accessibility-compliance` | Implement WCAG 2.2 compliant interfaces with mobile accessibility and inclusive design. |
+| `brainstorming` | Explore user intent, requirements, and design before implementation. Mandatory before creative work. |
 | `find-skills` | Discover and install agent skills from the open ecosystem. |
+| `framer-motion` | Expert guidelines for building performant animations with Framer Motion/Motion library in React applications. |
+| `framer-motion-animator` | Create smooth animations, micro-interactions, and orchestrated sequences with Framer Motion. |
 | `frontend-design` | Create distinctive, production-grade frontend interfaces with high design quality. |
 | `next-best-practices` | Apply Next.js file conventions, RSC boundaries, and data patterns. |
-| `tailwind-design-system` | Build scalable design systems with Tailwind CSS v4 and responsive patterns. |
+| `nextjs-app-router-fundamentals` | Master Next.js App Router (13+) layouts, routing, metadata, and migration patterns. |
+| `nextjs-app-router-patterns` | Master Next.js 14+ App Router with Server Components, streaming, parallel routes, and advanced data fetching. |
+| `radix-ui-design-system` | Build accessible design systems with Radix UI primitives and headless component patterns. |
+| `skill-creator` | Guide for creating effective skills with specialized knowledge and workflows. |
+| `systematic-debugging` | Root cause investigation before proposing fixes for bugs or unexpected behavior. |
+| `tailwindcss-fundamentals-v4` | Tailwind CSS v4 fundamentals covering installation and CSS-first configuration. |
 | `ui-ux-pro-max` | Comprehensive UI/UX design intelligence (styles, palettes, font pairings). |
 | `vercel-react-best-practices` | React and Next.js performance optimization guidelines from Vercel Engineering. |
 | `web-design-guidelines` | Review UI code for Web Interface Guidelines compliance. |
