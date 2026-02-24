@@ -1,6 +1,16 @@
 {
   "version": 1,
   "skills": {
+    "accessibility-compliance": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "computedHash": "7de1a397be6c8c89ff7113ffd663acd566844ede75261073b714fe3ac12ab219"
+    },
+    "brainstorming": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "computedHash": "5cafa1558b0b6bd4d4c71f23d5567b7fcbbcdb4b0a50b0c5f69a80a3cebaf9b8"
+    },
     "find-skills": {
       "source": "vercel-labs/skills",
       "sourceType": "github",
@@ -15,6 +25,21 @@
       "source": "vercel-labs/next-skills",
       "sourceType": "github",
       "computedHash": "c31ddd68ba5798a79a516c619b1e1fc4408cc4876ad600fefa4f5add4425719d"
+    },
+    "shadcn-ui": {
+      "source": "giuseppe-trisciuoglio/developer-kit",
+      "sourceType": "github",
+      "computedHash": "b418209ba816e012ac72e71a8256350a9676d1b31102112e4b174c91026033f8"
+    },
+    "skill-creator": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "1a2f4694384cb90d19d75354975dfb654d5c4ad230041667cb4b5b898474d7df"
+    },
+    "systematic-debugging": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "computedHash": "72e9ab72627e4fd8ed26a582e82309a98ecdc4f6e1c99418430ac05682c9e91d"
     },
     "tailwind-design-system": {
       "source": "wshobson/agents",
@@ -40,6 +65,11 @@
       "source": "vercel-labs/agent-skills",
       "sourceType": "github",
       "computedHash": "d8e7d3afe37dcc8a97b99ffb5afdb4d0919ae0092ea8b68f44eb201f035e33ac"
+    },
+    "webapp-testing": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "5a6a18c0137cfbabec058e86fc1c8f6919d846a7b2a34ee978cc8ced866ee2e5"
     }
   }
 }
