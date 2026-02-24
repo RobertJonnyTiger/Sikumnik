@@ -1,8 +1,0 @@
-{
-  "general": {
-    "enablePromptCompletion": true
-  },
-  "experimental": {
-    "plan": true
-  }
-}

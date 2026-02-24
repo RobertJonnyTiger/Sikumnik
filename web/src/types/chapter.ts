@@ -29,7 +29,12 @@ export type ContentBlock =
     | ExamTipBlock
     | ListBlock
     | MaslowPyramidBlock
-    | PrerequisiteBlock;
+    | PrerequisiteBlock
+    | ExamQuestionBlock
+    | AttributionFlowchartBlock
+    | DiagnosticCaseStudyBlock
+    | AcademicDefinitionBlock
+    | SituationalLeadershipGuideBlock;
 
 export interface ListBlock {
     type: "list";
@@ -178,6 +183,70 @@ export interface MaslowPyramidBlock {
     type: "maslow-pyramid";
 }
 
+export interface ExamQuestion {
+    id: string;
+    number: number;
+    type: "multiple-choice" | "open-ended" | "multiple-select";
+    question: string;
+    points: number;
+    options?: string[];
+    correctIndex?: number; // For single choice
+    correctIndices?: number[]; // For multiple select
+    modelAnswer?: string; // For open ended
+    gradingCriteria?: string[]; // For open ended
+}
+
+export interface ExamQuestionBlock {
+    type: "exam-questions";
+    questions: ExamQuestion[];
+    showAnswersAtEnd?: boolean;
+}
+
+export interface AttributionFlowchartBlock {
+    type: "attribution-flowchart";
+    mode?: "reference" | "quiz";
+}
+
+export interface DiagnosticCaseStudyBlock {
+    type: "diagnostic-case-study";
+    title: string;
+    subtitle: string;
+    scenario: string;
+    sections: Array<{
+        id: string;
+        title: string;
+        icon?: string;
+        theory: string;
+        analysis: string;
+        evidence: string[];
+        questions: Array<{
+            question: string;
+            options: string[];
+            correctIndex: number;
+            explanation: string;
+            feedback?: {
+                correct: string;
+                wrong: Record<number, string>;
+            };
+        }>;
+    }>;
+    conclusion: string;
+    keyTakeaways: string[];
+}
+
+export interface AcademicDefinitionBlock {
+    type: "academic-definition";
+    title?: string;
+    content: string;
+    source?: string;
+    category?: string;
+    showIcon?: boolean;
+}
+
+export interface SituationalLeadershipGuideBlock {
+    type: "situational-leadership-guide";
+}
+
 // ── Supporting Types ──────────────────────────────────────
 
 export interface QuizQuestion {
@@ -231,8 +300,8 @@ export interface ChapterData {
 
     // Navigation
     navigation?: {
-        previous?: { id: string; title: string };
-        next?: { id: string; title: string };
+        previous?: { href: string; title: string };
+        next?: { href: string; title: string };
     };
 
     // Chapter-level preamble
@@ -263,5 +332,10 @@ export interface ChapterData {
         nextChapterTitle: string;
         content: string;
         nextChapter: string;
+    };
+    narrativeSummary?: {
+        content: string;
+        tip: { title: string; content: string };
+        pitfall: { title: string; content: string };
     };
 }

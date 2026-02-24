@@ -14,10 +14,12 @@ export function AiLecturer({ context }: AiLecturerProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [input, setInput] = useState("");
 
-    // Restoration of working sendMessage API
-    const { messages, sendMessage, status } = useChat({
+    const { messages, sendMessage, status, error } = useChat({
         body: { context },
-    } as any); // Use any to bypass version-specific typing conflicts if necessary, though it was working before
+        onError: (err: any) => {
+            console.error("AI Chat Error:", err);
+        }
+    } as any);
 
     const isLoading = status === "submitted" || status === "streaming";
 
@@ -70,6 +72,11 @@ export function AiLecturer({ context }: AiLecturerProps) {
                                 <X size={18} />
                             </button>
                         </div>
+                        {error && (
+                            <div className="bg-red-500/10 border-b border-red-500/20 p-2 text-xs text-red-400 text-center">
+                                שגיאה: {error.message || "משהו השתבש, נסה שוב."}
+                            </div>
+                        )}
 
                         {/* Messages */}
                         <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-muted/30">
@@ -158,7 +165,7 @@ export function AiLecturer({ context }: AiLecturerProps) {
             </AnimatePresence>
 
             {/* Toggle Button Container */}
-            <div className="fixed bottom-6 left-6 z-50 flex flex-col items-center gap-2">
+            <div className="fixed bottom-24 left-6 z-50 flex flex-col items-center gap-2">
                 {!isOpen && (
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}

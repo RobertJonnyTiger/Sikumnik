@@ -24,6 +24,11 @@ import { ExamTip } from "./blocks/ExamTip";
 import { Prerequisite } from "./blocks/Prerequisite";
 import { List } from "./blocks/List";
 import { MaslowPyramid } from "./blocks/MaslowPyramid";
+import { ExamQuestionBlock as ExamQuestionsComponent } from "./blocks/ExamQuestionBlock";
+import { AttributionFlowchart } from "./interactive/AttributionFlowchart";
+import { DiagnosticCaseStudy } from "./interactive/DiagnosticCaseStudy";
+import { AcademicDefinition } from "./blocks/AcademicDefinition";
+import { SituationalLeadershipGuide } from "./interactive/SituationalLeadershipGuide";
 
 interface BlockRendererProps {
     block: ContentBlock;
@@ -121,6 +126,49 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
 
         case "summary":
             return <TopicSummary content={block.content} keyPoints={block.keyPoints} />;
+
+        case "exam-questions":
+            return (
+                <ExamQuestionsComponent
+                    questions={block.questions}
+                    showAnswersAtEnd={block.showAnswersAtEnd}
+                />
+            );
+
+        case "attribution-flowchart":
+            return (
+                <AttributionFlowchart
+                    mode={block.mode}
+                />
+            );
+
+        case "diagnostic-case-study":
+            return (
+                <DiagnosticCaseStudy
+                    title={block.title}
+                    subtitle={block.subtitle}
+                    scenario={block.scenario}
+                    sections={block.sections}
+                    conclusion={block.conclusion}
+                    keyTakeaways={block.keyTakeaways}
+                />
+            );
+
+
+
+        case "academic-definition":
+            return (
+                <AcademicDefinition
+                    title={block.title}
+                    content={block.content}
+                    source={block.source}
+                    category={block.category}
+                    showIcon={block.showIcon}
+                />
+            );
+
+        case "situational-leadership-guide":
+            return <SituationalLeadershipGuide />;
 
         default:
             return null;

@@ -58,6 +58,8 @@ Before performing any action (Coding, Design, Planning), the Agent MUST self-ass
 3.  **Announce**: Declare identity at the beginning of the response. Example: `🤖 Applying knowledge of @frontend-specialist...`
 4.  **Load Skills**: Load the Skills listed in the Agent's `skills:` section.
 
+S
+
 ## ⚡ Skill Invocation Protocol
 
 Skills are invoked as follows:

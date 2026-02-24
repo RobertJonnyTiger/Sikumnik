@@ -1,14 +1,20 @@
-import { useState, useEffect } from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
     ChevronDown,
-    Book,
+    ChevronLeft,
     GraduationCap,
     LayoutDashboard,
-    Lock,
-    Sparkles
+    Settings,
+    Calendar,
+    BookOpen,
+    Sparkles,
+    LogOut,
+    Menu
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -34,7 +40,7 @@ interface Course {
 
 interface Degree {
     title: string;
-    icon: any;
+    icon: React.ElementType;
     items: Course[];
 }
 
@@ -48,6 +54,7 @@ const navigationData: Degree[] = [
                 title: "חשבונאות א'",
                 courseId: "accounting-a",
                 href: "/courses/accounting",
+                locked: true,
                 topics: [
                     {
                         id: "foundations",
@@ -100,7 +107,7 @@ const navigationData: Degree[] = [
                 ]
             },
             {
-                title: "מיקרו כלכלה", courseId: "micro", href: "/courses/microeconomics",
+                title: "מיקרו כלכלה", courseId: "micro", href: "/courses/microeconomics", locked: true,
                 topics: [
                     {
                         id: "foundations",
@@ -123,26 +130,37 @@ const navigationData: Degree[] = [
                 topics: [
                     {
                         id: "ob-foundations",
-                        title: "יסודות",
+                        title: "יסודות (הפרט)",
                         items: [
-                            { title: "פרק 1: מבוא להתנהגות ארגונית", href: "/courses/organizational-behavior/chapter-1" },
-                            { title: "פרק 2: תפיסה וקבלת החלטות", href: "/courses/organizational-behavior/chapter-2" },
-                            { title: "פרק 3: מוטיבציה", href: "/courses/organizational-behavior/chapter-3" },
+                            { title: "פרק 1: מבוא והתנהגות ארגונית", href: "/courses/organizational-behavior/chapter-1" },
+                            { title: "פרק 2: הפרט בארגון", href: "/courses/organizational-behavior/chapter-2" },
+                            { title: "פרק 3: תפיסה וקבלת החלטות", href: "/courses/organizational-behavior/chapter-3" },
+                            { title: "פרק 4: מוטיבציה", href: "/courses/organizational-behavior/chapter-4" },
                         ]
                     },
                     {
                         id: "ob-groups",
                         title: "התנהגות קבוצתית",
                         items: [
-                            { title: "פרק 4: התנהגות קבוצתית", href: "/courses/organizational-behavior/chapter-4" },
+                            { title: "פרק 5: התנהגות קבוצתית", href: "/courses/organizational-behavior/chapter-5" },
                         ]
                     },
                     {
                         id: "ob-leadership",
-                        title: "מנהיגות",
+                        title: "מנהיגות וסיכום",
                         items: [
-                            { title: "פרק 5: מנהיגות", href: "/courses/organizational-behavior/chapter-5" },
-                            { title: "פרק 6: תרגול וסיכום", href: "/courses/organizational-behavior/chapter-6" },
+                            { title: "פרק 6: מנהיגות", href: "/courses/organizational-behavior/chapter-6" },
+                            { title: "כלי עזר: מנהיגות מצבית", href: "/courses/organizational-behavior/situational-leadership" },
+                            { title: "פרק 7: תרגול וסיכום", href: "/courses/organizational-behavior/chapter-7" },
+                        ]
+                    },
+                    {
+                        id: "ob-exam-prep",
+                        title: "הכנה למבחן",
+                        items: [
+                            { title: "מבחן סימולציה", href: "/courses/organizational-behavior/exam-simulation" },
+                            { title: "סדנת אבחון מקרים", href: "/courses/organizational-behavior/diagnostic-workshop" },
+                            { title: "סיום וסטטיסטיקות", href: "/courses/organizational-behavior/summary" },
                         ]
                     }
                 ]
@@ -154,245 +172,307 @@ const navigationData: Degree[] = [
 export function Sidebar({ className }: { className?: string }) {
     const pathname = usePathname();
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const [expandedCourses, setExpandedCourses] = useState<string[]>([]);
     const [expandedTopics, setExpandedTopics] = useState<string[]>([]);
+    const [isMobileOpen, setIsMobileOpen] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
 
-    // Initial load from localStorage
+    // Initial load
     useEffect(() => {
-        const savedCollapsed = localStorage.getItem("sikumnik_global_sidebar_collapsed");
+        const savedCollapsed = localStorage.getItem("sikumnik_sidebar_collapsed");
+        const savedCourses = localStorage.getItem("sikumnik_expanded_courses");
         const savedTopics = localStorage.getItem("sikumnik_expanded_topics");
 
-        if (savedCollapsed !== null) {
-            setIsCollapsed(savedCollapsed === "true");
-        }
-        if (savedTopics) {
-            try {
-                setExpandedTopics(JSON.parse(savedTopics));
-            } catch (e) {
-                console.error("Failed to parse expanded topics", e);
-            }
-        }
+        if (savedCollapsed) setIsCollapsed(savedCollapsed === "true");
+        if (savedCourses) setExpandedCourses(safeJSONParse(savedCourses));
+        if (savedTopics) setExpandedTopics(safeJSONParse(savedTopics));
 
-        // Auto-expand topic containing current chapter
+        // Auto-expand active path
+        expandActivePath();
+        setIsLoaded(true);
+    }, [pathname]);
+
+    // Persist state
+    useEffect(() => {
+        if (!isLoaded) return;
+        localStorage.setItem("sikumnik_sidebar_collapsed", String(isCollapsed));
+        localStorage.setItem("sikumnik_expanded_courses", JSON.stringify(expandedCourses));
+        localStorage.setItem("sikumnik_expanded_topics", JSON.stringify(expandedTopics));
+    }, [isCollapsed, expandedCourses, expandedTopics, isLoaded]);
+
+    const safeJSONParse = (str: string) => {
+        try { return JSON.parse(str); } catch { return []; }
+    };
+
+    const expandActivePath = () => {
         navigationData.forEach(degree => {
             degree.items.forEach(course => {
+                // Check if course contains current path
+                if (pathname.startsWith(course.href)) {
+                    setExpandedCourses(prev => Array.from(new Set([...prev, course.courseId])));
+                }
                 course.topics?.forEach(topic => {
                     if (topic.items.some(item => item.href === pathname)) {
-                        setExpandedTopics(prev => prev.includes(topic.id) ? prev : [...prev, topic.id]);
+                        setExpandedTopics(prev => Array.from(new Set([...prev, topic.id])));
                     }
                 });
             });
         });
+    };
 
-        setIsLoaded(true);
-    }, [pathname]);
-
-    // Save to localStorage
-    useEffect(() => {
-        if (!isLoaded) return;
-        localStorage.setItem("sikumnik_global_sidebar_collapsed", String(isCollapsed));
-        localStorage.setItem("sikumnik_expanded_topics", JSON.stringify(expandedTopics));
-    }, [isCollapsed, expandedTopics, isLoaded]);
-
-    const toggleCollapse = () => setIsCollapsed(!isCollapsed);
-
-    const toggleTopic = (topicId: string) => {
-        setExpandedTopics(prev =>
-            prev.includes(topicId)
-                ? prev.filter(id => id !== topicId)
-                : [...prev, topicId]
+    const toggleCourse = (courseId: string) => {
+        if (isCollapsed) setIsCollapsed(false);
+        setExpandedCourses(prev =>
+            prev.includes(courseId) ? prev.filter(id => id !== courseId) : [...prev, courseId]
         );
     };
 
+    const toggleTopic = (topicId: string) => {
+        setExpandedTopics(prev =>
+            prev.includes(topicId) ? prev.filter(id => id !== topicId) : [...prev, topicId]
+        );
+    };
+
+    const toggleSidebar = () => setIsCollapsed(!isCollapsed);
+
     return (
-        <aside
-            className={cn(
-                "bg-[#050b18]/95 backdrop-blur-xl border-l border-white/5 flex flex-col h-screen sticky top-0 overflow-y-auto transition-all duration-300 ease-in-out shrink-0 z-50 shadow-2xl",
-                isCollapsed ? "w-20" : "w-80",
-                className
-            )}
-        >
-            {/* Toggle Button - Premium Floating */}
+        <>
+            {/* Mobile Trigger */}
             <button
-                onClick={toggleCollapse}
-                className="absolute -left-3 top-24 z-60 w-6 h-6 bg-primary rounded-full border border-white/10 hidden md:flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform cursor-pointer"
+                onClick={() => setIsMobileOpen(true)}
+                className="fixed top-4 right-4 z-50 p-2 bg-background/80 backdrop-blur-md rounded-full border border-border shadow-sm md:hidden"
             >
-                <ChevronDown className={cn("w-4 h-4 transition-transform duration-300", isCollapsed ? "rotate-90" : "-rotate-90")} />
+                <Menu className="w-5 h-5" />
             </button>
 
-            {/* Brand / Logo */}
-            <div className={cn("p-8 border-b border-white/5 bg-linear-to-b from-primary/2 to-transparent", isCollapsed && "px-4")}>
-                <Link href="/" className="flex items-center gap-4 group">
-                    <div className="w-12 h-12 shrink-0 rounded-2xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform duration-300">
-                        <GraduationCap className="w-6 h-6 text-white" />
-                    </div>
-                    {!isCollapsed && (
-                        <div className="animate-in fade-in slide-in-from-right-2 duration-300">
-                            <span className="font-black text-2xl text-foreground tracking-tight block leading-none mb-1">סיכומניק</span>
-                            <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">PLATFORM V3</span>
+            {/* Sidebar Container */}
+            <aside
+                className={cn(
+                    "fixed inset-y-0 right-0 z-40 flex flex-col bg-background/95 backdrop-blur-xl border-l border-border transition-all duration-300 ease-in-out shadow-2xl md:relative md:translate-x-0",
+                    isCollapsed ? "w-20" : "w-80",
+                    !isMobileOpen && "translate-x-full md:translate-x-0",
+                    className
+                )}
+            >
+                {/* Header */}
+                <div className={cn("flex items-center gap-3 p-6 h-20 border-b border-border/50", isCollapsed && "justify-center p-0")}>
+                    <Link href="/" className="flex items-center gap-3 group">
+                        <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20 shrink-0 group-hover:scale-105 transition-transform">
+                            <GraduationCap className="w-5 h-5 text-primary-foreground" />
                         </div>
-                    )}
-                </Link>
-            </div>
-
-            {/* Navigation Tree */}
-            <nav className={cn("flex-1 p-6 space-y-10 mt-6", isCollapsed && "p-3")}>
-
-                {/* Dashboard Link */}
-                <div className={cn("px-2", isCollapsed && "px-0")}>
-                    <Link
-                        href="/"
-                        title={isCollapsed ? "לוח בקרה" : ""}
-                        className={cn(
-                            "flex items-center gap-4 px-6 py-4 rounded-2xl text-base font-black transition-all group relative overflow-hidden",
-                            pathname === "/"
-                                ? "text-primary bg-primary/5 border border-primary/10 shadow-sm"
-                                : "text-foreground/50 hover:text-primary hover:bg-primary/5",
-                            isCollapsed && "px-0 justify-center h-12 w-12 mx-auto"
+                        {!isCollapsed && (
+                            <div className="flex flex-col animate-in fade-in slide-in-from-right-4">
+                                <span className="text-xl font-black tracking-tight leading-none">סיכומניק</span>
+                                <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-none mt-1">LMS Platform</span>
+                            </div>
                         )}
-                    >
-                        {pathname === "/" && !isCollapsed && <div className="absolute inset-y-0 right-0 w-1.5 bg-primary rounded-l-full" />}
-                        <LayoutDashboard className={cn("w-6 h-6 shrink-0", pathname === "/" ? "text-primary" : "text-foreground/30")} />
-                        {!isCollapsed && <span className="animate-in fade-in duration-300">לוח בקרה</span>}
                     </Link>
                 </div>
 
-                {/* Degrees */}
-                {navigationData.map((degree, i) => (
-                    <div key={i} className="space-y-6">
+                {/* Toggle Button (Desktop) */}
+                <button
+                    onClick={toggleSidebar}
+                    className="absolute -left-3 top-24 w-6 h-6 bg-card border border-border rounded-full items-center justify-center text-muted-foreground hover:text-primary hover:scale-110 transition-all shadow-sm hidden md:flex z-50"
+                >
+                    <ChevronLeft className={cn("w-3 h-3 transition-transform", isCollapsed ? "rotate-180" : "")} />
+                </button>
+
+                {/* Scrollable Content */}
+                <div className="flex-1 overflow-y-auto py-6 space-y-8 scrollbar-hide">
+
+                    {/* Main Navigation */}
+                    <nav className="px-4 space-y-1">
+                        <NavItem
+                            href="/"
+                            icon={LayoutDashboard}
+                            label="לוח בקרה"
+                            isCollapsed={isCollapsed}
+                            isActive={pathname === "/"}
+                        />
+                        <NavItem
+                            href="/schedule"
+                            icon={Calendar}
+                            label="מערכת שעות"
+                            isCollapsed={isCollapsed}
+                            isActive={pathname === "/schedule"}
+                        />
+                        <NavItem
+                            href="/library"
+                            icon={BookOpen}
+                            label="ספריית ידע"
+                            isCollapsed={isCollapsed}
+                            isActive={pathname === "/library"}
+                        />
+                    </nav>
+
+                    {/* Courses Section */}
+                    <div className="px-4">
                         {!isCollapsed && (
-                            <h3 className="flex items-center gap-2 px-6 text-[11px] font-black text-foreground/30 uppercase tracking-[0.3em] mb-4 animate-in fade-in">
-                                {degree.title}
+                            <h3 className="text-[10px] font-black text-muted-foreground uppercase tracking-widest px-2 mb-4">
+                                הקורסים שלי
                             </h3>
                         )}
 
                         <div className="space-y-4">
-                            {degree.items.map((course, j) => (
-                                <div key={j} className="space-y-2 group/course">
-                                    {/* Course Header */}
-                                    <div
-                                        title={isCollapsed ? course.title : ""}
-                                        className={cn(
-                                            "flex items-center justify-between px-6 py-4 rounded-2xl text-sm font-bold transition-all relative overflow-hidden",
-                                            course.locked ? "opacity-30 cursor-not-allowed" : "cursor-pointer hover:bg-primary/5 text-foreground/70 hover:text-primary",
-                                            isCollapsed && "px-0 justify-center h-12 w-12 mx-auto"
-                                        )}>
-                                        <div className="flex items-center gap-4">
-                                            <div className={cn("w-2.5 h-2.5 shrink-0 rounded-full", course.locked ? "bg-foreground/20" : "bg-primary shadow-sm shadow-primary/40")} />
-                                            {!isCollapsed && <span className="font-black tracking-tight text-base animate-in fade-in">{course.title}</span>}
-                                        </div>
-                                    </div>
+                            {navigationData.map((degree) => (
+                                <div key={degree.title} className="space-y-2">
+                                    {degree.items.map(course => {
+                                        const isExpanded = expandedCourses.includes(course.courseId);
+                                        const isActive = pathname.startsWith(course.href);
 
-                                    {/* Topics Accordion */}
-                                    {!course.locked && course.topics && !isCollapsed && (
-                                        <div className="mr-4 space-y-2 animate-in fade-in slide-in-from-top-1">
-                                            {course.topics.map((topic) => {
-                                                const isExpanded = expandedTopics.includes(topic.id);
-                                                const hasActiveChapter = topic.items.some(chapter => chapter.href === pathname);
+                                        return (
+                                            <div key={course.courseId} className="space-y-1">
+                                                {/* Course Header */}
+                                                <button
+                                                    onClick={() => !course.locked && toggleCourse(course.courseId)}
+                                                    disabled={course.locked}
+                                                    className={cn(
+                                                        "w-full flex items-center gap-3 p-2 rounded-xl transition-all group relative overflow-hidden",
+                                                        isActive ? "bg-primary/5 text-primary" : "text-foreground/70 hover:bg-muted/50 hover:text-foreground",
+                                                        course.locked && "opacity-50 cursor-not-allowed",
+                                                        isCollapsed && "justify-center p-3"
+                                                    )}
+                                                >
+                                                    <div className={cn(
+                                                        "w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors",
+                                                        isActive ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground group-hover:bg-primary/5 group-hover:text-primary"
+                                                    )}>
+                                                        <GraduationCap className="w-4 h-4" />
+                                                    </div>
 
-                                                return (
-                                                    <div key={topic.id} className="space-y-1">
-                                                        <button
-                                                            onClick={() => toggleTopic(topic.id)}
-                                                            className={cn(
-                                                                "w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm transition-all group/topic",
-                                                                hasActiveChapter ? "text-primary font-bold bg-primary/5" : "text-foreground/60 hover:text-foreground hover:bg-white/5"
+                                                    {!isCollapsed && (
+                                                        <>
+                                                            <span className="flex-1 text-sm font-bold truncate text-right">{course.title}</span>
+                                                            {!course.locked && (
+                                                                <ChevronDown className={cn("w-4 h-4 text-muted-foreground transition-transform duration-300", isExpanded ? "rotate-180" : "")} />
                                                             )}
-                                                        >
-                                                            <div className="flex items-center gap-3">
-                                                                <ChevronDown className={cn("w-4 h-4 transition-transform duration-300", isExpanded ? "rotate-0" : "-rotate-90")} />
-                                                                <span className="truncate">{topic.title}</span>
-                                                            </div>
-                                                        </button>
+                                                        </>
+                                                    )}
+                                                </button>
 
-                                                        <AnimatePresence initial={false}>
-                                                            {isExpanded && (
-                                                                <motion.div
-                                                                    initial={{ height: 0, opacity: 0 }}
-                                                                    animate={{ height: "auto", opacity: 1 }}
-                                                                    exit={{ height: 0, opacity: 0 }}
-                                                                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                                                                    className="overflow-hidden mr-4 pr-4 border-r border-white/5 space-y-1"
-                                                                >
-                                                                    {topic.items.map((chapter, k) => {
-                                                                        const isActive = pathname === chapter.href;
-                                                                        return (
-                                                                            <Link
-                                                                                key={k}
-                                                                                href={chapter.href}
+                                                {/* Topics & Chapters (Accordion) */}
+                                                <AnimatePresence>
+                                                    {isExpanded && !isCollapsed && !course.locked && (
+                                                        <motion.div
+                                                            initial={{ height: 0, opacity: 0 }}
+                                                            animate={{ height: "auto", opacity: 1 }}
+                                                            exit={{ height: 0, opacity: 0 }}
+                                                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                                                            className="overflow-hidden"
+                                                        >
+                                                            <div className="pr-11 pl-2 space-y-4 pt-2 pb-4">
+                                                                {course.topics?.map(topic => {
+                                                                    const isTopicExpanded = expandedTopics.includes(topic.id);
+                                                                    const hasActiveItem = topic.items.some(i => i.href === pathname);
+
+                                                                    return (
+                                                                        <div key={topic.id} className="space-y-1">
+                                                                            <button
+                                                                                onClick={() => toggleTopic(topic.id)}
                                                                                 className={cn(
-                                                                                    "block px-4 py-2 text-xs rounded-lg transition-all relative group/item",
-                                                                                    isActive
-                                                                                        ? "text-accent bg-accent/10 font-black"
-                                                                                        : "text-foreground/40 hover:text-primary hover:bg-primary/5"
+                                                                                    "w-full flex items-center justify-between text-xs font-semibold py-1 hover:text-primary transition-colors",
+                                                                                    hasActiveItem ? "text-primary" : "text-muted-foreground"
                                                                                 )}
                                                                             >
-                                                                                <div className="flex items-center gap-2">
-                                                                                    <div className={cn("w-1.5 h-1.5 rounded-full shrink-0", isActive ? "bg-accent shadow-[0_0_8px_rgba(var(--accent-rgb),0.5)]" : "bg-white/10 group-hover/item:bg-primary/40")} />
-                                                                                    <span className="truncate">{chapter.title}</span>
-                                                                                </div>
-                                                                            </Link>
-                                                                        );
-                                                                    })}
-                                                                </motion.div>
-                                                            )}
-                                                        </AnimatePresence>
-                                                    </div>
-                                                );
-                                            })}
-                                        </div>
-                                    )}
+                                                                                <span>{topic.title}</span>
+                                                                                <ChevronDown className={cn("w-3 h-3 transition-transform", isTopicExpanded ? "rotate-180" : "")} />
+                                                                            </button>
+
+                                                                            <AnimatePresence>
+                                                                                {isTopicExpanded && (
+                                                                                    <motion.div
+                                                                                        initial={{ height: 0 }}
+                                                                                        animate={{ height: "auto" }}
+                                                                                        exit={{ height: 0 }}
+                                                                                        className="overflow-hidden border-r border-border/50 mr-1 pr-3 space-y-1"
+                                                                                    >
+                                                                                        {topic.items.map(chapter => (
+                                                                                            <Link
+                                                                                                key={chapter.href}
+                                                                                                href={chapter.href}
+                                                                                                className={cn(
+                                                                                                    "block text-[11px] py-1.5 transition-colors line-clamp-1",
+                                                                                                    pathname === chapter.href
+                                                                                                        ? "text-primary font-bold"
+                                                                                                        : "text-muted-foreground hover:text-foreground"
+                                                                                                )}
+                                                                                            >
+                                                                                                {chapter.title}
+                                                                                            </Link>
+                                                                                        ))}
+                                                                                    </motion.div>
+                                                                                )}
+                                                                            </AnimatePresence>
+                                                                        </div>
+                                                                    );
+                                                                })}
+                                                            </div>
+                                                        </motion.div>
+                                                    )}
+                                                </AnimatePresence>
+                                            </div>
+                                        );
+                                    })}
                                 </div>
                             ))}
                         </div>
                     </div>
-                ))}
-            </nav>
 
-            {/* Progress (Optional/Contextual) */}
-            {!isCollapsed && pathname.includes("/courses/accounting") && (
-                <div className="px-8 py-6 border-t border-white/5 bg-primary/1">
-                    <div className="flex justify-between mb-2 text-[10px] font-black text-primary/40 uppercase tracking-widest">
-                        <span>התקדמות בקורס</span>
-                        <span>45%</span>
-                    </div>
-                    <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                        <div className="h-full bg-primary w-[45%] transition-all duration-500 shadow-[0_0_10px_rgba(var(--primary-rgb),0.5)]" />
-                    </div>
                 </div>
-            )}
 
-            {/* AI Assistant Indicator */}
-            {!isCollapsed && (
-                <div className="px-8 pb-6">
-                    <div className="p-6 rounded-3xl bg-linear-to-br from-primary/5 to-accent/5 border border-white/5 relative overflow-hidden group/ai shadow-sm">
-                        <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-2xl opacity-0 group-hover/ai:opacity-100 transition-opacity" />
-                        <div className="flex items-center gap-4 relative z-10">
-                            <Sparkles className="w-5 h-5 text-primary" />
-                            <span className="text-[10px] font-black text-primary/60 uppercase tracking-[0.3em]">AI ASSISTANT READY</span>
-                        </div>
-                    </div>
-                </div>
-            )}
-
-            {/* User Profile */}
-            <div className={cn("p-8 border-t border-white/5 bg-primary/2", isCollapsed && "px-4")}>
-                <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 shrink-0 rounded-2xl bg-linear-to-tr from-primary to-accent p-[2px] shadow-sm">
-                        <div className="w-full h-full rounded-2xl bg-card flex items-center justify-center overflow-hidden">
-                            <div className="w-full h-full bg-primary/10 flex items-center justify-center text-sm font-black text-primary uppercase italic">
-                                S
+                {/* Footer / User */}
+                <div className={cn("p-4 border-t border-border/50 bg-background/50", isCollapsed && "flex justify-center")}>
+                    <div className={cn("flex items-center gap-3", isCollapsed ? "justify-center" : "")}>
+                        <div className="w-10 h-10 rounded-full bg-linear-to-tr from-primary to-accent p-[2px]">
+                            <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
+                                <span className="font-black text-xs text-primary">S</span>
                             </div>
                         </div>
+                        {!isCollapsed && (
+                            <div className="flex-1 overflow-hidden">
+                                <p className="text-sm font-bold truncate">סטודנט עייף</p>
+                                <button className="text-[10px] text-muted-foreground hover:text-destructive transition-colors flex items-center gap-1">
+                                    <LogOut className="w-3 h-3" />
+                                    התנתק
+                                </button>
+                            </div>
+                        )}
                     </div>
-                    {!isCollapsed && (
-                        <div className="flex-1 min-w-0 animate-in fade-in duration-300">
-                            <p className="text-base font-black text-foreground truncate tracking-tight">סטודנט עייף</p>
-                            <p className="text-[10px] font-black text-foreground/40 uppercase tracking-widest truncate mt-0.5">שנה א׳ • ניהול</p>
-                        </div>
-                    )}
                 </div>
-            </div>
-        </aside>
+            </aside>
+
+            {/* Mobile Backdrop */}
+            {isMobileOpen && (
+                <div
+                    className="fixed inset-0 bg-black/60 backdrop-blur-sm z-30 md:hidden"
+                    onClick={() => setIsMobileOpen(false)}
+                />
+            )}
+        </>
+    );
+}
+
+interface NavItemProps {
+    href: string;
+    icon: React.ElementType;
+    label: string;
+    isCollapsed: boolean;
+    isActive: boolean;
+}
+
+function NavItem({ href, icon: Icon, label, isCollapsed, isActive }: NavItemProps) {
+    return (
+        <Link
+            href={href}
+            title={isCollapsed ? label : ""}
+            className={cn(
+                "flex items-center gap-3 p-3 rounded-xl transition-all group",
+                isActive ? "bg-primary text-primary-foreground shadow-md shadow-primary/25" : "text-muted-foreground hover:bg-muted/50 hover:text-foreground",
+                isCollapsed && "justify-center"
+            )}
+        >
+            <Icon className={cn("w-5 h-5 shrink-0", isActive ? "text-primary-foreground" : "text-current")} />
+            {!isCollapsed && <span className="font-bold text-sm">{label}</span>}
+        </Link>
     );
 }
