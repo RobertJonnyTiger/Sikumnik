@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
     ChevronDown,
@@ -34,7 +34,6 @@ interface Course {
     title: string;
     courseId: string;
     href: string;
-    locked?: boolean;
     topics?: Topic[];
 }
 
@@ -54,13 +53,12 @@ const navigationData: Degree[] = [
                 title: "חשבונאות א'",
                 courseId: "accounting-a",
                 href: "/courses/accounting",
-                locked: true,
                 topics: [
                     {
                         id: "foundations",
                         title: "יסודות החשבונאות",
                         items: [
-                            { title: "פרק 0: מבוא ומושגי יסוד", href: "/courses/accounting/chapter-0" },
+                            { title: "פרק 1: מבוא ומושגי יסוד", href: "/courses/accounting/chapter-0" },
                             { title: "פרק 2: עריכת מאזן", href: "/courses/accounting/chapter-2" },
                         ]
                     },
@@ -107,7 +105,7 @@ const navigationData: Degree[] = [
                 ]
             },
             {
-                title: "מיקרו כלכלה", courseId: "micro", href: "/courses/microeconomics", locked: true,
+                title: "מיקרו כלכלה", courseId: "micro", href: "/courses/microeconomics",
                 topics: [
                     {
                         id: "foundations",
@@ -118,11 +116,19 @@ const navigationData: Degree[] = [
                             { title: "פרק 3: גורמי ייצור ויתרון יחסי", href: "/courses/microeconomics/chapter-3" },
                             { title: "פרק 4: צמיחה ומענקים", href: "/courses/microeconomics/chapter-4" },
                             { title: "פרק 5: מסחר בינלאומי א'", href: "/courses/microeconomics/chapter-5" },
+                            { title: "פרק 8: הביקוש", href: "/courses/microeconomics/chapter-8" },
+                        ]
+                    },
+                    {
+                        id: "assessment",
+                        title: "הערכה וסימולציה",
+                        items: [
+                            { title: "סימולציית מבחן א׳", href: "/courses/microeconomics/exam" },
                         ]
                     }
                 ]
             },
-            { title: "סטטיסטיקה א'", courseId: "stat-a", href: "/courses/statistics", locked: true },
+            { title: "סטטיסטיקה א'", courseId: "stat-a", href: "/courses/statistics" },
             {
                 title: "התנהגות ארגונית",
                 courseId: "organizational-behavior",
@@ -171,6 +177,7 @@ const navigationData: Degree[] = [
 
 export function Sidebar({ className }: { className?: string }) {
     const pathname = usePathname();
+    const router = useRouter();
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [expandedCourses, setExpandedCourses] = useState<string[]>([]);
     const [expandedTopics, setExpandedTopics] = useState<string[]>([]);
@@ -220,11 +227,13 @@ export function Sidebar({ className }: { className?: string }) {
         });
     };
 
-    const toggleCourse = (courseId: string) => {
+    const toggleCourse = (course: Course) => {
         if (isCollapsed) setIsCollapsed(false);
+        const courseId = course.courseId;
         setExpandedCourses(prev =>
             prev.includes(courseId) ? prev.filter(id => id !== courseId) : [...prev, courseId]
         );
+        router.push(course.href);
     };
 
     const toggleTopic = (topicId: string) => {
@@ -324,12 +333,10 @@ export function Sidebar({ className }: { className?: string }) {
                                             <div key={course.courseId} className="space-y-1">
                                                 {/* Course Header */}
                                                 <button
-                                                    onClick={() => !course.locked && toggleCourse(course.courseId)}
-                                                    disabled={course.locked}
+                                                    onClick={() => toggleCourse(course)}
                                                     className={cn(
                                                         "w-full flex items-center gap-3 p-2 rounded-xl transition-all group relative overflow-hidden",
                                                         isActive ? "bg-primary/5 text-primary" : "text-foreground/70 hover:bg-muted/50 hover:text-foreground",
-                                                        course.locked && "opacity-50 cursor-not-allowed",
                                                         isCollapsed && "justify-center p-3"
                                                     )}
                                                 >
@@ -343,16 +350,14 @@ export function Sidebar({ className }: { className?: string }) {
                                                     {!isCollapsed && (
                                                         <>
                                                             <span className="flex-1 text-sm font-bold truncate text-right">{course.title}</span>
-                                                            {!course.locked && (
-                                                                <ChevronDown className={cn("w-4 h-4 text-muted-foreground transition-transform duration-300", isExpanded ? "rotate-180" : "")} />
-                                                            )}
+                                                            <ChevronDown className={cn("w-4 h-4 text-muted-foreground transition-transform duration-300", isExpanded ? "rotate-180" : "")} />
                                                         </>
                                                     )}
                                                 </button>
 
                                                 {/* Topics & Chapters (Accordion) */}
                                                 <AnimatePresence>
-                                                    {isExpanded && !isCollapsed && !course.locked && (
+                                                    {isExpanded && !isCollapsed && (
                                                         <motion.div
                                                             initial={{ height: 0, opacity: 0 }}
                                                             animate={{ height: "auto", opacity: 1 }}

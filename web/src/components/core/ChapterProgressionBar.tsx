@@ -39,7 +39,7 @@ export const ChapterProgressionBar: React.FC<ChapterProgressionBarProps> = ({
             <motion.div
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="flex items-center gap-2 p-2 bg-[#0f172a]/80 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl shadow-black/50"
+                className="flex items-center gap-2 p-2 bg-popover/80 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl shadow-black/50"
             >
                 <TooltipProvider delayDuration={0}>
                     {/* Intro Step */}
