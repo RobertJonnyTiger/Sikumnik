@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import { Trophy, CheckCircle2, XCircle, RefreshCcw } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import "katex/dist/katex.min.css";
 
 export interface ExamQuestionData {
     id: string;
@@ -82,7 +85,9 @@ export const KnowledgeExam: React.FC<KnowledgeExamProps> = ({ questions, onSubmi
                                     <div>
                                         <p className="font-bold text-slate-800 mb-1">שאלה {idx + 1}</p>
                                         <div className="text-sm text-slate-600 markdown-content mb-3">
-                                            <ReactMarkdown rehypePlugins={[rehypeRaw]}>{q.question}</ReactMarkdown>
+                                            <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
+                                                {q.question}
+                                            </ReactMarkdown>
                                         </div>
                                         {/* Shows explanation */}
                                         <div className={`p-3 rounded-lg text-sm ${isCorrect ? 'bg-emerald-100/50 text-emerald-800' : 'bg-red-100/50 text-red-800'}`}>
@@ -91,7 +96,9 @@ export const KnowledgeExam: React.FC<KnowledgeExamProps> = ({ questions, onSubmi
                                         {!isCorrect && q.explanation && (
                                             <div className="mt-3 text-sm text-slate-600 bg-white p-3 rounded-lg border border-slate-100">
                                                 <span className="font-bold text-slate-800">הסבר: </span>
-                                                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{q.explanation}</ReactMarkdown>
+                                                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
+                                                    {q.explanation}
+                                                </ReactMarkdown>
                                             </div>
                                         )}
                                     </div>
@@ -132,7 +139,9 @@ export const KnowledgeExam: React.FC<KnowledgeExamProps> = ({ questions, onSubmi
                         <div className="text-slate-800 font-bold text-lg leading-relaxed mb-6 markdown-content flex gap-3">
                             <span className="text-slate-400 shrink-0">{qIdx + 1}.</span>
                             <div className="mt-[-2px]">
-                                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{q.question}</ReactMarkdown>
+                                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
+                                    {q.question}
+                                </ReactMarkdown>
                             </div>
                         </div>
 
@@ -144,13 +153,13 @@ export const KnowledgeExam: React.FC<KnowledgeExamProps> = ({ questions, onSubmi
                                         key={optIdx}
                                         onClick={() => handleSelect(q.id, optIdx)}
                                         className={`flex items-center gap-4 p-4 rounded-xl border-2 text-right transition-all group ${isSelected
-                                                ? "border-slate-800 bg-slate-50 ring-2 ring-slate-200 shadow-sm"
-                                                : "border-slate-100 hover:border-slate-300 hover:bg-slate-50/50"
+                                            ? "border-slate-800 bg-slate-50 ring-2 ring-slate-200 shadow-sm"
+                                            : "border-slate-100 hover:border-slate-300 hover:bg-slate-50/50"
                                             }`}
                                     >
                                         <div className={`w-6 h-6 shrink-0 rounded-full border-2 flex items-center justify-center transition-colors ${isSelected
-                                                ? "border-slate-800 bg-slate-800"
-                                                : "border-slate-300 bg-white"
+                                            ? "border-slate-800 bg-slate-800"
+                                            : "border-slate-300 bg-white"
                                             }`}>
                                             {isSelected && <div className="w-2 h-2 rounded-full bg-white" />}
                                         </div>
@@ -169,8 +178,8 @@ export const KnowledgeExam: React.FC<KnowledgeExamProps> = ({ questions, onSubmi
                         onClick={handleSubmit}
                         disabled={!isComplete}
                         className={`px-12 py-4 rounded-2xl font-black text-lg transition-all shadow-sm ${isComplete
-                                ? "bg-slate-800 text-white hover:bg-slate-700 hover:-translate-y-0.5"
-                                : "bg-slate-100 text-slate-400 cursor-not-allowed"
+                            ? "bg-slate-800 text-white hover:bg-slate-700 hover:-translate-y-0.5"
+                            : "bg-slate-100 text-slate-400 cursor-not-allowed"
                             }`}
                     >
                         הגש מבחן

@@ -14,10 +14,9 @@ import {
 // 1. Core Callouts & Text Blocks
 import { Alert } from "@/components/core/blocks/Alert";
 import { Hook } from "@/components/core/blocks/Hook";
-import { StreetSmart } from "@/components/core/blocks/StreetSmart";
+import { StreetSmartSketch } from "@/components/core/blocks/StreetSmartSketch";
 import { Explanation } from "@/components/core/blocks/Explanation";
 import { List } from "@/components/core/blocks/List";
-import { ToneBreak } from "@/components/core/blocks/ToneBreak";
 
 // 2. Pedagogical Emphasis
 import DidYouKnow from "@/components/core/blocks/DidYouKnow";
@@ -38,8 +37,6 @@ import { GuidedExercise } from "@/components/core/blocks/GuidedExercise";
 
 // 5. Summaries & Navigation
 import { NarrativeSummary } from "@/components/core/blocks/NarrativeSummary";
-import { TopicSummary } from "@/components/core/blocks/TopicSummary";
-import { TopicNavigation } from "@/components/core/blocks/TopicNavigation";
 
 // 6. Interactive Logic Widgets
 import { ConceptAccordion } from "@/components/core/interactive/ConceptAccordion";
@@ -59,7 +56,7 @@ const ComponentPreview = ({ name, description, children }: { name: string, descr
         <div className="bg-muted/30 border-b border-border/40 px-4 py-2 flex items-center justify-between">
             <div className="flex items-center gap-2">
                 <Code className="w-4 h-4 text-primary" />
-                <h3 className="font-mono text-sm font-bold text-foreground bg-primary/10 px-2 py-0.5 rounded text-sky-800">
+                <h3 className="font-mono text-sm font-bold text-foreground bg-primary/10 px-2 py-0.5 rounded">
                     &lt;{name} /&gt;
                 </h3>
             </div>
@@ -124,14 +121,11 @@ export default function ComponentsAuditPage() {
                         <Hook opener="Ever wonder why gas prices jump before a hurricane?" context="Let's dive into Supply and Demand." />
                     </ComponentPreview>
 
-                    <ComponentPreview name="ToneBreak" description="Mental pause for the reader">
-                        <ToneBreak opener="Let's take a breath." content="You have covered a lot of math. Here is a brief mental break." />
-                    </ComponentPreview>
-
-                    <ComponentPreview name="StreetSmart" description="Casual slang-based explanation">
-                        <StreetSmart title="Let's Break it Down">
-                            Okay so listen, opportunity cost is basically like... you pick pizza for lunch, right? You're giving up the burger you could have had. That burger = opportunity cost. It's not rocket science, just life stuff.
-                        </StreetSmart>
+                    <ComponentPreview name="StreetSmartSketch" description="Experimental hand-drawn casual explanation">
+                        <StreetSmartSketch
+                            title="דוגרי?"
+                            content="אם אתה יושב ללמוד עכשיו במקום לצאת, ה'עלות' היא הבירה והצחוקים שהפסדת."
+                        />
                     </ComponentPreview>
 
                     <ComponentPreview name="List" description="Standard bulleted structural list">
@@ -265,20 +259,6 @@ export default function ComponentsAuditPage() {
                                 tip: { title: "Focus on Systems", content: "Individual behavior is often a product of the environments we design." },
                                 pitfall: { title: "The Fundamental Attribution Error", content: "Remember to look for situational factors before blaming personality." }
                             }}
-                        />
-                    </ComponentPreview>
-
-                    <ComponentPreview name="TopicSummary" description="Bullet-point wrap-up">
-                        <TopicSummary
-                            content="Reviewing the core tenets of microeconomics."
-                            keyPoints={["Scarcity forces choice", "Rational people think at the margin", "Trade can make everyone better off"]}
-                        />
-                    </ComponentPreview>
-
-                    <ComponentPreview name="TopicNavigation" description="Next/Prev routing block">
-                        <TopicNavigation
-                            previousTopic={{ title: "Previous: Intro to Econ", chapter: "1" }}
-                            nextTopic={{ title: "Next: Supply and Demand", chapter: "3" }}
                         />
                     </ComponentPreview>
                 </section>

@@ -2,6 +2,11 @@
 
 import React, { useState } from "react";
 import { BrainCircuit, Calculator, Flag, ChevronDown, Hand, Users, Zap } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import { motion, AnimatePresence } from "framer-motion";
+import "katex/dist/katex.min.css";
 import type { Step, GuidedExercisePhase } from "@/types/chapter";
 
 interface GuidedExerciseProps {
@@ -27,6 +32,18 @@ const phaseIcon = (type: "i-do" | "we-do" | "you-do") => {
     }
 };
 
+const MathText = ({ children, className }: { children: string; className?: string }) => (
+    <ReactMarkdown
+        remarkPlugins={[remarkMath]}
+        rehypePlugins={[rehypeKatex]}
+        components={{
+            p: ({ node, ...props }) => <p className={className} {...props} />
+        }}
+    >
+        {children}
+    </ReactMarkdown>
+);
+
 export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
     difficulty,
     question,
@@ -47,7 +64,7 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
     };
 
     return (
-        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden my-6">
+        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden my-6 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5" dir="rtl">
             {/* Header */}
             <div className="p-6 pb-4">
                 <div className="flex items-center justify-between mb-4">
@@ -60,11 +77,11 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
                     <span className={`text-xs font-bold ${diff.color}`}>{diff.text}</span>
                 </div>
 
-                <p className="text-lg text-foreground font-medium mb-3">{question}</p>
+                <MathText className="text-lg text-foreground font-medium mb-3">{question}</MathText>
 
                 <div className="bg-slate-50 border-r-2 border-slate-300 px-4 py-2 rounded-l-lg">
                     <p className="text-xs font-bold text-slate-700 mb-1">🧭 כיוון חשיבה</p>
-                    <p className="text-sm text-foreground">{thinkingDirection}</p>
+                    <MathText className="text-sm text-foreground">{thinkingDirection}</MathText>
                 </div>
             </div>
 
@@ -80,7 +97,7 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
                                     {phaseInfo.icon}
                                     <span className="text-xs font-bold uppercase">{phaseInfo.label}</span>
                                 </div>
-                                <p className="text-foreground text-sm">{phase.content}</p>
+                                <MathText className="text-foreground text-sm">{phase.content}</MathText>
                             </div>
                         );
                     })}
@@ -105,21 +122,30 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
                                 className={`w-4 h-4 text-slate-500 transition-transform duration-300 ${revealedSteps.has(idx) ? "rotate-180" : ""}`}
                             />
                         </button>
-                        {revealedSteps.has(idx) && (
-                            <div className="px-4 pb-4 space-y-2 animate-in fade-in-0 duration-300">
-                                <p className="text-foreground text-sm">{step.action}</p>
-                                <p className="text-foreground text-sm italic">{step.reasoning}</p>
-                                {step.calculation && (
-                                    <div className="bg-card/50 px-3 py-2 rounded-lg">
-                                        <p className="font-mono text-secondary-foreground text-sm" dir="ltr">
-                                            <Calculator className="w-3 h-3 inline mr-1" />
-                                            {step.calculation}
-                                        </p>
+                        <AnimatePresence>
+                            {revealedSteps.has(idx) && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: "auto" }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    className="overflow-hidden"
+                                >
+                                    <div className="px-4 pb-4 pt-2 space-y-2">
+                                        <MathText className="text-foreground text-sm">{step.action}</MathText>
+                                        <MathText className="text-foreground text-sm italic">{step.reasoning}</MathText>
+                                        {step.calculation && (
+                                            <div className="bg-card/50 px-3 py-2 rounded-lg flex items-center gap-2" dir="ltr">
+                                                <Calculator className="w-3 h-3 text-secondary-foreground shrink-0" />
+                                                <div className="font-mono text-secondary-foreground text-sm text-left w-full overflow-x-auto">
+                                                    <MathText>{step.calculation}</MathText>
+                                                </div>
+                                            </div>
+                                        )}
+                                        <MathText className="text-emerald-700 font-bold text-sm">{"→ " + step.result}</MathText>
                                     </div>
-                                )}
-                                <p className="text-emerald-700 font-bold text-sm">→ {step.result}</p>
-                            </div>
-                        )}
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
                 ))}
             </div>
@@ -133,13 +159,22 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
                     <Flag className="w-4 h-4" />
                     {showAnswer ? "הסתר תשובה סופית" : "הצג תשובה סופית"}
                 </button>
-                {showAnswer && (
-                    <div className="px-6 pb-6 animate-in fade-in-0 duration-300">
-                        <div className="bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3">
-                            <p className="text-emerald-700 font-bold">{finalAnswer}</p>
-                        </div>
-                    </div>
-                )}
+                <AnimatePresence>
+                    {showAnswer && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="overflow-hidden"
+                        >
+                            <div className="px-6 pb-6 pt-2">
+                                <div className="bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3">
+                                    <MathText className="text-emerald-700 font-bold">{finalAnswer}</MathText>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </div>
     );

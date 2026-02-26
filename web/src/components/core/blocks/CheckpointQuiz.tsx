@@ -4,6 +4,10 @@ import React, { useState } from "react";
 import { CheckCircle, XCircle, HelpCircle } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import { motion, AnimatePresence } from "framer-motion";
+import "katex/dist/katex.min.css";
 import type { QuizQuestion } from "@/types/chapter";
 
 interface CheckpointQuizProps {
@@ -29,7 +33,7 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
     const totalSubmitted = Object.keys(submitted).length;
 
     return (
-        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden my-6 shadow-sm" dir="rtl">
+        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden my-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5" dir="rtl">
             <div className="flex items-center justify-between px-6 py-4 bg-slate-50 border-b border-slate-200">
                 <div className="flex items-center gap-3">
                     <div className="bg-white p-2 rounded-lg border border-slate-200 shadow-sm">
@@ -55,7 +59,9 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
                             <div className="text-foreground font-medium mb-4 flex items-start gap-2 markdown-content">
                                 <span className="text-slate-600 font-bold bg-slate-100 px-2 py-0.5 rounded-full text-sm">{qIdx + 1}</span>
                                 <div className="mt-0.5 relative top-[-2px]">
-                                    <ReactMarkdown rehypePlugins={[rehypeRaw]}>{q.question}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
+                                        {q.question}
+                                    </ReactMarkdown>
                                 </div>
                             </div>
 
@@ -95,17 +101,28 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
                                 </button>
                             )}
 
-                            {isSubmitted && (
-                                <div className={`mt-4 px-5 py-4 rounded-xl text-sm border ${isCorrect ? "bg-emerald-50 text-emerald-800 border-emerald-200" : "bg-red-50 text-red-800 border-red-200"}`}>
-                                    <p className="font-bold mb-2 flex items-center gap-2">
-                                        {isCorrect ? <CheckCircle className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
-                                        {isCorrect ? "נכון!" : "לא מדויק"}
-                                    </p>
-                                    <div className="text-foreground/90 markdown-content leading-relaxed">
-                                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{q.explanation}</ReactMarkdown>
-                                    </div>
-                                </div>
-                            )}
+                            <AnimatePresence>
+                                {isSubmitted && (
+                                    <motion.div
+                                        initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                                        animate={{ opacity: 1, height: "auto", marginTop: 16 }}
+                                        exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                                        className="overflow-hidden"
+                                    >
+                                        <div className={`px-5 py-4 rounded-xl text-sm border ${isCorrect ? "bg-emerald-50 text-emerald-800 border-emerald-200" : "bg-red-50 text-red-800 border-red-200"}`}>
+                                            <p className="font-bold mb-2 flex items-center gap-2">
+                                                {isCorrect ? <CheckCircle className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
+                                                {isCorrect ? "נכון!" : "לא מדויק"}
+                                            </p>
+                                            <div className="text-foreground/90 markdown-content leading-relaxed">
+                                                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
+                                                    {q.explanation}
+                                                </ReactMarkdown>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
                     );
                 })}

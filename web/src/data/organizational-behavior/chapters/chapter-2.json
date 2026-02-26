@@ -48,7 +48,7 @@
                     "source": "Intel"
                 },
                 {
-                    "type": "tone-break",
+                    "type": "street-smart",
                     "opener": "רגע של כנות 📱",
                     "content": "פתחו את הווטסאפ שלכם. כמה קבוצות עבודה יש שם? האם הבוס יכול לראות מתי נראיתם לאחרונה? זה מוביל אותנו לכוח השני."
                 },
@@ -57,10 +57,9 @@
                     "content": "**2. המדיה החברתית והעולם השקוף:**\nפעם, מה שקרה במשרד נשאר במשרד. היום? הלקוחות מצייצים תלונות בטוויטר, והעובדים מתייגים את המשרד באינסטגרם. הארגון הפך לבית זכוכית. זה מחייב מנהלים להיות 'שומרי סף' של המוניטין, ועובדים להיות 'שגרירים' של המותג - גם כשהם לא בעבודה."
                 },
                 {
-                    "type": "common-mistake",
-                    "mistake": "לחשוב ש-Well-being (רווחה) זה רק פינוקים",
-                    "correct": "זו אסטרטגיה עסקית קרה",
-                    "why": "ארגונים לא נותנים מסאז'ים כי הם נחמדים. הם עושים את זה כי שחיקה (Burnout) עולה להם מיליארדים באובדן תפוקה ובתחלופת עובדים."
+                    "type": "alert",
+                    "variant": "warning",
+                    "content": "**טעות נפוצה:** לחשוב ש-Well-being (רווחה) זה רק פינוקים\n\n**האמת היא:** זו אסטרטגיה עסקית קרה\n\n**למה?** ארגונים לא נותנים מסאז'ים כי הם נחמדים. הם עושים את זה כי שחיקה (Burnout) עולה להם מיליארדים באובדן תפוקה ובתחלופת עובדים."
                 },
                 {
                     "type": "deep-dive",
@@ -77,27 +76,7 @@
                     ]
                 },
                 {
-                    "type": "knowledge-challenge",
-                    "question": "מנהלת ה-HR בחברת סטארטאפ החליטה להקים מכבסה ומספרה בתוך המשרד. איזה אינטרס ארגוני סמוי זה משרת בעיקר?",
-                    "options": [
-                        "שיפור ההיגיינה של העובדים",
-                        "יצירת 'כלוב זהב' המצמצם את הצורך לצאת מהמשרד",
-                        "תמיכה בעסקים מקומיים קטנים",
-                        "עמידה בתקני ISO בינלאומיים"
-                    ],
-                    "correctIndex": 1,
-                    "points": 20,
-                    "reasoning": {
-                        "correct": "בדיוק. ככל שהשירותים במשרד רבים יותר, כך הסיבות לצאת ממנו פוחתות, ושעות העבודה בפועל מתארכות.",
-                        "wrong": {
-                            "0": "זו אולי תוצאת לוואי, אבל לא המטרה העסקית.",
-                            "2": "זה לא קשור לאסטרטגיה פנים-ארגונית.",
-                            "3": "אין תקן שמחייב מספרה במשרד :)"
-                        }
-                    }
-                },
-                {
-                    "type": "callout",
+                    "type": "alert",
                     "variant": "warning",
                     "content": "VISUAL CONCEPT: תמונה של דינוזאור מול חללית. הכוח הרביעי הוא **דרוויניזם ארגוני**: מי שלא מסתגל במהירות (Agility) - נכחד. ארגונים כבדים ובירוקרטיים יוחלפו על ידי ארגונים רזים ומהירים."
                 }
@@ -112,8 +91,8 @@
                     "content": "אחרי שהבנו את הסביבה, בואו נתמקד בכם. בהתנהגות ארגונית אנחנו מנתחים את הפרט כמו בצל, מהשכבה החיצונית והגלויה ביותר, פנימה אל הליבה העמוקה."
                 },
                 {
-                    "type": "callout",
-                    "variant": "note",
+                    "type": "alert",
+                    "variant": "tip",
                     "content": "VISUAL CONCEPT: תרשים מעגלים (בצל). מעגל חיצוני: מאפיינים ביוגרפיים. מעגל אמצעי: אישיות. מעגל פנימי (ליבה): תפיסה וקבלת החלטות."
                 },
                 {
@@ -131,7 +110,7 @@
                     ]
                 },
                 {
-                    "type": "tone-break",
+                    "type": "street-smart",
                     "opener": "שאלה למחשבה 🤔",
                     "content": "אם האישיות שלנו יציבה וקשה לשינוי, למה אנחנו בכלל לומדים עליה? כי בתור מנהלים, אנחנו לא מנסים לשנות את האנשים, אלא **להציב אותם במקום שבו האישיות שלהם תהיה יתרון** (למשל: לא לשים אדם ביישן במכירות פרונטליות)."
                 },
@@ -140,29 +119,9 @@
                     "content": "**3. הליבה: תפיסה (Perception)**\nזו השכבה הקריטית ביותר. תפיסה היא המשקפיים שדרכם אנחנו רואים את העולם. שני עובדים יכולים לראות בדיוק את אותו אירוע (למשל, הבוס לא אמר שלום בבוקר) ולפרש אותו הפוך לגמרי (אחד יחשוב 'הוא כועס עלי', השני יחשוב 'הוא בטח עסוק'). בפרק הבא נצלול לעומק התפיסה."
                 },
                 {
-                    "type": "exam-tip",
+                    "type": "alert",
                     "content": "במבחן, היזהרו לא להתבלבל: אם השאלה עוסקת ב'נתונים יבשים' (גיל, השכלה) - זה ביוגרפי. אם היא עוסקת ב'אופי' או 'טמפרמנט' - זו אישיות. אם היא עוסקת ב'פרשנות' או 'שיפוט' - זו תפיסה.",
-                    "importance": "high"
-                },
-                {
-                    "type": "knowledge-challenge",
-                    "question": "יוסי תמיד מגיע בזמן לעבודה כי הוא חושש שהבוס יחשוב שהוא מזלזל. איזו רמה של המודל זה מתאר?",
-                    "options": [
-                        "רמה ביוגרפית (ותק)",
-                        "רמת התפיסה (פרשנות המציאות)",
-                        "רמת הארגון (תרבות)",
-                        "רמת הקבוצה (לחץ חברתי)"
-                    ],
-                    "correctIndex": 1,
-                    "points": 15,
-                    "reasoning": {
-                        "correct": "נכון מאוד! הפחד של יוסי נובע מהפרשנות שלו ('הבוס יחשוב שאני מזלזל'), וזוהי בדיוק ההגדרה של תפיסה.",
-                        "wrong": {
-                            "0": "ההגעה בזמן היא עובדה, אבל המניע הוא פנימי-פרשני.",
-                            "2": "השאלה מתמקדת במניע האישי של יוסי, לא במדיניות הארגון.",
-                            "3": "אין כאן אזכור לקולגות או ללחץ קבוצתי."
-                        }
-                    }
+                    "variant": "tip"
                 }
             ]
         }
@@ -195,5 +154,9 @@
             "title": "הבור שכולם נופלים בו",
             "content": "לחשוב שאפשר לשנות אישיות של עובד. אישיות היא די קבועה. כמנהלים, התפקיד שלכם הוא לא לשנות אנשים, אלא לשבץ אותם בתפקיד שמתאים לאופי שלהם (התאמה בין אדם לארגון)."
         }
+    },
+    "endOfChapterExam": {
+        "type": "knowledge-exam",
+        "questions": []
     }
 }

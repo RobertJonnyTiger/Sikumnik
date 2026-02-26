@@ -1,0 +1,200 @@
+{
+    "id": "micro-ch4-growth",
+    "course": "מיקרו-כלכלה",
+    "chapterNumber": 4,
+    "totalChapters": 12,
+    "title": "צמיחה, מענקים ומסחר בינלאומי",
+    "pageMap": {
+        "learningObjectives": [
+            "להבין כיצד שיפור טכנולוגי מרחיב את גבול אפשרויות הייצור",
+            "להבחין בין צמיחה ניטרלית (שקולה) לצמיחה מוטה",
+            "לנתח את ההשפעה של מענקים ממשלתיים על היצרן",
+            "להכיר את ההבדל בין משק סגור למשק פתוח (מסחר בינלאומי)"
+        ],
+        "estimatedTime": "45 דקות"
+    },
+    "introduction": {
+        "content": "עד עכשיו דיברנו על עולם סטטי: יש לנו כמות קבועה של עובדים ומכונות, וזה מה יש. אבל העולם האמיתי לא עומד במקום. טכנולוגיות משתפרות, ממשלות מחלקות כסף, ומדינות סוחרות זו עם זו. בפרק הזה נראה איך 'העוגה' יכולה לגדול, ואיך הכללים משתנים כשיוצאים מהבועה.",
+        "whyItMatters": "כי זה ההבדל בין מדינה עשירה למדינה ענייה, ובין עסק שצומח לעסק שדועך.",
+        "hook": "עד עכשיו דיברנו על עולם סטטי. אבל העולם האמיתי לא עומד במקום."
+    },
+    "topics": [
+        {
+            "id": "technological-improvement",
+            "title": "שיפור טכנולוגי",
+            "blocks": [
+                {
+                    "type": "explanation",
+                    "content": "שיפור טכנולוגי הוא שינוי בפונקציית הייצור המאפשר ליצרן לייצר יותר תפוקה מאותה כמות של גורמי ייצור. השיפור יכול להיות 'ניטרלי' (משפר את שני המוצרים באותה מידה) או 'מוטה' (משפר רק מוצר אחד).",
+                    "highlight": "שיפור טכנולוגי = יותר תוצר מאותם משאבים"
+                },
+                {
+                    "type": "analogy",
+                    "content": "דמיין שיש לך מטבח (המשק) ואתה מכין פיצות. פתאום קנית תנור תעשייתי חדש (שיפור טכנולוגי). עכשיו באותו זמן, אתה מוציא כפול פיצות. גבול האפשרויות שלך זז החוצה.",
+                    "icon": "🍕"
+                },
+                {
+                    "type": "definition",
+                    "term": "שיפור טכנולוגי (Technological Improvement)",
+                    "content": "שינוי בפונקציית הייצור המאפשר ליצרן לייצר יותר תפוקה מאותה כמות של גורמי ייצור. השיפור יכול להיות 'ניטרלי' (משפר את שני המוצרים באותה מידה) או 'מוטה' (משפר רק מוצר אחד).",
+                    "tooltips": {
+                        "ניטרלי": "פי 2 גם ב-X וגם ב-Y",
+                        "מוטה": "פי 2 רק ב-X"
+                    }
+                },
+                {
+                    "type": "deep-dive",
+                    "title": "סוגי שיפור טכנולוגי",
+                    "dataId": "micro_ch4_growth_deep_dive_1"
+                }
+            ]
+        },
+        {
+            "id": "subsidies",
+            "title": "מענקים ממשלתיים",
+            "blocks": [
+                {
+                    "type": "explanation",
+                    "content": "מענק (סבסידיה) הוא תשלום או הטבה שהממשלה נותנת ליצרן כדי לעודד ייצור של מוצר מסוים. המענק משנה את היחס בין המחירים ומזיז את נקודת הייצור האופטימלית על העקומה.",
+                    "highlight": "מענק = הממשלה משלמת חלק מהעלות"
+                },
+                {
+                    "type": "analogy",
+                    "content": "מענק? זה כמו ששובר 'תן ביס' נותן לך מוטיבציה להזמין דווקא ממסעדה מסוימת. האוכל לא נהיה טעים יותר (הטכנולוגיה לא השתנתה), אבל יותר משתלם לך לקנות אותו.",
+                    "icon": "🎫"
+                },
+                {
+                    "type": "definition",
+                    "term": "מענק (Subsidy/Grant)",
+                    "content": "תשלום או הטבה שהממשלה נותנת ליצרן כדי לעודד ייצור של מוצר מסוים. המענק משנה את היחס בין המחירים ומזיז את נקודת הייצור האופטימלית על העקומה.",
+                    "tooltips": {
+                        "לעידוד ייצור": "המטרה: שיהיה יותר ממוצר X"
+                    }
+                },
+                {
+                    "type": "callout",
+                    "variant": "warning",
+                    "content": "מענק לא משנה את גבול אפשרויות הייצור! הוא רק משנה את הכדאיות (איפה נבחר לייצר על העקומה)."
+                },
+                {
+                    "type": "common-mistake",
+                    "mistake": "לחשוב שמענק מרחיב את עקומת התמורה",
+                    "correct": "מענק לא משנה את היכולת הטכנולוגית (העקומה נשארת במקום). הוא רק משנה את הכדאיות (איפה נבחר לייצר).",
+                    "why": "כסף מהממשלה לא הופך את המכונות ליעילות יותר."
+                }
+            ]
+        },
+        {
+            "id": "open-economy",
+            "title": "משק פתוח",
+            "blocks": [
+                {
+                    "type": "explanation",
+                    "content": "משק פתוח מקיים יחסי מסחר (יבוא ויצוא) עם מדינות אחרות. במשק כזה, נקודת הצריכה יכולה להיות מחוץ לעקומת התמורה המקומית, בזכות היכולת להחליף מוצרים במחיר הבינלאומי.",
+                    "highlight": "במשק פתוח אפשר לצרוך יותר ממה שמייצרים"
+                },
+                {
+                    "type": "analogy",
+                    "content": "מסחר בינלאומי? זה כמו להזמין מ-AliExpress. אתה לא צריך לייצר את הכיסוי לטלפון בעצמך (יקר וקשה), אתה פשוט מחליף כסף (שעבדת עליו) במוצר שמישהו אחר עשה ביעילות.",
+                    "icon": "📦"
+                },
+                {
+                    "type": "definition",
+                    "term": "משק פתוח (Open Economy)",
+                    "content": "משק שמקיים יחסי מסחר (יבוא ויצוא) עם מדינות אחרות. במשק כזה, הצרכן יכול לצרוך הקצאות שמחוץ לגבול אפשרויות הייצור המקומי, בזכות היכולת לסחור במחירים הבינלאומיים.",
+                    "tooltips": {
+                        "מחוץ לעקומה": "חיים מעבר ליכולות הייצור העצמיות"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "growth-exercise",
+            "title": "תרגול: צמיחה ומענקים",
+            "blocks": [
+                {
+                    "type": "guided-exercise",
+                    "difficulty": 3,
+                    "question": "במשק מייצרים שני מוצרים: מחשבים (X) וחולצות (Y). חל שיפור טכנולוגי שמאפשר לייצר פי 2 מחשבים מכל עובד. מה קרה לעלות האלטרנטיבית לייצור מחשב?",
+                    "thinkingDirection": "תחשוב על הוויתור. עכשיו כשאני מייצר מחשב, זה לוקח לי פחות זמן/עובדים.",
+                    "steps": [
+                        {
+                            "title": "ניתוח המצב לפני",
+                            "action": "הגדר את המצב ההתחלתי",
+                            "calculation": "1 עובד = 1 מחשב או 1 חולצה",
+                            "reasoning": "ויתרתי על 1 חולצה בשביל 1 מחשב (עלות = 1).",
+                            "result": "עלות אלטרנטיבית מקורית: 1Y לכל X"
+                        },
+                        {
+                            "title": "ניתוח המצב אחרי",
+                            "action": "החל את השיפור הטכנולוגי",
+                            "calculation": "1 עובד = 2 מחשבים או 1 חולצה",
+                            "reasoning": "עכשיו, כדי לייצר 1 מחשב, אני צריך רק חצי עובד.",
+                            "result": "הפריון ב-X עלה פי 2"
+                        },
+                        {
+                            "title": "חישוב הוויתור החדש",
+                            "action": "חשב את העלות האלטרנטיבית החדשה",
+                            "calculation": "חצי עובד = חצי חולצה",
+                            "reasoning": "העלות האלטרנטיבית ירדה. אני מוותר על פחות חולצות כדי לקבל מחשב.",
+                            "result": "עלות אלטרנטיבית חדשה: 0.5Y לכל X"
+                        }
+                    ],
+                    "finalAnswer": "העלות האלטרנטיבית לייצור מחשב (X) ירדה מ-1Y ל-0.5Y. השיפור הטכנולוגי הפחית את הוויתור הנדרש."
+                },
+                {
+                    "type": "checkpoint",
+                    "questions": [
+                        {
+                            "id": "q1",
+                            "question": "חל שיפור טכנולוגי בייצור מוצר X בלבד. מה יקרה לנקודת הייצור המקסימלית של מוצר Y?",
+                            "options": [
+                                "תגדל",
+                                "תקטן",
+                                "לא תשתנה",
+                                "אי אפשר לדעת"
+                            ],
+                            "correctIndex": 2,
+                            "explanation": "אם כל המשאבים מופנים ל-Y, והשיפור הוא רק ב-X, אז יכולת הייצור של Y לא הושפעה כלל."
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "checkpoint": [
+        {
+            "id": "q1",
+            "question": "חל שיפור טכנולוגי בייצור מוצר X בלבד. מה יקרה לנקודת הייצור המקסימלית של מוצר Y?",
+            "options": [
+                "תגדל",
+                "תקטן",
+                "לא תשתנה",
+                "אי אפשר לדעת"
+            ],
+            "correctIndex": 2,
+            "explanation": "אם כל המשאבים מופנים ל-Y, והשיפור הוא רק ב-X, אז יכולת הייצור של Y לא הושפעה כלל."
+        }
+    ],
+    "navigation": {
+        "previous": {
+            "id": "chapter-3",
+            "title": "יתרון יחסי"
+        },
+        "next": {
+            "id": "chapter-5",
+            "title": "מסחר בינלאומי (חלק א')"
+        }
+    },
+    "bridge": {
+        "content": "אחרי שראינו איך הים זז, בפרק הבא נצלול לתוך המפעל עצמו ונראה איך בדיוק נוצרת תפוקה בודדת מעובדים ומכונות.",
+        "nextChapterId": "chapter-5",
+        "nextChapterTitle": "מסחר בינלאומי (חלק א')"
+    },
+    "trivia": [
+        {
+            "fact": "המהפכה התעשייתית הייתה השיפור הטכנולוגי הגדול בהיסטוריה, והזיזה את עקומת התמורה של האנושות בצורה דרמטית.",
+            "source": "Economic History"
+        }
+    ]
+}

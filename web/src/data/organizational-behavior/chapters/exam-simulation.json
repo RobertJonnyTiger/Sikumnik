@@ -46,8 +46,8 @@
             "title": "הוראות מבחן",
             "blocks": [
                 {
-                    "type": "callout",
-                    "variant": "important",
+                    "type": "alert",
+                    "variant": "warning",
                     "content": "משך המבחן: 120 דקות | סה״כ נקודות: 100 | ציון עובר: 60% (60 נקודות)"
                 },
                 {
@@ -67,9 +67,9 @@
                     ]
                 },
                 {
-                    "type": "exam-tip",
+                    "type": "alert",
                     "content": "קראו כל שאלה בעיון לפני שאתם עונים. בשאלות פתוחות, חשוב להדגיש את המושגים התיאורטיים הרלוונטיים ולהסביר את הקשרם לתרחיש.",
-                    "importance": "high"
+                    "variant": "tip"
                 }
             ]
         },
@@ -481,7 +481,7 @@
             "title": "מפתח תשובות",
             "blocks": [
                 {
-                    "type": "callout",
+                    "type": "alert",
                     "variant": "tip",
                     "content": "להלן כל התשובות וההסברים המלאים. השתמשו במפתח זה כדי לבדוק את עצמכם וללמוד מהטעויות."
                 },
@@ -506,7 +506,7 @@
                     "content": "**שאלות 11-15 (פתוחות):** התשובות המלאות והקריטריונים להערכה מופיעים בכל שאלה בסעיף הקודם. ודאו שכיסיתם את כל הנקודות שמופיעות בקריטריונים."
                 },
                 {
-                    "type": "tone-break",
+                    "type": "street-smart",
                     "opener": "טיפים למבחן האמיתי",
                     "content": "1. קראו את כל השאלות לפני שאתם מתחילים לענות\n2. התחילו מהשאלות הקלות לכם וחזרו לקשות\n3. בשאלות פתוחות, תנו דוגמאות קונקרטיות\n4. השתמשו במונחים המקצועיים הנכונים\n5. בהצלחה! 🎯"
                 }
@@ -517,8 +517,8 @@
             "title": "חלק ג׳ - ניתוח מקרה אבחנתי",
             "blocks": [
                 {
-                    "type": "callout",
-                    "variant": "important",
+                    "type": "alert",
+                    "variant": "warning",
                     "content": "שאלות 16-18: ניתוח מקרה מעמיק (4 נקודות כל אחת) | קראו את התרחיש בעיון וענו על השאלות המבוססות על תיאוריות הקורס"
                 },
                 {
@@ -637,7 +637,7 @@
             "title": "חלק ד׳ - אתגר התצפית",
             "blocks": [
                 {
-                    "type": "callout",
+                    "type": "alert",
                     "variant": "tip",
                     "content": "שאלות 19-21: אתגר התצפית (4 נקודות כל אחת) | קראו את תיאור הפגישה וזהו תופעות התנהגות ארגונית"
                 },
@@ -735,7 +735,7 @@
             "title": "חלק ה׳ - איתור דגלים אדומים",
             "blocks": [
                 {
-                    "type": "callout",
+                    "type": "alert",
                     "variant": "warning",
                     "content": "שאלות 22-24: איתור דגלים אדומים (4 נקודות כל אחת) | קראו את התרחיש, זהו את הטעויות והסבירו"
                 },
@@ -840,8 +840,8 @@
             "title": "חלק ו׳ - עץ החלטות",
             "blocks": [
                 {
-                    "type": "callout",
-                    "variant": "important",
+                    "type": "alert",
+                    "variant": "warning",
                     "content": "שאלה 25: עץ החלטות (4 נקודות) | קראו את התרחיש ובחרו נתיב החלטות - כל בחירה מובילה לתוצאה שונה"
                 },
                 {

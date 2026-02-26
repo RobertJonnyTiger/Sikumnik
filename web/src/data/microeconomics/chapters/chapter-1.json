@@ -36,20 +36,19 @@
                     }
                 },
                 {
-                    "type": "callout",
-                    "variant": "note",
+                    "type": "alert",
+                    "variant": "tip",
                     "content": "VISUAL CONCEPT: דמיינו מאזניים. בצד אחד שק ענק שכתוב עליו \"רצונות\", ובצד השני שק פיצפון שכתוב עליו \"משאבים\". המאזניים קורסים תחת כובד הרצונות. זהו המחסור."
                 },
                 {
-                    "type": "tone-break",
+                    "type": "street-smart",
                     "opener": "רגע חושבים 🛑",
                     "content": "תחשבו על הזמן שאתם משקיעים בקריאת השורות האלה. מה יכולתם לעשות במקום? לישון? לעבוד? הוויתור הזה הוא העלות של הלימודים שלכם, לא רק שכר הלימוד."
                 },
                 {
-                    "type": "common-mistake",
-                    "mistake": "לחשוב שעלות חייבת להיות כסף שיצא מהכיס.",
-                    "correct": "עלות כלכלית כוללת גם ויתורים שאינם כספיים (כמו זמן).",
-                    "why": "כי זמן הוא המשאב הכי יקר ומוגבל שלנו."
+                    "type": "alert",
+                    "variant": "warning",
+                    "content": "**טעות נפוצה:** לחשוב שעלות חייבת להיות כסף שיצא מהכיס.\n\n**האמת היא:** עלות כלכלית כוללת גם ויתורים שאינם כספיים (כמו זמן).\n\n**למה?** כי זמן הוא המשאב הכי יקר ומוגבל שלנו."
                 },
                 {
                     "type": "interactive",
@@ -161,14 +160,14 @@
                     "content": "איך מראים את כל הסיפור הזה בגרף? משתמשים ב**עקומת התמורה**. דמיינו משק שיכול לייצר רק שני דברים: פיצות (X) ורובוטים (Y). ככל שנייצר יותר פיצות, נצטרך לקחת עובדים מתעשיית הרובוטים, ולכן נייצר פחות רובוטים."
                 },
                 {
-                    "type": "example",
+                    "type": "real-world-example",
                     "title": "סיפורם של העובדים המתמחים",
-                    "scenario": "במשק יש 3 עובדים. פועל א' הוא אלוף בפיצות. פועל ג' הוא גאון ברובוטים. פועל ב' בינוני בשניהם. אם נרצה לייצר רק פיצות, מי יהיה הראשון שנגייס?",
-                    "solution": "כמובן את פועל א'! הוא הכי יעיל בפיצות (ויתור נמוך על רובוטים). אחר כך את ב', ורק בסוף, מחוסר ברירה, את ג' (שהוא גרוע בפיצות ומעולה ברובוטים, ולכן הוויתור עליו יהיה יקר מאוד)."
+                    "narrative": "במשק יש 3 עובדים. פועל א' הוא אלוף בפיצות. פועל ג' הוא גאון ברובוטים. פועל ב' בינוני בשניהם. אם נרצה לייצר רק פיצות, מי יהיה הראשון שנגייס?",
+                    "theoreticalLink": "כמובן את פועל א'! הוא הכי יעיל בפיצות (ויתור נמוך על רובוטים). אחר כך את ב', ורק בסוף, מחוסר ברירה, את ג' (שהוא גרוע בפיצות ומעולה ברובוטים, ולכן הוויתור עליו יהיה יקר מאוד)."
                 },
                 {
-                    "type": "callout",
-                    "variant": "note",
+                    "type": "alert",
+                    "variant": "tip",
                     "content": "VISUAL CONCEPT: גרף קעור (בטן החוצה) יורד משמאל לימין. ציר אחד פיצות, ציר אחד רובוטים. הקעירות נובעת מזה שאנחנו מוותרים על יותר ויותר רובוטים עבור כל פיצה נוספת."
                 },
                 {

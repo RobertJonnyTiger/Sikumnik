@@ -79,7 +79,7 @@
                     "connection": "אבחון מעמיק היה מגלה שמדובר במנהל עם צורך בכוח גבוה שיצר תלות בעובדת, וכשהיא ביקשה עצמאות - הוא סימן אותה כ'בעייתית'. הבעיה לא הייתה בעובדת, אלא במנהיגות."
                 },
                 {
-                    "type": "tone-break",
+                    "type": "street-smart",
                     "opener": "עצרו רגע וחשבו",
                     "content": "כשאתם קוראים מקרה, הנטייה הטבעית היא לזהות מי 'הרע' ומי 'הטוב'. תתאמצו להימנע מזה. בארגונים אין טוב ורע - יש אנשים עם צרכים, מגבלות, הקשרים ולחצים. נסו להבין את כל הצדדים."
                 },
@@ -89,29 +89,14 @@
                     "correct": "להסתכל על כל מקרה ממספר זוויות. מנהיגות, מוטיבציה, תפיסה, קבוצה - הכל קשור."
                 },
                 {
-                    "type": "knowledge-challenge",
-                    "question": "מנהל שופט עובד כ'עצלן' כי הוא לא משלים משימות בזמן. אבל בדיקה מראה שהעובד מקבל משימות ממספר מנהלים שאינם מתואמים. איזו טעות אבחונית עשה המנהל?",
-                    "options": [
-                        "האבחון היה מדויק - העובד באמת עצלן",
-                        "טעות ייחוס בסיסית - ייחס למאפייני האדם מה שגרם למצב הארגוני",
-                        "ההלך הקוגניטיבי היה נכון אבל הפתרון לא מתאים",
-                        "זו בעיה של קונצנזוס גבוה שמחייבת ייחוס חיצוני"
-                    ],
-                    "correctIndex": 1,
-                    "points": 10,
-                    "reasoning": {
-                        "correct": "נכון! זו טעות ייחוס בסיסית - המנהל ייחס את ההתנהגות למאפייני האדם (עצלנות) במקום לגורמים חיצוניים (חוסר תיאום ארגוני). זו הטיה קוגניטיבית שמונעת פתרון אמיתי."
-                    }
-                },
-                {
-                    "type": "callout",
+                    "type": "alert",
                     "variant": "tip",
                     "content": "💡 טיפ: במהלך הסדנה, לחצו על כל מקרה ובחרו בנקודות המבט השונות. השלימו את השאלות בכל אחת לפני שתעברו למקרה הבא."
                 },
                 {
-                    "type": "exam-tip",
+                    "type": "alert",
                     "content": "במבחן יכולים לשאול שאלות מסוג: 'נתח את המצב הבא באמצעות שתי תיאוריות שונות'. התרגול כאן יכין אתכם לכך. זכרו לשלב בין התיאוריות ולא לנתח כל אחד בנפרד.",
-                    "importance": "high"
+                    "variant": "tip"
                 }
             ]
         },
@@ -376,27 +361,12 @@
                     ]
                 },
                 {
-                    "type": "exam-tip",
+                    "type": "alert",
                     "content": "במבחן, שאלות מסוג 'נתח את המצב הבא' ידרשו מכם לזהות מספר תיאוריות רלוונטיות ולהסביר איך הן מתחברות. תרגלו לחשוב 'בגדול' - איך מנהיגות משפיעה על מוטיבציה, איך תפיסה משפיעה על יחסים בקבוצה, וכו'. הציון הגבוה ביותר יינתן למי שמראה חשיבה סינתטית.",
-                    "importance": "high"
+                    "variant": "tip"
                 },
                 {
-                    "type": "knowledge-challenge",
-                    "question": "במבחן, יוצג מקרה של צוות שמתפורר. איזה שילוב של תיאוריות הכי מתאים לניתוח מקיף?",
-                    "options": [
-                        "רק מודל הרשי ובלנשארד (מנהיגות)",
-                        "רק תיאוריית ההוגנות (מוטיבציה)",
-                        "שילוב של מודל פורמינג-סטורמינג (קבוצה), הרשי ובלנשארד (מנהיגות), ותאוריית הייחוס (תפיסה)",
-                        "רק תיאוריית החלטות (Bounded Rationality)"
-                    ],
-                    "correctIndex": 2,
-                    "points": 20,
-                    "reasoning": {
-                        "correct": "נכון! מקרה של צוות מתפורר דורש הבנה של שלבי צוות (פורמינג-סטורמינג), סגנון מנהיגות מתאים (הרשי ובלנשארד), ואיך אנשים מייחסים התנהגויות (ייחוס). זו חשיבה אבחנתית מקיפה."
-                    }
-                },
-                {
-                    "type": "callout",
+                    "type": "alert",
                     "variant": "tip",
                     "content": "🎯 טיפ אחרון: כשאתם עונים על שאלות ניתוח מקרה במבחן, השתמשו במבנה: 1) זיהוי התיאוריה, 2) הסבר כיצד היא חלה על המקרה, 3) ראיות מהטקסט, 4) מסקנה. זה יבטיח לכם את כל הנקודות."
                 }
@@ -420,5 +390,9 @@
             "זיהוי ראיות מהמקרה הוא המפתח ליישום תיאוריות נכון",
             "פתרונות אפקטיביים טופלים בשורש הבעיה ולא בסימפטומים בלבד"
         ]
+    },
+    "endOfChapterExam": {
+        "type": "knowledge-exam",
+        "questions": []
     }
 }

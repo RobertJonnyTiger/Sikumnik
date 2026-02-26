@@ -37,11 +37,11 @@
                     }
                 },
                 {
-                    "type": "example",
+                    "type": "real-world-example",
                     "title": "דוגמת משרד עורכי דין",
-                    "scenario": "במשרד עורכי דין, העורך דין הבכיר מקליד פי 2 יותר מהר מהמתמחה, וגם מנסח חוזים פי 10 יותר טוב.",
-                    "solution": "לעורך דין הבכיר יש יתרון מוחלט גם בהקלדה וגם בניסוח חוזים - הוא טוב יותר בשני הדברים.",
-                    "calculation": "עורך דין: 2x הקלדה, 10x חוזים\\nמתמחה: 1x הקלדה, 1x חוזים"
+                    "calculation": "עורך דין: 2x הקלדה, 10x חוזים\\nמתמחה: 1x הקלדה, 1x חוזים",
+                    "narrative": "במשרד עורכי דין, העורך דין הבכיר מקליד פי 2 יותר מהר מהמתמחה, וגם מנסח חוזים פי 10 יותר טוב.",
+                    "theoreticalLink": "לעורך דין הבכיר יש יתרון מוחלט גם בהקלדה וגם בניסוח חוזים - הוא טוב יותר בשני הדברים."
                 }
             ]
         },
@@ -71,15 +71,14 @@
                     }
                 },
                 {
-                    "type": "tone-break",
+                    "type": "street-smart",
                     "opener": "תכל'ס, מי עושה כלים?",
                     "content": "בזוגיות, זה שתמיד עושה כלים הוא לא בהכרח זה שעושה אותם הכי מהר (יתרון מוחלט). זה פשוט מי שהזמן שלו בסלון 'עולה' פחות לבני הזוג (יתרון יחסי). אם בן הזוג השני הוא מנתח מוח שעייף מהעבודה, הוויתור על המנוחה שלו יקר מדי. כלכלה זה הכי רומנטי שיש. 💘"
                 },
                 {
-                    "type": "common-mistake",
-                    "mistake": "לחשוב שמי שיותר מהר (יתרון מוחלט) צריך לעשות את העבודה",
-                    "correct": "טעות! מקצים לפי מי שמוותר על הכי פחות (יתרון יחסי).",
-                    "why": "יעילות נמדדת בוויתור, לא רק במהירות."
+                    "type": "alert",
+                    "variant": "warning",
+                    "content": "**טעות נפוצה:** לחשוב שמי שיותר מהר (יתרון מוחלט) צריך לעשות את העבודה\n\n**האמת היא:** טעות! מקצים לפי מי שמוותר על הכי פחות (יתרון יחסי).\n\n**למה?** יעילות נמדדת בוויתור, לא רק במהירות."
                 }
             ]
         },
@@ -151,7 +150,7 @@
                     "finalAnswer": "עקומת תמורה שבורה המורכבת משני קטעים ליניאריים, עם נקודת שבירה ב-(75,75). מתחילה ב-(0,100), יורדת ל-(75,75), ומסתיימת ב-(100,0)."
                 },
                 {
-                    "type": "checkpoint",
+                    "type": "checkpoint-quiz",
                     "questions": [
                         {
                             "id": "q1",

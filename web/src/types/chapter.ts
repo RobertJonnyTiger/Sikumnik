@@ -15,26 +15,18 @@ export type ContentBlock =
     | FormulaBlock
     | ExampleBlock
     | DeepDiveBlock
-    | ToneBreakBlock
-    | MistakeBlock
     | GuidedExerciseBlock
     | InteractiveBlock
-    | CalloutBlock
     | AlertBlock
     | ImageBlock
     | CheckpointBlock
-    | SummaryBlock
     | HookBlock
-    | KnowledgeChallengeBlock
     | RealWorldExampleBlock
-    | ExamTipBlock
     | ListBlock
     | MaslowPyramidBlock
-    | PrerequisiteBlock
     | ExamQuestionBlock
     | AttributionFlowchartBlock
     | DiagnosticCaseStudyBlock
-    | AcademicDefinitionBlock
     | SituationalLeadershipGuideBlock
     | StreetSmartBlock;
 
@@ -43,30 +35,12 @@ export interface ListBlock {
     items: string[];
 }
 
-export interface KnowledgeChallengeBlock {
-    type: "knowledge-challenge";
-    question: string;
-    options: string[];
-    correctIndex: number;
-    points: number;
-    reasoning: {
-        correct: string;
-        wrong: Record<string, string>;
-    };
-}
-
 export interface RealWorldExampleBlock {
     type: "real-world-example";
     title: string;
     scenario: string;
     connection: string;
     source?: string;
-}
-
-export interface ExamTipBlock {
-    type: "exam-tip";
-    content: string;
-    importance: "high" | "medium";
 }
 
 export interface ExplanationBlock {
@@ -112,19 +86,6 @@ export interface DeepDiveBlock {
     sections: { title: string; content: string; example?: string }[];
 }
 
-export interface ToneBreakBlock {
-    type: "tone-break";
-    opener: string;
-    content: string;
-}
-
-export interface MistakeBlock {
-    type: "common-mistake";
-    mistake: string;
-    correct: string;
-    why: string;
-}
-
 export interface GuidedExercisePhase {
     type: "i-do" | "we-do" | "you-do";
     content: string;
@@ -146,13 +107,6 @@ export interface InteractiveBlock {
     config?: Record<string, unknown>;
 }
 
-export interface CalloutBlock {
-    type: "callout";
-    variant: "tip" | "warning" | "note" | "important";
-    content: string;
-    title?: string;
-}
-
 export interface AlertBlock {
     type: "alert";
     variant: "tip" | "warning" | "prerequisite";
@@ -172,12 +126,6 @@ export interface CheckpointBlock {
     questions: QuizQuestion[];
 }
 
-export interface SummaryBlock {
-    type: "summary";
-    content: string;
-    keyPoints?: string[];
-}
-
 export interface HookBlock {
     type: "hook";
     opener: string;
@@ -190,13 +138,6 @@ export interface StreetSmartBlock {
     title: string;
     content: string;
     emoji?: string;
-}
-
-export interface PrerequisiteBlock {
-    type: "prerequisite";
-    concept: string;
-    briefReview: string;
-    whyNeeded: string;
 }
 
 export interface MaslowPyramidBlock {
@@ -252,15 +193,6 @@ export interface DiagnosticCaseStudyBlock {
     }>;
     conclusion: string;
     keyTakeaways: string[];
-}
-
-export interface AcademicDefinitionBlock {
-    type: "academic-definition";
-    title?: string;
-    content: string;
-    source?: string;
-    category?: string;
-    showIcon?: boolean;
 }
 
 export interface SituationalLeadershipGuideBlock {
