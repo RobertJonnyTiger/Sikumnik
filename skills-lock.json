@@ -11,6 +11,11 @@
       "sourceType": "github",
       "computedHash": "5cafa1558b0b6bd4d4c71f23d5567b7fcbbcdb4b0a50b0c5f69a80a3cebaf9b8"
     },
+    "file-organizer": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "57570a75163e012b4c20579be82873eab119add7a0af896fdeadb9ebaca03b72"
+    },
     "find-skills": {
       "source": "vercel-labs/skills",
       "sourceType": "github",
