@@ -8,7 +8,7 @@ export default function NotFound() {
         >
             <div className="glass-card p-10 text-center max-w-lg space-y-8">
                 <div className="space-y-2">
-                    <p className="text-8xl font-black text-primary/30 leading-none">
+                    <p className="text-8xl font-black text-sky-800/30 leading-none">
                         404
                     </p>
                     <h2 className="text-2xl font-bold text-foreground">

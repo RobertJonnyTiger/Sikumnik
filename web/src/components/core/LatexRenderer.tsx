@@ -52,7 +52,7 @@ export const LatexRenderer: React.FC<LatexRendererProps> = ({ formula, className
         // Render the error state BUT also show the debug info
         return (
             <div className="flex flex-col gap-1">
-                <code className="text-red-400 text-sm break-all">Error: {formula}</code>
+                <code className="text-red-700 text-sm break-all">Error: {formula}</code>
                 <div className="text-[10px] text-yellow-500 font-mono">{debugInfo}</div>
             </div>
         );
@@ -61,7 +61,7 @@ export const LatexRenderer: React.FC<LatexRendererProps> = ({ formula, className
     return (
         <div className={className}>
             {/* Visual Debug Layer */}
-            <div className="flex flex-col gap-1 mb-2 border-b border-slate-700 pb-2">
+            <div className="flex flex-col gap-1 mb-2 border-b border-border pb-2">
                 <div className="text-[10px] text-yellow-400 font-mono">
                     <span className="font-bold">Input:</span> {formula}
                 </div>
@@ -74,7 +74,7 @@ export const LatexRenderer: React.FC<LatexRendererProps> = ({ formula, className
             <div dangerouslySetInnerHTML={{ __html: html }} />
 
             {/* Control Element - Should always render if KaTeX works */}
-            <div className="mt-4 border-t border-slate-700 pt-2">
+            <div className="mt-4 border-t border-border pt-2">
                 <div className="text-[10px] text-green-400 font-mono mb-1">Control (\sqrt...):</div>
                 <div dangerouslySetInnerHTML={{
                     __html: katex.renderToString("c = \\sqrt{a^2+b^2}", { displayMode: true, throwOnError: false })

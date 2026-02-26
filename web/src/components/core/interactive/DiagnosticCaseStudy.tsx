@@ -89,9 +89,9 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
     const progress = (completedSections.length / sections.length) * 100;
 
     return (
-        <div className="w-full bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden my-6 shadow-xl">
+        <div className="w-full bg-white  rounded-2xl border border-border  overflow-hidden my-6 shadow-xl">
             {/* Header */}
-            <div className="bg-gradient-to-r from-violet-600 to-indigo-600 px-6 py-5 text-white">
+            <div className="bg-gradient-to-r from-violet-600 to-indigo-600 px-6 py-5 text-foreground">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         <div className="bg-white/20 p-2 rounded-lg">
@@ -99,12 +99,12 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                         </div>
                         <div>
                             <h3 className="font-bold text-xl">{title}</h3>
-                            <p className="text-sm text-white/80">{subtitle}</p>
+                            <p className="text-sm text-foreground">{subtitle}</p>
                         </div>
                     </div>
                     <div className="text-right">
                         <div className="text-2xl font-black">{Math.round(progress)}%</div>
-                        <div className="text-xs text-white/70">הושלם</div>
+                        <div className="text-xs text-foreground">הושלם</div>
                     </div>
                 </div>
 
@@ -121,14 +121,14 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
 
             <div className="p-6 space-y-6">
                 {/* Scenario - Expandable */}
-                <div className="bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+                <div className="bg-card  rounded-xl border border-border  overflow-hidden">
                     <button
                         onClick={() => setExpandedScenario(!expandedScenario)}
-                        className="w-full px-6 py-4 flex items-center justify-between bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+                        className="w-full px-6 py-4 flex items-center justify-between bg-slate-100  hover:bg-slate-200  transition-colors"
                     >
                         <div className="flex items-center gap-3">
-                            <BookOpen className="w-5 h-5 text-violet-600 dark:text-violet-400" />
-                            <span className="font-bold text-slate-800 dark:text-slate-100">תיאור המקרה</span>
+                            <BookOpen className="w-5 h-5 text-violet-600 " />
+                            <span className="font-bold text-foreground ">תיאור המקרה</span>
                         </div>
                         {expandedScenario ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                     </button>
@@ -142,7 +142,7 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                                 className="overflow-hidden"
                             >
                                 <div className="p-6">
-                                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-lg whitespace-pre-line">
+                                    <p className="text-foreground  leading-relaxed text-lg whitespace-pre-line">
                                         {scenario}
                                     </p>
                                 </div>
@@ -153,8 +153,8 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
 
                 {/* Analysis Sections */}
                 <div className="space-y-4">
-                    <h4 className="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-                        <Sparkles className="w-5 h-5 text-amber-500" />
+                    <h4 className="font-bold text-foreground  flex items-center gap-2">
+                        <Sparkles className="w-5 h-5 text-amber-700" />
                         נקודות מבט אבחנתיות
                     </h4>
 
@@ -167,9 +167,9 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                             className={cn(
                                 "border-2 rounded-xl overflow-hidden transition-all",
                                 activeSection === section.id
-                                    ? "border-violet-400 dark:border-violet-500 shadow-lg"
-                                    : "border-slate-200 dark:border-slate-700",
-                                completedSections.includes(section.id) && "border-emerald-400 dark:border-emerald-500"
+                                    ? "border-violet-400  shadow-lg"
+                                    : "border-border ",
+                                completedSections.includes(section.id) && "border-emerald-400 "
                             )}
                         >
                             {/* Section Header */}
@@ -178,22 +178,22 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                                 className={cn(
                                     "w-full px-6 py-4 flex items-center justify-between transition-colors",
                                     activeSection === section.id
-                                        ? "bg-violet-50 dark:bg-violet-900/20"
-                                        : "bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700"
+                                        ? "bg-violet-50 "
+                                        : "bg-white  hover:bg-card "
                                 )}
                             >
                                 <div className="flex items-center gap-3">
                                     <div className={cn(
                                         "p-2 rounded-lg",
                                         completedSections.includes(section.id)
-                                            ? "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400"
-                                            : "bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400"
+                                            ? "bg-emerald-100  text-emerald-600 "
+                                            : "bg-violet-100  text-violet-600 "
                                     )}>
                                         {completedSections.includes(section.id) ? <CheckCircle2 className="w-5 h-5" /> : (iconMap[section.icon as string] || section.icon)}
                                     </div>
                                     <div className="text-right">
-                                        <div className="font-bold text-slate-800 dark:text-slate-100">{section.title}</div>
-                                        <div className="text-sm text-slate-500 dark:text-slate-400">{section.theory}</div>
+                                        <div className="font-bold text-foreground ">{section.title}</div>
+                                        <div className="text-sm text-muted-foreground ">{section.theory}</div>
                                     </div>
                                 </div>
                                 {activeSection === section.id ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -208,28 +208,28 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                                         exit={{ height: 0, opacity: 0 }}
                                         className="overflow-hidden"
                                     >
-                                        <div className="p-6 space-y-6 border-t border-slate-200 dark:border-slate-700">
+                                        <div className="p-6 space-y-6 border-t border-border ">
                                             {/* Analysis */}
-                                            <div className="bg-violet-50 dark:bg-violet-900/10 rounded-lg p-4 border-r-4 border-violet-400">
-                                                <h5 className="font-bold text-violet-800 dark:text-violet-300 mb-2 flex items-center gap-2">
+                                            <div className="bg-violet-50  rounded-lg p-4 border-r-4 border-violet-400">
+                                                <h5 className="font-bold text-violet-800  mb-2 flex items-center gap-2">
                                                     <Brain className="w-4 h-4" />
                                                     ניתוח תיאורטי
                                                 </h5>
-                                                <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+                                                <p className="text-foreground  leading-relaxed">
                                                     {section.analysis}
                                                 </p>
                                             </div>
 
                                             {/* Evidence */}
                                             <div>
-                                                <h5 className="font-bold text-slate-800 dark:text-slate-100 mb-3 flex items-center gap-2">
-                                                    <Target className="w-4 h-4 text-amber-500" />
+                                                <h5 className="font-bold text-foreground  mb-3 flex items-center gap-2">
+                                                    <Target className="w-4 h-4 text-amber-700" />
                                                     ראיות מהמקרה
                                                 </h5>
                                                 <ul className="space-y-2">
                                                     {section.evidence.map((item, i) => (
-                                                        <li key={i} className="flex items-start gap-2 text-slate-700 dark:text-slate-300">
-                                                            <span className="text-violet-500 mt-1">•</span>
+                                                        <li key={i} className="flex items-start gap-2 text-foreground ">
+                                                            <span className="text-violet-700 mt-1">•</span>
                                                             {item}
                                                         </li>
                                                     ))}
@@ -238,8 +238,8 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
 
                                             {/* Quiz Questions */}
                                             <div className="space-y-4">
-                                                <h5 className="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-                                                    <MessageSquare className="w-4 h-4 text-indigo-500" />
+                                                <h5 className="font-bold text-foreground  flex items-center gap-2">
+                                                    <MessageSquare className="w-4 h-4 text-sky-800" />
                                                     בדיקת הבנה
                                                 </h5>
 
@@ -251,8 +251,8 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                                                     const userAns = answers[key];
 
                                                     return (
-                                                        <div key={qIdx} className="bg-white dark:bg-slate-800 rounded-lg p-4 border border-slate-200 dark:border-slate-700">
-                                                            <p className="font-medium text-slate-800 dark:text-slate-100 mb-3">{q.question}</p>
+                                                        <div key={qIdx} className="bg-white  rounded-lg p-4 border border-border ">
+                                                            <p className="font-medium text-foreground  mb-3">{q.question}</p>
 
                                                             <div className="space-y-2">
                                                                 {q.options.map((option, optIdx) => (
@@ -263,24 +263,24 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                                                                         className={cn(
                                                                             "w-full text-right px-4 py-3 rounded-lg border-2 transition-all",
                                                                             !showResult && answers[key] === optIdx
-                                                                                ? "border-violet-400 bg-violet-50 dark:bg-violet-900/20"
-                                                                                : "border-slate-200 dark:border-slate-700 hover:border-violet-300",
+                                                                                ? "border-violet-400 bg-violet-50 "
+                                                                                : "border-border  hover:border-violet-300",
                                                                             showResult && optIdx === q.correctIndex
-                                                                            && "border-emerald-400 bg-emerald-50 dark:bg-emerald-900/20",
+                                                                            && "border-emerald-400 bg-emerald-50 ",
                                                                             showResult && answers[key] === optIdx && optIdx !== q.correctIndex
-                                                                            && "border-red-400 bg-red-50 dark:bg-red-900/20"
+                                                                            && "border-red-400 bg-red-50 "
                                                                         )}
                                                                     >
                                                                         <div className="flex items-center gap-2">
-                                                                            <span className="font-bold text-slate-500">{String.fromCharCode(1488 + optIdx)}.</span>
+                                                                            <span className="font-bold text-muted-foreground">{String.fromCharCode(1488 + optIdx)}.</span>
                                                                             <span className={cn(
-                                                                                showResult && optIdx === q.correctIndex && "text-emerald-700 dark:text-emerald-300 font-bold",
-                                                                                showResult && answers[key] === optIdx && optIdx !== q.correctIndex && "text-red-700 dark:text-red-300"
+                                                                                showResult && optIdx === q.correctIndex && "text-emerald-700  font-bold",
+                                                                                showResult && answers[key] === optIdx && optIdx !== q.correctIndex && "text-red-700 "
                                                                             )}>
                                                                                 {option}
                                                                             </span>
-                                                                            {showResult && optIdx === q.correctIndex && <CheckCircle2 className="w-4 h-4 text-emerald-500 mr-auto" />}
-                                                                            {showResult && answers[key] === optIdx && optIdx !== q.correctIndex && <XCircle className="w-4 h-4 text-red-500 mr-auto" />}
+                                                                            {showResult && optIdx === q.correctIndex && <CheckCircle2 className="w-4 h-4 text-emerald-700 mr-auto" />}
+                                                                            {showResult && answers[key] === optIdx && optIdx !== q.correctIndex && <XCircle className="w-4 h-4 text-red-700 mr-auto" />}
                                                                         </div>
                                                                     </button>
                                                                 ))}
@@ -289,7 +289,7 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                                                             {!showResult && isAnswered && (
                                                                 <button
                                                                     onClick={() => checkAnswer(section.id, qIdx)}
-                                                                    className="mt-3 px-4 py-2 bg-violet-600 text-white rounded-lg font-bold hover:bg-violet-700 transition-colors"
+                                                                    className="mt-3 px-4 py-2 bg-violet-600 text-foreground rounded-lg font-bold hover:bg-violet-700 transition-colors"
                                                                 >
                                                                     בדוק תשובה
                                                                 </button>
@@ -298,11 +298,11 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                                                             {showResult && (
                                                                 <div className={cn(
                                                                     "mt-3 p-3 rounded-lg",
-                                                                    isCorrect ? "bg-emerald-50 dark:bg-emerald-900/20" : "bg-amber-50 dark:bg-amber-900/20"
+                                                                    isCorrect ? "bg-emerald-50 " : "bg-amber-50 "
                                                                 )}>
                                                                     <div className={cn(
                                                                         "text-sm whitespace-pre-line",
-                                                                        isCorrect ? "text-emerald-700 dark:text-emerald-300" : "text-amber-700 dark:text-amber-300"
+                                                                        isCorrect ? "text-emerald-700 " : "text-foreground "
                                                                     )}>
                                                                         {(() => {
                                                                             if (q.feedback) {
@@ -313,7 +313,7 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                                                                                     return (
                                                                                         <>
                                                                                             {wrongFeedback && <span className="font-bold block mb-2">{wrongFeedback}</span>}
-                                                                                            <span className="block border-t border-amber-200 dark:border-amber-800 pt-2 mt-2">
+                                                                                            <span className="block border-t border-amber-200  pt-2 mt-2">
                                                                                                 <span className="font-bold">התשובה הנכונה:</span> {q.feedback.correct}
                                                                                             </span>
                                                                                         </>
@@ -338,21 +338,21 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
                 </div>
 
                 {/* Conclusion */}
-                <div className="bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-800/50 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
-                    <h4 className="font-bold text-slate-800 dark:text-slate-100 mb-3 flex items-center gap-2">
-                        <Lightbulb className="w-5 h-5 text-amber-500" />
+                <div className="bg-card   rounded-xl p-6 border border-border ">
+                    <h4 className="font-bold text-foreground  mb-3 flex items-center gap-2">
+                        <Lightbulb className="w-5 h-5 text-amber-700" />
                         מסקנות והמלצות
                     </h4>
-                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
+                    <p className="text-foreground  leading-relaxed mb-4">
                         {conclusion}
                     </p>
 
-                    <div className="bg-white dark:bg-slate-800 rounded-lg p-4 border border-slate-200 dark:border-slate-700">
-                        <h5 className="font-bold text-slate-800 dark:text-slate-100 mb-3 text-sm">נקודות למידה מרכזיות:</h5>
+                    <div className="bg-white  rounded-lg p-4 border border-border ">
+                        <h5 className="font-bold text-foreground  mb-3 text-sm">נקודות למידה מרכזיות:</h5>
                         <ul className="space-y-2">
                             {keyTakeaways.map((takeaway, i) => (
-                                <li key={i} className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
-                                    <span className="text-violet-500 mt-0.5">✓</span>
+                                <li key={i} className="flex items-start gap-2 text-sm text-foreground ">
+                                    <span className="text-violet-700 mt-0.5">✓</span>
                                     {takeaway}
                                 </li>
                             ))}

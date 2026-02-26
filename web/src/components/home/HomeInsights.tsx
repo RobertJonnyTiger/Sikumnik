@@ -47,7 +47,7 @@ export function HomeInsights() {
         <div className="lg:col-span-2 space-y-8">
             <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-black tracking-tight">מה בתכל&apos;ס..</h2>
-                <Link href="/courses" className="text-primary font-black text-sm flex items-center gap-2 group">
+                <Link href="/courses" className="text-foreground font-black text-sm flex items-center gap-2 group">
                     לכל התובנות <ArrowRight className="w-4 h-4 group-hover:translate-x-[-4px] transition-transform" />
                 </Link>
             </div>
@@ -60,7 +60,7 @@ export function HomeInsights() {
                     <div className="flex items-start justify-between">
                         <div className="flex items-center gap-4">
                             <div className="bg-accent p-4 rounded-2xl shadow-lg shadow-accent/20 group-hover:scale-110 transition-transform shrink-0">
-                                <Sparkles className="w-8 h-8 text-white" />
+                                <Sparkles className="w-8 h-8 text-foreground" />
                             </div>
                             <h3 className="text-sm font-black text-accent uppercase tracking-[0.3em]">תובנת היום</h3>
                         </div>

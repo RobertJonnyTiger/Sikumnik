@@ -20,28 +20,28 @@ export const CourseBreadcrumb: React.FC<CourseBreadcrumbProps> = ({
 }) => {
     return (
         <div className="w-full bg-card/50 border-b border-white/5 backdrop-blur-md sticky top-0 z-30">
-            <div className="max-w-7xl mx-auto px-4 h-12 flex items-center justify-between text-xs text-slate-400 font-medium overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 h-12 flex items-center justify-between text-xs text-muted-foreground font-medium overflow-hidden">
 
                 {/* Breadcrumb Path */}
                 <div className="flex items-center gap-2 whitespace-nowrap overflow-x-auto no-scrollbar mask-gradient-x">
                     {courseName && (
                         <>
-                            <span className="flex items-center gap-1.5 text-slate-500 hover:text-slate-300 transition-colors cursor-default">
+                            <span className="flex items-center gap-1.5 text-muted-foreground hover:text-muted-foreground transition-colors cursor-default">
                                 <BookOpen size={12} />
                                 {courseName}
                             </span>
-                            <ChevronLeft size={10} className="text-slate-700" />
+                            <ChevronLeft size={10} className="text-foreground" />
                         </>
                     )}
 
-                    <span className="text-slate-300 hover:text-white transition-colors cursor-default">
+                    <span className="text-muted-foreground hover:text-foreground transition-colors cursor-default">
                         {chapterTitle}
                     </span>
 
                     {currentTabTitle && (
                         <>
-                            <ChevronLeft size={10} className="text-slate-700" />
-                            <span className="text-teal-500 font-bold truncate max-w-[150px] md:max-w-xs">
+                            <ChevronLeft size={10} className="text-foreground" />
+                            <span className="text-secondary-foreground font-bold truncate max-w-[150px] md:max-w-xs">
                                 {currentTabTitle}
                             </span>
                         </>
@@ -53,9 +53,9 @@ export const CourseBreadcrumb: React.FC<CourseBreadcrumbProps> = ({
                     <div className="hidden sm:flex items-center gap-2 pl-4 shrink-0 border-r border-white/5 mr-4">
                         <span className="text-[10px] tracking-wider uppercase opacity-50">התקדמות</span>
                         <div className="flex items-baseline gap-1">
-                            <span className="text-teal-400 font-bold">{currentTabIndex}</span>
-                            <span className="text-slate-600 text-[10px]">/</span>
-                            <span className="text-slate-500">{totalTabs}</span>
+                            <span className="text-secondary-foreground font-bold">{currentTabIndex}</span>
+                            <span className="text-muted-foreground text-[10px]">/</span>
+                            <span className="text-muted-foreground">{totalTabs}</span>
                         </div>
                     </div>
                 )}

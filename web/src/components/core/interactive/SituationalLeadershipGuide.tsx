@@ -105,45 +105,45 @@ export const SituationalLeadershipGuide: React.FC<SituationalLeadershipGuideProp
     const result = getResultStyle();
 
     return (
-        <div className="w-full max-w-4xl mx-auto p-4 md:p-8 font-sans bg-slate-900 rounded-3xl text-slate-100 shadow-2xl border border-slate-800" dir="rtl">
+        <div className="w-full max-w-4xl mx-auto p-4 md:p-8 font-sans bg-card rounded-3xl text-foreground shadow-2xl border border-border" dir="rtl">
 
             {/* Header */}
             <div className="text-center mb-12">
                 <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
                     המערבל הניהולי
                 </h2>
-                <p className="text-xl text-slate-400 font-light">
-                    אל תנחש. תאבחן. איזה מנהיג הצוות שלך צריך <span className="font-bold text-slate-200">עכשיו</span>?
+                <p className="text-xl text-muted-foreground font-light">
+                    אל תנחש. תאבחן. איזה מנהיג הצוות שלך צריך <span className="font-bold text-foreground">עכשיו</span>?
                 </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-12 items-start">
 
                 {/* Controls */}
-                <div className="space-y-10 bg-slate-800/50 p-8 rounded-2xl border border-slate-700/50 backdrop-blur-sm">
+                <div className="space-y-10 bg-muted/50 p-8 rounded-2xl border border-border/50 backdrop-blur-sm">
 
                     {/* Competence Control */}
                     <div className="space-y-4">
                         <div className="flex items-center justify-between">
                             <h3 className="text-2xl font-bold flex items-center gap-2">
-                                <Brain className="text-blue-400 w-6 h-6" />
+                                <Brain className="text-blue-700 w-6 h-6" />
                                 יכולת (Competence)
                             </h3>
                             {competence && (
-                                <span className={cn("px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider", competence === 'High' ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400")}>
+                                <span className={cn("px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider", competence === 'High' ? "bg-green-500/20 text-green-400" : "bg-red-50 text-red-700")}>
                                     {competence === 'High' ? 'גבוהה' : 'נמוכה'}
                                 </span>
                             )}
                         </div>
-                        <p className="text-slate-400 text-sm">האם העובד <span className="font-bold text-slate-200">יודע</span> לבצע את המשימה הספציפית הזו בהצלחה?</p>
+                        <p className="text-muted-foreground text-sm">האם העובד <span className="font-bold text-foreground">יודע</span> לבצע את המשימה הספציפית הזו בהצלחה?</p>
                         <div className="grid grid-cols-2 gap-4">
                             <button
                                 onClick={() => setCompetence('Low')}
                                 className={cn(
                                     "p-4 rounded-xl border-2 transition-all duration-200 flex flex-col items-center gap-2",
                                     competence === 'Low'
-                                        ? "border-red-500 bg-red-500/10 text-red-400 shadow-[0_0_20px_rgba(239,68,68,0.3)]"
-                                        : "border-slate-700 hover:border-slate-600 text-slate-500 hover:bg-slate-800"
+                                        ? "border-red-500 bg-red-50 text-red-700 shadow-[0_0_20px_rgba(239,68,68,0.3)]"
+                                        : "border-border hover:border-slate-600 text-muted-foreground hover:bg-muted"
                                 )}
                             >
                                 <X className="w-6 h-6" />
@@ -155,7 +155,7 @@ export const SituationalLeadershipGuide: React.FC<SituationalLeadershipGuideProp
                                     "p-4 rounded-xl border-2 transition-all duration-200 flex flex-col items-center gap-2",
                                     competence === 'High'
                                         ? "border-green-500 bg-green-500/10 text-green-400 shadow-[0_0_20px_rgba(34,197,94,0.3)]"
-                                        : "border-slate-700 hover:border-slate-600 text-slate-500 hover:bg-slate-800"
+                                        : "border-border hover:border-slate-600 text-muted-foreground hover:bg-muted"
                                 )}
                             >
                                 <Check className="w-6 h-6" />
@@ -174,20 +174,20 @@ export const SituationalLeadershipGuide: React.FC<SituationalLeadershipGuideProp
                                 מוטיבציה (Commitment)
                             </h3>
                             {commitment && (
-                                <span className={cn("px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider", commitment === 'High' ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400")}>
+                                <span className={cn("px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider", commitment === 'High' ? "bg-green-500/20 text-green-400" : "bg-red-50 text-red-700")}>
                                     {commitment === 'High' ? 'גבוהה' : 'נמוכה'}
                                 </span>
                             )}
                         </div>
-                        <p className="text-slate-400 text-sm">האם העובד <span className="font-bold text-slate-200">רוצה</span> ובטוח בעצמו לבצע את המשימה?</p>
+                        <p className="text-muted-foreground text-sm">האם העובד <span className="font-bold text-foreground">רוצה</span> ובטוח בעצמו לבצע את המשימה?</p>
                         <div className="grid grid-cols-2 gap-4">
                             <button
                                 onClick={() => setCommitment('Low')}
                                 className={cn(
                                     "p-4 rounded-xl border-2 transition-all duration-200 flex flex-col items-center gap-2",
                                     commitment === 'Low'
-                                        ? "border-red-500 bg-red-500/10 text-red-400 shadow-[0_0_20px_rgba(239,68,68,0.3)]"
-                                        : "border-slate-700 hover:border-slate-600 text-slate-500 hover:bg-slate-800"
+                                        ? "border-red-500 bg-red-50 text-red-700 shadow-[0_0_20px_rgba(239,68,68,0.3)]"
+                                        : "border-border hover:border-slate-600 text-muted-foreground hover:bg-muted"
                                 )}
                             >
                                 <X className="w-6 h-6" />
@@ -199,7 +199,7 @@ export const SituationalLeadershipGuide: React.FC<SituationalLeadershipGuideProp
                                     "p-4 rounded-xl border-2 transition-all duration-200 flex flex-col items-center gap-2",
                                     commitment === 'High'
                                         ? "border-green-500 bg-green-500/10 text-green-400 shadow-[0_0_20px_rgba(34,197,94,0.3)]"
-                                        : "border-slate-700 hover:border-slate-600 text-slate-500 hover:bg-slate-800"
+                                        : "border-border hover:border-slate-600 text-muted-foreground hover:bg-muted"
                                 )}
                             >
                                 <Check className="w-6 h-6" />
@@ -229,7 +229,7 @@ export const SituationalLeadershipGuide: React.FC<SituationalLeadershipGuideProp
                                     {/* Background decoration */}
                                     <div className={cn("absolute top-0 left-0 w-full h-2 opacity-50", styles[result].color)} />
 
-                                    <div className={cn("inline-flex items-center justify-center p-4 rounded-full mb-4 shadow-lg", styles[result].color, "text-white")}>
+                                    <div className={cn("inline-flex items-center justify-center p-4 rounded-full mb-4 shadow-lg", styles[result].color, "text-foreground")}>
                                         {styles[result].icon}
                                     </div>
 
@@ -237,7 +237,7 @@ export const SituationalLeadershipGuide: React.FC<SituationalLeadershipGuideProp
                                         <h2 className="text-6xl font-black mb-2 tracking-tighter uppercase">
                                             {result}
                                         </h2>
-                                        <h3 className="text-3xl font-bold text-white mb-1">
+                                        <h3 className="text-3xl font-bold text-foreground mb-1">
                                             {styles[result].slangName}
                                         </h3>
                                         <p className="text-lg opacity-70 font-mono">
@@ -245,17 +245,17 @@ export const SituationalLeadershipGuide: React.FC<SituationalLeadershipGuideProp
                                         </p>
                                     </div>
 
-                                    <div className="bg-slate-950/50 p-6 rounded-2xl text-lg leading-relaxed border border-slate-800 text-right">
+                                    <div className="bg-background/50 p-6 rounded-2xl text-lg leading-relaxed border border-border text-right">
                                         {styles[result].description.replace(/\*/g, '')}
                                     </div>
 
                                     <div className="grid grid-cols-2 gap-4 text-sm text-right" dir="rtl">
-                                        <div className="bg-slate-900/80 p-3 rounded-lg border border-slate-800">
-                                            <span className="block text-xs uppercase text-slate-500 mb-1 font-bold">מתאים ל:</span>
+                                        <div className="bg-card/80 p-3 rounded-lg border border-border">
+                                            <span className="block text-xs uppercase text-muted-foreground mb-1 font-bold">מתאים ל:</span>
                                             {styles[result].suitableFor.replace(/\*/g, '')}
                                         </div>
-                                        <div className="bg-slate-900/80 p-3 rounded-lg border border-slate-800">
-                                            <span className="block text-xs uppercase text-slate-500 mb-1 font-bold">סיכון:</span>
+                                        <div className="bg-card/80 p-3 rounded-lg border border-border">
+                                            <span className="block text-xs uppercase text-muted-foreground mb-1 font-bold">סיכון:</span>
                                             {styles[result].risks}
                                         </div>
                                     </div>

@@ -6,28 +6,25 @@ import type { ContentBlock } from "@/types/chapter";
 // Block Components
 import { Explanation } from "./blocks/Explanation";
 import { Analogy } from "./blocks/Analogy";
-import { DefinitionCard } from "./blocks/DefinitionCard";
+import { Definition } from "./blocks/Definition";
 import { FormulaCard } from "./blocks/FormulaCard";
 import { WorkedExample } from "./blocks/WorkedExample";
 import { DeepDive } from "./blocks/DeepDive";
 import { ToneBreak } from "./blocks/ToneBreak";
-import { MistakeCard } from "./blocks/MistakeCard";
 import { GuidedExercise } from "./blocks/GuidedExercise";
-import { Callout } from "./blocks/Callout";
+import { Alert } from "./blocks/Alert";
 import { ChapterImage } from "./blocks/ChapterImage";
 import { CheckpointQuiz } from "./blocks/CheckpointQuiz";
 import { TopicSummary } from "./blocks/TopicSummary";
 import { Hook } from "./blocks/Hook";
-import { KnowledgeChallenge } from "./blocks/KnowledgeChallenge";
+import { StreetSmart } from "./blocks/StreetSmart";
+import { KnowledgeExam } from "./blocks/KnowledgeExam";
 import { RealWorldExample } from "./blocks/RealWorldExample";
-import { ExamTip } from "./blocks/ExamTip";
-import { Prerequisite } from "./blocks/Prerequisite";
 import { List } from "./blocks/List";
 import { MaslowPyramid } from "./blocks/MaslowPyramid";
 import { ExamQuestionBlock as ExamQuestionsComponent } from "./blocks/ExamQuestionBlock";
 import { AttributionFlowchart } from "./interactive/AttributionFlowchart";
 import { DiagnosticCaseStudy } from "./interactive/DiagnosticCaseStudy";
-import { AcademicDefinition } from "./blocks/AcademicDefinition";
 import { SituationalLeadershipGuide } from "./interactive/SituationalLeadershipGuide";
 
 interface BlockRendererProps {
@@ -44,7 +41,7 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
             return <Analogy content={block.content} icon={block.icon} />;
 
         case "definition":
-            return <DefinitionCard term={block.term} content={block.content} tooltips={block.tooltips} />;
+            return <Definition variant="simple" term={block.term} definition={block.content} />;
 
         case "formula":
             return <FormulaCard title={block.title} formula={block.formula} variables={block.variables} />;
@@ -59,7 +56,13 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
             return <ToneBreak opener={block.opener} content={block.content} />;
 
         case "common-mistake":
-            return <MistakeCard mistake={block.mistake} correct={block.correct} why={block.why} />;
+            return (
+                <Alert variant="warning" title="טעות נפוצה">
+                    **טעות:** {block.mistake}<br />
+                    **נכון:** {block.correct}<br />
+                    **למה?** {block.why}
+                </Alert>
+            );
 
         case "guided-exercise":
             return (
@@ -76,17 +79,28 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
         case "hook":
             return <Hook opener={block.opener} question={block.question} context={block.context} />;
 
+        case "street-smart":
+            return <StreetSmart title={block.title} emoji={block.emoji}>{block.content}</StreetSmart>;
+
         case "prerequisite":
-            return <Prerequisite concept={block.concept} briefReview={block.briefReview} whyNeeded={block.whyNeeded} />;
+            return (
+                <Alert variant="prerequisite" title={`לפני שנמשיך: ${block.concept}`}>
+                    {block.briefReview}
+                    <br /><br />
+                    **למה זה נחוץ:** {block.whyNeeded}
+                </Alert>
+            );
 
         case "knowledge-challenge":
             return (
-                <KnowledgeChallenge
-                    question={block.question}
-                    options={block.options}
-                    correctIndex={block.correctIndex}
-                    points={block.points}
-                    reasoning={block.reasoning}
+                <KnowledgeExam
+                    questions={[{
+                        id: "legacy",
+                        question: block.question,
+                        options: block.options,
+                        correctIndex: block.correctIndex,
+                        explanation: block.reasoning.correct || "Correct!"
+                    }]}
                 />
             );
 
@@ -101,7 +115,7 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
             );
 
         case "exam-tip":
-            return <ExamTip content={block.content} importance={block.importance} />;
+            return <Alert variant="tip" title={block.importance === "high" ? "טיפ חשוב מאד" : "טיפ לחזרה"}>{block.content}</Alert>;
 
         case "list":
             return <List items={block.items} />;
@@ -113,7 +127,11 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
             return null;
 
         case "callout":
-            return <Callout variant={block.variant} content={block.content} />;
+            const mappedVariant = block.variant === 'important' ? 'warning' : (block.variant === 'note' ? 'tip' : block.variant);
+            return <Alert variant={mappedVariant} title={block.title}>{block.content}</Alert>;
+
+        case "alert":
+            return <Alert variant={block.variant} title={block.title}>{block.content}</Alert>;
 
         case "image":
             return <ChapterImage src={block.src} alt={block.alt} caption={block.caption} />;
@@ -158,12 +176,12 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
 
         case "academic-definition":
             return (
-                <AcademicDefinition
-                    title={block.title}
-                    content={block.content}
+                <Definition
+                    variant="academic"
+                    term={block.title || "הגדרה אקדמית"}
+                    definition={block.content}
                     source={block.source}
-                    category={block.category}
-                    showIcon={block.showIcon}
+                    subject={block.category}
                 />
             );
 

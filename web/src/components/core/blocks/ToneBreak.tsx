@@ -19,10 +19,10 @@ export const ToneBreak: React.FC<ToneBreakProps> = ({ opener, content }) => {
                 </div>
                 <p className="text-xs font-black text-orange-400 uppercase tracking-[0.2em]">הפסקה מהפורמליות</p>
             </div>
-            <div className="text-lg font-bold text-foreground/90 mb-2 markdown-content">
+            <div className="text-lg font-bold text-foreground mb-2 markdown-content">
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{opener}</ReactMarkdown>
             </div>
-            <div className="text-foreground/70 leading-relaxed markdown-content">
+            <div className="text-foreground leading-relaxed markdown-content">
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
             </div>
         </div>

@@ -29,23 +29,23 @@ export const ChapterFooter: React.FC<ChapterFooterProps> = ({
             {bridge && (
                 <div className="relative overflow-hidden border border-primary/20 rounded-2xl p-8">
                     <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent pointer-events-none" />
-                    <h3 className="text-lg font-bold text-primary mb-3">
+                    <h3 className="text-lg font-bold text-sky-800 mb-3">
                         בפרק הבא: {bridge.nextChapterTitle}
                     </h3>
-                    <p className="text-foreground/70 leading-relaxed mb-4">{bridge.content}</p>
+                    <p className="text-foreground leading-relaxed mb-4">{bridge.content}</p>
                 </div>
             )}
 
             {/* Trivia */}
             {trivia && trivia.length > 0 && (
                 <div className="bg-card/30 border border-border/30 rounded-2xl p-6">
-                    <h3 className="flex items-center gap-2 text-sm font-bold text-amber-400 uppercase tracking-wider mb-4">
+                    <h3 className="flex items-center gap-2 text-sm font-bold text-amber-700 uppercase tracking-wider mb-4">
                         <Sparkles className="w-4 h-4" />
                         הידעת?
                     </h3>
                     <div className="space-y-3">
                         {trivia.map((item, idx) => (
-                            <p key={idx} className="text-foreground/70 leading-relaxed">
+                            <p key={idx} className="text-foreground leading-relaxed">
                                 {item.fact}
                                 {item.source && (
                                     <span className="text-xs text-muted-foreground mr-2">({item.source})</span>
@@ -71,7 +71,7 @@ export const ChapterFooter: React.FC<ChapterFooterProps> = ({
                     {navigation.next ? (
                         <a
                             href={`/courses/${navigation.next.id}`}
-                            className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-bold"
+                            className="flex items-center gap-2 text-sky-800 hover:text-sky-800/80 transition-colors font-bold"
                         >
                             <span className="text-sm">{navigation.next.title}</span>
                             <ArrowLeft className="w-4 h-4" />

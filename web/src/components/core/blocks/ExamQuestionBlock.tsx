@@ -121,7 +121,7 @@ export const ExamQuestionBlock: React.FC<ExamQuestionBlockProps> = ({
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
                     <div className="flex items-center gap-3">
                         <div className="bg-primary/10 p-2 rounded-lg border border-primary/20">
-                            <FileText className="w-6 h-6 text-primary" />
+                            <FileText className="w-6 h-6 text-sky-800" />
                         </div>
                         <div>
                             <h3 className="font-bold text-xl">סימולציית מבחן</h3>
@@ -142,7 +142,7 @@ export const ExamQuestionBlock: React.FC<ExamQuestionBlockProps> = ({
                         הגשה בסוף המבחן
                     </div>
                     {!examSubmitted && (
-                        <div className="font-mono text-amber-500">
+                        <div className="font-mono text-amber-700">
                             מבחן פעיל
                         </div>
                     )}
@@ -153,7 +153,7 @@ export const ExamQuestionBlock: React.FC<ExamQuestionBlockProps> = ({
                     <div className="mt-4 pt-4 border-t border-border/20 flex justify-between items-center">
                         <span className="font-bold">ציון סופי:</span>
                         <div className="flex items-end gap-2">
-                            <span className="text-2xl font-black text-primary">{currentScore}</span>
+                            <span className="text-2xl font-black text-sky-800">{currentScore}</span>
                             <span className="text-sm text-muted-foreground mb-1">/ {totalPoints}</span>
                         </div>
                     </div>
@@ -187,8 +187,8 @@ export const ExamQuestionBlock: React.FC<ExamQuestionBlockProps> = ({
                         // Open ended handled differently or just marked as submitted
                         if (q.type !== "open-ended") {
                             statusIcon = isCorrect
-                                ? <CheckCircle2 className="w-6 h-6 text-emerald-500" />
-                                : <XCircle className="w-6 h-6 text-rose-500" />;
+                                ? <CheckCircle2 className="w-6 h-6 text-emerald-700" />
+                                : <XCircle className="w-6 h-6 text-rose-700" />;
                         }
                     }
 
@@ -198,14 +198,14 @@ export const ExamQuestionBlock: React.FC<ExamQuestionBlockProps> = ({
                             className={clsx(
                                 "border rounded-2xl overflow-hidden transition-all duration-300",
                                 showFeedback
-                                    ? (isCorrect ? "bg-emerald-500/5 border-emerald-500/20" : "bg-rose-500/5 border-rose-500/20")
+                                    ? (isCorrect ? "bg-emerald-50 border-emerald-200" : "bg-rose-50 border-rose-200")
                                     : "bg-card/30 border-border/40 hover:border-border/60"
                             )}
                         >
                             {/* Question Header */}
-                            <div className="px-6 py-4 flex items-center justify-between border-b border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5">
+                            <div className="px-6 py-4 flex items-center justify-between border-b border-black/5  bg-black/5 ">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm font-bold text-primary">
+                                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm font-bold text-sky-800">
                                         {q.number}
                                     </div>
                                     <div className="flex flex-col">
@@ -217,7 +217,7 @@ export const ExamQuestionBlock: React.FC<ExamQuestionBlockProps> = ({
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <span className="text-xs font-bold bg-primary/10 text-primary px-2 py-1 rounded">
+                                    <span className="text-xs font-bold bg-primary/10 text-sky-800 px-2 py-1 rounded">
                                         {q.points} נק׳
                                     </span>
                                     {statusIcon}
@@ -248,9 +248,9 @@ export const ExamQuestionBlock: React.FC<ExamQuestionBlockProps> = ({
                                                 : q.correctIndex === optIdx;
 
                                             if (isTrulyCorrect) {
-                                                optionStyle = "bg-emerald-500/10 border-emerald-500 text-emerald-700 dark:text-emerald-300 ring-1 ring-emerald-500";
+                                                optionStyle = "bg-emerald-50 border-emerald-500 text-emerald-700  ring-1 ring-emerald-500";
                                             } else if (selected && !isTrulyCorrect) {
-                                                optionStyle = "bg-rose-500/10 border-rose-500 text-rose-700 dark:text-rose-300";
+                                                optionStyle = "bg-rose-50 border-rose-500 text-rose-700 ";
                                             } else {
                                                 optionStyle = "opacity-50 border-transparent";
                                             }
@@ -316,12 +316,12 @@ export const ExamQuestionBlock: React.FC<ExamQuestionBlockProps> = ({
                                         <div className="w-full animate-in fade-in slide-in-from-top-4 duration-500">
                                             {/* Logic explaination would go here if we had it per question, assuming modelAnswer serves this purpose or we add an 'explanation' field later */}
                                             {q.modelAnswer && (
-                                                <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4">
-                                                    <div className="flex items-center gap-2 mb-2 text-blue-600 dark:text-blue-400 font-bold">
+                                                <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                                                    <div className="flex items-center gap-2 mb-2 text-sky-800  font-bold">
                                                         <HelpCircle size={18} />
                                                         הסבר / תשובה מודל
                                                     </div>
-                                                    <div className="markdown-content text-sm text-foreground/90">
+                                                    <div className="markdown-content text-sm text-foreground">
                                                         <ReactMarkdown rehypePlugins={[rehypeRaw]}>{q.modelAnswer}</ReactMarkdown>
                                                     </div>
                                                 </div>

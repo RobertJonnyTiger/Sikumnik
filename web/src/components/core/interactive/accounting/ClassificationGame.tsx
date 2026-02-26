@@ -78,9 +78,9 @@ export const ClassificationGame: React.FC<InteractiveElementProps> = ({ data }) 
     }
 
     return (
-        <div className="w-full my-12 bg-linear-to-br from-indigo-500/5 to-purple-500/5 border border-indigo-500/10 rounded-2xl p-6 md:p-10">
+        <div className="w-full my-12 bg-linear-to-br from-indigo-500/5 to-purple-500/5 border border-primary/10 rounded-2xl p-6 md:p-10">
             <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-indigo-500 rounded-lg text-white">
+                <div className="p-2 bg-primary rounded-lg text-foreground">
                     <Gamepad2 className="w-6 h-6" />
                 </div>
                 <div>
@@ -99,8 +99,8 @@ export const ClassificationGame: React.FC<InteractiveElementProps> = ({ data }) 
                 {/* The Card */}
                 <div className={`
                     p-12 rounded-2xl shadow-lg text-2xl font-black bg-card border-2 transition-all duration-300 transform text-center min-h-[200px] flex flex-col items-center justify-center
-                    ${showResult === "correct" ? "border-green-500 bg-green-50 dark:bg-green-950/20 scale-105" : ""}
-                    ${showResult === "incorrect" ? "border-destructive bg-destructive/5 dark:bg-destructive/20 shake" : "border-border"}
+                    ${showResult === "correct" ? "border-green-500 bg-green-50  scale-105" : ""}
+                    ${showResult === "incorrect" ? "border-destructive bg-destructive/5  shake" : "border-border"}
                 `}>
                     <span className="text-3xl mb-2">{currentItem.label}</span>
 

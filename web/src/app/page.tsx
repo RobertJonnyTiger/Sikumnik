@@ -68,7 +68,7 @@ export default function Home() {
       progress: 0,
       href: "/courses/statistics",
       color: "from-slate-500/20 to-slate-600/5",
-      iconColor: "text-slate-600",
+      iconColor: "text-muted-foreground",
       status: "נעול"
     }
   ];
@@ -80,12 +80,12 @@ export default function Home() {
       <header className="px-6 pt-10 pb-8 max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
           <div className="space-y-2">
-            <div className="flex items-center gap-2 text-primary">
+            <div className="flex items-center gap-2 text-sky-800">
               <SparklesIcon className="w-4 h-4" />
               <span className="text-xs font-black uppercase tracking-[0.2em]">Dashboard V3</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
-              אהלן, <span className="text-primary">סטודנט!</span> 👋
+              אהלן, <span className="text-sky-800">סטודנט!</span> 👋
             </h1>
             <p className="text-lg text-muted-foreground font-medium max-w-xl">
               מוכן להמשיך מאיפה שהפסקת? המוח שלך כבר התחמם, בוא ניתן בראש.
@@ -94,7 +94,7 @@ export default function Home() {
 
           <div className="flex items-center gap-3 bg-card border border-border/50 p-2 rounded-2xl shadow-sm">
             <div className="bg-primary/10 p-2 rounded-xl">
-              <CalendarIcon className="w-5 h-5 text-primary" />
+              <CalendarIcon className="w-5 h-5 text-sky-800" />
             </div>
             <div className="px-2">
               <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">תקופת מבחנים</p>
@@ -129,7 +129,7 @@ export default function Home() {
           {/* Main Hero Card: Continue Learning */}
           <div className="lg:col-span-2">
             <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-              <PlayCircle className="w-5 h-5 text-primary" />
+              <PlayCircle className="w-5 h-5 text-sky-800" />
               להמשיך ללמוד
             </h2>
             <Link href={continueLearning.href}>
@@ -141,27 +141,27 @@ export default function Home() {
                 <div className="relative p-8 flex flex-col md:flex-row justify-between gap-8 items-start md:items-center">
                   <div className="space-y-4 flex-1">
                     <div className="flex items-center gap-3">
-                      <Badge variant="secondary" className="bg-white/10 text-white hover:bg-white/20 border-0">
+                      <Badge variant="secondary" className="bg-white/10 text-foreground hover:bg-white/20 border-0">
                         {continueLearning.course}
                       </Badge>
-                      <span className="text-white/40 text-xs font-medium flex items-center gap-1">
+                      <span className="text-foreground/40 text-xs font-medium flex items-center gap-1">
                         <Clock className="w-3 h-3" />
                         נוגן לאחרונה: {continueLearning.lastAccessed}
                       </span>
                     </div>
 
                     <div>
-                      <h3 className="text-3xl font-black text-white mb-2 leading-tight group-hover:text-primary-foreground transition-colors">
+                      <h3 className="text-3xl font-black text-foreground mb-2 leading-tight group-hover:text-primary-foreground transition-colors">
                         {continueLearning.chapter}
                       </h3>
-                      <p className="text-white/60 text-sm line-clamp-2">
+                      <p className="text-foreground/60 text-sm line-clamp-2">
                         המשך בדיוק מהנקודה בה עצרת בסשן האחרון.
                       </p>
                     </div>
 
                     {/* Progress Bar */}
                     <div className="space-y-2 max-w-md">
-                      <div className="flex justify-between text-[10px] font-bold text-white/40 uppercase tracking-widest">
+                      <div className="flex justify-between text-[10px] font-bold text-foreground/40 uppercase tracking-widest">
                         <span>התקדמות בפרק</span>
                         <span>{continueLearning.progress}%</span>
                       </div>
@@ -176,7 +176,7 @@ export default function Home() {
 
                   {/* CTA Button */}
                   <div className="shrink-0">
-                    <div className="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/40 group-hover:scale-110 transition-transform">
+                    <div className="w-16 h-16 rounded-full bg-primary text-foreground flex items-center justify-center shadow-lg shadow-primary/40 group-hover:scale-110 transition-transform">
                       <ArrowLeft className="w-8 h-8" />
                     </div>
                   </div>
@@ -188,13 +188,13 @@ export default function Home() {
           {/* Quick Actions / Mini Bento */}
           <div className="space-y-4">
             <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-              <LayoutDashboard className="w-5 h-5 text-primary" />
+              <LayoutDashboard className="w-5 h-5 text-sky-800" />
               קיצורי דרך
             </h2>
             <div className="grid grid-cols-2 gap-4 h-[calc(100%-3rem)]">
               <QuickAction title="ספרייה" icon={BookOpen} href="/library" color="text-pink-500" bg="bg-pink-500/10" />
               <QuickAction title="סימולציות" icon={BrainCircuit} href="/simulations" color="text-violet-500" bg="bg-violet-500/10" />
-              <QuickAction title="הגדרות" icon={Settings} href="/settings" color="text-slate-500" bg="bg-slate-500/10" />
+              <QuickAction title="הגדרות" icon={Settings} href="/settings" color="text-muted-foreground" bg="bg-slate-500/10" />
               <QuickAction title="עזרה" icon={HelpCircle} href="/support" color="text-cyan-500" bg="bg-cyan-500/10" />
             </div>
           </div>
@@ -205,10 +205,10 @@ export default function Home() {
         <section>
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-black tracking-tight flex items-center gap-2">
-              <GraduationCap className="w-6 h-6 text-primary" />
+              <GraduationCap className="w-6 h-6 text-sky-800" />
               הקורסים שלי
             </h2>
-            <button className="text-sm font-bold text-primary hover:underline">
+            <button className="text-sm font-bold text-sky-800 hover:underline">
               צפייה בהכל
             </button>
           </div>
@@ -228,7 +228,7 @@ export default function Home() {
                         <Badge variant="outline" className="text-[10px]">בקרוב</Badge>
                       )}
                     </div>
-                    <CardTitle className="text-lg leading-tight group-hover:text-primary transition-colors">
+                    <CardTitle className="text-lg leading-tight group-hover:text-sky-800 transition-colors">
                       {course.title}
                     </CardTitle>
                     <CardDescription className="text-xs">

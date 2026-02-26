@@ -62,9 +62,9 @@ export const PPFGraph: React.FC<PPFGraphProps> = ({ className }) => {
             </div>
 
             {/* Controls */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 bg-slate-900/50 rounded-2xl border border-white/5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 bg-card/50 rounded-2xl border border-white/5">
                 <div className="space-y-4">
-                    <label className="text-xs font-bold text-teal-400 uppercase tracking-widest block text-right">
+                    <label className="text-xs font-bold text-secondary-foreground uppercase tracking-widest block text-right">
                         בחירת תמהיל ייצור (Move X)
                     </label>
                     <Slider

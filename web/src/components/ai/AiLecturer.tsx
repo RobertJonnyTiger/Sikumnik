@@ -73,7 +73,7 @@ export function AiLecturer({ context }: AiLecturerProps) {
                             </button>
                         </div>
                         {error && (
-                            <div className="bg-red-500/10 border-b border-red-500/20 p-2 text-xs text-red-400 text-center">
+                            <div className="bg-red-50 border-b border-red-200 p-2 text-xs text-red-700 text-center">
                                 שגיאה: {error.message || "משהו השתבש, נסה שוב."}
                             </div>
                         )}
@@ -110,7 +110,7 @@ export function AiLecturer({ context }: AiLecturerProps) {
                                                             ol: ({ children }) => <ol className="list-decimal list-inside mb-4 space-y-2 pr-2">{children}</ol>,
                                                             li: ({ children }) => <li className="mb-1">{children}</li>,
                                                             hr: () => <hr className="my-8 border-t-2 border-border/40" />,
-                                                            strong: ({ children }) => <strong className="font-black text-primary/90">{children}</strong>,
+                                                            strong: ({ children }) => <strong className="font-black text-sky-800/90">{children}</strong>,
                                                             h1: ({ children }) => <h1 className="text-lg font-bold mb-4 mt-2">{children}</h1>,
                                                             h2: ({ children }) => <h2 className="text-md font-bold mb-3 mt-2">{children}</h2>,
                                                         }}

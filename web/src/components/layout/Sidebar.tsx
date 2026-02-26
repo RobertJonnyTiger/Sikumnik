@@ -281,7 +281,7 @@ export function Sidebar({ className }: { className?: string }) {
                 {/* Toggle Button (Desktop) */}
                 <button
                     onClick={toggleSidebar}
-                    className="absolute -left-3 top-24 w-6 h-6 bg-card border border-border rounded-full items-center justify-center text-muted-foreground hover:text-primary hover:scale-110 transition-all shadow-sm hidden md:flex z-50"
+                    className="absolute -left-3 top-24 w-6 h-6 bg-card border border-border rounded-full items-center justify-center text-muted-foreground hover:text-foreground hover:scale-110 transition-all shadow-sm hidden md:flex z-50"
                 >
                     <ChevronLeft className={cn("w-3 h-3 transition-transform", isCollapsed ? "rotate-180" : "")} />
                 </button>
@@ -336,13 +336,13 @@ export function Sidebar({ className }: { className?: string }) {
                                                     onClick={() => toggleCourse(course)}
                                                     className={cn(
                                                         "w-full flex items-center gap-3 p-2 rounded-xl transition-all group relative overflow-hidden",
-                                                        isActive ? "bg-primary/5 text-primary" : "text-foreground/70 hover:bg-muted/50 hover:text-foreground",
+                                                        isActive ? "bg-primary/5 text-foreground" : "text-foreground hover:bg-muted/50 hover:text-foreground",
                                                         isCollapsed && "justify-center p-3"
                                                     )}
                                                 >
                                                     <div className={cn(
                                                         "w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors",
-                                                        isActive ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground group-hover:bg-primary/5 group-hover:text-primary"
+                                                        isActive ? "bg-primary/10 text-foreground" : "bg-muted text-muted-foreground group-hover:bg-primary/5 group-hover:text-foreground"
                                                     )}>
                                                         <GraduationCap className="w-4 h-4" />
                                                     </div>
@@ -375,8 +375,8 @@ export function Sidebar({ className }: { className?: string }) {
                                                                             <button
                                                                                 onClick={() => toggleTopic(topic.id)}
                                                                                 className={cn(
-                                                                                    "w-full flex items-center justify-between text-xs font-semibold py-1 hover:text-primary transition-colors",
-                                                                                    hasActiveItem ? "text-primary" : "text-muted-foreground"
+                                                                                    "w-full flex items-center justify-between text-xs font-semibold py-1 hover:text-foreground transition-colors",
+                                                                                    hasActiveItem ? "text-foreground" : "text-muted-foreground"
                                                                                 )}
                                                                             >
                                                                                 <span>{topic.title}</span>
@@ -398,7 +398,7 @@ export function Sidebar({ className }: { className?: string }) {
                                                                                                 className={cn(
                                                                                                     "block text-[11px] py-1.5 transition-colors line-clamp-1",
                                                                                                     pathname === chapter.href
-                                                                                                        ? "text-primary font-bold"
+                                                                                                        ? "text-foreground font-bold"
                                                                                                         : "text-muted-foreground hover:text-foreground"
                                                                                                 )}
                                                                                             >
@@ -430,7 +430,7 @@ export function Sidebar({ className }: { className?: string }) {
                     <div className={cn("flex items-center gap-3", isCollapsed ? "justify-center" : "")}>
                         <div className="w-10 h-10 rounded-full bg-linear-to-tr from-primary to-accent p-[2px]">
                             <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                                <span className="font-black text-xs text-primary">S</span>
+                                <span className="font-black text-xs text-foreground">S</span>
                             </div>
                         </div>
                         {!isCollapsed && (

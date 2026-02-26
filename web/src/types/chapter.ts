@@ -20,6 +20,7 @@ export type ContentBlock =
     | GuidedExerciseBlock
     | InteractiveBlock
     | CalloutBlock
+    | AlertBlock
     | ImageBlock
     | CheckpointBlock
     | SummaryBlock
@@ -34,7 +35,8 @@ export type ContentBlock =
     | AttributionFlowchartBlock
     | DiagnosticCaseStudyBlock
     | AcademicDefinitionBlock
-    | SituationalLeadershipGuideBlock;
+    | SituationalLeadershipGuideBlock
+    | StreetSmartBlock;
 
 export interface ListBlock {
     type: "list";
@@ -81,8 +83,11 @@ export interface AnalogyBlock {
 
 export interface DefinitionBlock {
     type: "definition";
+    variant?: "academic" | "simple";
     term: string;
     content: string;
+    source?: string;
+    subject?: string;
     tooltips?: Record<string, string>;
 }
 
@@ -145,6 +150,14 @@ export interface CalloutBlock {
     type: "callout";
     variant: "tip" | "warning" | "note" | "important";
     content: string;
+    title?: string;
+}
+
+export interface AlertBlock {
+    type: "alert";
+    variant: "tip" | "warning" | "prerequisite";
+    title?: string;
+    content: string;
 }
 
 export interface ImageBlock {
@@ -170,6 +183,13 @@ export interface HookBlock {
     opener: string;
     question?: string;
     context?: string;
+}
+
+export interface StreetSmartBlock {
+    type: "street-smart";
+    title: string;
+    content: string;
+    emoji?: string;
 }
 
 export interface PrerequisiteBlock {

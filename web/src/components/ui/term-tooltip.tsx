@@ -18,7 +18,7 @@ export function TermTooltip({ term, definition, children }: TermTooltipProps) {
             onMouseEnter={() => setIsVisible(true)}
             onMouseLeave={() => setIsVisible(false)}
         >
-            <span className="border-b-2 border-accent/30 text-white font-black hover:text-accent transition-all font-sans">
+            <span className="border-b-2 border-accent/30 text-foreground font-black hover:text-accent transition-all font-sans">
                 {children}
             </span>
 
@@ -34,7 +34,7 @@ export function TermTooltip({ term, definition, children }: TermTooltipProps) {
                     <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
                     <h4 className="text-accent font-black text-xs uppercase tracking-widest">{term}</h4>
                 </div>
-                <p className="text-slate-300 text-sm leading-relaxed font-light">{definition}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed font-light">{definition}</p>
             </div>
         </div>
     );

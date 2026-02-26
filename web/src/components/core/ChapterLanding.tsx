@@ -48,7 +48,7 @@ export const ChapterLanding: React.FC<ChapterLandingProps> = ({ data, onStart })
             {/* Header / Meta */}
             <motion.div variants={item} className="text-center space-y-6 mb-12">
                 <div className="flex items-center justify-center gap-3">
-                    <Badge variant="outline" className="text-sm py-1 px-4 border-primary/20 bg-primary/5 text-primary">
+                    <Badge variant="outline" className="text-sm py-1 px-4 border-primary/20 bg-primary/5 text-sky-800">
                         {data.course}
                     </Badge>
                     <Badge variant="secondary" className="text-sm py-1 px-4">
@@ -75,12 +75,12 @@ export const ChapterLanding: React.FC<ChapterLandingProps> = ({ data, onStart })
                 <motion.div variants={item} className="space-y-6">
                     {data.introduction?.hook && (
                         <div className="relative p-6 rounded-3xl bg-linear-to-br from-primary/5 to-accent/5 border border-primary/10">
-                            <Sparkles className="w-8 h-8 text-primary absolute -top-4 -right-4 bg-background rounded-full p-1 border border-border shadow-sm" />
+                            <Sparkles className="w-8 h-8 text-sky-800 absolute -top-4 -right-4 bg-background rounded-full p-1 border border-border shadow-sm" />
                             <h3 className="text-lg font-black mb-3 flex items-center gap-2">
                                 <Lightbulb className="w-5 h-5 text-yellow-500" />
                                 למה זה מעניין?
                             </h3>
-                            <p className="text-lg leading-relaxed text-foreground/80">
+                            <p className="text-lg leading-relaxed text-foreground">
                                 {data.introduction.hook}
                             </p>
                         </div>
@@ -89,8 +89,8 @@ export const ChapterLanding: React.FC<ChapterLandingProps> = ({ data, onStart })
                     {data.introduction?.whyItMatters && (
                         <Card className="border-l-4 border-l-primary shadow-sm bg-card/50">
                             <CardContent className="p-6">
-                                <h4 className="font-bold text-sm text-primary uppercase tracking-wider mb-2">בשורה התחתונה</h4>
-                                <p className="text-foreground/70">
+                                <h4 className="font-bold text-sm text-sky-800 uppercase tracking-wider mb-2">בשורה התחתונה</h4>
+                                <p className="text-foreground">
                                     {data.introduction.whyItMatters}
                                 </p>
                             </CardContent>
@@ -104,17 +104,17 @@ export const ChapterLanding: React.FC<ChapterLandingProps> = ({ data, onStart })
                         <div className="absolute top-0 left-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
 
                         <h3 className="text-xl font-black mb-6 flex items-center gap-2 relative z-10">
-                            <Target className="w-6 h-6 text-primary" />
+                            <Target className="w-6 h-6 text-sky-800" />
                             מה נלמד בפרק?
                         </h3>
 
                         <ul className="space-y-4 relative z-10">
                             {data.pageMap?.learningObjectives?.map((objective, idx) => (
                                 <li key={idx} className="flex items-start gap-4 group/item">
-                                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-primary group-hover/item:text-white transition-colors">
+                                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-primary group-hover/item:text-foreground transition-colors">
                                         <span className="text-xs font-bold">{idx + 1}</span>
                                     </div>
-                                    <p className="text-foreground/70 group-hover/item:text-foreground transition-colors font-medium">
+                                    <p className="text-foreground group-hover/item:text-foreground transition-colors font-medium">
                                         {objective}
                                     </p>
                                 </li>

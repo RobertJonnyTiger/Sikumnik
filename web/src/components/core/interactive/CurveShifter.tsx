@@ -57,20 +57,20 @@ export const CurveShifter: React.FC<CurveShifterProps> = ({
 
     return (
         <div className={cn("curve-shifter space-y-6", className)}>
-            <div className="header-box pl-4 border-l-4 border-teal-500/50">
-                <h3 className="text-xl font-bold text-white uppercase tracking-tight italic">
+            <div className="header-box pl-4 border-l-4 border-teal-200">
+                <h3 className="text-xl font-bold text-foreground uppercase tracking-tight italic">
                     {title || "סימולטור עקומת ביקוש"}
                 </h3>
                 {description && (
-                    <p className="text-slate-400 text-sm mt-1">{description}</p>
+                    <p className="text-muted-foreground text-sm mt-1">{description}</p>
                 )}
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 {/* Interaction Controls Area */}
                 <div className="lg:col-span-4 space-y-4">
-                    <div className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
-                        <Info size={14} className="text-teal-400" />
+                    <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+                        <Info size={14} className="text-secondary-foreground" />
                         בחר גורם משפיע (Shifters)
                     </div>
 
@@ -81,8 +81,8 @@ export const CurveShifter: React.FC<CurveShifterProps> = ({
                             className={cn(
                                 "w-full text-right p-4 rounded-2xl border transition-all duration-300 group",
                                 activeShifter === shifter.id
-                                    ? "bg-teal-500/10 border-teal-500/50 ring-1 ring-teal-500/20"
-                                    : "bg-slate-900 border-slate-800 hover:border-slate-700"
+                                    ? "bg-secondary/10 border-teal-200 ring-1 ring-ring/20"
+                                    : "bg-card border-border hover:border-border"
                             )}
                         >
                             <div className="flex items-center justify-between gap-4">
@@ -90,22 +90,22 @@ export const CurveShifter: React.FC<CurveShifterProps> = ({
                                     "w-2 h-2 rounded-full",
                                     activeShifter === shifter.id ? "bg-teal-400 animate-pulse" : "bg-slate-700"
                                 )} />
-                                <div className="text-sm font-bold text-slate-200 group-hover:text-white transition-colors">
+                                <div className="text-sm font-bold text-foreground group-hover:text-foreground transition-colors">
                                     {shifter.label}
                                 </div>
                             </div>
                             {shifter.description && (
-                                <p className="text-[11px] text-slate-500 mt-2 leading-relaxed">
+                                <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">
                                     {shifter.description}
                                 </p>
                             )}
                         </button>
                     ))}
 
-                    <div className="pt-6 mt-6 border-t border-slate-800/50">
-                        <div className="flex justify-between items-center text-[10px] font-mono font-bold text-slate-500 uppercase">
+                    <div className="pt-6 mt-6 border-t border-border/50">
+                        <div className="flex justify-between items-center text-[10px] font-mono font-bold text-muted-foreground uppercase">
                             <span>Intercept (a)</span>
-                            <span className="text-teal-400 font-bold">{intercept}</span>
+                            <span className="text-secondary-foreground font-bold">{intercept}</span>
                         </div>
                         <input
                             type="range"
@@ -115,7 +115,7 @@ export const CurveShifter: React.FC<CurveShifterProps> = ({
                                 setIntercept(Number(e.target.value));
                                 setActiveShifter(null);
                             }}
-                            className="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-teal-500 mt-2"
+                            className="w-full h-1 bg-muted rounded-lg appearance-none cursor-pointer accent-teal-500 mt-2"
                         />
                     </div>
                 </div>

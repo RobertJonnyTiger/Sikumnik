@@ -9,7 +9,7 @@ export function GlassCard({ children, className, gradient = false, ...props }: G
     return (
         <div
             className={cn(
-                "bg-slate-900/60 backdrop-blur-md border border-slate-800 rounded-xl shadow-xl relative",
+                "bg-card/60 backdrop-blur-md border border-border rounded-xl shadow-xl relative",
                 gradient && "neon-border", // Optional neon border effect
                 className
             )}

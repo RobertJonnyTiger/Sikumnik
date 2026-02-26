@@ -89,7 +89,7 @@ const DockItem: React.FC<DockItemProps> = ({ index, isActive, isCompleted, title
                         isActive
                             ? "bg-primary text-primary-foreground scale-110 shadow-lg shadow-primary/25 ring-2 ring-primary/20"
                             : isCompleted
-                                ? "bg-primary/10 text-primary hover:bg-primary/20"
+                                ? "bg-primary/10 text-sky-800 hover:bg-primary/20"
                                 : "bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground"
                     )}
                 >
@@ -109,7 +109,7 @@ const DockItem: React.FC<DockItemProps> = ({ index, isActive, isCompleted, title
                     )}
                 </button>
             </TooltipTrigger>
-            <TooltipContent side="top" className="bg-black/90 border-white/10 text-white font-bold px-3 py-1.5 text-xs">
+            <TooltipContent side="top" className="bg-black/90 border-white/10 text-foreground font-bold px-3 py-1.5 text-xs">
                 {title}
             </TooltipContent>
         </Tooltip>

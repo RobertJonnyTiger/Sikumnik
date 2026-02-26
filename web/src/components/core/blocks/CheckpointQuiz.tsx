@@ -29,13 +29,13 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
     const totalSubmitted = Object.keys(submitted).length;
 
     return (
-        <div className="bg-card/30 border border-border/40 rounded-2xl overflow-hidden my-6">
-            <div className="flex items-center justify-between px-6 py-4 bg-card/50 border-b border-border/20">
+        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden my-6 shadow-sm" dir="rtl">
+            <div className="flex items-center justify-between px-6 py-4 bg-slate-50 border-b border-slate-200">
                 <div className="flex items-center gap-3">
-                    <div className="bg-primary/10 p-2 rounded-lg border border-primary/20">
-                        <HelpCircle className="w-4 h-4 text-primary" />
+                    <div className="bg-white p-2 rounded-lg border border-slate-200 shadow-sm">
+                        <HelpCircle className="w-4 h-4 text-slate-700" />
                     </div>
-                    <h4 className="text-sm font-black text-primary uppercase tracking-wider">בדיקת הבנה</h4>
+                    <h4 className="text-sm font-black text-slate-700 uppercase tracking-wider">בדיקת הבנה</h4>
                 </div>
                 {totalSubmitted > 0 && (
                     <span className="text-sm font-mono font-bold text-muted-foreground">
@@ -51,10 +51,12 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
                     const isCorrect = selectedIdx === q.correctIndex;
 
                     return (
-                        <div key={q.id}>
-                            <div className="text-foreground/90 font-medium mb-4 flex items-start gap-2 markdown-content">
-                                <span className="text-primary font-bold">{qIdx + 1}.</span>
-                                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{q.question}</ReactMarkdown>
+                        <div key={q.id} className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm">
+                            <div className="text-foreground font-medium mb-4 flex items-start gap-2 markdown-content">
+                                <span className="text-slate-600 font-bold bg-slate-100 px-2 py-0.5 rounded-full text-sm">{qIdx + 1}</span>
+                                <div className="mt-0.5 relative top-[-2px]">
+                                    <ReactMarkdown rehypePlugins={[rehypeRaw]}>{q.question}</ReactMarkdown>
+                                </div>
                             </div>
 
                             <div className="space-y-2 mb-3">
@@ -62,10 +64,10 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
                                     const isSelected = selectedIdx === optIdx;
                                     const isAnswer = optIdx === q.correctIndex;
 
-                                    let style = "border-border/30 hover:border-primary/30 hover:bg-primary/5";
-                                    if (isSubmitted && isAnswer) style = "border-emerald-500/40 bg-emerald-500/10";
-                                    else if (isSubmitted && isSelected && !isAnswer) style = "border-red-500/40 bg-red-500/10";
-                                    else if (isSelected) style = "border-primary/50 bg-primary/10";
+                                    let style = "border-slate-200 hover:border-slate-300 hover:bg-slate-50";
+                                    if (isSubmitted && isAnswer) style = "border-emerald-300 bg-emerald-50";
+                                    else if (isSubmitted && isSelected && !isAnswer) style = "border-red-300 bg-red-50";
+                                    else if (isSelected) style = "border-slate-400 bg-slate-100 ring-2 ring-slate-200";
 
                                     return (
                                         <button
@@ -75,9 +77,9 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
                                             className={`w-full text-right px-4 py-3 rounded-xl border transition-all duration-200 ${style} ${isSubmitted ? "cursor-default" : "cursor-pointer"}`}
                                         >
                                             <div className="flex items-center justify-between">
-                                                <span className="text-foreground/80">{opt}</span>
-                                                {isSubmitted && isAnswer && <CheckCircle className="w-4 h-4 text-emerald-400" />}
-                                                {isSubmitted && isSelected && !isAnswer && <XCircle className="w-4 h-4 text-red-400" />}
+                                                <span className="text-foreground">{opt}</span>
+                                                {isSubmitted && isAnswer && <CheckCircle className="w-4 h-4 text-emerald-700" />}
+                                                {isSubmitted && isSelected && !isAnswer && <XCircle className="w-4 h-4 text-red-700" />}
                                             </div>
                                         </button>
                                     );
@@ -87,16 +89,19 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
                             {!isSubmitted && selectedIdx !== null && selectedIdx !== undefined && (
                                 <button
                                     onClick={() => submit(q.id)}
-                                    className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-bold hover:bg-primary/90 transition-colors"
+                                    className="px-5 py-2.5 bg-slate-800 text-white rounded-lg text-sm font-bold hover:bg-slate-700 transition-colors shadow-sm"
                                 >
                                     בדוק תשובה
                                 </button>
                             )}
 
                             {isSubmitted && (
-                                <div className={`mt-3 px-4 py-3 rounded-lg text-sm ${isCorrect ? "bg-emerald-500/10 text-emerald-400" : "bg-red-500/10 text-red-400"}`}>
-                                    <p className="font-bold mb-1">{isCorrect ? "נכון! ✓" : "לא נכון ✗"}</p>
-                                    <div className="text-foreground/60 markdown-content">
+                                <div className={`mt-4 px-5 py-4 rounded-xl text-sm border ${isCorrect ? "bg-emerald-50 text-emerald-800 border-emerald-200" : "bg-red-50 text-red-800 border-red-200"}`}>
+                                    <p className="font-bold mb-2 flex items-center gap-2">
+                                        {isCorrect ? <CheckCircle className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
+                                        {isCorrect ? "נכון!" : "לא מדויק"}
+                                    </p>
+                                    <div className="text-foreground/90 markdown-content leading-relaxed">
                                         <ReactMarkdown rehypePlugins={[rehypeRaw]}>{q.explanation}</ReactMarkdown>
                                     </div>
                                 </div>

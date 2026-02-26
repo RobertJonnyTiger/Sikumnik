@@ -11,16 +11,16 @@ export default function MaslowPyramidPage() {
             <div className="max-w-4xl mx-auto">
                 {/* Navigation Breadcrumbs */}
                 <nav className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-8">
-                    <Link href="/" className="hover:text-primary transition-colors flex items-center gap-1">
+                    <Link href="/" className="hover:text-sky-800 transition-colors flex items-center gap-1">
                         <Home className="w-3 h-3" />
                         בית
                     </Link>
                     <ChevronRight className="w-3 h-3" />
-                    <Link href="/courses/organizational-behavior/chapter-3" className="hover:text-primary transition-colors">
+                    <Link href="/courses/organizational-behavior/chapter-3" className="hover:text-sky-800 transition-colors">
                         התנהגות ארגונית - פרק 3
                     </Link>
                     <ChevronRight className="w-3 h-3" />
-                    <span className="text-primary/80">פירמידת מאסלו</span>
+                    <span className="text-sky-800/80">פירמידת מאסלו</span>
                 </nav>
 
                 {/* Header */}

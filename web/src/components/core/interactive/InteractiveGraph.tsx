@@ -57,11 +57,11 @@ export const InteractiveGraph: React.FC<InteractiveGraphProps> = ({
     return (
         <GraphContext.Provider value={scales}>
             <div className={cn(
-                "relative w-full aspect-square max-w-xl mx-auto bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-3xl p-4 shadow-2xl",
+                "relative w-full aspect-square max-w-xl mx-auto bg-card/40 backdrop-blur-xl border border-border rounded-3xl p-4 shadow-2xl",
                 className
             )}>
                 {title && (
-                    <div className="absolute top-6 left-1/2 -translate-x-1/2 text-slate-500 font-bold uppercase tracking-widest text-xs opacity-50">
+                    <div className="absolute top-6 left-1/2 -translate-x-1/2 text-muted-foreground font-bold uppercase tracking-widest text-xs opacity-50">
                         {title}
                     </div>
                 )}
@@ -90,7 +90,7 @@ export const InteractiveGraph: React.FC<InteractiveGraphProps> = ({
                     </g>
 
                     {/* Axes */}
-                    <g className="axes text-slate-600">
+                    <g className="axes text-muted-foreground">
                         {/* Y Axis */}
                         <motion.line
                             x1={padding} y1={height - padding}

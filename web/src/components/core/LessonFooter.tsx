@@ -116,7 +116,7 @@ export const LessonFooter: React.FC<LessonFooterProps> = ({
                             </span>
                         </div>
 
-                        <div className="p-3 rounded-full bg-white/20 text-white backdrop-blur-sm group-hover:scale-110 transition-transform z-10 shrink-0">
+                        <div className="p-3 rounded-full bg-white/20 text-foreground backdrop-blur-sm group-hover:scale-110 transition-transform z-10 shrink-0">
                             {isLastTab ? <CheckCircle className="w-6 h-6" /> : <ArrowLeft className="w-6 h-6" />}
                         </div>
                     </button>

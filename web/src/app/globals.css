@@ -1,45 +1,103 @@
 @import "tailwindcss";
 
 @theme {
-  /* Core Semantic Tokens - Approved "Calm Dark" - OKLCH */
-  --color-background: oklch(0.01 0.02 260);
-  /* Slate-950 */
-  --color-foreground: oklch(0.985 0.01 240);
-  /* Slate-50 */
-  --color-text-secondary: oklch(0.92 0.02 240);
-  /* Slate-200 */
+  /* Theme - "Soft Pastel Education" */
+  --color-background: #F6EBCF;
+  /* Almond Cream */
+  --color-foreground: #6A0572;
+  /* Deep Plum */
+  --color-text-secondary: #6A0572;
+  /* Deep Plum */
 
-  --color-primary: oklch(0.7 0.2 170);
-  /* Teal-400 */
-  --color-primary-foreground: oklch(0.02 0.03 170);
-  /* Teal-950 for contrast */
+  --color-primary: #A3D7E4;
+  /* Sky Pastel */
+  --color-primary-foreground: #6A0572;
+  /* Deep Plum */
 
-  --color-secondary: oklch(0.15 0.05 240);
-  /* Slate-800 */
-  --color-accent: oklch(0.75 0.15 40);
-  /* Orange-400 */
-  --color-success: oklch(0.72 0.15 150);
-  --color-error: oklch(0.65 0.2 25);
+  --color-secondary: #FFF4E0;
+  /* Champagne */
+  --color-accent: #FFB3BA;
+  /* Cotton Candy Pink */
+  --color-success: #B9FBC0;
+  /* Mint Green */
+  --color-error: #FFB3BA;
+  /* Cotton Candy Pink */
 
   /* Surfaces */
-  --color-card: oklch(0.08 0.03 260);
-  /* Slate-900 */
-  --color-glass: oklch(0.08 0.03 260 / 0.6);
-  --color-border: oklch(0.15 0.05 240);
-  /* Slate-800 */
-  --color-input: oklch(0.15 0.05 240);
-  --color-ring: oklch(0.7 0.2 170);
+  --color-card: #FFFCD1;
+  /* Light Primrose */
+  --color-glass: #FFFCD199;
+  /* Light Primrose / 60% opacity */
+  --color-border: #E2D1F9;
+  /* Pale Lavender */
+  --color-input: #E2D1F9;
+  /* Pale Lavender */
+  --color-ring: #C3D1FF;
+  /* Periwinkle Blue */
 
   /* UI Tokens */
-  --color-muted: oklch(0.15 0.05 240);
-  --color-muted-foreground: oklch(0.7 0.03 250);
-  --color-popover: oklch(0.08 0.03 260);
-  --color-popover-foreground: oklch(0.985 0.01 240);
-  --color-destructive: oklch(0.65 0.2 25);
-  --color-destructive-foreground: oklch(0.985 0.01 240);
-  --color-secondary-foreground: oklch(0.985 0.01 240);
-  --color-accent-foreground: oklch(0.08 0.03 260);
-  --color-card-foreground: oklch(0.985 0.01 240);
+  --color-muted: #E2F0E6;
+  /* Soft Dew */
+  --color-muted-foreground: #6A0572;
+  /* Deep Plum */
+  --color-popover: #FFFCD1;
+  /* Light Primrose */
+  --color-popover-foreground: #6A0572;
+  /* Deep Plum */
+  --color-destructive: #FFB3BA;
+  /* Cotton Candy Pink */
+  --color-destructive-foreground: #6A0572;
+  /* Deep Plum */
+  --color-secondary-foreground: #6A0572;
+  /* Deep Plum */
+  --color-accent-foreground: #6A0572;
+  /* Deep Plum */
+  --color-card-foreground: #6A0572;
+  /* Deep Plum */
+
+  /* Extended Semantic Colors */
+  --color-info: #A3D7E4;
+  /* Uses primary */
+  --color-info-foreground: #6A0572;
+  --color-warning: #FFE4A3;
+  /* Warm Yellow */
+  --color-warning-foreground: #92400E;
+  --color-tip: #FFE4A3;
+  /* Warm Yellow - for tips/badges */
+  --color-tip-foreground: #92400E;
+  /* Dark amber for text on tip bg */
+
+  /* Success variant colors */
+  --color-success-foreground: #166534;
+  /* Dark green for text on success */
+  --color-success-bg: #DCFCE7;
+  /* Light green background */
+  --color-success-border: #86EFAC;
+  /* Medium green border */
+
+  /* Error variant colors */
+  --color-error-foreground: #991B1B;
+  /* Dark red for text on error */
+  --color-error-bg: #FEE2E2;
+  /* Light red background */
+  --color-error-border: #FCA5A5;
+  /* Medium red border */
+
+  /* Data Visualization Palette */
+  --color-chart-1: #14B8A6;
+  /* Teal */
+  --color-chart-2: #F59E0B;
+  /* Amber */
+  --color-chart-3: #3B82F6;
+  /* Blue */
+  --color-chart-4: #EF4444;
+  /* Red */
+  --color-chart-5: #8B5CF6;
+  /* Purple */
+  --color-chart-6: #EC4899;
+  /* Pink */
+  --color-chart-neutral: #94A3B8;
+  /* Slate - for axes/grid */
 
   /* Fonts */
   --font-sans: var(--font-assistant);
@@ -181,7 +239,7 @@ html {
 }
 
 .markdown-content strong {
-  @apply font-black text-primary;
+  @apply font-black text-foreground;
   /* Auto-color bolded words for engagement */
 }
 

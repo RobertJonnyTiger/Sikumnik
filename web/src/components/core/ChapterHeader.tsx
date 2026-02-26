@@ -73,14 +73,14 @@ export const ChapterHeader: React.FC<ChapterHeaderProps> = ({
                 {/* Learning Objectives */}
                 {pageMap?.learningObjectives && pageMap.learningObjectives.length > 0 && (
                     <div className="bg-card/50 backdrop-blur-sm border border-border/40 rounded-2xl p-6">
-                        <h3 className="flex items-center gap-2 text-sm font-bold text-primary uppercase tracking-wider mb-4">
+                        <h3 className="flex items-center gap-2 text-sm font-bold text-sky-800 uppercase tracking-wider mb-4">
                             <Target className="w-4 h-4" />
                             מה תלמדו בפרק הזה
                         </h3>
                         <ul className="space-y-2">
                             {pageMap.learningObjectives.map((obj, idx) => (
-                                <li key={idx} className="flex items-start gap-3 text-foreground/80">
-                                    <span className="shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center mt-0.5">
+                                <li key={idx} className="flex items-start gap-3 text-foreground">
+                                    <span className="shrink-0 w-6 h-6 rounded-full bg-primary/10 text-sky-800 text-xs font-bold flex items-center justify-center mt-0.5">
                                         {idx + 1}
                                     </span>
                                     <div className="leading-relaxed markdown-content">
@@ -94,15 +94,15 @@ export const ChapterHeader: React.FC<ChapterHeaderProps> = ({
 
                 {/* Introduction Content */}
                 {introduction?.content && (
-                    <div className="mt-8 text-lg text-foreground/80 leading-relaxed markdown-content">
+                    <div className="mt-8 text-lg text-foreground leading-relaxed markdown-content">
                         <ReactMarkdown rehypePlugins={[rehypeRaw]}>{introduction.content}</ReactMarkdown>
                     </div>
                 )}
 
                 {introduction?.whyItMatters && (
                     <div className="mt-4 bg-primary/5 border-r-4 border-primary p-4 rounded-l-xl">
-                        <p className="font-bold text-primary text-sm mb-1">למה זה חשוב?</p>
-                        <div className="text-foreground/80 leading-relaxed markdown-content">
+                        <p className="font-bold text-sky-800 text-sm mb-1">למה זה חשוב?</p>
+                        <div className="text-foreground leading-relaxed markdown-content">
                             <ReactMarkdown rehypePlugins={[rehypeRaw]}>{introduction.whyItMatters}</ReactMarkdown>
                         </div>
                     </div>

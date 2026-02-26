@@ -1,113 +1,97 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, Box, Tag } from "lucide-react";
+import { ChevronDown, Box, Tag, Zap } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 
 interface DeepDiveProps {
     title: string;
     sections?: { title: string; content: string; example?: string; icon?: React.ElementType }[];
+    difficulty?: 'advanced' | 'graduate';
 }
 
-export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections }) => {
+export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections, difficulty = 'advanced' }) => {
     const [openIdx, setOpenIdx] = useState<number | null>(null);
-    const accentColors = ["#DC2626", "#D97706", "#059669", "#2563EB", "#7C3AED"];
 
     return (
-        <div className="bg-background border border-secondary rounded-2xl overflow-hidden my-6" dir="rtl">
-            <div className="p-6 pb-4">
-                <div className="flex items-center gap-3">
-                    <div className="border-r-4 border-orange-500 pr-3">
-                        <h4 className="text-xl font-bold text-orange-500 uppercase tracking-tight">{title}</h4>
+        <div className="bg-slate-50 border-r-4 border-r-red-600 border-y border-l border-slate-200 rounded-xl my-6 shadow-sm font-sans" dir="rtl">
+            <div className="p-5 flex justify-between items-start">
+                <div>
+                    <div className="flex items-center gap-3 mb-1">
+                        <Zap className="w-5 h-5 text-red-600" />
+                        <h4 className="text-lg font-bold text-slate-800 uppercase tracking-tight">{title}</h4>
                     </div>
                 </div>
+                {difficulty && (
+                    <span className="bg-red-100 text-red-700 text-xs font-black uppercase tracking-widest px-2.5 py-1 rounded border border-red-200">
+                        {difficulty === 'graduate' ? 'מומחה' : 'מתקדם'}
+                    </span>
+                )}
             </div>
 
-            <div className="px-6 pb-6 space-y-3">
-                {sections?.map((section, idx) => {
-                    const color = accentColors[idx % accentColors.length];
-                    const isOpen = openIdx === idx;
-                    const Icon = section.icon || Box;
+            {sections && sections.length > 0 && (
+                <div className="px-5 pb-5 space-y-2">
+                    {sections.map((section, idx) => {
+                        const isOpen = openIdx === idx;
+                        const Icon = section.icon || Box;
 
-                    // Split examples by comma or newline if they exist
-                    const examples = section.example
-                        ? section.example.split(/[,\n]/).map(ex => ex.trim()).filter(Boolean)
-                        : [];
+                        const examples = section.example
+                            ? section.example.split(/[,\n]/).map(ex => ex.trim()).filter(Boolean)
+                            : [];
 
-                    return (
-                        <div
-                            key={idx}
-                            className={`border rounded-2xl overflow-hidden transition-all duration-300 ${isOpen ? 'border-orange-500/40 bg-secondary/40 shadow-xl' : 'border-secondary bg-secondary/20 hover:bg-secondary/30'
-                                }`}
-                        >
-                            <button
-                                onClick={() => setOpenIdx(isOpen ? null : idx)}
-                                className="w-full flex items-center justify-between p-5 text-right transition-colors"
+                        return (
+                            <div
+                                key={idx}
+                                className={`border rounded-lg overflow-hidden transition-all duration-200 ${isOpen ? 'border-red-200 bg-white shadow-md' : 'border-slate-200 bg-white/60 hover:bg-white'
+                                    }`}
                             >
-                                <div className="flex items-center gap-4">
-                                    <div
-                                        className="w-10 h-10 rounded-xl flex items-center justify-center border transition-all duration-300"
-                                        style={{
-                                            backgroundColor: `${color}15`,
-                                            borderColor: `${color}30`,
-                                            color: color
-                                        }}
-                                    >
-                                        <Icon className="w-5 h-5" />
-                                    </div>
-                                    <div className="flex flex-col items-start">
-                                        <h3 className="font-bold text-lg text-white/90 leading-tight">{section.title}</h3>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-center gap-4">
-                                    <span
-                                        className="text-[10px] font-black uppercase tracking-tighter px-2 py-1 rounded-md border"
-                                        style={{
-                                            backgroundColor: `${color}05`,
-                                            borderColor: `${color}20`,
-                                            color: color
-                                        }}
-                                    >
-                                        {idx + 1}
-                                    </span>
-                                    <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${isOpen ? 'rotate-180 text-orange-500' : ''}`} />
-                                </div>
-                            </button>
-
-                            {isOpen && (
-                                <div className="px-5 pb-6 pt-2 border-t border-white/5 animate-in slide-in-from-top-2 duration-300">
-                                    <div className="pr-14">
-                                        <div className="text-base leading-relaxed text-slate-300 markdown-content">
-                                            <ReactMarkdown rehypePlugins={[rehypeRaw]}>{section.content}</ReactMarkdown>
+                                <button
+                                    onClick={() => setOpenIdx(isOpen ? null : idx)}
+                                    className="w-full flex items-center justify-between p-5 text-right transition-colors hover:bg-red-50/50"
+                                >
+                                    <div className="flex items-center gap-4">
+                                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center border transition-colors ${isOpen ? 'bg-red-100 border-red-200 text-red-600 shadow-inner' : 'bg-slate-100 border-slate-200 text-slate-500'}`}>
+                                            <Icon className="w-5 h-5" />
                                         </div>
-
-                                        {examples.length > 0 && (
-                                            <div className="space-y-3">
-                                                <p className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] flex items-center gap-2">
-                                                    <Tag className="w-3 h-3" />
-                                                    דוגמאות
-                                                </p>
-                                                <div className="flex flex-wrap gap-2">
-                                                    {examples.map((ex, i) => (
-                                                        <span
-                                                            key={i}
-                                                            className="px-3 py-1.5 rounded-lg text-sm font-medium bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-colors"
-                                                        >
-                                                            {ex}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        )}
+                                        <h3 className={`font-bold text-lg leading-none ${isOpen ? 'text-red-700' : 'text-slate-800'}`}>{section.title}</h3>
                                     </div>
-                                </div>
-                            )}
-                        </div>
-                    );
-                })}
-            </div>
+                                    <ChevronDown className={`w-6 h-6 text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180 text-red-500' : ''}`} />
+                                </button>
+
+                                {isOpen && (
+                                    <div className="px-5 pb-5 pt-2 border-t border-slate-100 animate-in slide-in-from-top-1 duration-200">
+                                        <div className="pr-12">
+                                            <div className="text-base leading-[1.8] font-medium text-slate-800 markdown-content">
+                                                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{section.content}</ReactMarkdown>
+                                            </div>
+
+                                            {examples.length > 0 && (
+                                                <div className="space-y-2 mt-4">
+                                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+                                                        <Tag className="w-3 h-3" />
+                                                        דוגמאות
+                                                    </p>
+                                                    <div className="flex flex-wrap gap-1.5">
+                                                        {examples.map((ex, i) => (
+                                                            <span
+                                                                key={i}
+                                                                className="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 border border-slate-200 text-slate-600"
+                                                            >
+                                                                {ex}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        );
+                    })}
+                </div>
+            )}
         </div>
     );
 };

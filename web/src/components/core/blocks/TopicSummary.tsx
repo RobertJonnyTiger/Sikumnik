@@ -15,12 +15,12 @@ export const TopicSummary: React.FC<TopicSummaryProps> = ({ content, keyPoints }
         <div className="bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-6 my-6">
             <div className="flex items-center gap-3 mb-4">
                 <div className="bg-primary/10 p-2 rounded-lg border border-primary/20">
-                    <ClipboardList className="w-4 h-4 text-primary" />
+                    <ClipboardList className="w-4 h-4 text-sky-800" />
                 </div>
-                <h4 className="text-sm font-black text-primary uppercase tracking-wider">סיכום</h4>
+                <h4 className="text-sm font-black text-sky-800 uppercase tracking-wider">סיכום</h4>
             </div>
 
-            <div className="text-foreground/80 leading-relaxed mb-4 markdown-content">
+            <div className="text-foreground leading-relaxed mb-4 markdown-content">
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
             </div>
 
@@ -29,9 +29,9 @@ export const TopicSummary: React.FC<TopicSummaryProps> = ({ content, keyPoints }
                     {keyPoints.map((point, idx) => (
                         <div key={idx} className="flex items-start gap-3">
                             <div className="shrink-0 mt-1 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
-                                <Check className="w-3 h-3 text-primary" />
+                                <Check className="w-3 h-3 text-sky-800" />
                             </div>
-                            <p className="text-foreground/70 text-sm leading-relaxed markdown-content">
+                            <p className="text-foreground text-sm leading-relaxed markdown-content">
                                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{point}</ReactMarkdown>
                             </p>
                         </div>

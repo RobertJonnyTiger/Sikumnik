@@ -14,26 +14,26 @@ interface RealWorldExampleProps {
 
 export const RealWorldExample: React.FC<RealWorldExampleProps> = ({ title, scenario, connection, source }) => {
     return (
-        <div className="my-6 border-l-4 border-l-blue-500 bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-200 dark:border-slate-800">
-            <div className="px-6 py-4 bg-blue-50/50 dark:bg-blue-900/10 border-b border-blue-100 dark:border-blue-900/20">
-                <div className="flex items-center gap-2 text-blue-700 dark:text-blue-300 font-bold text-lg">
+        <div className="my-6 border-l-4 border-l-primary bg-white  rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-border ">
+            <div className="px-6 py-4 bg-white  border-b border-border ">
+                <div className="flex items-center gap-2 text-foreground  font-bold text-lg">
                     <Globe className="w-5 h-5" />
                     {title}
                     {source && (
-                        <span className="text-xs font-normal text-blue-500/70 dark:text-blue-400/50 mr-auto px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-800/50">
+                        <span className="text-xs font-normal text-muted-foreground  mr-auto px-2 py-0.5 rounded-full bg-muted ">
                             מקור: {source}
                         </span>
                     )}
                 </div>
             </div>
             <div className="px-6 py-4 space-y-4">
-                <div className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <div className="text-foreground  leading-relaxed">
                     <ReactMarkdown rehypePlugins={[rehypeRaw]}>{scenario}</ReactMarkdown>
                 </div>
-                <div className="pt-3 border-t border-blue-100 dark:border-blue-900/20">
+                <div className="pt-3 border-t border-border ">
                     <div className="flex items-start gap-2">
-                        <LinkIcon className="w-4 h-4 mt-1 text-blue-600 dark:text-blue-400 shrink-0" />
-                        <div className="text-sm text-blue-800 dark:text-blue-200">
+                        <LinkIcon className="w-4 h-4 mt-1 text-sky-800  shrink-0" />
+                        <div className="text-sm text-foreground ">
                             <strong>הקשר לתיאוריה:</strong>{" "}
                             <ReactMarkdown rehypePlugins={[rehypeRaw]}>{connection}</ReactMarkdown>
                         </div>

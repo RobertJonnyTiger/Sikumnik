@@ -23,7 +23,7 @@ export const NarrativeSummary: React.FC<NarrativeSummaryProps> = ({ data, nextCh
             {/* Header / Persona */}
             <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                    <Bot className="w-6 h-6 text-primary" />
+                    <Bot className="w-6 h-6 text-sky-800" />
                 </div>
                 <div className="space-y-2 relative">
                     <div className="absolute -left-2 top-4 w-4 h-4 bg-card rotate-45 border-l border-b border-border/50" />
@@ -41,36 +41,36 @@ export const NarrativeSummary: React.FC<NarrativeSummaryProps> = ({ data, nextCh
             {/* Tip & Pitfall Grid */}
             <div className="grid md:grid-cols-2 gap-6">
                 {/* Pro Tip */}
-                <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-2xl p-6 relative overflow-hidden group hover:bg-emerald-500/10 transition-colors">
-                    <div className="absolute top-0 left-0 w-20 h-20 bg-emerald-500/10 rounded-full -translate-x-10 -translate-y-10 blur-xl" />
+                <div className="bg-white border border-emerald-200 rounded-2xl p-6 relative overflow-hidden group transition-colors">
+                    <div className="absolute top-0 left-0 w-20 h-20 bg-emerald-50 rounded-full -translate-x-10 -translate-y-10 blur-xl" />
                     <div className="relative z-10">
                         <div className="flex items-center gap-3 mb-3">
-                            <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-500">
+                            <div className="p-2 bg-emerald-100 rounded-lg text-emerald-700">
                                 <Lightbulb className="w-5 h-5" />
                             </div>
-                            <h4 className="font-black text-emerald-500 uppercase tracking-wide text-sm">
+                            <h4 className="font-black text-emerald-700 uppercase tracking-wide text-sm">
                                 {data.tip.title}
                             </h4>
                         </div>
-                        <p className="text-emerald-100/80 text-sm leading-relaxed">
+                        <p className="text-emerald-900 text-sm leading-relaxed">
                             {data.tip.content}
                         </p>
                     </div>
                 </div>
 
                 {/* Pitfall */}
-                <div className="bg-rose-500/5 border border-rose-500/20 rounded-2xl p-6 relative overflow-hidden group hover:bg-rose-500/10 transition-colors">
-                    <div className="absolute top-0 left-0 w-20 h-20 bg-rose-500/10 rounded-full -translate-x-10 -translate-y-10 blur-xl" />
+                <div className="bg-white border border-rose-200 rounded-2xl p-6 relative overflow-hidden group transition-colors">
+                    <div className="absolute top-0 left-0 w-20 h-20 bg-rose-50 rounded-full -translate-x-10 -translate-y-10 blur-xl" />
                     <div className="relative z-10">
                         <div className="flex items-center gap-3 mb-3">
-                            <div className="p-2 bg-rose-500/10 rounded-lg text-rose-500">
+                            <div className="p-2 bg-rose-100 rounded-lg text-rose-700">
                                 <AlertTriangle className="w-5 h-5" />
                             </div>
-                            <h4 className="font-black text-rose-500 uppercase tracking-wide text-sm">
+                            <h4 className="font-black text-rose-700 uppercase tracking-wide text-sm">
                                 {data.pitfall.title}
                             </h4>
                         </div>
-                        <p className="text-rose-100/80 text-sm leading-relaxed">
+                        <p className="text-rose-900 text-sm leading-relaxed">
                             {data.pitfall.content}
                         </p>
                     </div>

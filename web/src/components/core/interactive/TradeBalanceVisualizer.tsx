@@ -53,11 +53,11 @@ export const TradeBalanceVisualizer = () => {
     };
 
     return (
-        <div className="w-full bg-slate-950/50 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl">
+        <div className="w-full bg-background/50 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl">
             <div className="flex flex-col lg:flex-row gap-8">
                 
                 {/* 1. The Graph Visualization */}
-                <div className="flex-1 relative aspect-square lg:aspect-[4/3] bg-slate-900/50 rounded-2xl border border-slate-800 overflow-hidden">
+                <div className="flex-1 relative aspect-square lg:aspect-[4/3] bg-card/50 rounded-2xl border border-border overflow-hidden">
                     {/* Grid Lines */}
                     <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px]" />
                     
@@ -194,12 +194,12 @@ export const TradeBalanceVisualizer = () => {
                     {/* Legend */}
                     <div className="absolute bottom-2 left-2 flex gap-3 text-xs">
                         <div className="flex items-center gap-1">
-                            <div className="w-3 h-3 rounded-full bg-teal-500" />
-                            <span className="text-slate-400">ייצור</span>
+                            <div className="w-3 h-3 rounded-full bg-secondary" />
+                            <span className="text-muted-foreground">ייצור</span>
                         </div>
                         <div className="flex items-center gap-1">
                             <div className="w-3 h-3 rounded-full bg-amber-500" />
-                            <span className="text-slate-400">צריכה</span>
+                            <span className="text-muted-foreground">צריכה</span>
                         </div>
                     </div>
                 </div>
@@ -207,10 +207,10 @@ export const TradeBalanceVisualizer = () => {
                 {/* 2. Controls */}
                 <div className="w-full lg:w-80 space-y-6">
                     <div className="flex items-center justify-between">
-                        <h3 className="text-lg font-bold text-white">פרמטרים</h3>
+                        <h3 className="text-lg font-bold text-foreground">פרמטרים</h3>
                         <button 
                             onClick={reset}
-                            className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
+                            className="p-2 rounded-lg bg-muted hover:bg-slate-700 text-muted-foreground hover:text-foreground transition-colors"
                         >
                             <RefreshCcw size={18} />
                         </button>
@@ -219,10 +219,10 @@ export const TradeBalanceVisualizer = () => {
                     {/* World Price Ratio Slider */}
                     <div className="space-y-3">
                         <div className="flex justify-between items-center">
-                            <label className="text-sm font-medium text-slate-300">
+                            <label className="text-sm font-medium text-muted-foreground">
                                 יחס מחירים עולמי (Px/Py)
                             </label>
-                            <span className="text-lg font-bold text-amber-400">{worldPriceRatio.toFixed(1)}</span>
+                            <span className="text-lg font-bold text-amber-700">{worldPriceRatio.toFixed(1)}</span>
                         </div>
                         <input
                             type="range"
@@ -233,7 +233,7 @@ export const TradeBalanceVisualizer = () => {
                             onChange={(e) => setWorldPriceRatio(parseFloat(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-amber-500"
                         />
-                        <div className="flex justify-between text-xs text-slate-500">
+                        <div className="flex justify-between text-xs text-muted-foreground">
                             <span>זול לייצא Y</span>
                             <span>זול לייצא X</span>
                         </div>
@@ -242,10 +242,10 @@ export const TradeBalanceVisualizer = () => {
                     {/* Production Point Slider */}
                     <div className="space-y-3">
                         <div className="flex justify-between items-center">
-                            <label className="text-sm font-medium text-slate-300">
+                            <label className="text-sm font-medium text-muted-foreground">
                                 נקודת ייצור
                             </label>
-                            <span className="text-sm text-teal-400">
+                            <span className="text-sm text-secondary-foreground">
                                 X: {Math.round(prodX)}, Y: {Math.round(prodY)}
                             </span>
                         </div>
@@ -261,7 +261,7 @@ export const TradeBalanceVisualizer = () => {
                             }}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-teal-500"
                         />
-                        <div className="flex justify-between text-xs text-slate-500">
+                        <div className="flex justify-between text-xs text-muted-foreground">
                             <span>רק X</span>
                             <span>רק Y</span>
                         </div>
@@ -270,10 +270,10 @@ export const TradeBalanceVisualizer = () => {
                     {/* Consumption Point Slider */}
                     <div className="space-y-3">
                         <div className="flex justify-between items-center">
-                            <label className="text-sm font-medium text-slate-300">
+                            <label className="text-sm font-medium text-muted-foreground">
                                 נקודת צריכה
                             </label>
-                            <span className="text-sm text-amber-400">
+                            <span className="text-sm text-amber-700">
                                 X: {Math.round(consumptionX)}, Y: {Math.round(Math.max(0, consumptionY))}
                             </span>
                         </div>
@@ -294,34 +294,34 @@ export const TradeBalanceVisualizer = () => {
                             type="checkbox"
                             checked={showTradeTriangle}
                             onChange={(e) => setShowTradeTriangle(e.target.checked)}
-                            className="w-5 h-5 rounded bg-slate-800 border-slate-600 text-teal-500 focus:ring-teal-500"
+                            className="w-5 h-5 rounded bg-muted border-slate-600 text-secondary-foreground focus:ring-ring"
                         />
-                        <span className="text-sm text-slate-300">הצג משולש סחר</span>
+                        <span className="text-sm text-muted-foreground">הצג משולש סחר</span>
                     </label>
                     
                     {/* Results Summary */}
-                    <div className="p-4 rounded-xl bg-slate-900/50 border border-slate-800 space-y-2">
-                        <h4 className="text-sm font-bold text-slate-300">תוצאות הסחר:</h4>
+                    <div className="p-4 rounded-xl bg-card/50 border border-border space-y-2">
+                        <h4 className="text-sm font-bold text-muted-foreground">תוצאות הסחר:</h4>
                         <div className="flex justify-between text-sm">
-                            <span className="text-red-400">יצוא X:</span>
-                            <span className="text-white font-mono">{Math.round(exports)}</span>
+                            <span className="text-red-700">יצוא X:</span>
+                            <span className="text-foreground font-mono">{Math.round(exports)}</span>
                         </div>
                         <div className="flex justify-between text-sm">
-                            <span className="text-blue-400">יבוא Y:</span>
-                            <span className="text-white font-mono">{Math.round(Math.max(0, imports))}</span>
+                            <span className="text-blue-700">יבוא Y:</span>
+                            <span className="text-foreground font-mono">{Math.round(Math.max(0, imports))}</span>
                         </div>
                     </div>
                     
                     {/* Decision */}
-                    <div className="p-4 rounded-xl bg-slate-900/50 border border-slate-800">
-                        <h4 className="text-sm font-bold text-slate-300 mb-2">מסקנה:</h4>
-                        <p className="text-sm text-slate-400">
+                    <div className="p-4 rounded-xl bg-card/50 border border-border">
+                        <h4 className="text-sm font-bold text-muted-foreground mb-2">מסקנה:</h4>
+                        <p className="text-sm text-muted-foreground">
                             {worldPriceRatio > 1.5 ? (
-                                <span className="text-teal-400">כדאי לייצא X (המחיר העולמי גבוה)</span>
+                                <span className="text-secondary-foreground">כדאי לייצא X (המחיר העולמי גבוה)</span>
                             ) : worldPriceRatio < 1 ? (
-                                <span className="text-blue-400">כדאי לייבא X (המחיר העולמי נמוך)</span>
+                                <span className="text-blue-700">כדאי לייבא X (המחיר העולמי נמוך)</span>
                             ) : (
-                                <span className="text-slate-400">אין יתרון ברור לסחר</span>
+                                <span className="text-muted-foreground">אין יתרון ברור לסחר</span>
                             )}
                         </p>
                     </div>

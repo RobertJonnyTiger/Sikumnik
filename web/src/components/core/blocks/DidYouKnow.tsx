@@ -176,7 +176,7 @@ const DidYouKnow: React.FC<DidYouKnowProps> = ({ facts: staticFacts, topicData, 
                         {/* Close button */}
                         <button
                             onClick={(e) => { e.stopPropagation(); toggleOpen(); }}
-                            className="absolute top-4 left-4 p-1 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors z-10"
+                            className="absolute top-4 left-4 p-1 rounded-full text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors z-10"
                         >
                             <X size={18} />
                         </button>
@@ -188,18 +188,18 @@ const DidYouKnow: React.FC<DidYouKnowProps> = ({ facts: staticFacts, topicData, 
                                     <div className="flex items-center gap-3">
                                         <div className="p-2.5 rounded-xl bg-secondary border border-primary/20 shadow-[0_0_15px_rgba(45,212,191,0.1)]">
                                             {isLoading ? (
-                                                <RefreshCw className="w-5 h-5 text-primary animate-spin" />
+                                                <RefreshCw className="w-5 h-5 text-sky-800 animate-spin" />
                                             ) : (
-                                                <IconComponent className="w-5 h-5 text-primary" />
+                                                <IconComponent className="w-5 h-5 text-sky-800" />
                                             )}
                                         </div>
                                         <div className="flex flex-col">
-                                            <span className="text-[10px] font-black uppercase tracking-widest text-primary">הידעת?</span>
-                                            <span className="text-xs text-slate-400">לחץ כדי לגלות עוד</span>
+                                            <span className="text-[10px] font-black uppercase tracking-widest text-sky-800">הידעת?</span>
+                                            <span className="text-xs text-muted-foreground">לחץ כדי לגלות עוד</span>
                                         </div>
                                     </div>
                                     {!isLoading && facts.length > 1 && (
-                                        <div className="hidden md:flex items-center gap-2 text-xs text-slate-500 ml-8">
+                                        <div className="hidden md:flex items-center gap-2 text-xs text-muted-foreground ml-8">
                                             <RefreshCw className="w-3 h-3" />
                                             <span>הבא</span>
                                         </div>
@@ -209,9 +209,9 @@ const DidYouKnow: React.FC<DidYouKnowProps> = ({ facts: staticFacts, topicData, 
                                 {/* Content */}
                                 <div className={`min-h-[80px] flex items-center transition-all duration-300 ${isFlipping ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"}`}>
                                     {isLoading ? (
-                                        <p className="text-slate-400">מחפש עובדות מעניינות...</p>
+                                        <p className="text-muted-foreground">מחפש עובדות מעניינות...</p>
                                     ) : error ? (
-                                        <p className="text-red-400">{error}</p>
+                                        <p className="text-red-700">{error}</p>
                                     ) : currentFact ? (
                                         <p className="text-lg md:text-xl text-foreground leading-relaxed font-medium">
                                             <span className="text-accent font-bold ml-2">{currentFact.category}:</span>

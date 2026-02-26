@@ -51,6 +51,11 @@
       "sourceType": "github",
       "computedHash": "bdf01cb716d99c640cf02438eee71b544709730ef4d59b3cc24b8721a4540e4b"
     },
+    "planning-with-files": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "d246857ed1fb73b9287a5cb5d5931eba2b1bad1357a8e4a960f04357caedb313"
+    },
     "radix-ui-design-system": {
       "source": "sickn33/antigravity-awesome-skills",
       "sourceType": "github",
@@ -85,6 +90,11 @@
       "source": "wshobson/agents",
       "sourceType": "github",
       "computedHash": "c1ab3a923710ec04670f7fb81919d7c5a3783c00ccaad6ce367f62d4d004aeba"
+    },
+    "ui-audit": {
+      "source": "tommygeoco/ui-audit",
+      "sourceType": "github",
+      "computedHash": "973d4b124f8d7e67d7d02f278fa83f748061c25f1e677cb0d665ace16a622731"
     },
     "ui-ux-pro-max": {
       "source": "nextlevelbuilder/ui-ux-pro-max-skill",

@@ -29,7 +29,7 @@ export const ChapterIntro: React.FC<ChapterIntroProps> = ({ data, onStart }) => 
             {/* ... */}
 
             {/* Intro Description */}
-            <div className="space-y-6 mb-10 text-lg leading-relaxed text-slate-300">
+            <div className="space-y-6 mb-10 text-lg leading-relaxed text-muted-foreground">
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{description}</ReactMarkdown>
             </div>
 
@@ -38,12 +38,12 @@ export const ChapterIntro: React.FC<ChapterIntroProps> = ({ data, onStart }) => 
             {/* Motivation Section */}
             {motivationText && (
                 <div className="mb-16">
-                    <div className="relative p-8 rounded-3xl bg-indigo-500/5 border-r-4 border-indigo-500">
-                        <div className="flex items-center gap-2 mb-3 text-indigo-400 font-black text-sm uppercase tracking-widest">
+                    <div className="relative p-8 rounded-3xl bg-primary/5 border-r-4 border-primary">
+                        <div className="flex items-center gap-2 mb-3 text-sky-800 font-black text-sm uppercase tracking-widest">
                             <HelpCircle size={16} />
                             <span>למה זה חשוב?</span>
                         </div>
-                        <div className="text-white font-bold leading-relaxed">
+                        <div className="text-foreground font-bold leading-relaxed">
                             <ReactMarkdown rehypePlugins={[rehypeRaw]}>{motivationText}</ReactMarkdown>
                         </div>
                     </div>
@@ -54,7 +54,7 @@ export const ChapterIntro: React.FC<ChapterIntroProps> = ({ data, onStart }) => 
             <div className="flex justify-center">
                 <button
                     onClick={onStart}
-                    className="group flex items-center gap-4 bg-teal-500 hover:bg-teal-400 text-slate-900 font-black py-5 px-10 rounded-2xl transition-all shadow-2xl shadow-teal-500/20 active:scale-95"
+                    className="group flex items-center gap-4 bg-secondary hover:bg-teal-400 text-foreground font-black py-5 px-10 rounded-2xl transition-all shadow-2xl shadow-sm active:scale-95"
                 >
                     <PlayCircle size={24} />
                     <span className="text-lg">התחל ללמוד את הפרק</span>

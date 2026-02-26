@@ -63,13 +63,13 @@ export function HomeCarousel() {
                         onClick={() => setActiveSlide((prev) => (prev > 0 ? prev - 1 : featuredCourses.length - 1))}
                         className="p-3 rounded-4xl bg-card border border-border hover:border-primary/40 transition-all shadow-sm"
                     >
-                        <ChevronRight className="w-6 h-6 text-foreground/40" />
+                        <ChevronRight className="w-6 h-6 text-foreground" />
                     </button>
                     <button
                         onClick={() => setActiveSlide((prev) => (prev < featuredCourses.length - 1 ? prev + 1 : 0))}
                         className="p-3 rounded-4xl bg-card border border-border hover:border-primary/40 transition-all shadow-sm"
                     >
-                        <ChevronLeft className="w-6 h-6 text-foreground/40" />
+                        <ChevronLeft className="w-6 h-6 text-foreground" />
                     </button>
                 </div>
             </div>
@@ -90,25 +90,25 @@ export function HomeCarousel() {
                         <div className="flex-1 space-y-8">
                             <div className="flex items-center gap-4">
                                 <div className="bg-primary p-4 rounded-3xl shadow-lg shadow-primary/20">
-                                    <course.icon className="w-10 h-10 text-white" />
+                                    <course.icon className="w-10 h-10 text-foreground" />
                                 </div>
                                 <span className="text-3xl font-black tracking-tight">{course.title}</span>
                             </div>
-                            <p className="text-xl md:text-2xl text-foreground/60 leading-relaxed font-medium max-w-xl">
+                            <p className="text-xl md:text-2xl text-foreground leading-relaxed font-medium max-w-xl">
                                 {course.desc}
                             </p>
 
                             <div className="flex flex-wrap gap-6 items-center">
                                 <Link href={course.href}>
-                                    <button className="bg-primary text-white px-10 py-5 rounded-4xl font-black text-lg shadow-xl shadow-primary/20 hover:scale-105 hover:shadow-primary/30 transition-all flex items-center gap-4">
+                                    <button className="bg-primary text-foreground px-10 py-5 rounded-4xl font-black text-lg shadow-xl shadow-primary/20 hover:scale-105 hover:shadow-primary/30 transition-all flex items-center gap-4">
                                         <span>המשך למידה</span>
                                         <Play className="w-5 h-5 fill-current" />
                                     </button>
                                 </Link>
                                 <div className="flex items-center gap-6 bg-card border border-border px-8 py-4 rounded-4xl shadow-sm">
                                     <div className="text-right">
-                                        <p className="text-[10px] font-black text-foreground/30 uppercase tracking-widest leading-none mb-1">Progress</p>
-                                        <p className="text-lg font-black text-primary leading-none">{course.progress}%</p>
+                                        <p className="text-[10px] font-black text-foreground uppercase tracking-widest leading-none mb-1">Progress</p>
+                                        <p className="text-lg font-black text-foreground leading-none">{course.progress}%</p>
                                     </div>
                                     <div className="w-32 h-2 bg-primary/10 rounded-full overflow-hidden">
                                         <div className="h-full bg-primary" style={{ width: `${course.progress}%` }} />
@@ -121,7 +121,7 @@ export function HomeCarousel() {
                             <div className="relative w-72 h-72 lg:w-96 lg:h-96">
                                 <div className="absolute inset-0 bg-primary/5 rounded-[4rem] rotate-6 scale-90 blur-xl" />
                                 <div className="absolute inset-0 bg-card border-4 border-border rounded-[4rem] shadow-premium flex items-center justify-center -rotate-3 hover:rotate-0 transition-transform duration-700">
-                                    <course.icon className="w-32 h-32 lg:w-48 lg:h-48 text-primary opacity-20" />
+                                    <course.icon className="w-32 h-32 lg:w-48 lg:h-48 text-foreground opacity-20" />
                                 </div>
                             </div>
                         </div>

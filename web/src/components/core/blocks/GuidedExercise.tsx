@@ -14,16 +14,16 @@ interface GuidedExerciseProps {
 }
 
 const difficultyLabel = (d: number) => {
-    if (d <= 2) return { text: "בסיסי", color: "text-emerald-400" };
-    if (d <= 4) return { text: "בינוני", color: "text-amber-400" };
-    return { text: "מתקדם", color: "text-red-400" };
+    if (d <= 2) return { text: "בסיסי", color: "text-emerald-700" };
+    if (d <= 4) return { text: "בינוני", color: "text-amber-700" };
+    return { text: "מתקדם", color: "text-red-700" };
 };
 
 const phaseIcon = (type: "i-do" | "we-do" | "you-do") => {
     switch (type) {
-        case "i-do": return { icon: <Zap className="w-4 h-4" />, label: "אני עושה", color: "bg-blue-500/10 border-blue-500/20 text-blue-400" };
-        case "we-do": return { icon: <Users className="w-4 h-4" />, label: "אנחנו עושים", color: "bg-amber-500/10 border-amber-500/20 text-amber-400" };
-        case "you-do": return { icon: <Hand className="w-4 h-4" />, label: "אתה עושה", color: "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" };
+        case "i-do": return { icon: <Zap className="w-4 h-4" />, label: "אני עושה", color: "bg-blue-50 border-blue-200 text-blue-700" };
+        case "we-do": return { icon: <Users className="w-4 h-4" />, label: "אנחנו עושים", color: "bg-amber-50 border-amber-200 text-amber-700" };
+        case "you-do": return { icon: <Hand className="w-4 h-4" />, label: "אתה עושה", color: "bg-emerald-50 border-emerald-200 text-emerald-700" };
     }
 };
 
@@ -47,31 +47,31 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
     };
 
     return (
-        <div className="bg-violet-950/20 border border-violet-500/20 rounded-2xl overflow-hidden my-6">
+        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden my-6">
             {/* Header */}
             <div className="p-6 pb-4">
                 <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                        <div className="bg-violet-500/10 p-2 rounded-lg border border-violet-500/20">
-                            <BrainCircuit className="w-4 h-4 text-violet-400" />
+                        <div className="bg-slate-50 p-2 rounded-lg border border-slate-200">
+                            <BrainCircuit className="w-4 h-4 text-slate-700" />
                         </div>
-                        <h4 className="text-sm font-black text-violet-400 uppercase tracking-wider">תרגיל מודרך</h4>
+                        <h4 className="text-sm font-black text-slate-700 uppercase tracking-wider">תרגיל מודרך</h4>
                     </div>
                     <span className={`text-xs font-bold ${diff.color}`}>{diff.text}</span>
                 </div>
 
-                <p className="text-lg text-foreground/90 font-medium mb-3">{question}</p>
+                <p className="text-lg text-foreground font-medium mb-3">{question}</p>
 
-                <div className="bg-violet-500/5 border-r-2 border-violet-500/30 px-4 py-2 rounded-l-lg">
-                    <p className="text-xs font-bold text-violet-400 mb-1">🧭 כיוון חשיבה</p>
-                    <p className="text-sm text-foreground/60">{thinkingDirection}</p>
+                <div className="bg-slate-50 border-r-2 border-slate-300 px-4 py-2 rounded-l-lg">
+                    <p className="text-xs font-bold text-slate-700 mb-1">🧭 כיוון חשיבה</p>
+                    <p className="text-sm text-foreground">{thinkingDirection}</p>
                 </div>
             </div>
 
             {/* Phases (I do / We do / You do) */}
             {phases && phases.length > 0 && (
                 <div className="px-6 pb-4 space-y-3">
-                    <p className="text-xs font-bold text-violet-400 uppercase tracking-wider mb-2">שלבי התרגיל</p>
+                    <p className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">שלבי התרגיל</p>
                     {phases.map((phase, idx) => {
                         const phaseInfo = phaseIcon(phase.type);
                         return (
@@ -80,7 +80,7 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
                                     {phaseInfo.icon}
                                     <span className="text-xs font-bold uppercase">{phaseInfo.label}</span>
                                 </div>
-                                <p className="text-foreground/80 text-sm">{phase.content}</p>
+                                <p className="text-foreground text-sm">{phase.content}</p>
                             </div>
                         );
                     })}
@@ -90,34 +90,34 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
             {/* Steps */}
             <div className="px-6 pb-4 space-y-2">
                 {steps.map((step, idx) => (
-                    <div key={idx} className="border border-violet-500/10 rounded-xl overflow-hidden">
+                    <div key={idx} className="border border-slate-200 rounded-xl overflow-hidden shadow-sm">
                         <button
                             onClick={() => toggleStep(idx)}
-                            className="w-full px-4 py-3 flex items-center justify-between text-right hover:bg-violet-500/5 transition-colors"
+                            className="w-full px-4 py-3 flex items-center justify-between text-right hover:bg-slate-50 transition-colors"
                         >
                             <div className="flex items-center gap-3">
-                                <span className="w-7 h-7 rounded-full bg-violet-500/10 text-violet-400 text-xs font-bold flex items-center justify-center">
+                                <span className="w-7 h-7 rounded-full bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold flex items-center justify-center">
                                     {idx + 1}
                                 </span>
-                                <span className="font-medium text-foreground/80">{step.title}</span>
+                                <span className="font-medium text-foreground">{step.title}</span>
                             </div>
                             <ChevronDown
-                                className={`w-4 h-4 text-violet-400 transition-transform duration-300 ${revealedSteps.has(idx) ? "rotate-180" : ""}`}
+                                className={`w-4 h-4 text-slate-500 transition-transform duration-300 ${revealedSteps.has(idx) ? "rotate-180" : ""}`}
                             />
                         </button>
                         {revealedSteps.has(idx) && (
                             <div className="px-4 pb-4 space-y-2 animate-in fade-in-0 duration-300">
-                                <p className="text-foreground/70 text-sm">{step.action}</p>
-                                <p className="text-foreground/50 text-sm italic">{step.reasoning}</p>
+                                <p className="text-foreground text-sm">{step.action}</p>
+                                <p className="text-foreground text-sm italic">{step.reasoning}</p>
                                 {step.calculation && (
-                                    <div className="bg-slate-900/50 px-3 py-2 rounded-lg">
-                                        <p className="font-mono text-teal-400 text-sm" dir="ltr">
+                                    <div className="bg-card/50 px-3 py-2 rounded-lg">
+                                        <p className="font-mono text-secondary-foreground text-sm" dir="ltr">
                                             <Calculator className="w-3 h-3 inline mr-1" />
                                             {step.calculation}
                                         </p>
                                     </div>
                                 )}
-                                <p className="text-emerald-400 font-bold text-sm">→ {step.result}</p>
+                                <p className="text-emerald-700 font-bold text-sm">→ {step.result}</p>
                             </div>
                         )}
                     </div>
@@ -125,18 +125,18 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
             </div>
 
             {/* Final Answer */}
-            <div className="border-t border-violet-500/10">
+            <div className="border-t border-slate-200">
                 <button
                     onClick={() => setShowAnswer(!showAnswer)}
-                    className="w-full px-6 py-3 flex items-center gap-2 text-sm font-bold text-violet-400 hover:bg-violet-500/5 transition-colors"
+                    className="w-full px-6 py-4 flex items-center gap-2 text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors"
                 >
                     <Flag className="w-4 h-4" />
                     {showAnswer ? "הסתר תשובה סופית" : "הצג תשובה סופית"}
                 </button>
                 {showAnswer && (
                     <div className="px-6 pb-6 animate-in fade-in-0 duration-300">
-                        <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl px-4 py-3">
-                            <p className="text-emerald-400 font-bold">{finalAnswer}</p>
+                        <div className="bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3">
+                            <p className="text-emerald-700 font-bold">{finalAnswer}</p>
                         </div>
                     </div>
                 )}

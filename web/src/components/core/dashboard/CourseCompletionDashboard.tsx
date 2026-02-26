@@ -80,7 +80,7 @@ export const CourseCompletionDashboard: React.FC<CourseCompletionDashboardProps>
     };
 
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-50 font-sans p-6 md:p-12" dir="rtl">
+        <div className="min-h-screen bg-background text-slate-50 font-sans p-6 md:p-12" dir="rtl">
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
@@ -89,7 +89,7 @@ export const CourseCompletionDashboard: React.FC<CourseCompletionDashboardProps>
             >
                 {/* Hero Section */}
                 <motion.div variants={itemVariants} className="text-center space-y-6 relative">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl -z-10 animate-pulse" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-50 rounded-full blur-3xl -z-10 animate-pulse" />
 
                     <motion.div
                         initial={{ scale: 0, rotate: -180 }}
@@ -104,20 +104,20 @@ export const CourseCompletionDashboard: React.FC<CourseCompletionDashboardProps>
                         <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-4 text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-purple-400 to-pink-400">
                             מזל טוב! סיימת את הקורס
                         </h1>
-                        <p className="text-2xl text-slate-400 font-light">
+                        <p className="text-2xl text-muted-foreground font-light">
                             {courseTitle}
                         </p>
                     </div>
 
-                    <div className="inline-flex items-center gap-2 bg-slate-900/80 backdrop-blur-md px-6 py-3 rounded-full border border-slate-700/50 shadow-xl">
-                        <BookOpen className="w-5 h-5 text-blue-400" />
+                    <div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-md px-6 py-3 rounded-full border border-border/50 shadow-xl">
+                        <BookOpen className="w-5 h-5 text-blue-700" />
                         <span className="text-xl font-bold font-mono tracking-widest">סיום הקורס</span>
                     </div>
 
                     {/* Narrative Story */}
-                    <div className="max-w-3xl mx-auto bg-slate-900/50 p-8 rounded-3xl border border-slate-800 backdrop-blur-sm text-lg md:text-xl leading-relaxed text-slate-300 relative text-right">
-                        <div className="absolute -top-6 right-8 bg-slate-950 p-3 rounded-full border border-slate-800 shadow-xl">
-                            <TrendingUp className="w-6 h-6 text-blue-400" />
+                    <div className="max-w-3xl mx-auto bg-card/50 p-8 rounded-3xl border border-border backdrop-blur-sm text-lg md:text-xl leading-relaxed text-muted-foreground relative text-right">
+                        <div className="absolute -top-6 right-8 bg-background p-3 rounded-full border border-border shadow-xl">
+                            <TrendingUp className="w-6 h-6 text-blue-700" />
                         </div>
                         {narrative}
                     </div>
@@ -126,22 +126,22 @@ export const CourseCompletionDashboard: React.FC<CourseCompletionDashboardProps>
                 {/* Stats Grid */}
                 <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {stats.map((stat, idx) => (
-                        <div key={idx} className="bg-slate-900 border border-slate-800 p-6 rounded-2xl relative overflow-hidden group hover:border-slate-700 transition-colors">
+                        <div key={idx} className="bg-card border border-border p-6 rounded-2xl relative overflow-hidden group hover:border-border transition-colors">
                             <div className={cn("absolute top-0 right-0 w-full h-1", stat.color)} />
                             <div className="flex items-start justify-between mb-4">
-                                <div className={cn("p-3 rounded-xl bg-slate-950", stat.color.replace('bg-', 'text-'))}>
+                                <div className={cn("p-3 rounded-xl bg-background", stat.color.replace('bg-', 'text-'))}>
                                     <stat.icon className="w-6 h-6" />
                                 </div>
-                                <TrendingUp className="w-4 h-4 text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <TrendingUp className="w-4 h-4 text-emerald-700 opacity-0 group-hover:opacity-100 transition-opacity" />
                             </div>
                             <div className="text-3xl font-black mb-1">{stat.value}</div>
-                            <div className="text-sm text-slate-400 font-medium">{stat.label}</div>
+                            <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
                         </div>
                     ))}
                 </motion.div>
 
                 {/* Concepts Mastered */}
-                <motion.div variants={itemVariants} className="bg-slate-900/50 border border-slate-800 rounded-3xl p-8 backdrop-blur-sm">
+                <motion.div variants={itemVariants} className="bg-card/50 border border-border rounded-3xl p-8 backdrop-blur-sm">
                     <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
                         <Brain className="w-6 h-6 text-purple-400" />
                         מושגי מפתח שרכשת
@@ -153,7 +153,7 @@ export const CourseCompletionDashboard: React.FC<CourseCompletionDashboardProps>
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: 0.5 + (idx * 0.05) }}
-                                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg text-sm font-medium transition-colors cursor-default select-none group"
+                                className="px-4 py-2 bg-muted hover:bg-slate-700 border border-border rounded-lg text-sm font-medium transition-colors cursor-default select-none group"
                             >
                                 <span className="group-hover:text-purple-300 transition-colors">{concept}</span>
                             </motion.span>
@@ -164,7 +164,7 @@ export const CourseCompletionDashboard: React.FC<CourseCompletionDashboardProps>
                 {/* Action Footer */}
                 <motion.div variants={itemVariants} className="flex justify-center pt-8">
                     <Link href="/courses">
-                        <button className="group relative px-8 py-4 bg-slate-50 text-slate-950 font-bold rounded-full text-lg shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_50px_rgba(255,255,255,0.2)] transition-all overflow-hidden">
+                        <button className="group relative px-8 py-4 bg-card text-slate-950 font-bold rounded-full text-lg shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_50px_rgba(255,255,255,0.2)] transition-all overflow-hidden">
                             <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover:animate-shimmer" />
                             <span className="flex items-center gap-2 relative z-10">
                                 חזרה לקטלוג הקורסים

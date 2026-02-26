@@ -10,9 +10,9 @@ interface ConceptAccordionProps {
 
 // Map of index/id to specific colors from the image
 const THEME_COLORS: Record<number, { text: string; bg: string; border: string; glow: string }> = {
-    1: { text: 'text-red-500', bg: 'bg-red-500/10', border: 'border-red-500/30', glow: 'shadow-red-500/10' },
+    1: { text: 'text-red-700', bg: 'bg-red-50', border: 'border-red-200', glow: 'shadow-sm' },
     2: { text: 'text-orange-500', bg: 'bg-orange-500/10', border: 'border-orange-500/30', glow: 'shadow-orange-500/10' },
-    3: { text: 'text-emerald-500', bg: 'bg-emerald-500/10', border: 'border-emerald-500/30', glow: 'shadow-emerald-500/10' },
+    3: { text: 'text-emerald-700', bg: 'bg-emerald-50', border: 'border-emerald-200', glow: 'shadow-sm' },
 };
 
 export const ConceptAccordion: React.FC<ConceptAccordionProps> = ({ sectionTitle, items }) => {
@@ -38,8 +38,8 @@ export const ConceptAccordion: React.FC<ConceptAccordionProps> = ({ sectionTitle
                         <div
                             key={concept.id}
                             className={`group transition-all duration-500 rounded-2xl border ${isActive
-                                ? `bg-background border-slate-700/50 shadow-2xl ${theme.glow}`
-                                : 'bg-popover/40 border-slate-800/50 hover:border-slate-700/80'
+                                ? `bg-background border-border/50 shadow-2xl ${theme.glow}`
+                                : 'bg-popover/40 border-border/50 hover:border-border/80'
                             }`}
                         >
                             {/* Header / Trigger */}
@@ -51,20 +51,20 @@ export const ConceptAccordion: React.FC<ConceptAccordionProps> = ({ sectionTitle
                                 <div className="flex items-center gap-4">
                                     <ChevronDown
                                         size={20}
-                                        className={`text-slate-600 transition-transform duration-300 ${isActive ? 'rotate-180' : ''}`}
+                                        className={`text-muted-foreground transition-transform duration-300 ${isActive ? 'rotate-180' : ''}`}
                                     />
 
                                     {/* Number Box */}
                                     <div className={`w-9 h-9 rounded-xl flex items-center justify-center font-black text-lg transition-all border ${isActive
                                         ? `${theme.bg} ${theme.text} ${theme.border}`
-                                        : 'bg-slate-900/50 text-slate-700 border-slate-800'
+                                        : 'bg-card/50 text-foreground border-border'
                                         }`}>
                                         {index + 1}
                                     </div>
                                 </div>
 
                                 {/* Center: Title */}
-                                <span className={`flex-1 mx-6 font-bold text-lg md:text-xl transition-colors ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-300'
+                                <span className={`flex-1 mx-6 font-bold text-lg md:text-xl transition-colors ${isActive ? 'text-foreground' : 'text-muted-foreground group-hover:text-muted-foreground'
                                     }`}>
                                     {concept.title}
                                 </span>
@@ -72,7 +72,7 @@ export const ConceptAccordion: React.FC<ConceptAccordionProps> = ({ sectionTitle
                                 {/* Right Side: Icon Box */}
                                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all border ${isActive
                                     ? `${theme.bg} ${theme.text} ${theme.border} scale-110`
-                                    : 'bg-slate-900/50 text-slate-800 border-slate-800'
+                                    : 'bg-card/50 text-foreground border-border'
                                     }`}>
                                     <Box size={24} strokeWidth={2.5} />
                                 </div>
@@ -81,8 +81,8 @@ export const ConceptAccordion: React.FC<ConceptAccordionProps> = ({ sectionTitle
                             {/* Content Area */}
                             <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isActive ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
                                 }`}>
-                                <div className="px-8 pb-8 pt-2 mr-16 ml-8 border-r-2 border-slate-800/50">
-                                    <p className="text-slate-400 text-base md:text-lg leading-relaxed font-medium">
+                                <div className="px-8 pb-8 pt-2 mr-16 ml-8 border-r-2 border-border/50">
+                                    <p className="text-muted-foreground text-base md:text-lg leading-relaxed font-medium">
                                         {concept.description}
                                     </p>
                                 </div>

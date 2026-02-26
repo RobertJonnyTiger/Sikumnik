@@ -32,9 +32,9 @@ export function FinancialStatement({ title, rows = [], leftRows, rightRows, note
                         key={i}
                         className={cn(
                             "flex justify-between items-center px-6 py-3 rounded-2xl transition-all duration-300 border-2 border-transparent",
-                            isTotal ? "bg-primary/20 text-white font-black text-xl border-primary/40 mt-4 shadow-premium" :
-                                isSubtotal ? "bg-foreground/5 text-primary font-black border-t-2 border-primary/20 mt-3 text-lg" :
-                                    "text-foreground/90 hover:bg-foreground/5 hover:border-border/40",
+                            isTotal ? "bg-primary/20 text-foreground font-black text-xl border-primary/40 mt-4 shadow-premium" :
+                                isSubtotal ? "bg-foreground/5 text-sky-800 font-black border-t-2 border-primary/20 mt-3 text-lg" :
+                                    "text-foreground hover:bg-foreground/5 hover:border-border/40",
                             row.highlight && !isTotal && !isSubtotal && "bg-accent/10 border-accent/20 text-accent font-black"
                         )}
                     >
@@ -46,7 +46,7 @@ export function FinancialStatement({ title, rows = [], leftRows, rightRows, note
                         </span>
                         <span className={cn(
                             "text-xl tabular-nums tracking-tight font-black",
-                            isTotal ? "text-white text-2xl" :
+                            isTotal ? "text-foreground text-2xl" :
                                 isExpense && !isTotal && !isSubtotal ? "text-error" :
                                     !isExpense && !isTotal && !isSubtotal ? "text-success" : ""
                         )}>
@@ -68,10 +68,10 @@ export function FinancialStatement({ title, rows = [], leftRows, rightRows, note
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/5 blur-[100px] -z-10" />
 
             <div className="mb-10 border-b-2 border-border/40 pb-6 text-center relative z-10">
-                <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">{title}</h3>
+                <h3 className="text-3xl md:text-4xl font-black text-foreground tracking-tight leading-tight">{title}</h3>
                 <div className="flex items-center justify-center gap-4 mt-4">
                     <div className="h-px w-12 bg-primary/30" />
-                    <p className="text-xs text-primary font-black uppercase tracking-[0.4em]">דוח כספי רשמי • אמת אחת</p>
+                    <p className="text-xs text-sky-800 font-black uppercase tracking-[0.4em]">דוח כספי רשמי • אמת אחת</p>
                     <div className="h-px w-12 bg-primary/30" />
                 </div>
             </div>
@@ -104,9 +104,9 @@ export function FinancialStatement({ title, rows = [], leftRows, rightRows, note
             )}
 
             {note && (
-                <div className="mt-10 pt-6 border-t-2 border-dashed border-border/40 text-lg text-foreground/60 text-center font-main leading-relaxed">
+                <div className="mt-10 pt-6 border-t-2 border-dashed border-border/40 text-lg text-foreground text-center font-main leading-relaxed">
                     {note.split(' ').map((word, i) => (
-                        <span key={i} className={i % 7 === 0 ? "text-primary font-black" : ""}>{word} </span>
+                        <span key={i} className={i % 7 === 0 ? "text-sky-800 font-black" : ""}>{word} </span>
                     ))}
                 </div>
             )}

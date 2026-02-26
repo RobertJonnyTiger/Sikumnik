@@ -101,7 +101,7 @@ export const MaslowPyramid: React.FC = () => {
                                 }}
                             >
                                 <div className="flex items-center gap-3 px-4">
-                                    <Icon className={`w-5 h-5 ${isActive ? 'text-white' : ''}`} />
+                                    <Icon className={`w-5 h-5 ${isActive ? 'text-foreground' : ''}`} />
                                     <span className={`text-base md:text-lg font-bold tracking-tight`}>
                                         {level.hebrew}
                                     </span>
@@ -110,7 +110,7 @@ export const MaslowPyramid: React.FC = () => {
                                 {isActive && (
                                     <motion.div
                                         layoutId="pyramid-arrow"
-                                        className="absolute -left-3 top-1/2 -translate-y-1/2 text-primary"
+                                        className="absolute -left-3 top-1/2 -translate-y-1/2 text-sky-800"
                                     >
                                         <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                                     </motion.div>
@@ -152,7 +152,7 @@ export const MaslowPyramid: React.FC = () => {
                                         <Icon className="w-5 h-5" />
                                     </div>
                                     <div className="flex flex-col items-start">
-                                        <h3 className="font-bold text-lg text-foreground/90 leading-tight">{level.hebrew}</h3>
+                                        <h3 className="font-bold text-lg text-foreground leading-tight">{level.hebrew}</h3>
                                         <p className="text-xs text-muted-foreground uppercase tracking-widest leading-none mt-1">
                                             {level.name}
                                         </p>
@@ -170,7 +170,7 @@ export const MaslowPyramid: React.FC = () => {
                                     >
                                         {level.type}
                                     </span>
-                                    <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${isActive ? 'rotate-180 text-primary' : ''}`} />
+                                    <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${isActive ? 'rotate-180 text-sky-800' : ''}`} />
                                 </div>
                             </button>
 
@@ -184,7 +184,7 @@ export const MaslowPyramid: React.FC = () => {
                                     >
                                         <div className="px-5 pb-6 pt-2 border-t border-border/10">
                                             <div className="md:pr-14">
-                                                <div className="text-base leading-relaxed text-foreground/80 mb-6 markdown-content">
+                                                <div className="text-base leading-relaxed text-foreground mb-6 markdown-content">
                                                     <ReactMarkdown rehypePlugins={[rehypeRaw]}>{level.description}</ReactMarkdown>
                                                 </div>
 
@@ -194,7 +194,7 @@ export const MaslowPyramid: React.FC = () => {
                                                         {level.examples.map((ex, i) => (
                                                             <span
                                                                 key={i}
-                                                                className="px-3 py-1.5 rounded-lg text-sm font-medium bg-secondary/50 border border-border text-foreground/80"
+                                                                className="px-3 py-1.5 rounded-lg text-sm font-medium bg-secondary/50 border border-border text-foreground"
                                                             >
                                                                 {ex}
                                                             </span>
@@ -219,11 +219,11 @@ export const MaslowPyramid: React.FC = () => {
             >
                 <div className="flex gap-4 items-start">
                     <div className="bg-primary/20 p-2 rounded-xl mt-1">
-                        <Sparkles className="w-4 h-4 text-primary" />
+                        <Sparkles className="w-4 h-4 text-sky-800" />
                     </div>
                     <div>
-                        <h4 className="font-bold text-primary mb-2 text-lg">תובנת מפתח: D-Needs מול B-Needs</h4>
-                        <div className="text-base text-foreground/70 leading-relaxed markdown-content">
+                        <h4 className="font-bold text-sky-800 mb-2 text-lg">תובנת מפתח: D-Needs מול B-Needs</h4>
+                        <div className="text-base text-foreground leading-relaxed markdown-content">
                             <ReactMarkdown rehypePlugins={[rehypeRaw]}>{footerText}</ReactMarkdown>
                         </div>
                     </div>

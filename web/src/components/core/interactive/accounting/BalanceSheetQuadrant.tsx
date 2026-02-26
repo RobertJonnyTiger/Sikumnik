@@ -55,9 +55,9 @@ function QuadrantCell({ quadrant, isAssetSide }: { quadrant: Quadrant; isAssetSi
                             key={i}
                             className={cn(
                                 "flex justify-between items-center px-2 py-1 rounded transition-colors",
-                                isTotal ? "bg-primary/10 text-primary font-black border-t border-primary/20 mt-2" :
-                                    isSubtotal ? "bg-foreground/5 text-foreground/80 font-bold border-t border-border mt-1" :
-                                        "text-foreground/70 hover:bg-foreground/5",
+                                isTotal ? "bg-primary/10 text-sky-800 font-black border-t border-primary/20 mt-2" :
+                                    isSubtotal ? "bg-foreground/5 text-foreground font-bold border-t border-border mt-1" :
+                                        "text-foreground hover:bg-foreground/5",
                                 row.highlight && !isTotal && !isSubtotal && "bg-accent/10 text-accent font-semibold"
                             )}
                         >
@@ -92,7 +92,7 @@ export function BalanceSheetQuadrant({ topLeft, topRight, bottomLeft, bottomRigh
             {/* Header */}
             <div className="text-center py-3 border-b border-border">
                 <h3 className="text-xl font-black text-foreground">המאזן - מבט ארבע רבעים</h3>
-                <p className="text-[10px] text-foreground/30 mt-1 uppercase tracking-widest font-bold">
+                <p className="text-[10px] text-foreground mt-1 uppercase tracking-widest font-bold">
                     תמונת מצב חשבונאית • 2025
                 </p>
             </div>
@@ -110,7 +110,7 @@ export function BalanceSheetQuadrant({ topLeft, topRight, bottomLeft, bottomRigh
 
             {/* Balance Verification Footer - Compact */}
             <div className="text-center py-2 border-t border-border bg-foreground/5">
-                <p className="text-xs font-handwriting text-foreground/50 italic">
+                <p className="text-xs font-handwriting text-foreground italic">
                     ✓ המאזן מאוזן: סה״כ נכסים = סה״כ התחייבויות + הון עצמי
                 </p>
             </div>
