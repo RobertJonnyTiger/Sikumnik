@@ -1,6 +1,17 @@
 {
   "version": 1,
   "skills": {
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "computedHash": "25872a21881a950edc3db1f3329664d60405d539660ce05b3265db2de06a7dfd"
+    }
+  }
+}
+
+{
+  "version": 1,
+  "skills": {
     "accessibility-compliance": {
       "source": "wshobson/agents",
       "sourceType": "github",
@@ -10,11 +21,6 @@
       "source": "obra/superpowers",
       "sourceType": "github",
       "computedHash": "5cafa1558b0b6bd4d4c71f23d5567b7fcbbcdb4b0a50b0c5f69a80a3cebaf9b8"
-    },
-    "file-organizer": {
-      "source": "sickn33/antigravity-awesome-skills",
-      "sourceType": "github",
-      "computedHash": "57570a75163e012b4c20579be82873eab119add7a0af896fdeadb9ebaca03b72"
     },
     "find-skills": {
       "source": "vercel-labs/skills",
@@ -51,11 +57,6 @@
       "sourceType": "github",
       "computedHash": "bdf01cb716d99c640cf02438eee71b544709730ef4d59b3cc24b8721a4540e4b"
     },
-    "planning-with-files": {
-      "source": "sickn33/antigravity-awesome-skills",
-      "sourceType": "github",
-      "computedHash": "d246857ed1fb73b9287a5cb5d5931eba2b1bad1357a8e4a960f04357caedb313"
-    },
     "radix-ui-design-system": {
       "source": "sickn33/antigravity-awesome-skills",
       "sourceType": "github",
@@ -90,11 +91,6 @@
       "source": "wshobson/agents",
       "sourceType": "github",
       "computedHash": "c1ab3a923710ec04670f7fb81919d7c5a3783c00ccaad6ce367f62d4d004aeba"
-    },
-    "ui-audit": {
-      "source": "tommygeoco/ui-audit",
-      "sourceType": "github",
-      "computedHash": "973d4b124f8d7e67d7d02f278fa83f748061c25f1e677cb0d665ace16a622731"
     },
     "ui-ux-pro-max": {
       "source": "nextlevelbuilder/ui-ux-pro-max-skill",

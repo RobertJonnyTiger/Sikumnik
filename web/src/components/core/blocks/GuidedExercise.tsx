@@ -32,12 +32,12 @@ const phaseIcon = (type: "i-do" | "we-do" | "you-do") => {
     }
 };
 
-const MathText = ({ children, className }: { children: string; className?: string }) => (
+const MathText = ({ children, className, asSpan = false }: { children: string; className?: string; asSpan?: boolean }) => (
     <ReactMarkdown
         remarkPlugins={[remarkMath]}
         rehypePlugins={[rehypeKatex]}
         components={{
-            p: ({ node, ...props }) => <p className={className} {...props} />
+            p: ({ node, ...props }) => asSpan ? <span className={className} {...props} /> : <p className={className} {...props} />
         }}
     >
         {children}
@@ -116,7 +116,7 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
                                 <span className="w-7 h-7 rounded-full bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold flex items-center justify-center">
                                     {idx + 1}
                                 </span>
-                                <span className="font-medium text-foreground">{step.title}</span>
+                                <MathText asSpan className="font-medium text-foreground">{step.title}</MathText>
                             </div>
                             <ChevronDown
                                 className={`w-4 h-4 text-slate-500 transition-transform duration-300 ${revealedSteps.has(idx) ? "rotate-180" : ""}`}
@@ -137,11 +137,16 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
                                             <div className="bg-card/50 px-3 py-2 rounded-lg flex items-center gap-2" dir="ltr">
                                                 <Calculator className="w-3 h-3 text-secondary-foreground shrink-0" />
                                                 <div className="font-mono text-secondary-foreground text-sm text-left w-full overflow-x-auto">
-                                                    <MathText>{step.calculation}</MathText>
+                                                    <MathText>{step.calculation.includes('$') ? step.calculation : `$$${step.calculation}$$`}</MathText>
                                                 </div>
                                             </div>
                                         )}
-                                        <MathText className="text-emerald-700 font-bold text-sm">{"→ " + step.result}</MathText>
+                                        <div className="text-left mt-2 flex justify-end">
+                                            <div className="text-emerald-700 font-bold text-sm inline-flex items-center gap-1.5" dir="ltr">
+                                                <span>&rarr;</span>
+                                                <MathText asSpan>{step.result}</MathText>
+                                            </div>
+                                        </div>
                                     </div>
                                 </motion.div>
                             )}

@@ -18,24 +18,17 @@ npm run dev          # Start dev server on port 3001
 npm run build        # Production build
 npm run start        # Start production server
 
-# Linting
-npm run lint         # Run ESLint
+# Linting & Type Checking
+npm run lint         # Run ESLint (uses eslint-config-next/core-web-vitals + typescript)
 
 # Testing
-npm run test         # Run all tests once
-npm run test:watch   # Run tests in watch mode
-npm run test:coverage # Run tests with coverage report
-
-# Run a single test file
-npx vitest run path/to/file.test.ts
-
-# Run tests matching a pattern
-npx vitest run --grep "test name"
+npm run test                # Run all tests once
+npm run test:watch          # Run tests in watch mode
+npm run test:coverage       # Run tests with coverage report
+npx vitest run path/to/file.test.ts   # Run single test file
 ```
 
 ## Tech Stack
-
-Use these exact versions when referring to libraries or looking up documentation:
 
 - **Framework:** Next.js 16.1.6 (App Router)
 - **UI:** React 19.2.3
@@ -46,23 +39,29 @@ Use these exact versions when referring to libraries or looking up documentation
 - **Icons:** Lucide React
 - **Math:** KaTeX (react-katex)
 - **Testing:** Vitest 4.0.18, Playwright 1.58.2
-- **Content:** MDX (@mdx-js/loader, @next/mdx)
 
 ## Code Style Guidelines
 
 ### TypeScript
 
-- Strict mode is enabled in tsconfig.json
+- Strict mode is enabled in `tsconfig.json`
 - Use `type` for unions, intersections, and primitives
 - Use `interface` for object shapes and component props
 - Always type function parameters and return values
 - Enable `noUncheckedIndexedAccess` behavior mentally when accessing arrays
+- Use `import { type ... }` for type-only imports
 
 ### Components
 
 - Use `"use client"` directive for any component using hooks or browser APIs
 - Name components in PascalCase: `ChapterTemplate.tsx`, `BlockRenderer.tsx`
-- Use `React.FC<Props>` for functional component typing
+- Use `React.forwardRef` for components that need refs:
+  ```typescript
+  const Card = React.forwardRef<HTMLDivElement, Props>(({ ...props }, ref) => (
+    <div ref={ref} {...props} />
+  ));
+  Card.displayName = "Card";
+  ```
 - Keep components focused - one component per file preferred
 
 ### File Naming
@@ -78,12 +77,13 @@ Use these exact versions when referring to libraries or looking up documentation
   1. React/Next imports
   2. External libraries
   3. Internal imports (use `@/` alias)
-  4. Type imports
+  4. Type imports (use `import { type ... }`)
 - Example:
   ```typescript
   import React from "react";
   import { motion } from "framer-motion";
-  import { ChapterData } from "@/types/chapter";
+  import { cn } from "@/lib/utils";
+  import { type ChapterData } from "@/types/chapter";
   import { BlockRenderer } from "./BlockRenderer";
   ```
 
@@ -120,17 +120,10 @@ Use these exact versions when referring to libraries or looking up documentation
 ### Running Tests
 
 ```bash
-# All tests
-npm run test
-
-# Single file
-npx vitest run tests/lib/utils.test.ts
-
-# Watch mode during development
-npm run test:watch
-
-# With coverage
-npm run test:coverage
+npm run test                              # All tests
+npx vitest run tests/lib/utils.test.ts   # Single file
+npm run test:watch                       # Watch mode
+npm run test:coverage                    # With coverage
 ```
 
 ## Project Structure
@@ -138,8 +131,7 @@ npm run test:coverage
 ```
 web/src/
 ├── app/                    # Next.js App Router pages
-│   ├── courses/           # Course pages (accounting, microeconomics, etc.)
-│   └── layout.tsx         # Root layout with RTL and fonts
+│   └── courses/           # Course pages (accounting, microeconomics, etc.)
 ├── components/
 │   ├── core/              # Core components (ChapterTemplate, BlockRenderer)
 │   │   ├── blocks/        # Content block components
@@ -176,19 +168,6 @@ web/src/
 - Use Next.js `error.tsx` for error boundaries at route segments
 - Use `not-found.tsx` for 404 pages
 - Log errors appropriately - don't expose sensitive data
-
-## Available Skills
-
-This project has specialized skills in `.agents/skills/`. Key skills to know:
-
-| Skill | Purpose |
-|-------|---------|
-| `brainstorming` | Use before creative work |
-| `systematic-debugging` | Use for bugs/errors |
-| `frontend-design` | UI component creation |
-| `nextjs-app-router-patterns` | Next.js patterns |
-| `tailwindcss-fundamentals-v4` | Tailwind v4 styling |
-| `accessibility-compliance` | WCAG accessibility |
 
 ## Environment
 
