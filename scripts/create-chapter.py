@@ -40,7 +40,7 @@ def main():
     course = args.course
     topic = args.topic
     
-    load_dotenv(PROJECT_ROOT / ".env")
+    load_dotenv(PROJECT_ROOT / ".env", override=True)
     
     api_key = os.getenv("GEMINI_API_KEY")
     api_key_2 = os.getenv("GEMINI_API_KEY_2")

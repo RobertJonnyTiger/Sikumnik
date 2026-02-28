@@ -10,7 +10,7 @@ from google.genai import types
 from pypdf import PdfReader, PdfWriter
 from pathlib import Path
 
-load_dotenv()
+load_dotenv(override=True)
 
 PROJECT_ROOT = Path(__file__).parent.parent
 
