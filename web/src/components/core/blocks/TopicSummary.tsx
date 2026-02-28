@@ -12,7 +12,7 @@ interface TopicSummaryProps {
 
 export const TopicSummary: React.FC<TopicSummaryProps> = ({ content, keyPoints }) => {
     return (
-        <div className="bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-6 my-6">
+        <div className="group bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-6 my-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20 hover:border-slate-400/50 dark:hover:border-slate-500/50">
             <div className="flex items-center gap-3 mb-4">
                 <div className="bg-primary/10 p-2 rounded-lg border border-primary/20">
                     <ClipboardList className="w-4 h-4 text-sky-800" />

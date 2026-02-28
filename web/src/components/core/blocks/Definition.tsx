@@ -25,7 +25,7 @@ export const Definition: React.FC<DefinitionProps> = ({
     if (variant === 'academic') {
         return (
             <div className={`w-full max-w-4xl mx-auto p-2 my-6 ${className}`} dir="rtl">
-                <div className="border-2 border-blue-900 shadow-md bg-background rounded-xl overflow-hidden">
+                <div className="group border-2 border-blue-900 shadow-md bg-background rounded-xl overflow-hidden hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/20 hover:border-blue-400/50 transition-all duration-300">
                     <div className="p-4 space-y-3 pb-3 border-b border-blue-50 bg-blue-50/20">
                         <h3 className="text-2xl font-bold text-blue-900 leading-relaxed font-serif">
                             {term}
@@ -71,7 +71,7 @@ export const Definition: React.FC<DefinitionProps> = ({
 
     // Simple variant
     return (
-        <div className={`bg-white border focus:outline-none border-slate-200 border-r-2 border-r-cyan-500 rounded-lg p-4 my-4 shadow-sm flex flex-col sm:flex-row items-start gap-4 ${className}`} dir="rtl">
+        <div className={`group bg-white border focus:outline-none border-slate-200 border-r-2 border-r-cyan-500 rounded-lg p-4 my-4 shadow-sm flex flex-col sm:flex-row items-start gap-4 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/20 hover:border-cyan-400/50 transition-all duration-300 ${className}`} dir="rtl">
             <div className="bg-cyan-50 p-2.5 rounded-lg shrink-0 mt-0.5 border border-cyan-100 shadow-sm">
                 <BookOpen className="w-5 h-5 text-cyan-700" />
             </div>

@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <title>טבלת שינויים כלכליים - מיקרו כלכלה</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f1117;
+            --surface: #1a1d27;
+            --surface2: #22263a;
+            --border: #2e3349;
+            --accent1: #4f8ef7;
+            --accent2: #f7c94f;
+            --accent3: #6fe0a2;
+            --accent4: #f76f6f;
+            --accent5: #c46ff7;
+            --text: #e8eaf0;
+            --text-muted: #7a80a0;
+            --up: #6fe0a2;
+            --down: #f76f6f;
+            --neutral: #f7c94f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Heebo', sans-serif;
+            font-weight: 300;
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 2.4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent1), var(--accent5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-size: 0.95rem;
+        }
+
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 12px 20px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        .section-title.blue {
+            background: linear-gradient(90deg, #1e2d5a, var(--surface2));
+            border-right: 4px solid var(--accent1);
+        }
+
+        .section-title.yellow {
+            background: linear-gradient(90deg, #3a2e0d, var(--surface2));
+            border-right: 4px solid var(--accent2);
+        }
+
+        .section-title.green {
+            background: linear-gradient(90deg, #0e2e1e, var(--surface2));
+            border-right: 4px solid var(--accent3);
+        }
+
+        .section-title.red {
+            background: linear-gradient(90deg, #2e0e0e, var(--surface2));
+            border-right: 4px solid var(--accent4);
+        }
+
+        .section-title.purple {
+            background: linear-gradient(90deg, #1e0e3a, var(--surface2));
+            border-right: 4px solid var(--accent5);
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .dot.blue {
+            background: var(--accent1);
+        }
+
+        .dot.yellow {
+            background: var(--accent2);
+        }
+
+        .dot.green {
+            background: var(--accent3);
+        }
+
+        .dot.red {
+            background: var(--accent4);
+        }
+
+        .dot.purple {
+            background: var(--accent5);
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 0 0 10px 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            background: var(--surface);
+        }
+
+        thead tr {
+            background: var(--surface2);
+        }
+
+        thead th {
+            padding: 12px 14px;
+            text-align: right;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s;
+        }
+
+        tbody tr:hover {
+            background: var(--surface2);
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        td {
+            padding: 11px 14px;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .cause {
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        .chain {
+            color: #b0b8d0;
+            font-size: 0.84rem;
+            direction: rtl;
+        }
+
+        .chain .arrow {
+            color: var(--text-muted);
+            margin: 0 3px;
+        }
+
+        .up {
+            color: var(--up);
+            font-weight: 700;
+        }
+
+        .down {
+            color: var(--down);
+            font-weight: 700;
+        }
+
+        .neutral {
+            color: var(--neutral);
+            font-weight: 700;
+        }
+
+        .depends {
+            color: var(--accent5);
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .badge-cond {
+            background: #2e1f4a;
+            color: var(--accent5);
+        }
+
+        .badge-note {
+            background: #1f2e1f;
+            color: var(--accent3);
+        }
+
+        .badge-warn {
+            background: #2e1f1f;
+            color: var(--accent4);
+        }
+
+        .cond-block {
+            margin-top: 6px;
+            padding: 8px 10px;
+            border-radius: 6px;
+            border-right: 3px solid var(--border);
+            font-size: 0.82rem;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .cond-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 4px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .cond-label {
+            font-size: 0.75rem;
+            padding: 1px 7px;
+            border-radius: 10px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .el-elastic {
+            background: #0e2a1e;
+            color: var(--accent3);
+        }
+
+        .el-inelastic {
+            background: #2a1f0e;
+            color: var(--accent2);
+        }
+
+        .el-unit {
+            background: #1e1a30;
+            color: var(--accent5);
+        }
+
+        .sep-row td {
+            background: var(--surface2);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 5px 14px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        .formula {
+            font-family: monospace;
+            background: rgba(79, 142, 247, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--accent1);
+            font-size: 0.8rem;
+        }
+
+        .note-row td {
+            background: rgba(111, 224, 162, 0.05);
+            color: #8abfad;
+            font-size: 0.8rem;
+            font-style: italic;
+            padding: 6px 14px;
+            border-top: 1px dashed #1f3a2e;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🧮 מפת שינויים כלכליים — מיקרו כלכלה</h1>
+        <p>שרשרות תהליכים, השפעות על מחיר, כמות ופדיון — כל המצבים האפשריים</p>
+    </header>
+
+    <!-- ========== 1. התערבות ממשלתית ========== -->
+    <div class="section">
+        <div class="section-title yellow"><span class="dot yellow"></span> התערבות ממשלתית — מס, סובסידיה, מכס</div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:18%">גורם / אירוע</th>
+                        <th style="width:38%">שרשרת תהליכים</th>
+                        <th style="width:10%">P צרכן</th>
+                        <th style="width:10%">P יצרן</th>
+                        <th style="width:10%">Q</th>
+                        <th style="width:14%">TR / TE יצרן</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- מס על יצרנים -->
+                    <tr class="sep-row">
+                        <td colspan="6">מס יחידה (t) על יצרנים</td>
+                    </tr>
+                    <tr>
+                        <td class="cause">מס יחידה t על יצרנים (שוק סגור)</td>
+                        <td class="chain">
+                            הממשלה גובה t ₪ ליחידה <span class="arrow">←</span>
+                            עלות השולית עולה <span class="arrow">←</span>
+                            S זזה שמאלה/למעלה ב-t <span class="arrow">←</span>
+                            Q₀ → Q₁ ↓ <span class="arrow">←</span>
+                            Pצרכן↑, Pיצרן↓
+                            <div class="cond-block">
+                                <span class="formula">DWL = ΔQ × t / 2</span>&nbsp;&nbsp;
+                                <span class="formula">תקבולי ממשלה = t × Q₁</span>
+                                <br>נטל המס מתחלק לפי יחס גמישויות: קשיח יותר ← נושא יותר
+                            </div>
+                        </td>
+                        <td><span class="up">↑</span><br><small>(פחות מ-t)</small></td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="down">↓</span></td>
+                        <td>
+                            <div class="cond-block">
+                                <div class="cond-row"><span class="cond-label el-inelastic">ביקוש קשיח</span><span
+                                        class="up">TR↑</span></div>
+                                <div class="cond-row"><span class="cond-label el-unit">ביקוש יחידתי</span><span
+                                        class="neutral">TR=?</span></div>
+                                <div class="cond-row"><span class="cond-label el-elastic">ביקוש גמיש</span><span
+                                        class="down">TR↓</span></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- מס על צרכנים -->
+                    <tr>
+                        <td class="cause">מס יחידה t על צרכנים (שוק סגור)</td>
+                        <td class="chain">
+                            הממשלה גובה t ₪ מהצרכן <span class="arrow">←</span>
+                            D זזה שמאלה/למטה ב-t <span class="arrow">←</span>
+                            Q↓ <span class="arrow">←</span>
+                            Pצרכן↑ (P ששולם + מס), Pיצרן↓
+                            <div class="cond-block">
+                                <span class="badge badge-note">שקילות!</span> תוצאה זהה כלכלית למס על יצרנים — DWL,
+                                חלוקת נטל, Q₁ — הכל זהה
+                            </div>
+                        </td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="depends">כמו מס על יצרנים</span></td>
+                    </tr>
+
+                    <!-- מס עולה -->
+                    <tr>
+                        <td class="cause">העלאת מס מ-t₀ ל-t₁ (t₁ &gt; t₀)</td>
+                        <td class="chain">
+                            גידול בגובה המס <span class="arrow">←</span>
+                            S זזה עוד למעלה <span class="arrow">←</span>
+                            Pצרכן עולה עוד, Q יורד עוד
+                            <div class="cond-block">
+                                תקבולי ממשלה = t₁ × Q₁ — לא בהכרח גדולים מ-t₀ × Q₀!
+                            </div>
+                        </td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="down">↓</span></td>
+                        <td>
+                            <div class="cond-block">
+                                <div class="cond-row"><span class="cond-label el-inelastic">קשיח: תקבולי ממשלה↑</span>
+                                </div>
+                                <div class="cond-row"><span class="cond-label el-elastic">גמיש: תקבולי ממשלה
+                                        עשויים↓</span></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- סובסידיה -->
+                    <tr class="sep-row">
+                        <td colspan="6">סובסידיה ליצרנים</td>
+                    </tr>
+                    <tr>
+                        <td class="cause">סובסידיה s ₪ ליחידה ליצרנים (שוק סגור)</td>
+                        <td class="chain">
+                            מענק s ₪ ליחידה <span class="arrow">←</span>
+                            MC בפועל = MC_מקורי − s <span class="arrow">←</span>
+                            S זזה ימינה/למטה ב-s <span class="arrow">←</span>
+                            Q₀ → Q₁ ↑ <span class="arrow">←</span>
+                            Pצרכן↓, Pיצרן↑ (= Pצרכן + s)
+                            <div class="cond-block">
+                                <span class="formula">DWL (ייצור יתר) = ΔQ × s / 2</span><br>
+                                <span class="formula">הוצאות ממשלה = s × Q₁</span><br>
+                                <span class="badge badge-warn">שווה תוצאה ל: ירידה ב-MC ב-s ₪</span>
+                            </div>
+                        </td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="up">TR↑</span><br><small>(P×Q שניהם משפיעים)</small></td>
+                    </tr>
+
+                    <!-- מכס -->
+                    <tr class="sep-row">
+                        <td colspan="6">מכס על ייבוא (שוק פתוח לייבוא)</td>
+                    </tr>
+                    <tr>
+                        <td class="cause">הטלת מכס t על כל יחידה מיובאת</td>
+                        <td class="chain">
+                            מחיר מקומי = Pw + t <span class="arrow">←</span>
+                            ייצור מקומי: Qs ↑ (תנועה ימינה על S) <span class="arrow">←</span>
+                            ביקוש מקומי: Qd ↓ (תנועה שמאלה על D) <span class="arrow">←</span>
+                            ייבוא = Qd₁ − Qs₁ ↓ (ביחס ל-Qd₀ − Qs₀)
+                            <div class="cond-block">
+                                <span class="formula">תקבולי ממשלה = t × ייבוא_חדש</span><br>
+                                <span class="formula">DWL = שני משולשים (ייצור עודף + צריכה חסרה)</span><br>
+                                אם המכס גדול מספיק → ייבוא = 0 → שוק נסגר
+                            </div>
+                        </td>
+                        <td><span class="up">↑</span> (= Pw+t)</td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="down">↓</span><br><small>(צריכה כוללת)</small></td>
+                        <td><span class="up">TR יצרן↑</span><br><small>(Qs↑, P↑)</small></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ========== 2. מסחר בינלאומי ========== -->
+    <div class="section">
+        <div class="section-title blue"><span class="dot blue"></span> מסחר בינלאומי — ייבוא, ייצוא, שער חליפין</div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:18%">גורם / אירוע</th>
+                        <th style="width:38%">שרשרת תהליכים</th>
+                        <th style="width:10%">P מקומי</th>
+                        <th style="width:10%">Qs מקומי</th>
+                        <th style="width:10%">Qd מקומי</th>
+                        <th style="width:14%">ייבוא / ייצוא</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="sep-row">
+                        <td colspan="6">שוק פתוח לייבוא (Pw &lt; Pסגור)</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">עלייה במחיר עולמי Pw↑ (בשקלים)</td>
+                        <td class="chain">
+                            Pw בשקלים עולה <span class="arrow">←</span>
+                            מחיר מקומי = Pw חדש ↑ <span class="arrow">←</span>
+                            Qs מקומי↑, Qd מקומי↓ <span class="arrow">←</span>
+                            ייבוא = Qd − Qs ↓
+                            <div class="cond-block">
+                                <span class="badge badge-note">זהה לחלוטין</span> להטלת מכס בגובה עליית Pw!
+                            </div>
+                        </td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="down">ייבוא↓</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">פיחות — E↑ (דולר מתייקר, שוק פתוח לייבוא)</td>
+                        <td class="chain">
+                            שער חליפין E עולה <span class="arrow">←</span>
+                            Pw בשקלים = Pw$ × E ↑ <span class="arrow">←</span>
+                            מחיר מקומי ↑ <span class="arrow">←</span>
+                            Qs↑, Qd↓ → ייבוא↓
+                            <div class="cond-block">
+                                <span class="badge badge-note">מנגנון זהה</span> לעלייה ב-Pw — אותן השפעות כמותיות
+                            </div>
+                        </td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="down">ייבוא↓</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">תיסוף — E↓ (דולר נזול, שוק פתוח לייבוא)</td>
+                        <td class="chain">
+                            E יורד <span class="arrow">←</span>
+                            Pw בשקלים ↓ <span class="arrow">←</span>
+                            מחיר מקומי ↓ <span class="arrow">←</span>
+                            Qs↓, Qd↑ → ייבוא↑
+                        </td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="up">ייבוא↑</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">ביקוש מקומי ↓ (שוק פתוח לייבוא)</td>
+                        <td class="chain">
+                            D זזה שמאלה <span class="arrow">←</span>
+                            מחיר מקומי = Pw (לא משתנה! שוק קטן) <span class="arrow">←</span>
+                            Qs נשאר <span class="arrow">←</span>
+                            Qd↓ → ייבוא↓
+                        </td>
+                        <td><span class="neutral">ללא שינוי</span></td>
+                        <td><span class="neutral">ללא שינוי</span></td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="down">ייבוא↓</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">היצע מקומי ↑ (שוק פתוח לייבוא)</td>
+                        <td class="chain">
+                            S מקומי זזה ימינה <span class="arrow">←</span>
+                            מחיר מקומי = Pw (אינו משתנה!) <span class="arrow">←</span>
+                            Qd נשאר <span class="arrow">←</span>
+                            Qs↑ → ייבוא↓
+                            <div class="cond-block">
+                                <span class="badge badge-warn">שימו לב!</span> המחיר לא משתנה — הקטנת הייבוא בלבד
+                            </div>
+                        </td>
+                        <td><span class="neutral">ללא שינוי</span></td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="neutral">ללא שינוי</span></td>
+                        <td><span class="down">ייבוא↓</span></td>
+                    </tr>
+
+                    <tr class="sep-row">
+                        <td colspan="6">שוק פתוח לייצוא (Pw &gt; Pסגור)</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">עלייה במחיר עולמי Pw↑ (שוק פתוח לייצוא)</td>
+                        <td class="chain">
+                            Pw↑ <span class="arrow">←</span>
+                            מחיר מקומי = Pw חדש ↑ <span class="arrow">←</span>
+                            Qs↑, Qd↓ → ייצוא↑ עוד יותר
+                        </td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="up">ייצוא↑</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">פיחות — E↑ (שוק פתוח לייצוא)</td>
+                        <td class="chain">
+                            E עולה <span class="arrow">←</span>
+                            Pw בשקלים ↑ <span class="arrow">←</span>
+                            מחיר מקומי ↑ <span class="arrow">←</span>
+                            Qs↑, Qd↓ → ייצוא↑
+                        </td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="up">ייצוא↑</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">תיסוף — E↓ (שוק פתוח לייצוא)</td>
+                        <td class="chain">
+                            E יורד <span class="arrow">←</span>
+                            Pw בשקלים ↓ <span class="arrow">←</span>
+                            מחיר מקומי ↓ <span class="arrow">←</span>
+                            Qs↓, Qd↑ → ייצוא↓ (אולי נהפך לייבוא)
+                        </td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="down">ייצוא↓</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">ביקוש מקומי ↑ (שוק פתוח לייצוא)</td>
+                        <td class="chain">
+                            D זזה ימינה <span class="arrow">←</span>
+                            מחיר = Pw (קבוע) <span class="arrow">←</span>
+                            Qs נשאר <span class="arrow">←</span>
+                            Qd↑ → ייצוא↓
+                        </td>
+                        <td><span class="neutral">ללא שינוי</span></td>
+                        <td><span class="neutral">ללא שינוי</span></td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="down">ייצוא↓</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">מוצר נחות + הכנסה ↑ (שוק פתוח לייצוא)</td>
+                        <td class="chain">
+                            הכנסה עולה <span class="arrow">←</span>
+                            ביקוש למוצר נחות ↓ <span class="arrow">←</span>
+                            D זזה שמאלה <span class="arrow">←</span>
+                            Qd↓ → ייצוא↑
+                        </td>
+                        <td><span class="neutral">ללא שינוי</span></td>
+                        <td><span class="neutral">ללא שינוי</span></td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="up">ייצוא↑</span></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ========== 3. שינויים בהיצע/ביקוש בשוק סגור ========== -->
+    <div class="section">
+        <div class="section-title green"><span class="dot green"></span> שוק סגור — שינויים בהיצע ובביקוש</div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:20%">גורם / אירוע</th>
+                        <th style="width:36%">שרשרת תהליכים</th>
+                        <th style="width:10%">P</th>
+                        <th style="width:10%">Q</th>
+                        <th style="width:24%">TR / TE</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="sep-row">
+                        <td colspan="5">שינויים בהיצע</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">שיפור טכנולוגי (MC↓)</td>
+                        <td class="chain">
+                            עלות שולית יורדת <span class="arrow">←</span>
+                            S זזה ימינה/למטה <span class="arrow">←</span>
+                            P₀→P₁↓, Q₀→Q₁↑
+                        </td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="up">↑</span></td>
+                        <td>
+                            <div class="cond-block">
+                                <div class="cond-row"><span class="cond-label el-inelastic">קשיח: TR↓</span></div>
+                                <div class="cond-row"><span class="cond-label el-elastic">גמיש: TR↑</span></div>
+                                <div class="cond-row"><span class="cond-label el-unit">יחידתי: TR ללא שינוי</span></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">התייקרות גורמי ייצור (MC↑)</td>
+                        <td class="chain">
+                            עלות שולית עולה <span class="arrow">←</span>
+                            S זזה שמאלה/למעלה <span class="arrow">←</span>
+                            P↑, Q↓
+                        </td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="down">↓</span></td>
+                        <td>
+                            <div class="cond-block">
+                                <div class="cond-row"><span class="cond-label el-inelastic">קשיח: TR↑</span></div>
+                                <div class="cond-row"><span class="cond-label el-elastic">גמיש: TR↓</span></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">התייקרות גורמי ייצור משותפים לשני מוצרים X,Y</td>
+                        <td class="chain">
+                            MC_X↑ וגם MC_Y↑ <span class="arrow">←</span>
+                            S_X וS_Y זזות שמאלה <span class="arrow">←</span>
+                            Px↑, Qx↓, Py↑, Qy↓
+                        </td>
+                        <td><span class="up">↑</span> (שניהם)</td>
+                        <td><span class="down">↓</span> (שניהם)</td>
+                        <td><span class="depends">תלוי גמישות</span></td>
+                    </tr>
+
+                    <tr class="sep-row">
+                        <td colspan="5">שינויים בביקוש</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">עלייה בביקוש (D זזה ימינה)</td>
+                        <td class="chain">
+                            ביקוש גדל <span class="arrow">←</span>
+                            D זזה ימינה <span class="arrow">←</span>
+                            P↑, Q↑
+                            <div class="cond-block">
+                                גורמים: הכנסה↑ (נורמלי) / הכנסה↓ (נחות) / Py↑ (תחליפי) / Py↓ (משלים) / טעמים / ציפיות
+                            </div>
+                        </td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="up">↑</span></td>
+                        <td>
+                            <div class="cond-block">
+                                <div class="cond-row"><span class="cond-label el-inelastic">היצע קשיח: TR↑ חזק</span>
+                                </div>
+                                <div class="cond-row"><span class="cond-label el-elastic">היצע גמיש: TR↑ מתון</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">ירידה בביקוש (D זזה שמאלה)</td>
+                        <td class="chain">
+                            ביקוש קטן <span class="arrow">←</span>
+                            D זזה שמאלה <span class="arrow">←</span>
+                            P↓, Q↓
+                        </td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="down">TR↓</span></td>
+                    </tr>
+
+                    <tr class="sep-row">
+                        <td colspan="5">שינויים משולבים — היצע + ביקוש</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">S↑ (ימינה) וגם D↑ (ימינה) — בגדלים שונים</td>
+                        <td class="chain">
+                            S זזה ימינה ב-ΔS יחידות <span class="arrow">←</span>
+                            D זזה ימינה ב-ΔD יחידות<br>
+                            Q בהכרח ↑<br>
+                            <div class="cond-block">
+                                P תלוי ביחס: אם ΔD &gt; ΔS → P↑; אם ΔS &gt; ΔD → P↓; אם שווים → P קבוע
+                            </div>
+                        </td>
+                        <td><span class="depends">תלוי גודל יחסי</span></td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="depends">תלוי</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">S↑ (ימינה) וגם D↓ (שמאלה)</td>
+                        <td class="chain">
+                            שתי עקומות זזות לכיוונים מנוגדים <span class="arrow">←</span>
+                            P בהכרח ↓<br>
+                            Q — לא ניתן לדעת ללא נתונים כמותיים
+                        </td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="depends">לא ידוע</span></td>
+                        <td><span class="depends">תלוי</span></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ========== 4. גמישות — השפעות על TR/TE ========== -->
+    <div class="section">
+        <div class="section-title red"><span class="dot red"></span> גמישות — שינוי מחיר והשפעה על הוצאות / פדיון</div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:18%">שינוי</th>
+                        <th style="width:20%">סוג גמישות</th>
+                        <th style="width:30%">תהליך</th>
+                        <th style="width:16%">הוצאות צרכן (TE)</th>
+                        <th style="width:16%">פדיון יצרן (TR)</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="sep-row">
+                        <td colspan="5">עלייה במחיר (P↑)</td>
+                    </tr>
+                    <tr>
+                        <td class="cause">P↑</td>
+                        <td><span class="badge badge-warn">ביקוש קשיח |η| &lt; 1</span></td>
+                        <td class="chain">P↑ &gt; %↓Q → הוצאות עולות<br><span class="formula">TR = P↑ × Q↓(פחות
+                                מ%P)</span></td>
+                        <td><span class="up">TE↑</span></td>
+                        <td><span class="up">TR↑</span></td>
+                    </tr>
+                    <tr>
+                        <td class="cause">P↑</td>
+                        <td><span class="badge badge-note">ביקוש יחידתי |η| = 1</span></td>
+                        <td class="chain">%P↑ = %Q↓ → הוצאות קבועות</td>
+                        <td><span class="neutral">TE קבוע</span></td>
+                        <td><span class="neutral">TR קבוע</span></td>
+                    </tr>
+                    <tr>
+                        <td class="cause">P↑</td>
+                        <td><span class="badge badge-cond">ביקוש גמיש |η| &gt; 1</span></td>
+                        <td class="chain">%Q↓ &gt; %P↑ → הוצאות יורדות</td>
+                        <td><span class="down">TE↓</span></td>
+                        <td><span class="down">TR↓</span></td>
+                    </tr>
+
+                    <tr class="sep-row">
+                        <td colspan="5">ירידה במחיר (P↓)</td>
+                    </tr>
+                    <tr>
+                        <td class="cause">P↓</td>
+                        <td><span class="badge badge-warn">ביקוש קשיח |η| &lt; 1</span></td>
+                        <td class="chain">P↓ &gt; %↑Q → הוצאות יורדות</td>
+                        <td><span class="down">TE↓</span></td>
+                        <td><span class="down">TR↓</span></td>
+                    </tr>
+                    <tr>
+                        <td class="cause">P↓</td>
+                        <td><span class="badge badge-note">ביקוש יחידתי |η| = 1</span></td>
+                        <td class="chain">%P↓ = %Q↑ → הוצאות קבועות</td>
+                        <td><span class="neutral">TE קבוע</span></td>
+                        <td><span class="neutral">TR קבוע</span></td>
+                    </tr>
+                    <tr>
+                        <td class="cause">P↓</td>
+                        <td><span class="badge badge-cond">ביקוש גמיש |η| &gt; 1</span></td>
+                        <td class="chain">%Q↑ &gt; %P↓ → הוצאות עולות</td>
+                        <td><span class="up">TE↑</span></td>
+                        <td><span class="up">TR↑</span></td>
+                    </tr>
+
+                    <tr class="sep-row">
+                        <td colspan="5">כמה יחידות יקנה הצרכן אחרי שינוי מחיר?</td>
+                    </tr>
+                    <tr>
+                        <td class="cause">P×Q₀ = הוצאה מוצא ידועה</td>
+                        <td><span class="badge badge-warn">קשיח: P₁ &gt; P₀</span></td>
+                        <td class="chain">TE₁ &gt; TE₀ → Q₁ = TE₁ / P₁ &gt; TE₀/P₁</td>
+                        <td colspan="2"><span class="up">Q₁ &gt; P₀×Q₀ / P₁</span></td>
+                    </tr>
+                    <tr>
+                        <td class="cause">P×Q₀ = הוצאה מוצא ידועה</td>
+                        <td><span class="badge badge-note">יחידתי: P₁ &gt; P₀</span></td>
+                        <td class="chain">TE קבוע → Q₁ = TE₀ / P₁</td>
+                        <td colspan="2"><span class="neutral">Q₁ = TE₀ / P₁</span></td>
+                    </tr>
+                    <tr>
+                        <td class="cause">P×Q₀ = הוצאה מוצא ידועה</td>
+                        <td><span class="badge badge-cond">גמיש: P₁ &gt; P₀</span></td>
+                        <td class="chain">TE₁ &lt; TE₀ → Q₁ = TE₁ / P₁ &lt; TE₀/P₁</td>
+                        <td colspan="2"><span class="down">Q₁ &lt; TE₀ / P₁</span></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ========== 5. שוקי גורמי ייצור ומוצרים קשורים ========== -->
+    <div class="section">
+        <div class="section-title purple"><span class="dot purple"></span> מוצרים קשורים — משלימים, תחליפיים, נורמליים,
+            נחותים</div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:20%">גורם ראשוני</th>
+                        <th style="width:15%">קשר בין מוצרים</th>
+                        <th style="width:35%">שרשרת תהליכים</th>
+                        <th style="width:15%">השפעה על Px</th>
+                        <th style="width:15%">השפעה על Qx</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="sep-row">
+                        <td colspan="5">שינוי ב-Py — מוצרים קשורים</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">Py↑ (Y מתייקר)</td>
+                        <td>X,Y <strong>תחליפיים</strong></td>
+                        <td class="chain">Py↑ → צרכנים עוברים ל-X <span class="arrow">←</span> Dx↑ <span
+                                class="arrow">←</span> Px↑, Qx↑</td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="up">↑</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">Py↓ (Y מוזל)</td>
+                        <td>X,Y <strong>תחליפיים</strong></td>
+                        <td class="chain">Py↓ → צרכנים עוברים ל-Y <span class="arrow">←</span> Dx↓ <span
+                                class="arrow">←</span> Px↓, Qx↓</td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="down">↓</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">Py↑ (Y מתייקר)</td>
+                        <td>X,Y <strong>משלימים</strong></td>
+                        <td class="chain">Py↑ → ביקוש ל-Y↓ → ביקוש ל-X↓ (נצרכים יחד) <span class="arrow">←</span> Dx↓
+                            <span class="arrow">←</span> Px↓, Qx↓</td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="down">↓</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">Py↓ (Y מוזל)</td>
+                        <td>X,Y <strong>משלימים</strong></td>
+                        <td class="chain">Py↓ → ביקוש ל-Y↑ → ביקוש ל-X↑ <span class="arrow">←</span> Dx↑ <span
+                                class="arrow">←</span> Px↑, Qx↑</td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="up">↑</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">Py↑/↓</td>
+                        <td>X,Y <strong>בלתי תלויים</strong></td>
+                        <td class="chain">Py משתנה <span class="arrow">←</span> אין השפעה על Dx <span
+                                class="arrow">←</span> Px ו-Qx ללא שינוי</td>
+                        <td><span class="neutral">ללא שינוי</span></td>
+                        <td><span class="neutral">ללא שינוי</span></td>
+                    </tr>
+
+                    <tr class="sep-row">
+                        <td colspan="5">שינוי בהכנסה — סוגי מוצרים</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">הכנסה↑</td>
+                        <td>X <strong>נורמלי</strong></td>
+                        <td class="chain">I↑ → Dx↑ <span class="arrow">←</span> Px↑, Qx↑ (שוק סגור)</td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="up">↑</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">הכנסה↑</td>
+                        <td>X <strong>נחות</strong></td>
+                        <td class="chain">I↑ → Dx↓ <span class="arrow">←</span> Px↓, Qx↓ (שוק סגור)</td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="down">↓</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">הכנסה↑</td>
+                        <td>X <strong>ניטראלי</strong></td>
+                        <td class="chain">I↑ → אין השפעה על Dx → P,Q ללא שינוי</td>
+                        <td><span class="neutral">ללא שינוי</span></td>
+                        <td><span class="neutral">ללא שינוי</span></td>
+                    </tr>
+
+                    <tr class="sep-row">
+                        <td colspan="5">שיפור טכנולוגי + מוצרים קשורים (שוק סגור)</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">שיפור טכנולוגי בענף Y</td>
+                        <td>X,Y <strong>משלימים</strong></td>
+                        <td class="chain">SY↑ → PY↓ → Dx↑ (משלימים: Py↓ → Qx↑) <span class="arrow">←</span> Px↑, Qx↑<br>
+                            <small>אפקט מרסן: SY↑ לחוד היה מוריד PY ← Dx↑ ← Px↑</small>
+                        </td>
+                        <td><span class="up">↑</span></td>
+                        <td><span class="up">↑</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">שיפור טכנולוגי בענף Y</td>
+                        <td>X,Y <strong>תחליפיים</strong></td>
+                        <td class="chain">SY↑ → PY↓ → Dx↓ (תחליפיים: Py↓ → Q_X↓) <span class="arrow">←</span> Px↓, Qx↓
+                        </td>
+                        <td><span class="down">↓</span></td>
+                        <td><span class="down">↓</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">שיפור ב-X ובY גם יחד</td>
+                        <td>X,Y <strong>משלימים</strong></td>
+                        <td class="chain">SX↑ → PX↓ <br>SY↑ → PY↓ → DX↑ (משלים)<br>שני כוחות סותרים: PX↓ מ-SX ו-PX↑ מ-DX
+                            — ייתכן שיתאזנו ו-PX ללא שינוי, QX↑</td>
+                        <td><span class="depends">לא חד-משמעי</span></td>
+                        <td><span class="up">↑</span></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ========== 6. פירמה תחרותית — החלטות ייצור ========== -->
+    <div class="section">
+        <div class="section-title green"><span class="dot green"></span> פירמה תחרותית — כללי החלטה, רווח, עלויות</div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:22%">מצב / תנאי</th>
+                        <th style="width:38%">הסבר</th>
+                        <th style="width:20%">פעולה בטווח קצר</th>
+                        <th style="width:20%">פעולה בטווח ארוך</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td class="cause">P ≥ min ATC</td>
+                        <td class="chain">רווח נקי ≥ 0 → כדאי להישאר בענף</td>
+                        <td><span class="up">מייצרת</span> (Q: P=MC)</td>
+                        <td><span class="up">מייצרת</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">min AVC ≤ P &lt; min ATC</td>
+                        <td class="chain">רווח נקי &lt; 0 אך רווח תפעולי ≥ 0 → כדאי לייצר (מכסה VC)</td>
+                        <td><span class="up">מייצרת</span> (מכסה VC, הפסד &lt; FC)</td>
+                        <td><span class="down">יוצאת מהענף</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">P &lt; min AVC</td>
+                        <td class="chain">רווח תפעולי &lt; 0 → הפסד גדול מ-FC → עדיף להשבית</td>
+                        <td><span class="down">מושבתת</span> (הפסד = FC בלבד)</td>
+                        <td><span class="down">יוצאת מהענף</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">MC קבוע (כמו AVC קבוע)</td>
+                        <td class="chain">אין נקודת מינימום AVC אלא MC = AVC = קבוע<br>min AVC = MC → כלל השבתה: P &lt;
+                            MC</td>
+                        <td><span class="up">מייצרת מלוא הקיבולת אם P ≥ MC</span></td>
+                        <td><span class="neutral">תלוי min ATC</span></td>
+                    </tr>
+
+                    <tr class="sep-row">
+                        <td colspan="4">נוסחאות מפתח</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">רווח נקי (π)</td>
+                        <td class="chain"><span class="formula">π = TR − TC = (P − ATC) × Q</span></td>
+                        <td colspan="2">חיובי = רווח; שלילי = הפסד</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">רווח תפעולי</td>
+                        <td class="chain"><span class="formula">π_תפעולי = TR − VC = (P − AVC) × Q</span></td>
+                        <td colspan="2"><span class="formula">π = π_תפעולי − FC</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">DWL ממס t</td>
+                        <td class="chain"><span class="formula">DWL = (Q₀ − Q₁) × t / 2</span></td>
+                        <td colspan="2">משולש כחול-אדום בגרף</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ========== 7. שוק גורמי ייצור ========== -->
+    <div class="section">
+        <div class="section-title blue"><span class="dot blue"></span> שוק גורמי ייצור — עבודה ו-MPL</div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:22%">גורם / אירוע</th>
+                        <th style="width:42%">שרשרת תהליכים</th>
+                        <th style="width:18%">שכר W</th>
+                        <th style="width:18%">L מועסק</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td class="cause">מחיר מוצר Px↑</td>
+                        <td class="chain">
+                            Px↑ <span class="arrow">←</span>
+                            ערך תפוקה שולית VMP = Px × MPL ↑ <span class="arrow">←</span>
+                            D_L זזה ימינה <span class="arrow">←</span>
+                            W↑, L מועסק ↑ <span class="arrow">←</span>
+                            S_X זזה שמאלה/למעלה (MC↑ בענף X)
+                        </td>
+                        <td><span class="up">W↑</span></td>
+                        <td><span class="up">L↑</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">W↑ (שכר עולה)</td>
+                        <td class="chain">
+                            W↑ <span class="arrow">←</span>
+                            PL = MC = W/MPL ↑ <span class="arrow">←</span>
+                            S_X זזה שמאלה <span class="arrow">←</span>
+                            Px↑, Qx↓ <span class="arrow">←</span>
+                            VMP = Px×MPL — כעת עבור כל L, MPL גבוה יותר (נדרש)
+                        </td>
+                        <td>—</td>
+                        <td><span class="down">L↓</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">שיפור טכנולוגי → MPL↑</td>
+                        <td class="chain">
+                            MPL↑ <span class="arrow">←</span>
+                            VMP = Px × MPL ↑ <span class="arrow">←</span>
+                            D_L זזה ימינה <span class="arrow">←</span>
+                            W↑ (אם S_L לא גמיש לחלוטין)
+                        </td>
+                        <td><span class="up">W↑</span></td>
+                        <td><span class="up">L↑</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="cause">כלל גיוס אופטימלי</td>
+                        <td class="chain">
+                            <span class="formula">VMP_L = W</span> כלומר <span class="formula">Px × MPL = W</span><br>
+                            מגייסים L כל עוד VMP ≥ W
+                        </td>
+                        <td colspan="2">שיווי משקל בשוק העבודה</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer
+        style="text-align:center; padding: 32px 0; color: var(--text-muted); font-size: 0.82rem; border-top: 1px solid var(--border); margin-top: 20px;">
+        מיקרו כלכלה — מבוא | מבוסס על מבחנים מסמסטר א' 2024–2013 | כל הזכויות שמורות
+    </footer>
+
+</body>
+
+</html>

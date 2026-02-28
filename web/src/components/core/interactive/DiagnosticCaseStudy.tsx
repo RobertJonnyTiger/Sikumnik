@@ -89,7 +89,7 @@ export const DiagnosticCaseStudy: React.FC<DiagnosticCaseStudyProps> = ({
     const progress = (completedSections.length / sections.length) * 100;
 
     return (
-        <div className="w-full bg-white  rounded-2xl border border-border  overflow-hidden my-6 shadow-xl">
+        <div className="group w-full bg-white  rounded-2xl border border-border  overflow-hidden my-6 shadow-xl hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20 hover:border-slate-400/50 dark:hover:border-slate-500/50">
             {/* Header */}
             <div className="bg-gradient-to-r from-violet-600 to-indigo-600 px-6 py-5 text-foreground">
                 <div className="flex items-center justify-between">

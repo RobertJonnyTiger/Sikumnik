@@ -25,3 +25,6 @@ nul
 .env*.local
 .tmp/
 full_structure.txt
+pdf-pipeline-key.json
+*.json
+

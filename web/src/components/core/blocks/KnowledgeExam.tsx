@@ -56,7 +56,7 @@ export const KnowledgeExam: React.FC<KnowledgeExamProps> = ({ questions, onSubmi
         const percentage = Math.round((correctCount / questions.length) * 100);
 
         return (
-            <div className="bg-white border-2 border-slate-200 rounded-3xl overflow-hidden my-8 shadow-md" dir="rtl">
+        <div className="group bg-white border-2 border-slate-200 rounded-3xl overflow-hidden my-8 shadow-md hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20 hover:border-slate-400/50 dark:hover:border-slate-500/50" dir="rtl">
                 <div className="bg-slate-50 border-b border-slate-200 px-8 py-10 text-center">
                     <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white shadow-sm border border-slate-100 mb-4">
                         <Trophy className={`w-10 h-10 ${percentage >= 80 ? 'text-amber-500' : 'text-slate-400'}`} />

@@ -33,7 +33,7 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
     const totalSubmitted = Object.keys(submitted).length;
 
     return (
-        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden my-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5" dir="rtl">
+        <div className="group bg-white border border-slate-200 rounded-2xl overflow-hidden my-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-500/20 hover:border-slate-400/50 dark:hover:border-slate-500/50" dir="rtl">
             <div className="flex items-center justify-between px-6 py-4 bg-slate-50 border-b border-slate-200">
                 <div className="flex items-center gap-3">
                     <div className="bg-white p-2 rounded-lg border border-slate-200 shadow-sm">

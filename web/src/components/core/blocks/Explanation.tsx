@@ -11,7 +11,7 @@ interface ExplanationProps {
 
 export const Explanation: React.FC<ExplanationProps> = ({ content, highlight }) => {
     return (
-        <div className="py-4" dir="rtl">
+        <div className="group py-4 hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20" dir="rtl">
             {highlight && (
                 <div className="bg-blue-50 border-r-4 border-blue-600 px-4 py-3 rounded-l-lg mb-5 shadow-sm">
                     <p className="text-blue-800 font-bold italic text-sm">{highlight}</p>

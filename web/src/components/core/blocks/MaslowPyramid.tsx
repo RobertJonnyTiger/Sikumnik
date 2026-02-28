@@ -70,7 +70,7 @@ export const MaslowPyramid: React.FC = () => {
     const footerText = `מאסלו טען כי צרכי החסך (**D-Needs**) הם קריטיים - חסרונם יוצר מוטיבציה לפעולה, אך סיפוקם רק מביא אותנו למצב של "שגרה". לעומתם, צרכי הצמיחה (**B-Needs**) הם אינסופיים - ככל שאנחנו מספקים אותם יותר, המוטיבציה שלנו רק גדלה.`;
 
     return (
-        <div className="my-12 select-none" dir="rtl">
+        <div className="group my-12 select-none hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20" dir="rtl">
             {/* Visual Pyramid */}
             <div className="flex flex-col items-center gap-1.5 mb-10">
                 {[...levels].map((level) => {

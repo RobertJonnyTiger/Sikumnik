@@ -152,7 +152,7 @@ const DidYouKnow: React.FC<DidYouKnowProps> = ({ facts: staticFacts, topicData, 
                             y: { repeat: hasBeenSeen ? Infinity : 0, duration: 2, repeatDelay: 1 }
                         }}
                         onClick={toggleOpen}
-                        className="group flex items-center gap-3 px-6 py-3 rounded-full bg-secondary border border-primary/30 shadow-[0_0_15px_rgba(45,212,191,0.15)] hover:shadow-[0_0_25px_rgba(45,212,191,0.3)] hover:border-primary/50 transition-all duration-300"
+                        className="group flex items-center gap-3 px-6 py-3 rounded-full bg-secondary border border-primary/30 shadow-[0_0_15px_rgba(45,212,191,0.15)] hover:shadow-[0_0_25px_rgba(45,212,191,0.3)] hover:-translate-y-1 hover:border-primary/50 transition-all duration-300"
                     >
                         <span className="relative flex h-3 w-3">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -167,7 +167,7 @@ const DidYouKnow: React.FC<DidYouKnowProps> = ({ facts: staticFacts, topicData, 
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
-                        className="relative w-full max-w-2xl bg-popover/90 backdrop-blur-xl border border-secondary rounded-2xl overflow-hidden shadow-2xl"
+                        className="group relative w-full max-w-2xl bg-popover/90 backdrop-blur-xl border border-secondary rounded-2xl overflow-hidden shadow-2xl hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(45,212,191,0.2)] hover:border-primary/50 transition-all duration-300"
                     >
                         {/* Glow effects */}
                         <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent pointer-events-none" />

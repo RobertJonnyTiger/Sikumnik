@@ -12,7 +12,7 @@ interface ChapterImageProps {
 export const ChapterImage: React.FC<ChapterImageProps> = ({ src, alt, caption }) => {
     return (
         <figure className="my-6">
-            <div className="rounded-2xl overflow-hidden border border-border/30 bg-card/20">
+            <div className="group rounded-2xl overflow-hidden border border-border/30 bg-card/20 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 transition-all duration-300">
                 <Image
                     src={src}
                     alt={alt}

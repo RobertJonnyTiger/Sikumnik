@@ -57,7 +57,7 @@ export const InteractiveGraph: React.FC<InteractiveGraphProps> = ({
     return (
         <GraphContext.Provider value={scales}>
             <div className={cn(
-                "relative w-full aspect-square max-w-xl mx-auto bg-card/40 backdrop-blur-xl border border-border rounded-3xl p-4 shadow-2xl",
+                "group relative w-full aspect-square max-w-xl mx-auto bg-card/40 backdrop-blur-xl border border-border rounded-3xl p-4 shadow-2xl hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(45,212,191,0.2)] hover:border-primary/50 transition-all duration-300",
                 className
             )}>
                 {title && (

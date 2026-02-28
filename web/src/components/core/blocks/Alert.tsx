@@ -19,21 +19,21 @@ const VARIANTS = {
     tip: {
         icon: Sparkles,
         defaultTitle: "טיפ חשוב",
-        containerClass: "border-teal-500 bg-teal-50/50",
+        containerClass: "border-teal-500 bg-teal-50/50 hover:border-teal-400 hover:shadow-teal-500/20",
         iconColor: "text-teal-600",
         titleColor: "text-teal-700",
     },
     warning: {
         icon: AlertTriangle,
         defaultTitle: "שימו לב",
-        containerClass: "border-amber-400 bg-amber-50/50",
+        containerClass: "border-amber-400 bg-amber-50/50 hover:border-amber-400 hover:shadow-amber-500/20",
         iconColor: "text-amber-600",
         titleColor: "text-amber-700",
     },
     prerequisite: {
         icon: RotateCcw,
         defaultTitle: "לפני שנמשיך",
-        containerClass: "border-gray-400 bg-gray-50/50",
+        containerClass: "border-gray-400 bg-gray-50/50 hover:border-gray-400 hover:shadow-gray-500/20",
         iconColor: "text-gray-500",
         titleColor: "text-gray-600",
     }
@@ -44,7 +44,7 @@ export const Alert: React.FC<AlertProps> = ({ variant, children, title, classNam
     const Icon = v.icon;
 
     return (
-        <div className={`border-2 rounded-xl p-5 my-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 flex items-start gap-4 ${v.containerClass} ${className}`} dir="rtl">
+        <div className={`group border-2 rounded-xl p-5 my-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex items-start gap-4 ${v.containerClass} ${className}`} dir="rtl">
             <div className="shrink-0 mt-1">
                 {icon ? icon : <Icon className={`w-6 h-6 ${v.iconColor}`} />}
             </div>

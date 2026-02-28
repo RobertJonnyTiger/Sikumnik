@@ -14,7 +14,7 @@ interface RealWorldExampleProps {
 
 export const RealWorldExample: React.FC<RealWorldExampleProps> = ({ title, scenario, connection, source }) => {
     return (
-        <div className="my-6 border-l-4 border-l-primary bg-white  rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-border ">
+        <div className="group my-6 border-l-4 border-l-primary bg-white  rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-border hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20 hover:border-slate-400/50 dark:hover:border-slate-500/50">
             <div className="px-6 py-4 bg-white  border-b border-border ">
                 <div className="flex items-center gap-2 text-foreground  font-bold text-lg">
                     <Globe className="w-5 h-5" />

@@ -53,7 +53,7 @@ export const TradeBalanceVisualizer = () => {
     };
 
     return (
-        <div className="w-full bg-background/50 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl">
+        <div className="group w-full bg-background/50 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20 hover:border-slate-400/50 dark:hover:border-slate-500/50">
             <div className="flex flex-col lg:flex-row gap-8">
                 
                 {/* 1. The Graph Visualization */}

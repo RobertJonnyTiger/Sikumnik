@@ -28,7 +28,7 @@ export function TopicNavigation({
             {previousTopic && (
                 <div
                     onClick={onPrevious}
-                    className="relative overflow-hidden h-auto p-4 flex flex-col items-end text-right group cursor-pointer rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors"
+                    className="relative overflow-hidden h-auto p-4 flex flex-col items-end text-right group cursor-pointer rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 hover:border-primary/40 transition-all duration-300"
                 >
                     <div className="absolute inset-0 bg-linear-to-bl from-white/5 to-transparent pointer-events-none" />
                     <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
@@ -47,7 +47,7 @@ export function TopicNavigation({
             {nextTopic && (
                 <div
                     onClick={onNext}
-                    className="relative overflow-hidden h-auto p-4 flex flex-col items-start text-left group cursor-pointer rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors"
+                    className="relative overflow-hidden h-auto p-4 flex flex-col items-start text-left group cursor-pointer rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 hover:border-primary/40 transition-all duration-300"
                 >
                     <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent pointer-events-none" />
                     <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary/10 rounded-full blur-2xl pointer-events-none" />

@@ -13,7 +13,7 @@ interface HookProps {
 
 export const Hook: React.FC<HookProps> = ({ opener, question, context }) => {
     return (
-        <div className="bg-linear-to-br from-violet-600 to-indigo-600 rounded-3xl p-8 md:p-10 my-8 shadow-xl shadow-violet-600/20 text-white relative overflow-hidden" dir="rtl">
+        <div className="group bg-linear-to-br from-violet-600 to-indigo-600 rounded-3xl p-8 md:p-10 my-8 shadow-xl shadow-violet-600/20 text-white relative overflow-hidden hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20" dir="rtl">
             <div className="absolute -top-10 -left-10 opacity-10 pointer-events-none">
                 <Lightbulb className="w-64 h-64 text-white" />
             </div>

@@ -115,7 +115,7 @@ export const ExamQuestionBlock: React.FC<ExamQuestionBlockProps> = ({
     const submittedCount = Object.keys(submitted).length;
 
     return (
-        <div className="space-y-8 select-none">
+        <div className="group space-y-8 select-none hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20">
             {/* Control Panel & Header */}
             <div className="bg-card/50 border border-border/40 rounded-2xl p-6 backdrop-blur-sm sticky top-20 z-10 shadow-sm">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">

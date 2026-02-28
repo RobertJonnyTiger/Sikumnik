@@ -19,7 +19,7 @@ export const ConceptAccordion: React.FC<ConceptAccordionProps> = ({ sectionTitle
     const [openId, setOpenId] = useState<number | null>(items[0]?.id || null);
 
     return (
-        <div className="w-full space-y-4 text-right" dir="rtl">
+        <div className="group w-full space-y-4 text-right hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20" dir="rtl">
             {/* Section Header with Vertical Bar */}
             <div className="flex items-center justify-start gap-3 mb-6 px-2">
                 <h3 className="text-xl font-black text-orange-500" style={{ fontFamily: 'var(--font-heading)' }}>

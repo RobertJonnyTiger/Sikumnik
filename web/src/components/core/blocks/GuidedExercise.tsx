@@ -64,7 +64,7 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
     };
 
     return (
-        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden my-6 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5" dir="rtl">
+        <div className="group bg-white border border-slate-200 rounded-2xl overflow-hidden my-6 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-500/20 hover:border-slate-400/50 dark:hover:border-slate-500/50" dir="rtl">
             {/* Header */}
             <div className="p-6 pb-4">
                 <div className="flex items-center justify-between mb-4">

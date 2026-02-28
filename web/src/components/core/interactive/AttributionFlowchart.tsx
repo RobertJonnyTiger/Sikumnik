@@ -180,7 +180,7 @@ export const AttributionFlowchart: React.FC<AttributionFlowchartProps> = ({
     };
 
     return (
-        <div className="w-full bg-white  rounded-2xl border border-border  overflow-hidden my-6 shadow-lg">
+        <div className="group w-full bg-white  rounded-2xl border border-border  overflow-hidden my-6 shadow-lg hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20 hover:border-slate-400/50 dark:hover:border-slate-500/50">
             {/* Header */}
             <div className="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-4 text-foreground">
                 <div className="flex items-center justify-between">

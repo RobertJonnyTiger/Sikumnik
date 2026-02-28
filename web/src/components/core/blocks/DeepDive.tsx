@@ -15,7 +15,7 @@ export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections, difficulty 
     const [openIdx, setOpenIdx] = useState<number | null>(null);
 
     return (
-        <div className="bg-slate-50 border-r-4 border-r-red-600 border-y border-l border-slate-200 rounded-xl my-6 shadow-sm font-sans" dir="rtl">
+        <div className="group bg-slate-50 border-r-4 border-r-red-600 border-y border-l border-slate-200 rounded-xl my-6 shadow-sm font-sans hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20 hover:border-slate-400/50 dark:hover:border-slate-500/50" dir="rtl">
             <div className="p-5 flex justify-between items-start">
                 <div>
                     <div className="flex items-center gap-3 mb-1">

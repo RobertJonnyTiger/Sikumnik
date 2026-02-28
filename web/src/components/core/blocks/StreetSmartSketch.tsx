@@ -26,7 +26,7 @@ export const StreetSmartSketch: React.FC<StreetSmartSketchProps> = ({
     };
 
     return (
-        <div className="my-8 font-sans" dir="rtl">
+        <div className="group my-8 font-sans hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20" dir="rtl">
             <div
                 style={sketchBorderStyle}
                 className="border-2 border-slate-800 p-6 bg-white shadow-[8px_8px_0px_0px_rgba(30,41,59,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-default"

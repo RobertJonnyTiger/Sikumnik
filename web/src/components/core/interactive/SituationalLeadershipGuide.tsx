@@ -105,7 +105,7 @@ export const SituationalLeadershipGuide: React.FC<SituationalLeadershipGuideProp
     const result = getResultStyle();
 
     return (
-        <div className="w-full max-w-4xl mx-auto p-4 md:p-8 font-sans bg-card rounded-3xl text-foreground shadow-2xl border border-border" dir="rtl">
+        <div className="group w-full max-w-4xl mx-auto p-4 md:p-8 font-sans bg-card rounded-3xl text-foreground shadow-2xl border border-border hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20 hover:border-slate-400/50 dark:hover:border-slate-500/50" dir="rtl">
 
             {/* Header */}
             <div className="text-center mb-12">

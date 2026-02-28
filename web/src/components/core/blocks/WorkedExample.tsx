@@ -16,7 +16,7 @@ export const WorkedExample: React.FC<WorkedExampleProps> = ({ title, scenario, s
     const [showSolution, setShowSolution] = useState(false);
 
     return (
-        <div className="bg-white border border-emerald-200 rounded-2xl overflow-hidden my-4">
+        <div className="group bg-white border border-emerald-200 rounded-2xl overflow-hidden my-4 hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20 hover:border-emerald-400/50 dark:hover:border-emerald-500/50">
             <div className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                     <div className="bg-emerald-50 p-2 rounded-lg border border-emerald-200">
