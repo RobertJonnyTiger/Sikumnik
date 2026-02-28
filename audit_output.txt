@@ -1,0 +1,2367 @@
+### File: app/error.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function GlobalError({
+    error,
+    reset,
+}: {
+    error: Error & { digest?: string };
+    reset: () => void;
+}) {
+    return (
+        <div
+            className="min-h-screen flex items-center justify-center bg-background px-6"
+            dir="rtl"
+        >
+
+### File: app/layout.tsx
+Dependents: None
+Snippet:
+// import "katex/dist/katex.min.css"; // Moved to CDN in head for reliability
+
+const mainFont = Noto_Sans_Hebrew({
+    subsets: ["hebrew", "latin"] as any,
+    variable: "--font-main",
+    weight: ["400", "500", "700", "900"],
+    display: "swap",
+});
+
+const assistant = Assistant({
+    subsets: ["hebrew", "latin"],
+    variable: "--font-assistant",
+    weight: ["200", "300", "400", "500", "600", "700", "800"],
+    display: "swap",
+});
+
+### File: app/loading.tsx
+Dependents: None
+Snippet:
+export default function Loading() {
+    return (
+        <div className="min-h-screen flex items-center justify-center">
+            <div className="flex flex-col items-center gap-4">
+                <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+                <p className="text-text-secondary text-sm animate-pulse">טוען...</p>
+            </div>
+        </div>
+    );
+}
+
+### File: app/not-found.tsx
+Dependents: None
+Snippet:
+export default function NotFound() {
+    return (
+        <div
+            className="min-h-screen flex items-center justify-center px-6"
+            dir="rtl"
+        >
+            <div className="glass-card p-10 text-center max-w-lg space-y-8">
+                <div className="space-y-2">
+                    <p className="text-8xl font-black text-sky-800/30 leading-none">
+                        404
+                    </p>
+                    <h2 className="text-2xl font-bold text-foreground">
+
+### File: app/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+  BookOpen,
+  Clock,
+  LayoutDashboard,
+  GraduationCap,
+  Flame,
+  Trophy,
+  ArrowLeft,
+  PlayCircle,
+  MoreHorizontal,
+  Sparkles,
+  Calendar
+} from "lucide-react";
+
+### File: app/robots.ts
+Dependents: None
+Snippet:
+export default function robots(): MetadataRoute.Robots {
+    return {
+        rules: [
+            {
+                userAgent: "*",
+                allow: "/",
+                disallow: ["/api/", "/_next/"],
+            },
+        ],
+        sitemap: "https://sikumnik.co.il/sitemap.xml",
+    };
+}
+
+### File: app/sitemap.ts
+Dependents: None
+Snippet:
+const BASE_URL = "https://sikumnik.co.il";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+    const chapters = Array.from({ length: 12 }, (_, i) => i + 1);
+
+    const chapterRoutes: MetadataRoute.Sitemap = chapters.map((num) => ({
+        url: `${BASE_URL}/courses/accounting/chapter-${num}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly" as const,
+        priority: 0.8,
+    }));
+
+    return [
+        {
+
+### File: app/api/chat/route.ts
+Dependents: None
+Snippet:
+export const maxDuration = 30;
+
+export async function POST(req: Request) {
+    try {
+        const { messages, context } = await req.json();
+
+        // Transform the UI messages into model messages
+        const convertedMessages = await convertToModelMessages(messages);
+
+        const systemPrompt = `You are two personas responding simultaneously to every question.
+
+**Persona 1 — "The Professor":**
+You are a top-tier, award-winning Harvard professor. World-renowned in your field.
+Your explanat
+
+### File: app/api/trivia/route.ts
+Dependents: None
+Snippet:
+export const maxDuration = 30;
+
+export async function POST(req: Request) {
+    try {
+        const { topicTitle, topicContent, courseName } = await req.json();
+
+        if (!topicContent || !topicTitle) {
+            return new Response(JSON.stringify({
+                error: 'Missing required fields: topicTitle and topicContent'
+            }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+
+### File: app/components-audit/page.tsx
+Dependents: None
+Snippet:
+// @ts-nocheck
+"use client";
+
+    BookOpen, Lightbulb, AlertTriangle, Target, Zap,
+    ArrowRight, Check, CheckCircle2, AlertCircle, Code
+} from "lucide-react";
+
+// ----------------------------------------------------------------------
+// COMPONENT IMPORTS
+// ----------------------------------------------------------------------
+
+// 1. Core Callouts & Text Blocks
+
+// 2. Pedagogical Emphasis
+
+### File: app/courses/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function CoursesPage() {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+    return (
+        <div className="min-h-screen bg-background font-sans text-foreground pb-24 relative overflow-hidden" dir="rtl">
+
+            {/* Sidebar Overlay (Mobile) */}
+            {isSidebarOpen ? (
+                <div className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm flex justify-end">
+                    <div className="w-80 h-full bg-card border-r bor
+
+### File: app/courses/accounting/error.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function CourseError({
+    error,
+    reset,
+}: {
+    error: Error & { digest?: string };
+    reset: () => void;
+}) {
+    return (
+        <div
+            className="min-h-screen flex items-center justify-center px-6"
+            dir="rtl"
+        >
+
+### File: app/courses/accounting/loading.tsx
+Dependents: None
+Snippet:
+export default function ChapterLoading() {
+    return (
+        <div className="w-full px-6 lg:px-12 xl:px-16 py-8 max-w-[1600px] mx-auto animate-pulse">
+            {/* PageMap Banner Skeleton */}
+            <div className="glass-card p-6 mb-8 space-y-4">
+                <div className="flex items-center justify-between">
+                    <div className="h-8 w-64 bg-secondary rounded-lg" />
+                    <div className="h-6 w-24 bg-secondary rounded-full" />
+                </div>
+   
+
+### File: app/courses/accounting/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function AccountingLanding() {
+    return <CourseLandingTemplate courseData={courseData} />;
+}
+
+### File: app/courses/accounting/chapter-0/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function Chapter0Page() {
+  // Type assertion needed because JSON imports infer wide types
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/accounting/chapter-10/layout.tsx
+Dependents: None
+Snippet:
+export const metadata: Metadata = createChapterMetadata(chapterData as any);
+
+export default function Chapter10Layout({ children }: { children: React.ReactNode }) {
+    return <>{children}</>;
+}
+
+### File: app/courses/accounting/chapter-10/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function AccountingChapter10Page() {
+    const data = chapterData as unknown as ChapterData;
+
+    return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/accounting/chapter-11/layout.tsx
+Dependents: None
+Snippet:
+export const metadata: Metadata = createChapterMetadata(chapterData as any);
+
+export default function Chapter11Layout({ children }: { children: React.ReactNode }) {
+    return <>{children}</>;
+}
+
+### File: app/courses/accounting/chapter-11/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function AccountingChapter11Page() {
+    const data = chapterData as unknown as ChapterData;
+
+    return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/accounting/chapter-12/layout.tsx
+Dependents: None
+Snippet:
+export const metadata: Metadata = createChapterMetadata(chapterData as any);
+
+export default function Chapter12Layout({ children }: { children: React.ReactNode }) {
+    return <>{children}</>;
+}
+
+### File: app/courses/accounting/chapter-12/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function AccountingChapter12Page() {
+    const data = chapterData as unknown as ChapterData;
+
+    return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/accounting/chapter-2/layout.tsx
+Dependents: None
+Snippet:
+export const metadata: Metadata = createChapterMetadata(chapterData as any);
+
+export default function Chapter2Layout({ children }: { children: React.ReactNode }) {
+    return <>{children}</>;
+}
+
+### File: app/courses/accounting/chapter-2/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function Chapter2Page() {
+  // Type assertion needed because JSON imports infer wide types
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/accounting/chapter-3/layout.tsx
+Dependents: None
+Snippet:
+export const metadata: Metadata = createChapterMetadata(chapterData as any);
+
+export default function Chapter3Layout({ children }: { children: React.ReactNode }) {
+    return <>{children}</>;
+}
+
+### File: app/courses/accounting/chapter-3/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function Chapter3Page() {
+  // Type assertion needed because JSON imports infer wide types
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/accounting/chapter-4/layout.tsx
+Dependents: None
+Snippet:
+export const metadata: Metadata = createChapterMetadata(chapterData as any);
+
+export default function Chapter4Layout({ children }: { children: React.ReactNode }) {
+    return <>{children}</>;
+}
+
+### File: app/courses/accounting/chapter-4/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function Chapter4Page() {
+  // Type assertion needed because JSON imports infer wide types
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/accounting/chapter-5/layout.tsx
+Dependents: None
+Snippet:
+export const metadata: Metadata = createChapterMetadata(chapterData as any);
+
+export default function Chapter5Layout({ children }: { children: React.ReactNode }) {
+    return <>{children}</>;
+}
+
+### File: app/courses/accounting/chapter-5/page.tsx
+Dependents: None
+Snippet:
+export default function Chapter5Page() {
+    const data = chapterData as unknown as ChapterData;
+    return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/accounting/chapter-6/layout.tsx
+Dependents: None
+Snippet:
+export const metadata: Metadata = createChapterMetadata(chapterData as any);
+
+export default function Chapter6Layout({ children }: { children: React.ReactNode }) {
+    return <>{children}</>;
+}
+
+### File: app/courses/accounting/chapter-6/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function Chapter6Page() {
+    const data = chapterData as unknown as ChapterData;
+    return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/accounting/chapter-7/layout.tsx
+Dependents: None
+Snippet:
+export const metadata: Metadata = createChapterMetadata(chapterData as any);
+
+export default function Chapter7Layout({ children }: { children: React.ReactNode }) {
+    return <>{children}</>;
+}
+
+### File: app/courses/accounting/chapter-7/page.tsx
+Dependents: None
+Snippet:
+export default function Chapter7Page() {
+    const data = chapterData as unknown as ChapterData;
+    return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/accounting/chapter-8/layout.tsx
+Dependents: None
+Snippet:
+export const metadata: Metadata = createChapterMetadata(chapterData as any);
+
+export default function Chapter8Layout({ children }: { children: React.ReactNode }) {
+    return <>{children}</>;
+}
+
+### File: app/courses/accounting/chapter-8/page.tsx
+Dependents: None
+Snippet:
+export default function Chapter8Page() {
+    const data = chapterData as unknown as ChapterData;
+    return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/accounting/chapter-9/layout.tsx
+Dependents: None
+Snippet:
+export const metadata: Metadata = createChapterMetadata(chapterData as any);
+
+export default function Chapter9Layout({ children }: { children: React.ReactNode }) {
+    return <>{children}</>;
+}
+
+### File: app/courses/accounting/chapter-9/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function AccountingChapter9Page() {
+    const data = chapterData as unknown as ChapterData;
+
+    return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/microeconomics/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function MicroeconomicsLanding() {
+  return <CourseLandingTemplate courseData={courseData} />;
+}
+
+### File: app/courses/microeconomics/chapter-1/page.tsx
+Dependents: None
+Snippet:
+const ArcadePlaceholder = ({ title, type }: { title: string; type: string }) => (
+  <div
+    className="p-8 border-2 border-dashed border-primary/40 rounded-xl bg-primary/5 my-8 text-center"
+    data-testid={`arcade-${type}`}
+  >
+    <div className="text-2xl mb-2">🎮</div>
+    <div className="font-bold text-lg mb-1">{title}</div>
+    <div className="text-sm text-muted-foreground font-mono">{type}</div>
+  </div>
+);
+
+export default function Chapter1Page() {
+  const data = chapterData as unknown as 
+
+### File: app/courses/microeconomics/chapter-2/page.tsx
+Dependents: None
+Snippet:
+export default function Chapter2Page() {
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/microeconomics/chapter-3/page.tsx
+Dependents: None
+Snippet:
+export default function Chapter3Page() {
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/microeconomics/chapter-4/page.tsx
+Dependents: None
+Snippet:
+export default function Chapter4Page() {
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/microeconomics/chapter-5/page.tsx
+Dependents: None
+Snippet:
+export default function Chapter5Page() {
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/microeconomics/equilibrium-table/page.tsx
+Dependents: None
+Snippet:
+export const metadata: Metadata = {
+    title: 'מודל שיווי משקל תחרותי - מאסטר טבלת שינויים | סיכומניק',
+    description: 'טבלה אינטראקטיבית ורספונסיבית לניתוח והבנת שינויים בשוק במודל היצע וביקוש, כולל התערבות ממשלתית וסחר חוץ.',
+};
+
+export default function EquilibriumTablePage() {
+    return (
+        <div className="min-h-screen bg-[#fcfcfc] py-12 px-4 md:px-8 font-sans antialiased text-slate-900" dir="rtl">
+            <div className="max-w-[1400px] mx-auto">
+                <div className="
+
+### File: app/courses/microeconomics/exam/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function MicroeconomicsExamPage() {
+    const data = examData as unknown as ExamData;
+
+    return (
+        <main className="min-h-screen bg-[#0f172a] py-12">
+            <ExamEngine data={data} />
+        </main>
+    );
+}
+
+### File: app/courses/microeconomics/market-shifts/page.tsx
+Dependents: None
+Snippet:
+export default function MarketShiftsPage() {
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/organizational-behavior/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function OrganizationalBehaviorPage() {
+    // OB page has specific visual cards
+    const visualCards = [
+        { icon: Brain, title: "הפרט", color: "bg-blue-500" },
+        { icon: Users, title: "הקבוצה", color: "bg-purple-500" },
+        { icon: Network, title: "הארגון", color: "bg-emerald-500" },
+        { icon: Target, title: "האסטרטגיה", color: "bg-orange-500" },
+    ];
+
+    return <CourseLandingTemplate courseData={{ ...courseData, visualCards }} />;
+}
+
+### File: app/courses/organizational-behavior/chapter-1/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function Chapter1Page() {
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/organizational-behavior/chapter-2/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function Chapter2Page() {
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/organizational-behavior/chapter-3/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function Chapter3Page() {
+    const data = chapterData as unknown as ChapterData;
+    return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/organizational-behavior/chapter-4/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function Chapter4Page() {
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/organizational-behavior/chapter-5/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function Chapter5Page() {
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/organizational-behavior/chapter-6/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function Chapter6Page() {
+  const data = chapterData as unknown as ChapterData;
+  return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/organizational-behavior/chapter-7/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function Chapter7Page() {
+    const data = chapterData as unknown as ChapterData;
+    return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/organizational-behavior/diagnostic-workshop/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function DiagnosticWorkshopPage() {
+    const data = chapterData as unknown as ChapterData;
+    return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/organizational-behavior/exam-simulation/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function ExamSimulationPage() {
+    const data = chapterData as unknown as ChapterData;
+    return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/organizational-behavior/situational-leadership/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function SituationalLeadershipPage() {
+    const data = chapterData as unknown as ChapterData;
+    return <ChapterTemplate data={data} />;
+}
+
+### File: app/courses/organizational-behavior/summary/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function CourseSummaryPage() {
+    // In a real app, these stats would come from a user progress database.
+    // For now, we simulate the completion of the "Organizational Behavior" course.
+
+    const stats = [
+        {
+            label: "זמן למידה כולל",
+            value: "14.5 שעות",
+            icon: Clock,
+            color: "bg-blue-500"
+        },
+        {
+
+### File: app/maslow-pyramid/page.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export default function MaslowPyramidPage() {
+    return (
+        <div className="min-h-screen bg-background text-foreground p-6 md:p-12 font-main" dir="rtl">
+            <div className="max-w-4xl mx-auto">
+                {/* Navigation Breadcrumbs */}
+                <nav className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-8">
+                    <Link href="/" className="hover:text-sky-800 transition-colors flex items-cent
+
+### File: app/math/demo/page.tsx
+Dependents: None
+Snippet:
+export default function MathDemoPage() {
+    const heroBlock: HeroFormulaBlock = {
+        id: "block-hero-derivative",
+        type: "hero-formula",
+        title: "הגדרת הנגזרת דרך גבול",
+        subtitle: "Limit Definition of a Derivative",
+        katexString: "f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}",
+        streetNarrator: "הנגזרת היא בעצם דרך למדוד <strong>בדיוק כמה מהר</strong> משהו משתנה בכל רגע נתון. דמיינו שאתם מודדים מהירות של רכב בדיוק בשנייה שהוא באוויר."
+    };
+
+    con
+
+### File: components/ai/AiLecturer.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+interface AiLecturerProps {
+    context: any; // Chapter data to pass as context
+}
+
+export function AiLecturer({ context }: AiLecturerProps) {
+    const [isOpen, setIsOpen] = useState(false);
+    const [input, setInput] = useState("");
+
+    const { messages, sendMessage, status, error } = useChat({
+        body: { context },
+        onError: (err: any) => {
+            console.error("AI Chat Error:", err);
+
+### File: components/core/BlockRenderer.tsx
+Dependents: components/core/ChapterTemplate.tsx
+Snippet:
+"use client";
+
+
+// Block Components
+
+interface BlockRendererProps {
+    block: ContentBlock;
+    interactiveRegistry?: Record<string, React.ReactNode>;
+}
+
+export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactiveRegistry }) => {
+    switch (block.type) {
+        case "explanation":
+            return <Explanation content={block.content} highlight={block.highlight} />;
+
+### File: components/core/ChapterFooter.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+interface ChapterFooterProps {
+    navigation?: {
+        previous?: { id: string; title: string };
+        next?: { id: string; title: string };
+    };
+    bridge?: {
+        nextChapterTitle: string;
+        content: string;
+        nextChapter: string;
+    };
+    trivia?: { fact: string; source?: string }[];
+}
+
+### File: components/core/ChapterHeader.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+interface ChapterHeaderProps {
+    title: string;
+    course: string;
+    chapterNumber: number;
+    totalChapters: number;
+    pageMap?: {
+        learningObjectives: string[];
+        prerequisites?: { chapterId: string; title: string }[];
+        estimatedTime: string;
+    };
+    introduction?: {
+        content: string;
+
+### File: components/core/ChapterIntro.tsx
+Dependents: None
+Snippet:
+Clock,
+    Target,
+    ChevronLeft,
+    HelpCircle,
+    PlayCircle
+} from 'lucide-react';
+
+interface ChapterIntroProps {
+    data: ChapterData;
+    onStart: () => void;
+}
+
+export const ChapterIntro: React.FC<ChapterIntroProps> = ({ data, onStart }) => {
+    const description = data.introduction?.content || '';
+    const motivationText = data.introduction?.whyItMatters;
+
+### File: components/core/ChapterLanding.tsx
+Dependents: components/core/ChapterTemplate.tsx
+Snippet:
+"use client";
+
+    Clock,
+    Target,
+    ArrowLeft,
+    Sparkles,
+    BookOpen,
+    Lightbulb
+} from "lucide-react";
+
+interface ChapterLandingProps {
+    data: ChapterData;
+    onStart: () => void;
+}
+
+### File: components/core/ChapterProgressionBar.tsx
+Dependents: components/core/ChapterTemplate.tsx
+Snippet:
+Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+interface Tab {
+    id: string;
+    title: string;
+}
+
+interface ChapterProgressionBarProps {
+    tabs: Tab[];
+    activeTab: number;
+    onTabChange: (index: number) => void;
+
+### File: components/core/ChapterTemplate.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+
+interface ChapterTemplateProps {
+    data: ChapterData;
+    interactiveRegistry?: Record<string, React.ReactNode>;
+}
+
+export const ChapterTemplate: React.FC<ChapterTemplateProps> = ({
+    data,
+    interactiveRegistry,
+}) => {
+    const [activeTab, setActiveTab] = React.useState(-1);
+
+### File: components/core/CourseBreadcrumb.tsx
+Dependents: components/core/ChapterTemplate.tsx
+Snippet:
+"use client";
+
+
+interface CourseBreadcrumbProps {
+    courseName?: string;
+    chapterTitle: string;
+    currentTabTitle?: string;
+    currentTabIndex?: number; // 1-based index for display, or simple calculation
+    totalTabs?: number;
+}
+
+export const CourseBreadcrumb: React.FC<CourseBreadcrumbProps> = ({
+    courseName,
+    chapterTitle,
+    currentTabTitle,
+
+### File: components/core/LatexRenderer.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+interface LatexRendererProps {
+    formula: string;
+    className?: string;
+}
+
+export const LatexRenderer: React.FC<LatexRendererProps> = ({ formula, className }) => {
+    const [isMounted, setIsMounted] = useState(false);
+    const [html, setHtml] = useState<string>("");
+    const [error, setError] = useState<boolean>(false);
+    const [debugInfo, setDebugInfo] = useState<string>("");
+
+    useEffect(() => {
+
+### File: components/core/LessonFooter.tsx
+Dependents: components/core/ChapterTemplate.tsx
+Snippet:
+"use client";
+
+
+interface LessonFooterProps {
+    currentTabIndex: number;
+    tabs: { id: string; title: string }[];
+    onPrevious: () => void;
+    onNext?: () => void;
+    facts?: Array<{
+        icon?: React.ElementType;
+        category?: string;
+        fact: string;
+        source?: string;
+    }>;
+    topicData?: {
+
+### File: components/core/TopicTab.tsx
+Dependents: components/core/ChapterTemplate.tsx
+Snippet:
+"use client";
+
+
+interface TopicTabProps {
+    isActive: boolean;
+    children: React.ReactNode;
+}
+
+export const TopicTab: React.FC<TopicTabProps> = ({ isActive, children }) => {
+    if (!isActive) return null;
+
+    return (
+        <div className="space-y-6 animate-in fade-in-0 slide-in-from-bottom-4 duration-500">
+            {children}
+        </div>
+
+### File: components/core/blocks/Alert.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+type AlertVariant = 'tip' | 'warning' | 'prerequisite';
+
+interface AlertProps {
+    variant: AlertVariant;
+    children: React.ReactNode;
+    title?: string;
+    className?: string;
+    icon?: React.ReactNode;
+}
+
+const VARIANTS = {
+    tip: {
+
+### File: components/core/blocks/Analogy.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+interface AnalogyProps {
+    content: string;
+    icon?: string;
+}
+
+export const Analogy: React.FC<AnalogyProps> = ({ content, icon }) => {
+    return (
+        <div className="bg-yellow-50/50 border-2 border-yellow-400 rounded-2xl p-6 my-8 relative overflow-hidden group hover:-translate-y-1 hover:shadow-lg hover:shadow-yellow-400/20 transition-all duration-300" dir="rtl">
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-yellow-300 rounded-full blur-[60px] opac
+
+### File: components/core/blocks/ChapterImage.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+interface ChapterImageProps {
+    src: string;
+    alt: string;
+    caption?: string;
+}
+
+export const ChapterImage: React.FC<ChapterImageProps> = ({ src, alt, caption }) => {
+    return (
+        <figure className="my-6">
+            <div className="group rounded-2xl overflow-hidden border border-border/30 bg-card/20 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 transition-all duration-300">
+                <Image
+                    src={sr
+
+### File: components/core/blocks/CheckpointQuiz.tsx
+Dependents: components/core/BlockRenderer.tsx, components/core/ChapterTemplate.tsx
+Snippet:
+"use client";
+
+
+interface CheckpointQuizProps {
+    questions: QuizQuestion[];
+}
+
+export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => {
+    const [answers, setAnswers] = useState<Record<string, number | null>>({});
+    const [submitted, setSubmitted] = useState<Record<string, boolean>>({});
+
+    const select = (qId: string, optIdx: number) => {
+        if (submitted[qId]) return;
+        setAnswers((prev) => ({ ...prev, [qId]: optIdx }));
+    };
+
+### File: components/core/blocks/DeepDive.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+interface DeepDiveProps {
+    title: string;
+    sections?: { title: string; content: string; example?: string; icon?: React.ElementType }[];
+    difficulty?: 'advanced' | 'graduate';
+}
+
+export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections, difficulty = 'advanced' }) => {
+    const [openIdx, setOpenIdx] = useState<number | null>(null);
+
+    return (
+        <div className="group bg-slate-50 border-r-4 border-r-red-600 border-y border-l border-slate-200 rounded-xl m
+
+### File: components/core/blocks/Definition.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+interface DefinitionProps {
+    variant?: 'academic' | 'simple';
+    term: string;
+    definition: string;
+    source?: string;
+    subject?: string;
+    className?: string;
+}
+
+export const Definition: React.FC<DefinitionProps> = ({
+    variant = 'simple',
+    term,
+
+### File: components/core/blocks/DidYouKnow.tsx
+Dependents: components/core/LessonFooter.tsx
+Snippet:
+"use client";
+
+
+interface GeneratedFact {
+    category: string;
+    fact: string;
+}
+
+interface DidYouKnowProps {
+    facts?: Array<{
+        icon?: React.ElementType;
+        category: string;
+        fact: string;
+    }>;
+    topicData?: {
+
+### File: components/core/blocks/ExamQuestionBlock.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+export interface ExamQuestion {
+    id: string;
+    number: number;
+    type: "multiple-choice" | "open-ended" | "multiple-select";
+    question: string;
+    points: number;
+    // Multiple choice fields
+    options?: string[];
+    correctIndex?: number;
+    correctIndices?: number[];
+    // Open-ended fields
+    modelAnswer?: string;
+
+### File: components/core/blocks/Explanation.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+interface ExplanationProps {
+    content: string;
+    highlight?: string;
+}
+
+export const Explanation: React.FC<ExplanationProps> = ({ content, highlight }) => {
+    return (
+        <div className="group py-4 hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20" dir="rtl">
+            {highlight && (
+                <div className="bg-blue-50 border-r-4 border-blue-600 px-4 py-3 rounded-l-lg mb-5 shadow-sm">
+                    <p className=
+
+### File: components/core/blocks/FormulaCard.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+interface FormulaCardProps {
+    title: string;
+    description?: string;
+    formula: string;
+    variables?: Variable[];
+    className?: string;
+}
+
+const VAR_COLORS = [
+    { bg: "rgba(96,165,250,0.15)", border: "rgba(96,165,250,0.4)", text: "#93c5fd" }, // Blue
+    { bg: "rgba(52,211,153,0.15)", border: "rgba(52,211,153,0.4)", text: "#6ee7b7" }, // Emerald
+    { bg: "rgba(251,146,60,0.15)", border: "rgba(251,146,60,0.4)", text: "#fdba74" }, // Orange
+
+### File: components/core/blocks/GeminiStreetSmart.ts
+Dependents: None
+Snippet:
+
+
+### File: components/core/blocks/GuidedExercise.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+interface GuidedExerciseProps {
+    difficulty: number;
+    question: string;
+    thinkingDirection: string;
+    steps: Step[];
+    finalAnswer: string;
+    phases?: GuidedExercisePhase[];
+}
+
+const difficultyLabel = (d: number) => {
+    if (d <= 2) return { text: "בסיסי", color: "text-emerald-700" };
+    if (d <= 4) return { text: "בינוני", color: "text-amber-700" };
+
+### File: components/core/blocks/Hook.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+interface HookProps {
+    opener: string;
+    question?: string;
+    context?: string;
+}
+
+export const Hook: React.FC<HookProps> = ({ opener, question, context }) => {
+    return (
+        <div className="group bg-linear-to-br from-violet-600 to-indigo-600 rounded-3xl p-8 md:p-10 my-8 shadow-xl shadow-violet-600/20 text-white relative overflow-hidden hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20" dir="rtl">
+            <div className="
+
+### File: components/core/blocks/KnowledgeExam.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+export interface ExamQuestionData {
+    id: string;
+    question: string;
+    options: string[];
+    correctIndex: number;
+    explanation: string;
+}
+
+interface KnowledgeExamProps {
+    chapterId?: string;
+    questions: ExamQuestionData[];
+    onSubmit?: (results: { score: number; percentage: number; correct: number }) => void;
+
+### File: components/core/blocks/List.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+interface ListProps {
+    items: string[];
+}
+
+export const List: React.FC<ListProps> = ({ items }) => {
+    return (
+        <div className="group my-4 space-y-2 hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20">
+            {items.map((item, idx) => (
+                <div key={idx} className="flex items-start gap-3 markdown-content">
+                    <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item}</ReactMarkdown>
+                </d
+
+### File: components/core/blocks/MaslowPyramid.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+const levels = [
+    {
+        id: 5,
+        name: "Self-Actualization",
+        hebrew: "הגשמה עצמית",
+        color: "var(--color-primary)",
+        icon: Sparkles,
+        width: "40%",
+        description: "מימוש מלא של הפוטנציאל האישי, יצירתיות ופתרון בעיות. זהו שיא הפירמידה - לא כולם מגיעים אליו, וזהו צורך שלא מפסיק להניע גם כשמסופק.",
+        examples: ["יצירה אמנותית", "חדשנות בעבודה", "צמיחה אישית"],
+        type: "B-Needs (צמיחה)",
+    },
+
+### File: components/core/blocks/NarrativeSummary.tsx
+Dependents: components/core/ChapterTemplate.tsx
+Snippet:
+"use client";
+
+
+interface NarrativeSummaryProps {
+    data: {
+        content: string;
+        tip: { title: string; content: string };
+        pitfall: { title: string; content: string };
+    };
+    nextChapter?: {
+        href: string;
+        title: string;
+    };
+}
+
+### File: components/core/blocks/RealWorldExample.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+interface RealWorldExampleProps {
+    title: string;
+    scenario: string;
+    connection: string;
+    source?: string;
+}
+
+export const RealWorldExample: React.FC<RealWorldExampleProps> = ({ title, scenario, connection, source }) => {
+    return (
+        <div className="group my-6 border-l-4 border-l-primary bg-white  rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-border hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover
+
+### File: components/core/blocks/StreetSmart.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+interface StreetSmartProps {
+    title: string;
+    children: React.ReactNode;
+    emoji?: string;
+}
+
+export const StreetSmart: React.FC<StreetSmartProps> = ({ title, children, emoji = "☕" }) => {
+    return (
+        <div className="group bg-orange-50 border-r-4 border-r-orange-500 border-y border-l border-orange-200 rounded-xl p-5 my-6 shadow-sm hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/20 hover:border-orange-400/50 dark:hover:bord
+
+### File: components/core/blocks/StreetSmartSketch.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+interface StreetSmartSketchProps {
+    content: string;
+    title?: string;
+}
+
+/**
+ * StreetSmartSketch Component (TSX Version)
+ * מציג הסבר "דוגרי" בסגנון שירבוט ידני עם תמיכה ב-Markdown.
+ * הקוד עודכן כדי להסיר תלות בחבילות חיצוניות שגורמות לשגיאות קומפילציה.
+ */
+export const StreetSmartSketch: React.FC<StreetSmartSketchProps> = ({
+    content,
+
+### File: components/core/blocks/ToneBreak.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+interface ToneBreakProps {
+    opener: string;
+    content: string;
+}
+
+export const ToneBreak: React.FC<ToneBreakProps> = ({ opener, content }) => {
+    return (
+        <div className="group bg-gradient-to-r from-orange-950/20 to-amber-950/20 border border-orange-500/15 rounded-2xl p-6 my-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/20 hover:border-orange-400/50 dark:hover:border-orange-500/50">
+            <div className="flex items
+
+### File: components/core/blocks/TopicNavigation.tsx
+Dependents: None
+Snippet:
+interface TopicNavigationProps {
+    previousTopic?: {
+        title: string;
+        chapter: string;
+    };
+    nextTopic?: {
+        title: string;
+        chapter: string;
+    };
+    onPrevious?: () => void;
+    onNext?: () => void;
+    className?: string;
+}
+
+### File: components/core/blocks/TopicSummary.tsx
+Dependents: components/core/ChapterTemplate.tsx
+Snippet:
+"use client";
+
+
+interface TopicSummaryProps {
+    content: string;
+    keyPoints?: string[];
+}
+
+export const TopicSummary: React.FC<TopicSummaryProps> = ({ content, keyPoints }) => {
+    return (
+        <div className="group bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-6 my-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20 hover:border-slate-400/50 dark:hover:border-slate-500/50">
+            <div className="fle
+
+### File: components/core/blocks/WorkedExample.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+interface WorkedExampleProps {
+    title: string;
+    scenario: string;
+    solution: string;
+    calculation?: string;
+}
+
+export const WorkedExample: React.FC<WorkedExampleProps> = ({ title, scenario, solution, calculation }) => {
+    const [showSolution, setShowSolution] = useState(false);
+
+    return (
+        <div className="group bg-white border border-emerald-200 rounded-2xl overflow-hidden my-4 hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-e
+
+### File: components/core/dashboard/CourseCompletionDashboard.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+interface CourseCompletionDashboardProps {
+    courseTitle: string;
+    stats: {
+        label: string;
+        value: string;
+        icon: React.ElementType;
+        color: string;
+    }[];
+    learnedConcepts: string[];
+    narrative?: React.ReactNode;
+}
+
+### File: components/core/interactive/AttributionFlowchart.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+
+interface FlowStep {
+    id: string;
+    title: string;
+    hebrewTitle: string;
+    description: string;
+    icon: React.ReactNode;
+    position: { x: number; y: number };
+}
+
+interface AttributionFlowchartProps {
+    mode?: "reference" | "quiz";
+    onComplete?: (score: number, total: number) => void;
+
+### File: components/core/interactive/ConceptAccordion.tsx
+Dependents: components/core/ChapterIntro.tsx
+Snippet:
+interface ConceptAccordionProps {
+    sectionTitle: string;
+    items: ConceptItem[];
+}
+
+// Map of index/id to specific colors from the image
+const THEME_COLORS: Record<number, { text: string; bg: string; border: string; glow: string }> = {
+    1: { text: 'text-red-700', bg: 'bg-red-50', border: 'border-red-200', glow: 'shadow-sm' },
+    2: { text: 'text-orange-500', bg: 'bg-orange-500/10', border: 'border-orange-500/30', glow: 'shadow-orange-500/10' },
+    3: { text: 'text-emerald-700', bg: 'bg
+
+### File: components/core/interactive/CurveElement.tsx
+Dependents: components/core/interactive/CurveShifter.tsx, components/core/interactive/PPFGraph.tsx
+Snippet:
+"use client";
+
+
+interface CurveElementProps {
+    /**
+     * Function that takes Quantity (Q) and returns Price (P).
+     * For Demand: P = a - bQ
+     */
+    equation: (q: number) => number;
+    label?: string;
+    color?: string;
+    className?: string;
+    showPoints?: boolean;
+}
+
+### File: components/core/interactive/CurveShifter.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+interface ShifterOption {
+    id: string;
+    label: string;
+    effect: "positive" | "negative";
+    description?: string;
+}
+
+interface CurveShifterProps {
+    title?: string;
+    description?: string;
+    shifters: ShifterOption[];
+    initialIntercept?: number;
+
+### File: components/core/interactive/DiagnosticCaseStudy.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+"use client";
+
+    Stethoscope, Brain, Users, Target, Lightbulb, AlertTriangle,
+    CheckCircle2, XCircle, ArrowRight, ArrowLeft, RotateCcw,
+    Sparkles, BookOpen, MessageSquare, Scale, Battery, Crown,
+    ChevronUp, ChevronDown
+} from "lucide-react";
+
+const iconMap: Record<string, React.ReactNode> = {
+    Brain: <Brain className="w-5 h-5" />,
+    Users: <Users className="w-5 h-5" />,
+    Target: <Target className="w-5 h-5" />,
+    Scale: <Scale className="w-5 h-5" />,
+    Battery: <Battery cla
+
+### File: components/core/interactive/index.ts
+Dependents: None
+Snippet:
+// Interactive Components Barrel Export
+// Domain-specific interactive widgets for chapters
+
+// Accounting domain
+export * from './accounting';
+
+// Microeconomics domain (future)
+// export * from './microeconomics';
+
+### File: components/core/interactive/InteractionLayer.tsx
+Dependents: components/core/interactive/CurveShifter.tsx, components/core/interactive/PPFGraph.tsx
+Snippet:
+"use client";
+
+
+interface InteractionLayerProps {
+    /**
+     * Optional primary curve to probe for values.
+     */
+    primaryEquation?: (q: number) => number;
+    /**
+     * Externally controlled point to display (useful for manual sliders).
+     */
+    activePoint?: { x: number; y: number };
+    className?: string;
+}
+
+### File: components/core/interactive/InteractiveGraph.tsx
+Dependents: components/core/interactive/CurveElement.tsx, components/core/interactive/CurveShifter.tsx, components/core/interactive/PPFGraph.tsx, components/core/interactive/InteractionLayer.tsx
+Snippet:
+"use client";
+
+
+/**
+ * GraphContext: Shares the scaling logic and dimensions with all child elements.
+ */
+interface GraphContextType {
+    xScale: (q: number) => number;
+    yScale: (p: number) => number;
+    invertX: (svgX: number) => number;
+    invertY: (svgY: number) => number;
+    viewBox: { width: number; height: number; padding: number };
+}
+
+const GraphContext = createContext<GraphContextType | null>(null);
+
+### File: components/core/interactive/PPCShifter.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+/**
+ * [INTERACTIVE LAB] PPC Shifter
+ * Visualizes how technology/grants shift the Production Possibility Curve.
+ * - Neutral Growth: Shifts both intercepts.
+ * - Biased Growth: Shifts only one intercept.
+ */
+export const PPCShifter = () => {
+    const [techX, setTechX] = useState(1); //Multiplier for X-axis (1.0 - 2.0)
+    const [techY, setTechY] = useState(1); //Multiplier for Y-axis (1.0 - 2.0)
+
+    // Base Curve Values (Quarter Circle approximation)
+    const baseX = 300;
+
+### File: components/core/interactive/PPFGraph.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+interface PPFGraphProps {
+    className?: string;
+}
+
+/**
+ * PPFGraph Component
+ * Specifically designed for Chapter 2 to demonstrate the Production Possibility Frontier.
+ * Features a concave curve and a draggable point to show efficiency vs. unemployment.
+ */
+export const PPFGraph: React.FC<PPFGraphProps> = ({ className }) => {
+    const [techLevel, setTechLevel] = useState(100);
+    const [pointX, setPointX] = useState(40);
+
+### File: components/core/interactive/SituationalLeadershipGuide.tsx
+Dependents: components/core/BlockRenderer.tsx
+Snippet:
+interface SituationalLeadershipGuideProps {
+    // No props needed for this standalone tool, logic is self-contained
+}
+
+type Style = 'S1' | 'S2' | 'S3' | 'S4';
+
+interface LeadershipStyle {
+    id: Style;
+    name: string; // Hebrew name (e.g. "המכוון")
+    slangName: string; // The "Slang" name (e.g. "הווייז")
+    description: string;
+    behavior: {
+        task: 'High' | 'Low';
+        relationship: 'High' | 'Low';
+
+### File: components/core/interactive/TradeBalanceVisualizer.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+/**
+ * [INTERACTIVE LAB] Trade Balance Visualizer
+ * Visualizes:
+ * - Production Possibility Curve (PPC)
+ * - World Price Line (Trade Balance Line)
+ * - Production Point
+ * - Consumption Point
+ * - Trade Triangle
+ */
+export const TradeBalanceVisualizer = () => {
+    const [worldPriceRatio, setWorldPriceRatio] = useState(1.5); // Px/Py
+    const [productionPoint, setProductionPoint] = useState(0); // 0 = max X, 100 = max Y
+
+### File: components/core/interactive/accounting/BalanceSheetQuadrant.tsx
+Dependents: components/core/interactive/accounting/index.ts
+Snippet:
+"use client";
+
+
+export interface QuadrantRow {
+    label: string;
+    amount: number;
+    type: 'asset' | 'liability' | 'equity' | 'subtotal' | 'total';
+    highlight?: boolean;
+    tooltip?: string; // Simple tooltip for uncommon terms
+}
+
+export interface Quadrant {
+    title: string;
+    rows: QuadrantRow[];
+    isAsset?: boolean; // Determines header color
+
+### File: components/core/interactive/accounting/ClassificationGame.tsx
+Dependents: components/core/interactive/accounting/index.ts
+Snippet:
+"use client";
+
+
+interface Item {
+    label: string;
+    correctCategory: string;
+}
+
+interface InteractiveElementProps {
+    data: {
+        type: string;
+        title: string;
+        instructions: string;
+        items: Item[];
+    };
+
+### File: components/core/interactive/accounting/FinancialStatement.tsx
+Dependents: components/core/interactive/accounting/index.ts
+Snippet:
+export interface FinancialRow {
+    label: string;
+    amount: number;
+    type: 'asset' | 'liability' | 'equity' | 'revenue' | 'expense' | 'subtotal' | 'total';
+    highlight?: boolean;
+}
+
+interface FinancialStatementProps {
+    title: string;
+    rows?: FinancialRow[]; // optional fallback
+    leftRows?: FinancialRow[];
+    rightRows?: FinancialRow[];
+    note?: string;
+    compact?: boolean;
+
+### File: components/core/interactive/accounting/index.ts
+Dependents: components/core/interactive/index.ts
+Snippet:
+// Domain-Specific Interactive Components for Accounting
+// These components contain accounting-specific logic and visualizations
+
+export { FinancialStatement } from './FinancialStatement';
+export { JournalEntry } from './JournalEntry';
+export { BalanceSheetQuadrant } from './BalanceSheetQuadrant';
+export { ClassificationGame } from './ClassificationGame';
+export { InteractiveExercise } from './InteractiveExercise';
+
+### File: components/core/interactive/accounting/InteractiveExercise.tsx
+Dependents: components/core/interactive/accounting/index.ts
+Snippet:
+"use client";
+
+
+const TABLE_LINE_REGEX = /^([┌│├└])/;
+const ROW_CELL_REGEX = /│/g;
+const BOLD_FORMAT_REGEX = /(\*\*.*?\*\*|_.*?_|💡.*)/g;
+
+interface InteractiveExerciseProps {
+    question: string;
+    answer?: string;
+    solution?: string;
+    hint?: string;
+    tip?: string;
+}
+
+### File: components/core/interactive/accounting/JournalEntry.tsx
+Dependents: components/core/interactive/accounting/index.ts
+Snippet:
+"use client";
+
+
+interface JournalEntryProps {
+    data: JournalEntryBlock;
+}
+
+export const JournalEntry = memo(function JournalEntry({ data }: JournalEntryProps) {
+    const totalDebit = data.entries.reduce((sum, e) => sum + e.debit, 0);
+    const totalCredit = data.entries.reduce((sum, e) => sum + e.credit, 0);
+
+    return (
+        <GlassCard className="group border-r-8 border-primary/40 p-10 md:p-14 rounded-[3rem]">
+            {/* Header */}
+            <div className="flex items-center just
+
+### File: components/economics/backup-MarketEquilibriumMaster.tsx
+Dependents: None
+Snippet:
+"use client";
+
+    TrendingUp,
+    TrendingDown,
+    Settings,
+    Globe,
+    Info,
+    Layers,
+    BarChart3,
+    Scale,
+    HelpCircle,
+    Percent,
+    Briefcase,
+    Users,
+    Wrench
+
+### File: components/economics/MarketEquilibriumMaster.tsx
+Dependents: None
+Snippet:
+"use client";
+
+    TrendingUp,
+    TrendingDown,
+    Globe,
+    Info,
+    Layers,
+    BarChart3,
+    Scale,
+    HelpCircle,
+    ChevronDown,
+    ChevronUp,
+    Minus,
+    BookOpen,
+    Zap,
+
+### File: components/exam/ExamEngine.tsx
+Dependents: None
+Snippet:
+"use client";
+
+    ChevronRight,
+    ChevronLeft,
+    Lightbulb,
+    CheckCircle2,
+    XCircle,
+    Award,
+    RefreshCcw,
+    Eye,
+    ArrowRight
+} from "lucide-react";
+
+interface ExamEngineProps {
+    data: ExamData;
+
+### File: components/home/HomeCarousel.tsx
+Dependents: None
+Snippet:
+"use client";
+
+    Calculator,
+    TrendingUp,
+    Brain,
+    ChevronRight,
+    ChevronLeft,
+    Play
+} from "lucide-react";
+
+export function HomeCarousel() {
+    const [activeSlide, setActiveSlide] = useState(0);
+
+    const featuredCourses = [
+        {
+
+### File: components/home/HomeInsights.tsx
+Dependents: None
+Snippet:
+"use client";
+
+    Sparkles,
+    ArrowRight,
+    ChevronRight,
+    ChevronLeft
+} from "lucide-react";
+
+export function HomeInsights() {
+    const [activeInsight, setActiveInsight] = useState(0);
+    const [isAnimating, setIsAnimating] = useState(false);
+    const [direction, setDirection] = useState<'next' | 'prev'>('next');
+
+    const insights = [
+        "אינפלציה זה כמו כשכולם בבר קונים וואנפאונד ובסוף הבעלים מעלה את המחיר ב-20 שקל. הכסף שלך שווה פחות בירות.",
+
+### File: components/layout/CourseLandingTemplate.tsx
+Dependents: None
+Snippet:
+"use client";
+
+    BookOpen,
+    Clock,
+    Target,
+    Play,
+    ArrowLeft,
+    ChevronDown
+} from "lucide-react";
+
+interface Chapter {
+    id: string;
+    number: number | string;
+    title: string;
+
+### File: components/layout/GlobalFooter.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export function GlobalFooter() {
+    const currentYear = new Date().getFullYear();
+
+    return (
+        <footer className="w-full bg-card/30 backdrop-blur-xl border-t border-white/5 pt-16 pb-8 px-8 mt-auto relative overflow-hidden">
+            {/* Subtle glow effect */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-px bg-linear-to-r from-transparent via-primary/50 to-transparent" />
+
+            <div className="max-w-7xl mx-auto grid grid-cols-1 m
+
+### File: components/layout/NavigationWrapper.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+export function NavigationWrapper({ children }: { children: React.ReactNode }) {
+    const pathname = usePathname();
+
+    // Hide sidebar on landing page, courses grid, and standalone prototypes (Zen Mode)
+    const isFullWidthPage =
+        pathname === "/" ||
+        pathname === "/courses" ||
+        pathname?.startsWith("/golden-prototype");
+
+    return (
+        <div className="flex min-h-screen relative">
+            {!isFullWidthPage && (
+
+### File: components/layout/Sidebar.tsx
+Dependents: None
+Snippet:
+"use client";
+
+    ChevronDown,
+    ChevronLeft,
+    GraduationCap,
+    LayoutDashboard,
+    Settings,
+    Calendar,
+    BookOpen,
+    Sparkles,
+    LogOut,
+    Menu
+} from "lucide-react";
+
+// --- Types ---
+
+### File: components/math/ConceptTranslation.tsx
+Dependents: None
+Snippet:
+interface ConceptTranslationProps {
+    block: StandardConceptBlock;
+    /**
+     * If false, the street narrator layer is hidden entirely,
+     * regardless of whether `streetNarrator` data exists within the block.
+     */
+    hasStreetNarrator?: boolean;
+}
+
+export const ConceptTranslation: React.FC<ConceptTranslationProps> = ({
+    block,
+    hasStreetNarrator = true
+}) => {
+    // We only render this layer if the flag is true AND the data exists
+
+### File: components/math/HeroFormula.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+interface HeroFormulaProps {
+    block: HeroFormulaBlock;
+    hasStreetNarrator?: boolean;
+}
+
+const MATH_SYMBOLS = ["∫", "∑", "√", "∂", "∞", "π", "Δ", "∇", "×", "÷", "±", "≈", "≠", "≤", "≥", "∈", "⊂", "∏", "lim", "dx"];
+
+export const HeroFormula: React.FC<HeroFormulaProps> = ({
+    block,
+    hasStreetNarrator = true
+}) => {
+    const [narratorVisible, setNarratorVisible] = useState(true);
+
+### File: components/math/ReferenceTable.tsx
+Dependents: None
+Snippet:
+interface ReferenceTableProps {
+    block: ReferenceTableBlock;
+    columnHeaders?: {
+        ruleName?: string;
+        generalForm?: string;
+        numericExample?: string;
+        streetExplanation?: string;
+    };
+}
+
+export const ReferenceTable: React.FC<ReferenceTableProps> = ({
+    block,
+    columnHeaders = {}
+}) => {
+
+### File: components/math/StreetNarratorBlock.tsx
+Dependents: None
+Snippet:
+interface StreetNarratorBlockProps {
+    block: IStreetNarratorBlock;
+}
+
+export const StreetNarratorBlock: React.FC<StreetNarratorBlockProps> = ({ block }) => {
+    return (
+        <div
+            className="group my-8 w-full overflow-hidden rounded-xl border border-indigo-100 bg-indigo-50/30 px-6 py-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-400/60 hover:shadow-lg hover:shadow-indigo-400/20 dark:border-indigo-900/30 dark:bg-indigo-950/20 dark:hover:border
+
+### File: components/ui/badge.tsx
+Dependents: None
+Snippet:
+const badgeVariants = cva(
+    "inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20  aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden",
+    {
+        variants: {
+            variant: {
+                default:
+                    "border-tr
+
+### File: components/ui/card.tsx
+Dependents: None
+Snippet:
+const Card = React.forwardRef<
+    HTMLDivElement,
+    React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+    <div
+        ref={ref}
+        className={cn(
+            "rounded-lg border bg-card text-card-foreground shadow-sm",
+            className
+        )}
+        {...props}
+    />
+))
+Card.displayName = "Card"
+
+### File: components/ui/glass-card.tsx
+Dependents: None
+Snippet:
+interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
+    children: React.ReactNode;
+    gradient?: boolean;
+}
+
+export function GlassCard({ children, className, gradient = false, ...props }: GlassCardProps) {
+    return (
+        <div
+            className={cn(
+                "bg-card/60 backdrop-blur-md border border-border rounded-xl shadow-xl relative",
+                gradient && "neon-border", // Optional neon border effect
+                className
+            )}
+       
+
+### File: components/ui/separator.tsx
+Dependents: None
+Snippet:
+"use client"
+
+
+
+function Separator({
+    className,
+    orientation = "horizontal",
+    decorative = true,
+    ...props
+}: React.ComponentProps<typeof SeparatorPrimitive.Root>) {
+    return (
+        <SeparatorPrimitive.Root
+            data-slot="separator-root"
+            decorative={decorative}
+            orientation={orientation}
+
+### File: components/ui/slider.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+const Slider = React.forwardRef<
+    React.ElementRef<typeof SliderPrimitive.Root>,
+    React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
+>(({ className, ...props }, ref) => (
+    <SliderPrimitive.Root
+        ref={ref}
+        className={cn(
+            "relative flex w-full touch-none select-none items-center",
+            className
+        )}
+        {...props}
+    >
+
+### File: components/ui/term-tooltip.tsx
+Dependents: None
+Snippet:
+"use client";
+
+
+interface TermTooltipProps {
+    term: string;
+    definition: string;
+    children: React.ReactNode;
+}
+
+export function TermTooltip({ term, definition, children }: TermTooltipProps) {
+    const [isVisible, setIsVisible] = useState(false);
+
+    return (
+        <div
+            className="relative group cursor-help inline-block mx-1"
+
+### File: components/ui/tooltip.tsx
+Dependents: None
+Snippet:
+"use client"
+
+
+
+const TooltipProvider = TooltipPrimitive.Provider
+
+const Tooltip = TooltipPrimitive.Root
+
+const TooltipTrigger = TooltipPrimitive.Trigger
+
+const TooltipContent = React.forwardRef<
+    React.ElementRef<typeof TooltipPrimitive.Content>,
+    React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
+>(({ className, sideOffset = 4, ...props }, ref) => (
+    <TooltipPrimitive.Content
+
+### File: data/trivia.ts
+Dependents: None
+Snippet:
+export interface TriviaFact {
+    fact: string;
+    category: string;
+    source?: string;
+    icon?: React.ElementType;
+}
+
+export const triviaBank: Record<string, TriviaFact[]> = {
+    "חשבונאות": [
+        {
+            "category": "היסטוריה",
+            "fact": "החשבונאי האיטלקי לוקה פאצ'ולי (1494) נחשב לאבי החשבונאות המודרנית. הוא היה חבר קרוב של ליאונרדו דה וינצ'י!",
+            "icon": History
+        },
+
+### File: data/accounting/index.ts
+Dependents: None
+Snippet:
+export const courseData = {
+    id: "accounting",
+    title: "חשבונאות פיננסית א'",
+    subtitle: "השער לעולם העסקים והדיווח הכספי",
+    description: "שליטה בשפת הדיווח הכספי, הבנת דוחות, וניתוח המצב הפיננסי של פירמות. קורס יסוד קריטי לכל מי שרוצה להבין איך עסקים באמת עובדים.",
+
+    heroImage: "/images/accounting-hero.jpg",
+
+    stats: [
+        { label: "פרקים", value: "12", icon: BookOpen },
+        { label: "שעות לימוד", value: "20", icon: Clock },
+        { label: "רמת קושי", value: "גבוהה",
+
+### File: data/microeconomics/index.ts
+Dependents: None
+Snippet:
+export const courseData = {
+    id: "microeconomics",
+    title: "מיקרו כלכלה",
+    subtitle: "הכלכלה שמאחורי הבחירות היומיומיות שלך",
+    description: "מה זו עלות אלטרנטיבית, למה אין ארוחות חינם, ואיך לקבל החלטות כלכליות טובות יותר. קורס מרתק שחושף את המנגנונים שמניעים את השוק ואת הפרטים בתוכו.",
+
+    heroImage: "/images/micro-hero.jpg",
+
+    stats: [
+        { label: "פרקים", value: "12", icon: BookOpen },
+        { label: "שעות לימוד", value: "15", icon: Clock },
+        { label: "רמת קושי", 
+
+### File: data/organizational-behavior/index.ts
+Dependents: None
+Snippet:
+export const courseData = {
+    id: "organizational-behavior",
+    title: "התנהגות ארגונית",
+    subtitle: "הבנת הדינמיקה האנושית בארגונים מודרניים",
+    description: "איך אנשים חושבים, מרגישים ומתנהגים בתוך קבוצות וארגונים. קורס מרתק המשלב פסיכולוגיה, סוציולוגיה וניהול כדי להבין מה באמת מניע הצלחה ארגונית.",
+
+    heroImage: "/images/ob-hero.jpg",
+
+    stats: [
+        { label: "פרקים", value: "7", icon: BookOpen },
+        { label: "שעות לימוד", value: "12", icon: Clock },
+        { label: "רמת
+
+### File: data_backup/trivia.ts
+Dependents: None
+Snippet:
+export interface TriviaFact {
+    fact: string;
+    category: string;
+    source?: string;
+    icon?: React.ElementType;
+}
+
+export const triviaBank: Record<string, TriviaFact[]> = {
+    "חשבונאות": [
+        {
+            "category": "היסטוריה",
+            "fact": "החשבונאי האיטלקי לוקה פאצ'ולי (1494) נחשב לאבי החשבונאות המודרנית. הוא היה חבר קרוב של ליאונרדו דה וינצ'י!",
+            "icon": History
+        },
+
+### File: data_backup/accounting/index.ts
+Dependents: None
+Snippet:
+export const courseData = {
+    id: "accounting",
+    title: "חשבונאות פיננסית א'",
+    subtitle: "השער לעולם העסקים והדיווח הכספי",
+    description: "שליטה בשפת הדיווח הכספי, הבנת דוחות, וניתוח המצב הפיננסי של פירמות. קורס יסוד קריטי לכל מי שרוצה להבין איך עסקים באמת עובדים.",
+
+    heroImage: "/images/accounting-hero.jpg",
+
+    stats: [
+        { label: "פרקים", value: "12", icon: BookOpen },
+        { label: "שעות לימוד", value: "20", icon: Clock },
+        { label: "רמת קושי", value: "גבוהה",
+
+### File: data_backup/microeconomics/index.ts
+Dependents: None
+Snippet:
+export const courseData = {
+    id: "microeconomics",
+    title: "מיקרו כלכלה",
+    subtitle: "הכלכלה שמאחורי הבחירות היומיומיות שלך",
+    description: "מה זו עלות אלטרנטיבית, למה אין ארוחות חינם, ואיך לקבל החלטות כלכליות טובות יותר. קורס מרתק שחושף את המנגנונים שמניעים את השוק ואת הפרטים בתוכו.",
+
+    heroImage: "/images/micro-hero.jpg",
+
+    stats: [
+        { label: "פרקים", value: "12", icon: BookOpen },
+        { label: "שעות לימוד", value: "15", icon: Clock },
+        { label: "רמת קושי", 
+
+### File: data_backup/organizational-behavior/index.ts
+Dependents: None
+Snippet:
+export const courseData = {
+    id: "organizational-behavior",
+    title: "התנהגות ארגונית",
+    subtitle: "הבנת הדינמיקה האנושית בארגונים מודרניים",
+    description: "איך אנשים חושבים, מרגישים ומתנהגים בתוך קבוצות וארגונים. קורס מרתק המשלב פסיכולוגיה, סוציולוגיה וניהול כדי להבין מה באמת מניע הצלחה ארגונית.",
+
+    heroImage: "/images/ob-hero.jpg",
+
+    stats: [
+        { label: "פרקים", value: "7", icon: BookOpen },
+        { label: "שעות לימוד", value: "12", icon: Clock },
+        { label: "רמת
+
+### File: lib/chapter-metadata.ts
+Dependents: None
+Snippet:
+/**
+ * Creates chapter-specific metadata from imported JSON data.
+ * Used by per-chapter layout.tsx files.
+ */
+export function createChapterMetadata(chapterData: {
+    title: string;
+    summary: string;
+    chapterNumber: number;
+}): Metadata {
+    return {
+        title: chapterData.title,
+        description: chapterData.summary,
+        openGraph: {
+            title: chapterData.title,
+
+### File: lib/utils.ts
+Dependents: None
+Snippet:
+export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+}
+
+### File: types/accounting.ts
+Dependents: None
+Snippet:
+export type ContentBlockType = 'concept' | 'calculation' | 'journal_entry' | 'case_study' | 'pitfalls';
+
+export interface BaseBlock {
+    type: ContentBlockType;
+    title: string;
+}
+
+export interface ConceptBlock extends BaseBlock {
+    type: 'concept';
+    academic_text: string;
+    analogy_text: string;
+}
+
+export interface Variable {
+    name: string;
+
+### File: types/chapter.ts
+Dependents: None
+Snippet:
+// ============================================================
+// Sikumnik Teaching-First Chapter Schema v2
+// ============================================================
+// Every chapter is a sequence of Topics rendered as tabs.
+// Every topic is a sequence of ContentBlocks rendered in order.
+// The template renders what the data provides — nothing more.
+// ============================================================
+
+// ── Content Block Types (Discriminated Union) ──────────────
+
+export type
+
+### File: types/exam.ts
+Dependents: None
+Snippet:
+export interface ExamQuestion {
+    id: string;
+    number: number;
+    type: 'multiple-choice';
+    question: string;
+    points: number;
+    options: string[];
+    correctIndex: number;
+    hint?: string;
+    reasoning: {
+        correct: string;
+        wrong: {
+            [key: string]: string;
+        };
+    };
+
+### File: types/math-course.ts
+Dependents: None
+Snippet:
+export interface DualLanguageText {
+    /** The rigorous, academic definition or formula (Lecturer Language) */
+    formalText: string;
+    /** A running street-language narrator - a separate tutor voice that escorts the student through the formal content */
+    streetNarrator: string;
+}
+
+export type MathTermType = 'variable' | 'constant' | 'coefficient' | 'exponent' | 'operator' | 'function';
+
+export interface ColoredMathTerm {
+    /** Unique ID used for Framer Motion layoutId to animate terms 
+
+### File: types/prototype.ts
+Dependents: None
+Snippet:
+export interface ConceptItem {
+    id: number;
+    title: string;
+    description: string;
+}
+
+export interface PrototypeChapterIntroData {
+    courseTitle: string;
+    chapterNumber: number;
+    totalChapters: number;
+    title: string;
+    description: string;
+    readingTime: string;
+    objectives: { id: number; text: string }[];
+    concepts: ConceptItem[];
+
+### File: utils/mathContentParser.ts
+Dependents: None
+Snippet:
+/**
+ * MathContentParser
+ * 
+ * A strict, deterministic TypeScript utility.
+ * It reads markdown input files, structures them by heading (`##`), 
+ * and maps them into a strict `Chapter` scaffold ready for the AI Lecturer.
+ * 
+ * It DOES NOT generate content or use AI. It is strictly a skeletal builder.
+ */
+export class MathContentParser {
+
+    /**
+     * Parses a raw markdown string into a structured Chapter object with empty concept blocks.
+     *
+
+### File: utils/renderMathText.tsx
+Dependents: None
+Snippet:
+/**
+ * Parses mixed text containing both standard strings and KaTeX inline math ($...$) or block math ($$...$$).
+ * Strips delimiters and securely renders via react-katex instead of dangerouslySetInnerHTML.
+ */
+export const renderMathText = (text: string) => {
+    if (!text) return null;
+
+    // If the entire block is wrapped in display math $$...$$
+    if (text.startsWith('$$') && text.endsWith('$$') && text.lastIndexOf('$$') === text.length - 2 && text.indexOf('$$') === 0) {
+        return <Bl
+
+### File: utils/validateLessonOutput.ts
+Dependents: None
+Snippet:
+export interface ValidationError {
+    blockIndex: number;
+    blockType?: string;
+    field: string;
+    message: string;
+}
+
+export interface ValidationResult {
+    valid: boolean;
+    pages?: any[]; // Change back to your LessonPage[] if possible, or any[] to avoid circular dependency
+    errors?: ValidationError[];
+}
+
+const VALID_BLOCK_TYPES: ConceptBlockType[] = [

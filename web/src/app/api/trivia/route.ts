@@ -1,4 +1,4 @@
-import { google } from '@ai-sdk/google';
+import { groq } from '@ai-sdk/groq';
 import { generateText } from 'ai';
 
 export const maxDuration = 30;
@@ -51,7 +51,7 @@ ${JSON.stringify(topicContent, null, 2)}
 Generate 3 interesting "Did You Know" facts that expand on this content or provide surprising context about it.`;
 
         const result = await generateText({
-            model: google('gemini-2.5-flash'),
+            model: groq('llama-3.3-70b-versatile'),
             system: systemPrompt,
             prompt: userPrompt,
             temperature: 0.8,

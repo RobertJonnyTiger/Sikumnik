@@ -42,7 +42,16 @@ export type ConceptBlockType =
     | 'exam-tip'
     | 'guided-exercise'
     | 'checkpoint-quiz'
-    | 'worked-example';
+    | 'worked-example'
+    | 'hook'
+    | 'callout'
+    | 'deep-dive'
+    | 'did-you-know'
+    | 'formula'
+    | 'topic-summary'
+    | 'common-mistake'
+    | 'prerequisite'
+    | 'analogy';
 
 export interface HeroFormulaBlock extends BaseConceptBlock {
     type: 'hero-formula';
@@ -106,14 +115,21 @@ export interface ReferenceTableBlock extends BaseConceptBlock {
 
 export type ConceptBlock = StandardConceptBlock | StreetNarratorBlock | ReferenceTableBlock | HeroFormulaBlock | FormulaCardBlock;
 
+export interface LessonPage {
+    pageTitle: string;
+    blocks: ConceptBlock[];
+}
+
+export type LessonOutput = LessonPage[];
+
 export interface Lesson {
     id: string;
     title: string;
     description?: string;
     /** Flag to mark lessons where the street narrator escort mode is active */
     hasStreetNarrator?: boolean;
-    /** Ordered sequence of teaching blocks */
-    blocks: ConceptBlock[];
+    /** Ordered sequence of teaching pages, each containing blocks */
+    pages: LessonPage[];
 }
 
 export interface Chapter {

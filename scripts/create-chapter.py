@@ -2,6 +2,7 @@ import os
 import sys
 import argparse
 import subprocess
+import re
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -15,8 +16,8 @@ def get_target_files(course: str, topic: str):
     base_dir = PROJECT_ROOT / "input-materials" / course
     target_files = []
     
-    # Check all subdirectories: lecture-slides, ai-slides, exercises
-    subdirs = ["lecture-slides", "ai-slides", "exercises"]
+    # Check all subdirectories: lecture-slides, ai-slides, exercises, exams
+    subdirs = ["lecture-slides", "ai-slides", "exercises", "exams"]
     
     for subdir in subdirs:
         dir_path = base_dir / subdir
@@ -26,7 +27,7 @@ def get_target_files(course: str, topic: str):
                 # A simple check is if f"{topic}" is in the filename. 
                 # Better check: searching exactly for the topic structure.
                 # Assuming the rules defined: "lecture-{topic}-", "{topic}-", "exercise-{topic}-"
-                if file.name.startswith(f"{topic}-") or f"-{topic}-" in file.name or f"lecture-{topic}-" in file.name:
+                if re.search(rf'(?:^|[-_]){re.escape(topic)}[a-z]?[-_.]', file.name):
                     target_files.append(file)
                     
     return target_files
@@ -59,23 +60,29 @@ def main():
     for f in target_files:
         print(f"   - {f.name}")
         
+    extracted_md_path = PROJECT_ROOT / "input-materials" / course / "extracted" / f"topic-{topic}-extracted.md"
     ocr_script = PROJECT_ROOT / "scripts" / "gemini_precision_ocr.py"
     
-    for pdf_file in target_files:
-        print(f"\n🚀 Running OCR on {pdf_file.name}...")
-        cmd = [
-            sys.executable, str(ocr_script),
-            "--pdf", str(pdf_file),
-            "--course", course,
-            "--topic", topic
-        ]
-        
-        if api_key:
-            cmd.extend(["--key", api_key])
+    if not extracted_md_path.exists():
+        for pdf_file in target_files:
+            print(f"\n🚀 Running OCR on {pdf_file.name}...")
+            cmd = [
+                sys.executable, str(ocr_script),
+                "--pdf", str(pdf_file),
+                "--course", course,
+                "--topic", topic
+            ]
             
-        result = subprocess.run(cmd)
-        if result.returncode != 0:
-            print(f"⚠️ OCR failed for {pdf_file.name}, continuing...")
+            if api_key:
+                cmd.extend(["--key", api_key])
+            elif api_key_2:
+                cmd.extend(["--key", api_key_2])
+                
+            result = subprocess.run(cmd)
+            if result.returncode != 0:
+                print(f"⚠️ OCR failed for {pdf_file.name}, continuing...")
+    else:
+        print(f"✅ Found existing extraction: {extracted_md_path.name}. Skipping OCR.")
             
     extracted_md_path = PROJECT_ROOT / "input-materials" / course / "extracted" / f"topic-{topic}-extracted.md"
     

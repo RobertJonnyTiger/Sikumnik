@@ -52,12 +52,22 @@ def generate_lesson(course: str, topic: str, extracted_md_path: Path, api_key: s
         else:
             raise Exception(f"API generation failed: {e}")
             
-    # Validate JSON
+    # Validate JSON shape
     try:
         data = json.loads(response_text)
         if not isinstance(data, list):
             raise ValueError("Parsed JSON is not an array")
-        print("✅ Valid JSON received")
+        for i, page in enumerate(data):
+            if not isinstance(page, dict):
+                raise ValueError(f"Page {i} is not an object")
+            if "pageTitle" not in page or not isinstance(page["pageTitle"], str):
+                raise ValueError(f"Page {i} missing pageTitle string")
+            if "blocks" not in page or not isinstance(page["blocks"], list):
+                raise ValueError(f"Page {i} missing blocks array")
+            if len(page["blocks"]) == 0:
+                raise ValueError(f"Page {i} has empty blocks array")
+                
+        print("✅ Valid JSON shape received")
     except Exception as e:
         first_chars = response_text[:200].replace('\n', '\\n')
         raise Exception(f"Invalid JSON returned from Gemini: {e}\n--- First 200 chars: {first_chars}")
