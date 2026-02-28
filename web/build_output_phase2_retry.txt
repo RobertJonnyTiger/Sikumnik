@@ -1,0 +1,41 @@
+
+> web@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Turbopack build encountered 1 warnings:
+./
+Failed to find font override values for font `Playpen Sans Hebrew`
+Skipping generating a fallback font.
+
+
+Ô£ô Compiled successfully in 17.6s
+  Running TypeScript ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/12) ...
+  Generating static pages using 11 workers (3/12) 
+  Generating static pages using 11 workers (6/12) 
+  Generating static pages using 11 workers (9/12) 
+Ô£ô Generating static pages using 11 workers (12/12) in 1434.2ms
+  Finalizing page optimization ...
+
+Route (app)
+Ôöî Ôùï /
+Ôö£ Ôùï /_not-found
+Ôö£ ãÆ /api/chat
+Ôö£ ãÆ /api/trivia
+Ôö£ Ôùï /components-audit
+Ôö£ Ôùï /courses
+Ôö£ ãÆ /courses/[courseId]/chapter-[chapterId]
+Ôö£ Ôùï /dev-demo/demo
+Ôö£ Ôùï /maslow-pyramid
+Ôö£ Ôùï /robots.txt
+Ôöö Ôùï /sitemap.xml
+
+
+Ôùï  (Static)   prerendered as static content
+ãÆ  (Dynamic)  server-rendered on demand
+

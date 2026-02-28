@@ -74,7 +74,7 @@ def generate_lesson(course: str, topic: str, extracted_md_path: Path, api_key: s
 
     print(f"💾 Writing chapter-{topic}.json...")
     
-    output_dir = PROJECT_ROOT / "web" / "src" / "data" / "chapters" / course
+    output_dir = PROJECT_ROOT / "web" / "src" / "data" / course / "chapters"
     output_dir.mkdir(parents=True, exist_ok=True)
     
     output_file = output_dir / f"chapter-{topic}.json"

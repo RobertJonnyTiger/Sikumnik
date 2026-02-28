@@ -1,0 +1,128 @@
+
+> web@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Turbopack build encountered 6 warnings:
+[next]/internal/font/google/assistant_71e12b98.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/assistant_71e12b98.module.css
+    [next]/internal/font/google/assistant_71e12b98.js
+    ./src/app/layout.tsx
+
+
+[next]/internal/font/google/heebo_3e8ff5e.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/heebo_3e8ff5e.module.css
+    [next]/internal/font/google/heebo_3e8ff5e.js
+    ./src/app/layout.tsx
+
+
+[next]/internal/font/google/jetbrains_mono_dc177b0e.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/jetbrains_mono_dc177b0e.module.css
+    [next]/internal/font/google/jetbrains_mono_dc177b0e.js
+    ./src/app/layout.tsx
+
+
+[next]/internal/font/google/noto_sans_hebrew_769f61d8.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;500;700;900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/noto_sans_hebrew_769f61d8.module.css
+    [next]/internal/font/google/noto_sans_hebrew_769f61d8.js
+    ./src/app/layout.tsx
+
+
+[next]/internal/font/google/playpen_sans_hebrew_9be94382.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Playpen+Sans+Hebrew:wght@400;700&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/playpen_sans_hebrew_9be94382.module.css
+    [next]/internal/font/google/playpen_sans_hebrew_9be94382.js
+    ./src/app/layout.tsx
+
+
+./
+Failed to find font override values for font `Playpen Sans Hebrew`
+Skipping generating a fallback font.
+
+
+
+> Build error occurred
+Error: Turbopack build failed with 5 errors:
+[next]/internal/font/google/assistant_71e12b98.module.css
+next/font: error:
+Failed to fetch `Assistant` from Google Fonts.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/assistant_71e12b98.module.css
+    [next]/internal/font/google/assistant_71e12b98.js
+    ./src/app/layout.tsx
+
+
+[next]/internal/font/google/heebo_3e8ff5e.module.css
+next/font: error:
+Failed to fetch `Heebo` from Google Fonts.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/heebo_3e8ff5e.module.css
+    [next]/internal/font/google/heebo_3e8ff5e.js
+    ./src/app/layout.tsx
+
+
+[next]/internal/font/google/jetbrains_mono_dc177b0e.module.css
+next/font: error:
+Failed to fetch `JetBrains Mono` from Google Fonts.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/jetbrains_mono_dc177b0e.module.css
+    [next]/internal/font/google/jetbrains_mono_dc177b0e.js
+    ./src/app/layout.tsx
+
+
+[next]/internal/font/google/noto_sans_hebrew_769f61d8.module.css
+next/font: error:
+Failed to fetch `Noto Sans Hebrew` from Google Fonts.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/noto_sans_hebrew_769f61d8.module.css
+    [next]/internal/font/google/noto_sans_hebrew_769f61d8.js
+    ./src/app/layout.tsx
+
+
+[next]/internal/font/google/playpen_sans_hebrew_9be94382.module.css
+next/font: error:
+Failed to fetch `Playpen Sans Hebrew` from Google Fonts.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/playpen_sans_hebrew_9be94382.module.css
+    [next]/internal/font/google/playpen_sans_hebrew_9be94382.js
+    ./src/app/layout.tsx
+
+
+    at ignore-listed frames

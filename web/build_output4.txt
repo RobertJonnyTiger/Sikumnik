@@ -1,0 +1,74 @@
+
+> web@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Turbopack build encountered 1 warnings:
+./
+Failed to find font override values for font `Playpen Sans Hebrew`
+Skipping generating a fallback font.
+
+
+Ô£ô Compiled successfully in 17.5s
+  Running TypeScript ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/46) ...
+  Generating static pages using 11 workers (11/46) 
+  Generating static pages using 11 workers (22/46) 
+  Generating static pages using 11 workers (34/46) 
+Ô£ô Generating static pages using 11 workers (46/46) in 2.8s
+  Finalizing page optimization ...
+
+Route (app)
+Ôöî Ôùï /
+Ôö£ Ôùï /_not-found
+Ôö£ ãÆ /api/chat
+Ôö£ ãÆ /api/trivia
+Ôö£ Ôùï /components-audit
+Ôö£ Ôùï /courses
+Ôö£ Ôùï /courses/accounting
+Ôö£ Ôùï /courses/accounting/chapter-0
+Ôö£ Ôùï /courses/accounting/chapter-10
+Ôö£ Ôùï /courses/accounting/chapter-11
+Ôö£ Ôùï /courses/accounting/chapter-12
+Ôö£ Ôùï /courses/accounting/chapter-2
+Ôö£ Ôùï /courses/accounting/chapter-3
+Ôö£ Ôùï /courses/accounting/chapter-4
+Ôö£ Ôùï /courses/accounting/chapter-5
+Ôö£ Ôùï /courses/accounting/chapter-6
+Ôö£ Ôùï /courses/accounting/chapter-7
+Ôö£ Ôùï /courses/accounting/chapter-8
+Ôö£ Ôùï /courses/accounting/chapter-9
+Ôö£ Ôùï /courses/microeconomics
+Ôö£ Ôùï /courses/microeconomics/chapter-1
+Ôö£ Ôùï /courses/microeconomics/chapter-2
+Ôö£ Ôùï /courses/microeconomics/chapter-3
+Ôö£ Ôùï /courses/microeconomics/chapter-4
+Ôö£ Ôùï /courses/microeconomics/chapter-5
+Ôö£ Ôùï /courses/microeconomics/equilibrium-table
+Ôö£ Ôùï /courses/microeconomics/exam
+Ôö£ Ôùï /courses/microeconomics/market-shifts
+Ôö£ Ôùï /courses/organizational-behavior
+Ôö£ Ôùï /courses/organizational-behavior/chapter-1
+Ôö£ Ôùï /courses/organizational-behavior/chapter-2
+Ôö£ Ôùï /courses/organizational-behavior/chapter-3
+Ôö£ Ôùï /courses/organizational-behavior/chapter-4
+Ôö£ Ôùï /courses/organizational-behavior/chapter-5
+Ôö£ Ôùï /courses/organizational-behavior/chapter-6
+Ôö£ Ôùï /courses/organizational-behavior/chapter-7
+Ôö£ Ôùï /courses/organizational-behavior/diagnostic-workshop
+Ôö£ Ôùï /courses/organizational-behavior/exam-simulation
+Ôö£ Ôùï /courses/organizational-behavior/situational-leadership
+Ôö£ Ôùï /courses/organizational-behavior/summary
+Ôö£ Ôùï /maslow-pyramid
+Ôö£ Ôùï /math/demo
+Ôö£ Ôùï /robots.txt
+Ôöö Ôùï /sitemap.xml
+
+
+Ôùï  (Static)   prerendered as static content
+ãÆ  (Dynamic)  server-rendered on demand
+

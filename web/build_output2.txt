@@ -1,0 +1,30 @@
+
+> web@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Turbopack build encountered 1 warnings:
+./
+Failed to find font override values for font `Playpen Sans Hebrew`
+Skipping generating a fallback font.
+
+
+Ô£ô Compiled successfully in 11.1s
+  Running TypeScript ...
+Failed to compile.
+
+./src/app/math/demo/page.tsx:127:29
+Type error: Type '{ symbol: string; name: string; }[]' is not assignable to type 'Variable[]'.
+  Property 'desc' is missing in type '{ symbol: string; name: string; }' but required in type 'Variable'.
+
+  125 |                             formula={formulaCardData.formula}
+  126 |                             description={formulaCardData.description}
+> 127 |                             variables={formulaCardData.variables}
+      |                             ^
+  128 |                         />
+  129 |                     </div>
+  130 |                 </section>
+Next.js build worker exited with code: 1 and signal: null

@@ -1,0 +1,29 @@
+
+> web@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Turbopack build encountered 1 warnings:
+./
+Failed to find font override values for font `Playpen Sans Hebrew`
+Skipping generating a fallback font.
+
+
+Ô£ô Compiled successfully in 18.7s
+  Running TypeScript ...
+Failed to compile.
+
+./src/utils/mathContentParser.ts:45:21
+Type error: Object literal may only specify known properties, and 'blocks' does not exist in type 'Lesson'.
+
+  43 |                     id: `${chapterId}-lesson-${lessonCounter++}`,
+  44 |                     title: lessonTitle,
+> 45 |                     blocks: [] // Empty array for the Lecturer agent to fill
+     |                     ^
+  46 |                 };
+  47 |             } else if (line.startsWith('# ')) {
+  48 |                 // Ignore H1 as it's usually the document title, handled by chapterTitle
+Next.js build worker exited with code: 1 and signal: null

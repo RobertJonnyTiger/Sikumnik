@@ -1,0 +1,33 @@
+
+> web@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Turbopack build encountered 1 warnings:
+./
+Failed to find font override values for font `Playpen Sans Hebrew`
+Skipping generating a fallback font.
+
+
+
+> Build error occurred
+Error: Turbopack build failed with 1 errors:
+./src/app/(marketing)/layout.tsx:2:1
+Module not found: Can't resolve './globals.css'
+  1 | import type { Metadata } from "next";
+> 2 | import "./globals.css";
+    | ^^^^^^^^^^^^^^^^^^^^^^^
+  3 | // import "katex/dist/katex.min.css"; // Moved to CDN in head for reliability
+  4 | import { cn } from "@/lib/utils";
+  5 | import { NavigationWrapper } from "@/components/layout/NavigationWrapper";
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (./src/app/(marketing)/layout.tsx:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
