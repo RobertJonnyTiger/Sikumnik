@@ -44,6 +44,9 @@ interface Degree {
 }
 
 // --- Navigation Data ---
+// ⚠️ ARCHITECTURE NOTE: This navigation data is manually maintained.
+// It must stay in sync with: web/src/data/math/index.ts and web/src/data/courses/registry.ts
+// TODO: Refactor to auto-generate from course registry in a future sprint.
 const navigationData: Degree[] = [
     {
         title: "בית הספר לניהול (B.A)",
@@ -59,6 +62,7 @@ const navigationData: Degree[] = [
                         title: "יסודות החשבונאות",
                         items: [
                             { title: "פרק 1: מבוא ומושגי יסוד", href: "/courses/accounting/chapter-0" },
+                            { title: "פרק 1: עריכת מאזן", href: "/courses/accounting/chapter-1" },
                             { title: "פרק 2: עריכת מאזן", href: "/courses/accounting/chapter-2" },
                         ]
                     },
@@ -116,6 +120,8 @@ const navigationData: Degree[] = [
                             { title: "פרק 3: גורמי ייצור ויתרון יחסי", href: "/courses/microeconomics/chapter-3" },
                             { title: "פרק 4: צמיחה ומענקים", href: "/courses/microeconomics/chapter-4" },
                             { title: "פרק 5: מסחר בינלאומי א'", href: "/courses/microeconomics/chapter-5" },
+                            { title: "פרק 6: ...", href: "/courses/microeconomics/chapter-6" },
+                            { title: "פרק 7: ...", href: "/courses/microeconomics/chapter-7" },
                             { title: "פרק 8: הביקוש", href: "/courses/microeconomics/chapter-8" },
                         ]
                     },
@@ -137,7 +143,8 @@ const navigationData: Degree[] = [
                         id: "math-intro-algebra",
                         title: "מבוא ואלגברה בסיסית",
                         items: [
-                            { title: "פרק 1: אלגברה בסיסית", href: "/courses/math/chapter-1" },
+                            { title: "פרק 1: אלגברה בסיסית", href: "/courses/math/chapter-01" },
+                            { title: "פרק 2: הגדרת גבול של פונקציה", href: "/courses/math/chapter-02" },
                         ]
                     }
                 ]

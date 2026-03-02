@@ -1,8 +1,6 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
-import { useParams, notFound } from "next/navigation";
+import { notFound } from "next/navigation";
 import {
     BookOpen,
     Clock,
@@ -13,21 +11,21 @@ import {
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { motion } from "framer-motion";
+import { COURSE_REGISTRY, CourseId } from "@/data/courses/registry";
 
-// Simplified lookup - in a real app this would be a dynamic import or API call
-import { courseData as microeconomics } from "@/data/microeconomics";
-import { courseData as math } from "@/data/math";
+interface PageProps {
+    params: Promise<{ courseId: string }>;
+}
 
-const COURSE_MAP: Record<string, any> = {
-    microeconomics,
-    math,
-};
+export default async function CourseOverviewPage(props: PageProps) {
+    const params = await props.params;
+    const courseId = params.courseId;
 
-export default function CourseOverviewPage() {
-    const params = useParams();
-    const courseId = params?.courseId as string;
-    const course = COURSE_MAP[courseId];
+    if (!courseId || !(courseId in COURSE_REGISTRY)) {
+        return notFound();
+    }
+
+    const course = await COURSE_REGISTRY[courseId as CourseId]();
 
     if (!course) {
         return notFound();

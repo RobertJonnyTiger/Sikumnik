@@ -33,7 +33,14 @@ export const courseData = {
                     number: 1,
                     title: "אלגברה בסיסית",
                     description: "נוסחאות כפל מקוצר, פירוק לגורמים ותחום הגדרה.",
-                    href: "/courses/math/chapter-1"
+                    href: "/courses/math/chapter-01"
+                },
+                {
+                    id: "chapter-2",
+                    number: 2,
+                    title: "הגדרת גבול של פונקציה וגבולות חד-צדדיים",
+                    description: "גבולות באינסוף ואסימפטוטות",
+                    href: "/courses/math/chapter-02"
                 }
             ]
         }
