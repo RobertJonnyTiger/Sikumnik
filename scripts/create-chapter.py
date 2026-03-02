@@ -39,7 +39,7 @@ def main():
     
     args = parser.parse_args()
     course = args.course
-    topic = args.topic
+    topic = args.topic.zfill(2)
     
     load_dotenv(PROJECT_ROOT / ".env", override=True)
     

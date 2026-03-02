@@ -11,7 +11,11 @@ export const renderMathText = (text: string) => {
 
     // If the entire block is wrapped in display math $$...$$
     if (text.startsWith('$$') && text.endsWith('$$') && text.lastIndexOf('$$') === text.length - 2 && text.indexOf('$$') === 0) {
-        return <BlockMath math={text.slice(2, -2).trim()} />;
+        return (
+            <div dir="ltr" className="w-full overflow-x-auto my-4 text-center">
+                <BlockMath math={text.slice(2, -2).trim()} />
+            </div>
+        );
     }
 
     // Split by standard inline math delimiters $...$
@@ -23,7 +27,7 @@ export const renderMathText = (text: string) => {
                 // Odd indices are the captured math strings
                 if (index % 2 === 1) {
                     return (
-                        <span key={index} className="inline-flex mx-1" dir="ltr">
+                        <span key={index} className="inline-flex mx-1 align-middle" dir="ltr">
                             <InlineMath math={part} />
                         </span>
                     );

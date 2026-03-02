@@ -65,7 +65,7 @@ For every page, generate blocks in this order. All block types are mandatory unl
 | 6 | `common-mistake` | exercises + exams | A real recurring error students make on this topic |
 | 7 | `exam-tip` | exams | A real pattern or trap from past exams. Cite source filename |
 | 8 | `guided-exercise` | exams → generated | Real exam question with steps. Mark `"source": "generated"` if invented |
-| 9 | `checkpoint-quiz` | generated | 3 questions minimum. Always agent-generated |
+| 9 | `checkpoint` | generated | 3 questions minimum. Always agent-generated |
 
 ---
 
@@ -76,13 +76,14 @@ Use the full range of block types below. Never limit yourself to only a few type
 **Content blocks:**
 - `hero-formula` — main formula of the sub-topic
 - `text` — theory with `formalText` and `streetNarrator`
-- `definition` — formal term definition
-- `academic-definition` — academic-style formal definition
+- `definition` — formal term definition. Use `"variant": "academic"` for formal academic definitions
 - `formula` — secondary formula (use when sub-topic has multiple formulas)
+- `formula-card` — standalone formula with title, description, and optional variables
 - `reference-table` — structured comparison table (minimum 3 rows)
-- `analogy` — real-world metaphor that builds intuition
+- `analogy` — real-world metaphor that builds intuition. Use `"icon": "💡"` for fun facts
 - `deep-dive` — extended analysis for complex concepts
-- `callout` — important warning or note (variants: `info`, `warning`, `tip`)
+- `alert` — important warning or note (`"variant"`: `"tip"`, `"warning"`, or `"prerequisite"`)
+- `callout` — alias for `alert`. Same shape: `variant` (`"info"`, `"warning"`, `"tip"`), optional `title`, and `content`
 
 **Example blocks:**
 - `worked-example` — fully solved example from exercises
@@ -90,20 +91,20 @@ Use the full range of block types below. Never limit yourself to only a few type
 - `example` — shorter demonstration
 
 **Warning blocks:**
-- `common-mistake` — recurring student error with explanation
-- `mistake-card` — detailed mistake breakdown
+- `common-mistake` — recurring student error with `mistake` and optional `correction`
 
 **Practice blocks:**
 - `guided-exercise` — step-by-step exam question
-- `exam-question` — raw exam question for practice
-- `checkpoint-quiz` — multiple choice quiz (minimum 3 questions)
+- `exam-questions` — raw exam questions for practice (note: plural)
+- `checkpoint` — multiple choice quiz (minimum 3 questions)
 
 **Context blocks:**
 - `exam-tip` — exam strategy from past papers
-- `did-you-know` — interesting fact that builds engagement
 - `hook` — attention-grabbing opening (use on first page only)
-- `prerequisite` — what student must know before this page
 - `topic-summary` — recap at end of page (use on every page)
+- `street-smart` — street-smart tip or shortcut
+- `list` — simple list of items
+- `image` — image with `src`, `alt`, and optional `caption`
 
 ---
 
@@ -127,7 +128,7 @@ Before finalizing output, verify:
 - [ ] Every formal term introduced has a `definition` block
 - [ ] Every formula introduced has a `hero-formula` or `formula` block
 - [ ] Every page ends with a `topic-summary` block
-- [ ] Every page has at least one practice block (`guided-exercise` or `checkpoint-quiz`)
+- [ ] Every page has at least one practice block (`guided-exercise` or `checkpoint`)
 - [ ] No sub-topic from the source material is missing
 
 ---
@@ -152,7 +153,9 @@ Before finalizing output, verify:
     "blocks": [
       {
         "type": "hook",
-        "content": "..."
+        "opener": "...",
+        "question": "...",
+        "context": "..."
       },
       {
         "type": "hero-formula",
@@ -214,7 +217,7 @@ Before finalizing output, verify:
         "content": "..."
       },
       {
-        "type": "checkpoint-quiz",
+        "type": "checkpoint",
         "questions": [
           {
             "id": "cq-01-1",

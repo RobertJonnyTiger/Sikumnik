@@ -128,6 +128,20 @@ const navigationData: Degree[] = [
                     }
                 ]
             },
+            {
+                title: "מתמטיקה א'",
+                courseId: "math",
+                href: "/courses/math",
+                topics: [
+                    {
+                        id: "math-intro-algebra",
+                        title: "מבוא ואלגברה בסיסית",
+                        items: [
+                            { title: "פרק 1: אלגברה בסיסית", href: "/courses/math/chapter-1" },
+                        ]
+                    }
+                ]
+            },
             { title: "סטטיסטיקה א'", courseId: "stat-a", href: "/courses/statistics" },
             {
                 title: "התנהגות ארגונית",

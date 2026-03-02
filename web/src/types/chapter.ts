@@ -28,7 +28,17 @@ export type ContentBlock =
     | AttributionFlowchartBlock
     | DiagnosticCaseStudyBlock
     | SituationalLeadershipGuideBlock
-    | StreetSmartBlock;
+    | StreetSmartBlock
+    | HeroFormulaBlock
+    | FormulaCardBlock
+    | ReferenceTableBlock
+    | ExamTipBlock
+    | TopicSummaryBlock
+    | WorkedExampleBlock
+    | TextBlock
+    | CommonMistakeBlock
+    | CalloutBlock
+    | CheckpointQuizBlock;
 
 export interface ListBlock {
     type: "list";
@@ -59,7 +69,8 @@ export interface DefinitionBlock {
     type: "definition";
     variant?: "academic" | "simple";
     term: string;
-    content: string;
+    content?: string;
+    definition?: string; // Support both v2 'content' and v3 'definition'
     source?: string;
     subject?: string;
     tooltips?: Record<string, string>;
@@ -70,6 +81,52 @@ export interface FormulaBlock {
     title: string;
     formula: string; // LaTeX
     variables?: Variable[];
+    description?: string;
+}
+
+export interface HeroFormulaBlock {
+    type: "hero-formula";
+    title: string;
+    subtitle?: string;
+    formula: string;
+    katexString?: string; // Allow either field name
+    description?: string;
+    streetNarrator?: string;
+}
+
+export interface FormulaCardBlock {
+    type: "formula-card";
+    title: string;
+    formula: string;
+    description?: string;
+    variables?: Variable[];
+}
+
+export interface WorkedExampleBlock {
+    type: "worked-example";
+    title: string;
+    scenario: string;
+    solution: string;
+    calculation?: string;
+}
+
+export interface TextBlock {
+    type: "text";
+    formalText?: string;
+    streetNarrator?: string;
+}
+
+export interface CommonMistakeBlock {
+    type: "common-mistake";
+    mistake: string;
+    correction?: string;
+}
+
+export interface CalloutBlock {
+    type: "callout";
+    variant?: "info" | "warning" | "tip";
+    title?: string;
+    content: string;
 }
 
 export interface ExampleBlock {
@@ -126,6 +183,11 @@ export interface CheckpointBlock {
     questions: QuizQuestion[];
 }
 
+export interface CheckpointQuizBlock {
+    type: "checkpoint-quiz";
+    questions: QuizQuestion[];
+}
+
 export interface HookBlock {
     type: "hook";
     opener: string;
@@ -135,9 +197,21 @@ export interface HookBlock {
 
 export interface StreetSmartBlock {
     type: "street-smart";
-    title: string;
+    title?: string;
     content: string;
     emoji?: string;
+    opener?: string;
+}
+
+export interface ExamTipBlock {
+    type: "exam-tip";
+    content: string;
+    source?: string;
+}
+
+export interface TopicSummaryBlock {
+    type: "topic-summary";
+    content: string;
 }
 
 export interface MaslowPyramidBlock {
@@ -199,6 +273,20 @@ export interface SituationalLeadershipGuideBlock {
     type: "situational-leadership-guide";
 }
 
+export interface ReferenceTableRowV2 {
+    ruleName: string;
+    generalForm: string;
+    numericExample: string;
+    streetExplanation: string;
+}
+
+export interface ReferenceTableBlock {
+    type: "reference-table";
+    title?: string;
+    tableCategory?: string;
+    rows: ReferenceTableRowV2[];
+}
+
 // ── Supporting Types ──────────────────────────────────────
 
 export interface QuizQuestion {
@@ -238,6 +326,7 @@ export interface Topic {
     id: string;
     title: string;
     blocks: ContentBlock[];
+    pageTitle?: string; // Support for paginated structure
 }
 
 // ── Chapter (the full page) ───────────────────────────────
