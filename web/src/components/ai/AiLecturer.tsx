@@ -11,6 +11,9 @@ interface AiLecturerProps {
 }
 
 export function AiLecturer({ context }: AiLecturerProps) {
+    // TEMPORARILY DISABLED - API call skipped
+    return null;
+    
     const [isOpen, setIsOpen] = useState(false);
     const [input, setInput] = useState("");
 

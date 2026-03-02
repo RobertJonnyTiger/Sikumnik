@@ -49,6 +49,8 @@ const DidYouKnow: React.FC<DidYouKnowProps> = ({ facts: staticFacts, topicData, 
 
     // Generate facts when topic changes
     React.useEffect(() => {
+        // TEMPORARILY DISABLED - API call skipped
+        return;
         if (!topicData || (staticFacts && staticFacts.length > 0)) return;
 
         const generateFacts = async () => {
