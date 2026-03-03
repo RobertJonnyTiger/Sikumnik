@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { getSidebarData, type Degree } from "@/lib/sidebar-data";
 import {
     ChevronDown,
     ChevronLeft,
@@ -14,7 +15,8 @@ import {
     BookOpen,
     Sparkles,
     LogOut,
-    Menu
+    Menu,
+    Loader2
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -37,39 +39,8 @@ interface Course {
     topics?: Topic[];
 }
 
-interface Degree {
-    title: string;
-    icon: React.ElementType;
-    items: Course[];
-}
-
 // --- Navigation Data ---
-// ⚠️ ARCHITECTURE NOTE: This navigation data is manually maintained.
-// It must stay in sync with: web/src/data/math/index.ts and web/src/data/courses/registry.ts
-// TODO: Refactor to auto-generate from course registry in a future sprint.
-const navigationData: Degree[] = [
-    {
-        title: "בית הספר לניהול (B.A)",
-        icon: GraduationCap,
-        items: [
-            {
-                title: "מתמטיקה א'",
-                courseId: "math",
-                href: "/courses/math",
-                topics: [
-                    {
-                        id: "math-intro-algebra",
-                        title: "מבוא ואלגברה בסיסית",
-                        items: [
-                            { title: "פרק 1: אלגברה בסיסית", href: "/courses/math/chapter-01" },
-                            { title: "פרק 2: הגדרת גבול של פונקציה", href: "/courses/math/chapter-02" },
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
-];
+// Auto-generated from course registry (see lib/sidebar-data.ts)
 
 export function Sidebar({ className }: { className?: string }) {
     const pathname = usePathname();
@@ -79,6 +50,23 @@ export function Sidebar({ className }: { className?: string }) {
     const [expandedTopics, setExpandedTopics] = useState<string[]>([]);
     const [isMobileOpen, setIsMobileOpen] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [navigationData, setNavigationData] = useState<Degree[]>([]);
+    const [isLoadingCourses, setIsLoadingCourses] = useState(true);
+
+    // Load courses data
+    useEffect(() => {
+        const loadCourses = async () => {
+            try {
+                const data = await getSidebarData();
+                setNavigationData(data);
+            } catch (error) {
+                console.error("Failed to load sidebar data:", error);
+            } finally {
+                setIsLoadingCourses(false);
+            }
+        };
+        loadCourses();
+    }, []);
 
     // Initial load
     useEffect(() => {
@@ -219,14 +207,22 @@ export function Sidebar({ className }: { className?: string }) {
                         )}
 
                         <div className="space-y-4">
-                            {navigationData.map((degree) => (
-                                <div key={degree.title} className="space-y-2">
-                                    {degree.items.map(course => {
+                            {isLoadingCourses && (
+                                <div className="flex items-center justify-center py-8">
+                                    <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+                                </div>
+                            )}
+                            {!isLoadingCourses && navigationData.length === 0 && (
+                                <p className="text-sm text-muted-foreground px-2">אין קורסים זמינים</p>
+                            )}
+                            {!isLoadingCourses && navigationData.length > 0 && navigationData.map((degree, degreeIdx) => (
+                                <div key={degree.title || `degree-${degreeIdx}`} className="space-y-2">
+                                    {degree.items.map((course, courseIdx) => {
                                         const isExpanded = expandedCourses.includes(course.courseId);
                                         const isActive = pathname.startsWith(course.href);
 
                                         return (
-                                            <div key={course.courseId} className="space-y-1">
+                                            <div key={course.courseId || `course-${courseIdx}`} className="space-y-1">
                                                 {/* Course Header */}
                                                 <button
                                                     onClick={() => toggleCourse(course)}
@@ -262,12 +258,12 @@ export function Sidebar({ className }: { className?: string }) {
                                                             className="overflow-hidden"
                                                         >
                                                             <div className="pr-11 pl-2 space-y-4 pt-2 pb-4">
-                                                                {course.topics?.map(topic => {
+                                                                {course.topics?.map((topic, topicIdx) => {
                                                                     const isTopicExpanded = expandedTopics.includes(topic.id);
                                                                     const hasActiveItem = topic.items.some(i => i.href === pathname);
 
                                                                     return (
-                                                                        <div key={topic.id} className="space-y-1">
+                                                                        <div key={topic.id || `topic-${topicIdx}`} className="space-y-1">
                                                                             <button
                                                                                 onClick={() => toggleTopic(topic.id)}
                                                                                 className={cn(
@@ -287,7 +283,7 @@ export function Sidebar({ className }: { className?: string }) {
                                                                                         exit={{ height: 0 }}
                                                                                         className="overflow-hidden border-r border-border/50 mr-1 pr-3 space-y-1"
                                                                                     >
-                                                                                        {topic.items.map(chapter => (
+                                                                                        {topic.items.map((chapter, chapterIdx) => (
                                                                                             <Link
                                                                                                 key={chapter.href}
                                                                                                 href={chapter.href}

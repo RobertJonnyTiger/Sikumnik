@@ -28,9 +28,10 @@ import { TextBlock } from "../blocks/TextBlock";
 
 interface BlockRendererProps {
     block: ContentBlock;
+    interactiveRegistry?: Record<string, React.ReactNode>;
 }
 
-export const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
+export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactiveRegistry }) => {
     switch (block.type) {
         case "explanation":
             return <Explanation content={block.content} highlight={block.highlight} />;
