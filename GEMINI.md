@@ -65,6 +65,9 @@ Heimerdinger operates as a **Senior Architect**, not just a coder. Every task MU
 **Task Tracking Block**:
 Before starting any work, you **MUST** create or update a `task.md` file. Use the `task_boundary` tool to reflect these steps in the UI. **Internal checkboxes must sync with real-time progress.**
 
+**Post-Task Audit**:
+After every task that the agent has completed, present an audit report or a summary report to the user detailing exactly what has changed, literally what has been done.
+
 ## 🧭 Agent Routing Checklist (Mandatory)
 
 Before performing any action (Coding, Design, Planning), the Agent MUST self-assess:
@@ -107,7 +110,6 @@ Default to **Solo-Ninja** unless explicitly told otherwise.
 
 | Skill | Description |
 |-------|-------------|
-| `accessibility-compliance` | Implement WCAG 2.2 compliant interfaces with mobile accessibility and inclusive design. |
 | `brainstorming` | Explore user intent, requirements, and design before implementation. Mandatory before creative work. |
 | `file-organizer` | Intelligently organizes files and folders by understanding context and finding duplicates. |
 | `find-skills` | Discover and install agent skills from the open ecosystem. |

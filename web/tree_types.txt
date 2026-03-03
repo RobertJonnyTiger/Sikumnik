@@ -1,8 +1,0 @@
-Folder PATH listing for volume OS
-Volume serial number is B8AB-ECAC
-C:\USERS\ROBER\AI PROJECTS\SIKUMNIK\WEB\SRC\TYPES
-    chapter.ts
-    math-course.ts
-    
-No subfolders exist 
-

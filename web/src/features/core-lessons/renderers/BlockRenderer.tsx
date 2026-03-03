@@ -21,13 +21,16 @@ import { HeroFormula } from "@/features/math/components/HeroFormula";
 import { ReferenceTable } from "@/features/math/components/ReferenceTable";
 import { TopicSummary } from "../blocks/TopicSummary";
 import { LessonMarkdown } from "../blocks/LessonMarkdown";
+import { CommonMistake } from "../blocks/CommonMistake";
+import { ExamTip } from "../blocks/ExamTip";
+import { Callout } from "../blocks/Callout";
+import { TextBlock } from "../blocks/TextBlock";
 
 interface BlockRendererProps {
     block: ContentBlock;
-    interactiveRegistry?: Record<string, React.ReactNode>;
 }
 
-export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactiveRegistry }) => {
+export const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
     switch (block.type) {
         case "explanation":
             return <Explanation content={block.content} highlight={block.highlight} />;
@@ -109,20 +112,11 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
         case "list":
             return <List items={block.items} />;
 
-        case "interactive":
-            if (interactiveRegistry && interactiveRegistry[block.componentId]) {
-                return <>{interactiveRegistry[block.componentId]}</>;
-            }
-            return null;
-
         case "alert":
             return <Alert variant={block.variant} title={block.title}><LessonMarkdown>{block.content}</LessonMarkdown></Alert>;
 
-        case "callout": {
-            const variantMap = { info: "tip", warning: "warning", tip: "tip" } as const;
-            const alertVariant = variantMap[block.variant ?? "info"];
-            return <Alert variant={alertVariant} title={block.title}><LessonMarkdown>{block.content}</LessonMarkdown></Alert>;
-        }
+        case "callout":
+            return <Callout variant={block.variant} title={block.title} content={block.content} />;
 
 
         case "checkpoint":
@@ -153,55 +147,26 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
 
         case "text":
             return (
-                <div dir="rtl" className="space-y-4 my-4">
-                    {(block as any).formalText && (
-                        <div className="text-base text-foreground leading-relaxed">
-                            <LessonMarkdown>{(block as any).formalText}</LessonMarkdown>
-                        </div>
-                    )}
-                    {(block as any).streetNarrator && (
-                        <div className="border-r-4 border-primary pr-4 bg-primary/5 rounded-l-xl py-3 px-4 italic text-sm text-foreground/80">
-                            <LessonMarkdown>{(block as any).streetNarrator}</LessonMarkdown>
-                        </div>
-                    )}
-                </div>
+                <TextBlock
+                    formalText={(block as any).formalText}
+                    streetNarrator={(block as any).streetNarrator}
+                />
             );
 
         case "common-mistake":
             return (
-                <div dir="rtl" className="my-4 rounded-xl border-2 border-destructive/40 bg-destructive/5 p-4 space-y-2">
-                    <p className="font-black text-destructive text-sm flex items-center gap-2">
-                        ⚠️ טעות נפוצה
-                    </p>
-                    <LessonMarkdown className="text-sm text-foreground">
-                        {(block as any).mistake}
-                    </LessonMarkdown>
-                    {(block as any).correction && (
-                        <div className="border-t border-destructive/20 pt-2 mt-2">
-                            <p className="font-bold text-success text-xs mb-1">✓ התיקון:</p>
-                            <LessonMarkdown className="text-sm text-foreground">
-                                {(block as any).correction}
-                            </LessonMarkdown>
-                        </div>
-                    )}
-                </div>
+                <CommonMistake
+                    mistake={(block as any).mistake}
+                    correction={(block as any).correction}
+                />
             );
 
         case "exam-tip":
             return (
-                <div dir="rtl" className="my-4 rounded-xl border-2 border-warning bg-warning/10 p-4 space-y-1">
-                    <p className="font-black text-warning-foreground text-sm flex items-center gap-2">
-                        🎯 טיפ למבחן
-                        {(block as any).source && (
-                            <span className="font-normal text-xs text-muted-foreground">
-                                ({(block as any).source})
-                            </span>
-                        )}
-                    </p>
-                    <LessonMarkdown className="text-sm text-foreground">
-                        {(block as any).content}
-                    </LessonMarkdown>
-                </div>
+                <ExamTip
+                    content={(block as any).content}
+                    source={(block as any).source}
+                />
             );
 
         case "topic-summary":

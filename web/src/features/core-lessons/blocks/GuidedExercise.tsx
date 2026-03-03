@@ -98,7 +98,7 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
 
             {/* Steps */}
             <div className="px-6 pb-6 space-y-4">
-                {steps.map((step, idx) => (
+                {(steps || []).map((step, idx) => (
                     <div key={idx} className="border border-border/60 rounded-xl overflow-hidden shadow-sm bg-card/30">
                         <button
                             onClick={() => toggleStep(idx)}

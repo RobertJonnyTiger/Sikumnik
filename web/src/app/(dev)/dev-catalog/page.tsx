@@ -10,11 +10,18 @@ import { Hook } from "@/features/core-lessons/blocks/Hook";
 import { Explanation } from "@/features/core-lessons/blocks/Explanation";
 import { Definition } from "@/features/core-lessons/blocks/Definition";
 import { List } from "@/features/core-lessons/blocks/List";
+import { Alert } from "@/features/core-lessons/blocks/Alert";
+import { Callout } from "@/features/core-lessons/blocks/Callout";
+import { CommonMistake } from "@/features/core-lessons/blocks/CommonMistake";
+import { ExamTip } from "@/features/core-lessons/blocks/ExamTip";
+import { TextBlock } from "@/features/core-lessons/blocks/TextBlock";
 
 // Narrative & Tone
 import { Analogy } from "@/features/core-lessons/blocks/Analogy";
 import { StreetSmartSketch } from "@/features/core-lessons/blocks/StreetSmartSketch";
 import { DeepDive } from "@/features/core-lessons/blocks/DeepDive";
+import DidYouKnow from "@/features/core-lessons/blocks/DidYouKnow";
+
 // Interactive & Assessment
 import { GuidedExercise } from "@/features/core-lessons/blocks/GuidedExercise";
 import { CheckpointQuiz } from "@/features/core-lessons/blocks/CheckpointQuiz";
@@ -23,9 +30,11 @@ import { CheckpointQuiz } from "@/features/core-lessons/blocks/CheckpointQuiz";
 // Math & Technical
 import { FormulaCard } from "@/features/core-lessons/blocks/FormulaCard";
 import { WorkedExample } from "@/features/core-lessons/blocks/WorkedExample";
+import { HeroFormula } from "@/features/math/components/HeroFormula";
+import { ReferenceTable } from "@/features/math/components/ReferenceTable";
+import { ConceptTranslation } from "@/features/math/components/ConceptTranslation";
 
 // Summary & Structure
-import DidYouKnow from "@/features/core-lessons/blocks/DidYouKnow";
 import { TopicSummary } from "@/features/core-lessons/blocks/TopicSummary";
 import { NarrativeSummary } from "@/features/core-lessons/blocks/NarrativeSummary";
 import { TopicNavigation } from "@/features/core-lessons/blocks/TopicNavigation";
@@ -41,9 +50,21 @@ const CATEGORIES = [
         icon: Layout,
         components: [
             { id: "hook", name: "Hook" },
+            { id: "text", name: "TextBlock" },
             { id: "explanation", name: "Explanation" },
             { id: "definition", name: "Definition" },
             { id: "list", name: "List" },
+        ]
+    },
+    {
+        id: "tips",
+        name: "Tips & Alerts",
+        icon: Beaker,
+        components: [
+            { id: "alert", name: "Alert" },
+            { id: "callout", name: "Callout" },
+            { id: "common-mistake", name: "CommonMistake" },
+            { id: "exam-tip", name: "ExamTip" },
         ]
     },
     {
@@ -54,6 +75,7 @@ const CATEGORIES = [
             { id: "analogy", name: "Analogy" },
             { id: "street-smart-sketch", name: "StreetSmartSketch" },
             { id: "deep-dive", name: "DeepDive" },
+            { id: "did-you-know", name: "DidYouKnow" },
         ]
     },
     {
@@ -71,6 +93,9 @@ const CATEGORIES = [
         icon: Calculator,
         components: [
             { id: "formula-card", name: "FormulaCard" },
+            { id: "hero-formula", name: "HeroFormula" },
+            { id: "reference-table", name: "ReferenceTable" },
+            { id: "concept-translation", name: "ConceptTranslation" },
             { id: "worked-example", name: "WorkedExample" },
         ]
     },
@@ -152,6 +177,14 @@ export default function DevCatalogPage() {
                             />
                         </Section>
 
+                        <Section id="text" name="TextBlock">
+                            <TextBlock
+                                formalText="**הפונקציה הקווית** מוגדרת כ-$f(x) = mx + b$ כאשר $m$ הוא השיפוע (slope) ו-$b$ היא נקודת החיתוך עם ציר ה-$y$. בהסתכלות על גרף הפונקציה $y = 3x + 7$, ניתן לראות שהיא חותכת את ציר ה-$y$ בנקודה $(0, 7)$ ועולה בשיפוע של $3$ לכל יחידה של $x$."
+
+                                streetNarrator="תחשוב על זה כמו �חשבון הבנק שלך: כל יום אתה מקבל אותו סכום קבוע (זה ה-$b$), ועוד קצת כל פעם שאתה עובד (זה ה-$m \\cdot x$). אז החשבון תמיד יעלה בקו ישר, בלי הפתעות. ה-$m$ זה כמו הריבית - אם היא חיובית, אתה מרוויח; אם שלילית, אתה מפסיד. ה-$b$ זה הסכום ההתחלתי - מאיפה התחלת."
+                            />
+                        </Section>
+
                         <Section id="explanation" name="Explanation">
                             <Explanation
                                 content="**עקומת התמורה (PPF)** מציגה את כל השילובים האפשריים לייצור שני מוצרים, בהינתן כמות משאבים וטכנולוגיה קבועים."
@@ -180,6 +213,47 @@ export default function DevCatalogPage() {
                         </Section>
                     </SectionGroup>
 
+                    {/* --- TIPS & ALERTS --- */}
+                    <SectionGroup title="Tips & Alerts">
+                        <Section id="alert" name="Alert">
+                            <Alert variant="warning" title="שימו לב לסימן!">
+                                כאשר פותרים משוואה ריבועית מהצורה ax2 + bx + c = 0, חשוב לזכור את הנוסחה הכללית. זו טעות נפוצה במבחנים לבלבל בין הפורמולות.
+                            </Alert>
+                            <div className="mt-4">
+                                <Alert variant="success" title="הצלחה!">
+                                    מצאתם את הפתרון הנכון! עכשיו תוכלו לפתור כל משוואה ריבועית.
+                                </Alert>
+                            </div>
+                            <div className="mt-4">
+                                <Alert variant="prerequisite">
+                                    לפני שנמשיך, ודאו שאתם שולטים בחוקי החזקות הבסיסיים.
+                                </Alert>
+                            </div>
+                        </Section>
+
+                        <Section id="callout" name="Callout">
+                            <Callout 
+                                variant="info" 
+                                title="מה זה Δ ?" 
+                                content="הדלתא (Δ) היא הדיסקרימיננטה של המשוואה הריבועית. היא קובעת כמה פתרונות יש למשוואה: אם Δ > 0 יש שני פתרונות ממשיים, אם Δ = 0 יש פתרון ממשי אחד (כפול), ואם Δ < 0 אין פתרונות ממשיים (אבל יש שני פתרונות מרוכבים)."
+                            />
+                        </Section>
+
+                        <Section id="common-mistake" name="CommonMistake">
+                            <CommonMistake 
+                                mistake="Many students write √(a² + b²) = a + b, which is WRONG! For example, √(3² + 4²) = √(9 + 16) = √25 = 5, but 3 + 4 = 7 ≠ 5."
+                                correction="הזהות הנכונה היא √(a² + b²) לא שווה ל-a + b באופן כללי. רק כאשר a = 0 או b = 0, השוויון מתקיים. במקום זאת, √(a² + b²) = √a² + √b² רק אם a, b ≥ 0 ו-ab = 0."
+                            />
+                        </Section>
+
+                        <Section id="exam-tip" name="ExamTip">
+                            <ExamTip 
+                                content="במבחן, תמיד בדקו קודם אם ניתן לפרק את המשוואה לגורמים לפני שאתם משתמשים בנוסחה הריבועית. למשל, $x^2 - 9 = 0$ נפתר מיידית כ-$(x-3)(x+3)=0$, ולא צריך את הנוסחה הכללית!"
+                                source="מבחן מיקרו כלכלה א' - סמסטר 2024א'"
+                            />
+                        </Section>
+                    </SectionGroup>
+
                     {/* --- NARRATIVE --- */}
                     <SectionGroup title="Narrative & Tone">
                         <Section id="analogy" name="Analogy">
@@ -202,6 +276,16 @@ export default function DevCatalogPage() {
                                 sections={[
                                     { title: "הצגת הבעיה", content: "מים הכרחיים אך זולים. יהלומים לא הכרחיים אך יקרים." },
                                     { title: "הפתרון", content: "ההבחנה בין תועלת כוללת לתועלת שולית." }
+                                ]}
+                            />
+                        </Section>
+
+                        <Section id="did-you-know" name="DidYouKnow">
+                            <DidYouKnow
+                                facts={[
+                                    { category: "היסטוריה", fact: "המושג 'אינפלציה' הגיע מהמילה הלטינית 'inflare' - לנפח. בתחילת המאה ה-20, מחירי הנייר נפחו (עלו) בגלל הדפסת כסף מוגזם!" },
+                                    { category: "מוח", fact: "מחקרים מראים שהמוח שלנו מעריך הפסד פי 2 מאשר רווח שווה ערך. זה נקרא 'aversione to loss' ומסביר למה אנשים מחזיקים במניות יורדות יותר זמן מדאיק." },
+                                    { category: "כלכלה", fact: "הפרדוקס של וילסון: ככל שהמוצר נדיר יותר, כך אנחנו רוצים אותו יותר - עד שהוא נעשה נחוץ כל כך שאנחנו מוכנים לשלם הרבה. זה מסביר את שוק היהלומים!" }
                                 ]}
                             />
                         </Section>
@@ -243,6 +327,50 @@ export default function DevCatalogPage() {
                                 description="מודדת רגישות כמות למחיר."
                                 formula="\varepsilon_{p} = \frac{\% \Delta Q}{\% \Delta P}"
                                 variables={[{ symbol: "ε_p", name: "גמישות", desc: "התוצאה" }]}
+                            />
+                        </Section>
+
+                        <Section id="hero-formula" name="HeroFormula">
+                            <HeroFormula
+                                block={{
+                                    id: "hero-quadratic",
+                                    type: "hero-formula",
+                                    title: "נוסחת השורשים הריבועיים",
+                                    subtitle: "הפתרון למשוואה $ax^2 + bx + c = 0$",
+                                    katexString: "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}",
+                                    streetNarrator: "זוכרים את המשפט הקדום: 'יש מי שמחפש מציאות ויש מי שמוצא בעיות' - אז הנה הנוסחה שתמיד עובדת! פשוט תצי�או את ה-$a$, ה-$b$, וה-$c$ שלכם ותציבו בפורמולה. ה-$\\pm$ אומר שיש שני פתרונות בדרך כלל (חוץ מהמקרה שהדלתא היא 0). כמו שאומרים: 'לכל בעיה יש פתרון, ולפעמים יש שניים!'"
+                                }}
+                            />
+                        </Section>
+
+                        <Section id="reference-table" name="ReferenceTable">
+                            <ReferenceTable
+                                block={{
+                                    id: "derivatives-table",
+                                    type: "reference-table",
+                                    tableCategory: "טבלת נגזרות בסיסיות",
+                                    rows: [
+                                        { id: "d1", ruleName: "קבוע", generalForm: "\\frac{d}{dx}[c] = 0", numericExample: "\\frac{d}{dx}[5] = 0", streetExplanation: "נגזרת של מספר קבוע היא תמיד 0. הקבוע לא זז." },
+                                        { id: "d2", ruleName: "זהות", generalForm: "\\frac{d}{dx}[x] = 1", numericExample: "\\frac{d}{dx}[x] = 1", streetExplanation: "ה-$x$ תמיד עולה בקו ישר בשיפוע 1." },
+                                        { id: "d3", ruleName: "חזקה", generalForm: "\\frac{d}{dx}[x^n] = nx^{n-1}", numericExample: "\\frac{d}{dx}[x^3] = 3x^2", streetExplanation: "הורד את החזקה כמקדם, והורד את החזקה ב-1." },
+                                        { id: "d4", ruleName: "אקספוננט", generalForm: "\\frac{d}{dx}[e^x] = e^x", numericExample: "\\frac{d}{dx}[e^{2x}] = 2e^{2x}", streetExplanation: "ה-$e$ הוא הקסם: הנגזרת שלו היא הוא עצמו!" },
+                                        { id: "d5", ruleName: "לוגריתם", generalForm: "\\frac{d}{dx}[\\ln x] = \\frac{1}{x}", numericExample: "\\frac{d}{dx}[\\ln(3x)] = \\frac{1}{x}", streetExplanation: "הלוגריתם הטבעי יורד ככל ש-$x$ עולה - וזה ההפך מאקספוננט." }
+                                    ]
+                                }}
+                            />
+                        </Section>
+
+                        <Section id="concept-translation" name="ConceptTranslation">
+                            <ConceptTranslation
+                                block={{
+                                    id: "marginal-utility",
+                                    type: "definition",
+                                    title: "תועלת שולית (Marginal Utility)",
+                                    content: {
+                                        formalText: "התועלת השולית היא התוספת לתועלת הכוללת כתוצאה מצריכת יחידה נוספת של המוצר. מתמטית: $MU = \\frac{\\Delta TU}{\\Delta Q}$.",
+                                        streetNarrator: "תחשוב על זה ככה: המאפרסמה הראשונה בפיצה סופר טעימה ונותנת לך הרבה הנאה. השנייה עדיין טעימה אבל פחות. השלישית? כבר לא רעב. זו התועלת השולית - כל פרוסה נוספת נותנת לך פחות ופחות удовольствие (הנאה). זה החוק השולטני: הסופט (הרווח השולי) יורד עם כל יחידה נוספת."
+                                    }
+                                }}
                             />
                         </Section>
 

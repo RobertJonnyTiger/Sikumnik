@@ -37,6 +37,7 @@ npx vitest run path/to/file.test.ts   # Run single test file
 - **Icons:** Lucide React
 - **Math:** KaTeX (react-katex)
 - **Testing:** Vitest 4.0.18, Playwright 1.58.2
+- **Agent SDK**: Agentation 2.2.0
 
 ## Code Style Guidelines
 
@@ -138,7 +139,9 @@ web/src/
 │   └── layout/            # Layout components (Sidebar, Footer)
 ├── lib/                   # Utilities (utils.ts, api-client.ts)
 ├── types/                 # TypeScript type definitions
-└── data/                  # JSON chapter data
+├── data/                  # JSON chapter data
+│   ├── courses/           # Course registry (registry.ts - Source of Truth)
+│   └── chapters/          # Dynamic chapter data
 ```
 
 ## Important Conventions
