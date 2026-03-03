@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-// import "katex/dist/katex.min.css"; // Moved to CDN in head for reliability
+import "katex/dist/katex.min.css";
 import { cn } from "@/lib/utils";
 import { NavigationWrapper } from "@/components/layout/NavigationWrapper";
 import { GlobalFooter } from "@/components/layout/GlobalFooter";
@@ -70,14 +70,6 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="he" dir="rtl">
-            <head>
-                <link
-                    rel="stylesheet"
-                    href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"
-                    integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC"
-                    crossOrigin="anonymous"
-                />
-            </head>
             <body
                 suppressHydrationWarning={true}
                 className={cn(

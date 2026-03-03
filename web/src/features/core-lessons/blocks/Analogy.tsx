@@ -18,10 +18,10 @@ export const Analogy: React.FC<AnalogyProps> = ({ content, icon }) => {
                     <Lightbulb className="w-6 h-6 text-secondary-foreground" />
                 </div>
                 <div>
-                    <h4 className="text-sm font-black text-secondary/80 uppercase tracking-widest mb-2 flex items-center gap-2">
+                    <h4 className="text-sm font-black text-secondary-foreground uppercase tracking-widest mb-2 flex items-center gap-2">
                         {icon || "🧠"} רגע של אנלוגיה
                     </h4>
-                    <div className="narrator-voice markdown-content">
+                    <div className="narrator-voice markdown-content text-foreground">
                         <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
                     </div>
                 </div>

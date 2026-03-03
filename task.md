@@ -1,34 +1,35 @@
-- [x] Index ALL Lesson-related components (28 components identified)
-- [x] Upgrade Workshop to "High-Intensity Lab" with numbered entries
-- [x] Generate "Stress Test" data (Hebrew + LaTeX) for every single entry
+# Task: Fix System-Wide KaTeX + Theme Color Regression
 
-## Indexed Components
+## Phase 1: Environment Scan & Diagnosis
+- [/] Run environment scan commands
+- [ ] Read `layout.tsx` — check KaTeX CSS import, font/theme provider
+- [ ] Read `globals.css` — check CSS custom properties
+- [ ] Read `LessonMarkdown.tsx` — check KaTeX invocation method
+- [ ] Read Tailwind config — check CSS variable mappings
+- [ ] Read `TextBlock.tsx` — check if it uses LessonMarkdown
+- [ ] Report all findings (Diagnostic Checklist)
 
-1.  `Alert.tsx`
-2.  `Analogy.tsx`
-3.  `Callout.tsx`
-4.  `CheckpointQuiz.tsx`
-5.  `CommonMistake.tsx`
-6.  `DeepDive.tsx`
-7.  `Definition.tsx`
-8.  `DidYouKnow.tsx`
-9.  `ExamTip.tsx`
-10. `Explanation.tsx`
-11. `FormulaCard.tsx`
-12. `GuidedExercise.tsx`
-13. `Hook.tsx`
-14. `LessonMarkdown.tsx`
-15. `List.tsx`
-16. `NarrativeSummary.tsx`
-17. `StreetSmartSketch.tsx`
-18. `TextBlock.tsx`
-19. `TopicNavigation.tsx`
-20. `TopicSummary.tsx`
-21. `WorkedExample.tsx`
-22. `ConceptTranslation.tsx`
-23. `HeroFormula.tsx`
-24. `ReferenceTable.tsx`
-25. `StreetNarratorBlock.tsx`
-26. `Badge.tsx`
-27. `TermTooltip.tsx`
-28. `Tooltip.tsx`
+## Phase 2: KaTeX Diagnosis
+- [ ] Is `import 'katex/dist/katex.min.css'` present in `layout.tsx`?
+- [ ] What package is used for math rendering?
+- [ ] Is that package listed in `package.json` dependencies?
+- [ ] What delimiter does `LessonMarkdown` use for inline math?
+- [ ] Is `LessonMarkdown` a client or server component?
+
+## Phase 3: Color Diagnosis
+- [ ] Does `globals.css` have `:root { --background; --foreground; }` block?
+- [ ] Are the values valid CSS colors?
+- [ ] Does `.dark {}` block override same variables?
+- [ ] Does tailwind config map background/foreground to CSS vars?
+- [ ] Any recent git changes to `globals.css` or `layout.tsx`?
+
+## Phase 4: Apply Fixes
+- [ ] Fix KaTeX rendering (based on diagnosis)
+- [ ] Fix color token collapse (based on diagnosis)
+- [ ] Verify build passes
+- [ ] Verify `/courses/math/chapter-01` renders correctly
+- [ ] Verify `/workshop` renders correctly
+
+## Phase 5: Final Report
+- [ ] Generate `Final Action Report.md`
+- [ ] Send for audit

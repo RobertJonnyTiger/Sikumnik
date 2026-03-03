@@ -13,7 +13,9 @@ export const Explanation: React.FC<ExplanationProps> = ({ content, highlight }) 
         <div className="group py-6 transition-all duration-300" dir="rtl">
             {highlight && (
                 <div className="academic-card border-r-4 border-r-primary mb-6 bg-primary/5">
-                    <p className="text-primary font-bold italic text-sm">{highlight}</p>
+                    <div className="text-primary font-bold italic text-sm">
+                        <LessonMarkdown>{highlight}</LessonMarkdown>
+                    </div>
                 </div>
             )}
             <div className="text-lg leading-relaxed">

@@ -7,6 +7,7 @@ const PAGES = [
     { href: "/workshop", label: "⚙️ Component Lab", desc: "All 24 content blocks" },
     { href: "/workshop/chapter-start", label: "🚀 Chapter Start", desc: "Landing + Breadcrumb + Progression" },
     { href: "/workshop/chapter-end", label: "🏁 Chapter End", desc: "Summary + Quiz + Footer" },
+    { href: "/workshop/colors", label: "🎨 Color System", desc: "All CSS tokens as live swatches" },
 ];
 
 export function WorkshopNav() {
@@ -19,8 +20,8 @@ export function WorkshopNav() {
                     key={p.href}
                     href={p.href}
                     className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${pathname === p.href
-                            ? "bg-primary text-primary-foreground shadow-sm shadow-primary/20"
-                            : "text-zinc-400 hover:text-white hover:bg-zinc-800"
+                        ? "bg-primary text-primary-foreground shadow-sm shadow-primary/20"
+                        : "text-zinc-400 hover:text-white hover:bg-zinc-800"
                         }`}
                 >
                     {p.label}

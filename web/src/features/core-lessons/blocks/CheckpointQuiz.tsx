@@ -33,13 +33,13 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
     const totalSubmitted = Object.keys(submitted).length;
 
     return (
-        <div className="group bg-white border border-slate-200 rounded-2xl overflow-hidden my-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-500/20 hover:border-slate-400/50 dark:hover:border-slate-500/50" dir="rtl">
-            <div className="flex items-center justify-between px-6 py-4 bg-slate-50 border-b border-slate-200">
+        <div className="group bg-card border border-border rounded-2xl overflow-hidden my-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 hover:-translate-y-1 hover:shadow-lg hover:shadow-foreground/10 hover:border-border" dir="rtl">
+            <div className="flex items-center justify-between px-6 py-4 bg-muted/30 border-b border-border">
                 <div className="flex items-center gap-3">
-                    <div className="bg-white p-2 rounded-lg border border-slate-200 shadow-sm">
-                        <HelpCircle className="w-4 h-4 text-slate-700" />
+                    <div className="bg-card p-2 rounded-lg border border-border shadow-sm">
+                        <HelpCircle className="w-4 h-4 text-foreground" />
                     </div>
-                    <h4 className="text-sm font-black text-slate-700 uppercase tracking-wider">בדיקת הבנה</h4>
+                    <h4 className="text-sm font-black text-foreground uppercase tracking-wider">בדיקת הבנה</h4>
                 </div>
                 {totalSubmitted > 0 && (
                     <span className="text-sm font-mono font-bold text-muted-foreground">
@@ -55,9 +55,9 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
                     const isCorrect = selectedIdx === q.correctIndex;
 
                     return (
-                        <div key={q.id} className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm">
+                        <div key={q.id} className="bg-card border border-muted/50 rounded-xl p-6 shadow-sm">
                             <div className="text-foreground font-medium mb-4 flex items-start gap-2 markdown-content">
-                                <span className="text-slate-600 font-bold bg-slate-100 px-2 py-0.5 rounded-full text-sm">{qIdx + 1}</span>
+                                <span className="text-muted-foreground font-bold bg-muted/50 px-2 py-0.5 rounded-full text-sm">{qIdx + 1}</span>
                                 <div className="mt-0.5 relative top-[-2px]">
                                     <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
                                         {q.question}
@@ -70,10 +70,10 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
                                     const isSelected = selectedIdx === optIdx;
                                     const isAnswer = optIdx === q.correctIndex;
 
-                                    let style = "border-slate-200 hover:border-slate-300 hover:bg-slate-50";
+                                    let style = "border-border hover:border-border/70 hover:bg-muted/20";
                                     if (isSubmitted && isAnswer) style = "border-emerald-300 bg-emerald-50";
                                     else if (isSubmitted && isSelected && !isAnswer) style = "border-red-300 bg-red-50";
-                                    else if (isSelected) style = "border-slate-400 bg-slate-100 ring-2 ring-slate-200";
+                                    else if (isSelected) style = "border-border bg-muted/50 ring-2 ring-border";
 
                                     return (
                                         <button
@@ -95,7 +95,7 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
                             {!isSubmitted && selectedIdx !== null && selectedIdx !== undefined && (
                                 <button
                                     onClick={() => submit(q.id)}
-                                    className="px-5 py-2.5 bg-slate-800 text-white rounded-lg text-sm font-bold hover:bg-slate-700 transition-colors shadow-sm"
+                                    className="px-5 py-2.5 bg-foreground text-background rounded-lg text-sm font-bold hover:bg-foreground/90 transition-colors shadow-sm"
                                 >
                                     בדוק תשובה
                                 </button>

@@ -21,7 +21,7 @@ export const WorkedExample: React.FC<WorkedExampleProps> = ({ title, scenario, s
                     <div className="bg-success/10 p-2 rounded-lg border border-success/20">
                         <Calculator className="w-5 h-5 text-success" />
                     </div>
-                    <h4 className="text-sm font-black text-success uppercase tracking-wider font-heading">{title}</h4>
+                    <h4 className="text-sm font-black text-primary uppercase tracking-wider font-heading">{title}</h4>
                 </div>
                 <div className="text-foreground leading-relaxed text-lg">
                     <LessonMarkdown>{scenario}</LessonMarkdown>
@@ -30,10 +30,10 @@ export const WorkedExample: React.FC<WorkedExampleProps> = ({ title, scenario, s
 
             {calculation && (
                 <div className="bg-muted px-6 py-5 border-t border-success/10">
-                    <ol className="font-mono text-success text-xl list-none space-y-3">
+                    <ol className="font-mono text-primary-foreground text-xl list-none space-y-3" style={{ color: 'var(--color-secondary-foreground)' }}>
                         {calculation.split('\n').map((line, idx) => (
                             <li key={idx} className="flex items-baseline gap-3">
-                                <span className="text-xs text-success/50 font-sans">{idx + 1}.</span>
+                                <span className="text-xs text-muted-foreground font-sans">{idx + 1}.</span>
                                 <LessonMarkdown>{line.replace(/^\d+[\.\)]\s*/, '')}</LessonMarkdown>
                             </li>
                         ))}
@@ -46,12 +46,12 @@ export const WorkedExample: React.FC<WorkedExampleProps> = ({ title, scenario, s
                     onClick={() => setShowSolution(!showSolution)}
                     className="w-full px-6 py-4 flex items-center justify-between group/btn hover:bg-success/5 transition-colors"
                 >
-                    <div className="flex items-center gap-2 text-base font-bold text-success">
+                    <div className="flex items-center gap-2 text-base font-bold text-primary">
                         <Eye className="w-5 h-5" />
                         {showSolution ? "הסתר פתרון" : "הצג פתרון"}
                     </div>
                     <div className={`transition-transform duration-300 ${showSolution ? 'rotate-180' : ''}`}>
-                        <ChevronDown className="w-5 h-5 text-success/50" />
+                        <ChevronDown className="w-5 h-5 text-muted-foreground" />
                     </div>
                 </button>
                 {showSolution && (

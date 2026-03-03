@@ -1,114 +1,118 @@
 @import "tailwindcss";
 
 @theme {
-  /* Theme - "Soft Pastel Education" */
-  --color-background: #F6EBCF;
-  /* Almond Cream */
-  --color-foreground: #6A0572;
-  /* Deep Plum */
-  --color-text-secondary: #6A0572;
-  /* Deep Plum */
+  /* Theme - "Accessible Education Indigo" */
+  /* Base & Surfaces */
+  --color-background: #FCFBFA;
+  /* Warm Alabaster */
+  --color-foreground: #1C1917;
+  /* Stone 900 */
+  --color-text-secondary: #57534E;
+  /* Stone 500 */
 
-  --color-primary: #A3D7E4;
-  /* Sky Pastel */
-  --color-primary-foreground: #6A0572;
-  /* Deep Plum */
+  --color-card: #FFFFFF;
+  /* Pure White */
+  --color-card-foreground: #1C1917;
+  /* Stone 900 */
+  --color-glass: rgba(255, 255, 255, 0.85);
+  /* Frost Glass */
 
-  --color-secondary: #FFF4E0;
-  /* Champagne */
-  --color-accent: #FFB3BA;
-  /* Cotton Candy Pink */
-  --color-success: #B9FBC0;
-  /* Mint Green */
-  --color-error: #FFB3BA;
-  /* Cotton Candy Pink */
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #1C1917;
 
-  /* Surfaces */
-  --color-card: #FFFCD1;
-  /* Light Primrose */
-  --color-glass: #FFFCD199;
-  /* Light Primrose / 60% opacity */
-  --color-border: #E2D1F9;
-  /* Pale Lavender */
-  --color-input: #E2D1F9;
-  /* Pale Lavender */
-  --color-ring: #C3D1FF;
-  /* Periwinkle Blue */
+  --color-muted: #F5F5F4;
+  /* Stone 100 */
+  --color-muted-foreground: #57534E;
+  /* Stone 500 */
 
-  /* UI Tokens */
-  --color-muted: #E2F0E6;
-  /* Soft Dew */
-  --color-muted-foreground: #6A0572;
-  /* Deep Plum */
-  --color-popover: #FFFCD1;
-  /* Light Primrose */
-  --color-popover-foreground: #6A0572;
-  /* Deep Plum */
-  --color-destructive: #FFB3BA;
-  /* Cotton Candy Pink */
-  --color-destructive-foreground: #6A0572;
-  /* Deep Plum */
-  --color-secondary-foreground: #6A0572;
-  /* Deep Plum */
-  --color-accent-foreground: #6A0572;
-  /* Deep Plum */
-  --color-card-foreground: #6A0572;
-  /* Deep Plum */
+  --color-border: #E7E5E4;
+  /* Stone 200 */
+  --color-input: #E7E5E4;
+  /* Stone 200 */
+  --color-ring: #6366F1;
+  /* Indigo 500 */
 
-  /* Extended Semantic Colors */
-  --color-info: #A3D7E4;
-  /* Uses primary */
-  --color-info-foreground: #6A0572;
-  --color-warning: #FFE4A3;
-  /* Warm Yellow */
-  --color-warning-foreground: #92400E;
-  --color-tip: #FFE4A3;
-  /* Warm Yellow - for tips/badges */
-  --color-tip-foreground: #92400E;
-  /* Dark amber for text on tip bg */
+  /* Brand Colors */
+  --color-primary: #6366F1;
+  /* Indigo 500 */
+  --color-primary-foreground: #FFFFFF;
 
-  /* Success variant colors */
-  --color-success-foreground: #166534;
-  /* Dark green for text on success */
-  --color-success-bg: #DCFCE7;
-  /* Light green background */
-  --color-success-border: #86EFAC;
-  /* Medium green border */
+  --color-secondary: #EEF2FF;
+  /* Indigo 50 */
+  --color-secondary-foreground: #4338CA;
+  /* Indigo 700 */
 
-  /* Error variant colors */
-  --color-error-foreground: #991B1B;
-  /* Dark red for text on error */
+  --color-accent: #E0E7FF;
+  /* Indigo 100 */
+  --color-accent-foreground: #3730A3;
+  /* Indigo 800 */
+
+  /* Semantic - Standardized to Tailwind Standards */
+  --color-success: #10B981;
+  /* Emerald 500 */
+  --color-success-foreground: #FFFFFF;
+  --color-success-bg: #D1FAE5;
+  /* Emerald 100 */
+  --color-success-border: #34D399;
+  /* Emerald 400 */
+
+  --color-error: #EF4444;
+  /* Red 500 */
+  --color-error-foreground: #FFFFFF;
   --color-error-bg: #FEE2E2;
-  /* Light red background */
-  --color-error-border: #FCA5A5;
-  /* Medium red border */
+  /* Red 100 */
+  --color-error-border: #F87171;
+  /* Red 400 */
+  --color-destructive: #EF4444;
+  /* Red 500 */
+  --color-destructive-foreground: #FFFFFF;
+
+  --color-warning: #F59E0B;
+  /* Amber 500 */
+  --color-warning-foreground: #FFFFFF;
+  --color-tip: #FEF3C7;
+  /* Amber 100 */
+  --color-tip-foreground: #B45309;
+  /* Amber 700 */
+
+  --color-info: #3B82F6;
+  /* Blue 500 */
+  --color-info-foreground: #FFFFFF;
 
   /* Data Visualization Palette */
-  --color-chart-1: #14B8A6;
+  --color-chart-1: #6366F1;
+  /* Indigo */
+  --color-chart-2: #14B8A6;
   /* Teal */
-  --color-chart-2: #F59E0B;
+  --color-chart-3: #F59E0B;
   /* Amber */
-  --color-chart-3: #3B82F6;
-  /* Blue */
-  --color-chart-4: #EF4444;
-  /* Red */
-  --color-chart-5: #8B5CF6;
-  /* Purple */
-  --color-chart-6: #EC4899;
+  --color-chart-4: #EC4899;
   /* Pink */
-  --color-chart-neutral: #94A3B8;
-  /* Slate - for axes/grid */
+  --color-chart-5: #8B5CF6;
+  /* Violet */
+  --color-chart-6: #10B981;
+  /* Emerald */
+  --color-chart-neutral: #A8A29E;
+  /* Stone 400 - axes/grid */
 
-  /* Fonts */
+  /* Semantic text on tinted light backgrounds */
+  --color-warning-title: #92400E;
+  /* Amber 800 - dark text on warning/10 bg */
+
+  /* Typography Line Heights Configured for Harmony */
+  /* Re-defining fonts */
   --font-sans: var(--font-assistant);
   --font-heading: var(--font-heebo);
   --font-mono: var(--font-mono);
   --font-handwriting: var(--font-handwriting);
 
-  /* Custom Glows */
-  --shadow-temple: 0 0 30px rgba(45, 212, 191, 0.1);
-  --shadow-neon: 0 0 15px rgba(251, 146, 60, 0.2);
-  --shadow-premium: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+  /* Shadows - Modern & Clean */
+  --shadow-temple: 0 4px 20px rgba(99, 102, 241, 0.08);
+  /* Soft indigo glow */
+  --shadow-neon: 0 0 15px rgba(245, 158, 11, 0.15);
+  /* Soft amber glow */
+  --shadow-premium: 0 10px 30px -10px rgba(28, 25, 23, 0.1);
+  /* Deep stone shadow */
 
   /* Border Radius */
   --radius: 0.5rem;
@@ -133,7 +137,12 @@
     line-height: 1.6;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply tracking-wide;
   }
 }
@@ -246,4 +255,16 @@ html {
 
 .markdown-content p {
   @apply mb-4 last:mb-0;
+}
+
+/* --- Block Component Utilities --- */
+
+.street-callout {
+  @apply relative my-8 p-6 rounded-2xl bg-secondary/5 border border-secondary/20 shadow-sm;
+}
+
+.narrator-voice {
+  color: var(--color-foreground);
+  font-style: italic;
+  line-height: 1.8;
 }

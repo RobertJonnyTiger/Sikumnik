@@ -188,13 +188,13 @@ const DidYouKnow: React.FC<DidYouKnowProps> = ({ facts: staticFacts, topicData, 
                                     <div className="flex items-center gap-3">
                                         <div className="p-2.5 rounded-xl bg-secondary border border-primary/20 shadow-[0_0_15px_rgba(45,212,191,0.1)]">
                                             {isLoading ? (
-                                                <RefreshCw className="w-5 h-5 text-sky-800 animate-spin" />
+                                                <RefreshCw className="w-5 h-5 text-primary animate-spin" />
                                             ) : (
-                                                <IconComponent className="w-5 h-5 text-sky-800" />
+                                                <IconComponent className="w-5 h-5 text-primary" />
                                             )}
                                         </div>
                                         <div className="flex flex-col">
-                                            <span className="text-[10px] font-black uppercase tracking-widest text-sky-800">הידעת?</span>
+                                            <span className="text-[10px] font-black uppercase tracking-widest text-primary">הידעת?</span>
                                             <span className="text-xs text-muted-foreground">לחץ כדי לגלות עוד</span>
                                         </div>
                                     </div>

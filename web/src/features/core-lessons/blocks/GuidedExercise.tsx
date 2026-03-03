@@ -20,14 +20,14 @@ interface GuidedExerciseProps {
 
 const difficultyLabel = (d: number) => {
     if (d <= 2) return { text: "בסיסי", color: "text-success" };
-    if (d <= 4) return { text: "בינוני", color: "text-secondary" };
+    if (d <= 4) return { text: "בינוני", color: "text-secondary-foreground" };
     return { text: "מתקדם", color: "text-destructive" };
 };
 
 const phaseIcon = (type: "i-do" | "we-do" | "you-do") => {
     switch (type) {
         case "i-do": return { icon: <Zap className="w-4 h-4" />, label: "אני", color: "bg-primary/5 border-primary/20 text-primary" };
-        case "we-do": return { icon: <Users className="w-4 h-4" />, label: "אנחנו", color: "bg-secondary/5 border-secondary/20 text-secondary" };
+        case "we-do": return { icon: <Users className="w-4 h-4" />, label: "אנחנו", color: "bg-secondary/10 border-secondary/30 text-secondary-foreground" };
         case "you-do": return { icon: <Hand className="w-4 h-4" />, label: "אתה", color: "bg-success/5 border-success/20 text-success" };
     }
 };
@@ -135,7 +135,7 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
                                         {step.calculation && (
                                             <div className="bg-muted px-4 py-3 rounded-xl flex items-center gap-3 border border-border/50" dir="ltr">
                                                 <div className="bg-secondary/20 p-1.5 rounded-lg">
-                                                    <Calculator className="w-4 h-4 text-secondary shrink-0" />
+                                                    <Calculator className="w-4 h-4 text-secondary-foreground shrink-0" />
                                                 </div>
                                                 <div className="font-mono text-foreground text-lg text-left w-full overflow-x-auto scrollbar-hide">
                                                     <LessonMarkdown>{step.calculation.includes('$') ? step.calculation : `$$${step.calculation}$$`}</LessonMarkdown>

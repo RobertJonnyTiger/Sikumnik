@@ -31,7 +31,7 @@ export const Definition: React.FC<DefinitionProps> = ({
                                 <GraduationCap className="w-5 h-5" />
                             </div>
                             <h3 className="text-2xl font-bold text-primary leading-tight font-heading">
-                                {term}
+                                <LessonMarkdown>{term}</LessonMarkdown>
                             </h3>
                         </div>
                     </div>
@@ -73,7 +73,9 @@ export const Definition: React.FC<DefinitionProps> = ({
                 <BookOpen className="w-5 h-5 text-primary" />
             </div>
             <div className="flex-1 w-full relative">
-                <h4 className="text-lg font-bold text-foreground mb-1.5 font-heading">{term}</h4>
+                <h4 className="text-lg font-bold text-foreground mb-1.5 font-heading">
+                    <LessonMarkdown>{term}</LessonMarkdown>
+                </h4>
                 <div className="text-foreground/90 leading-relaxed markdown-content">
                     <LessonMarkdown>{definition}</LessonMarkdown>
                 </div>

@@ -19,15 +19,15 @@ const VARIANTS = {
         icon: Sparkles,
         defaultTitle: "טיפ חשוב",
         containerClass: "border-secondary/30 bg-secondary/5 hover:border-secondary hover:shadow-secondary/10",
-        iconColor: "text-secondary",
-        titleColor: "text-secondary",
+        iconColor: "text-secondary-foreground",
+        titleColor: "text-secondary-foreground",
     },
     warning: {
         icon: AlertTriangle,
         defaultTitle: "שימו לב",
         containerClass: "border-warning/30 bg-warning/5 hover:border-warning hover:shadow-warning/10",
         iconColor: "text-warning",
-        titleColor: "text-warning-foreground",
+        titleColor: "text-[#92400E]",
     },
     prerequisite: {
         icon: RotateCcw,
@@ -65,7 +65,7 @@ export const Alert: React.FC<AlertProps> = ({ variant, children, title, classNam
                 <h4 className={`text-lg font-bold uppercase tracking-wide mb-1.5 ${v.titleColor}`}>
                     {title || v.defaultTitle}
                 </h4>
-                <div className="text-slate-800 text-base font-medium leading-[1.8]">
+                <div className="text-foreground text-base font-medium leading-[1.8]">
                     {typeof children === 'string' ? (
                         <LessonMarkdown>{children as string}</LessonMarkdown>
                     ) : children}

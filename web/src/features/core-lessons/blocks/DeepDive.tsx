@@ -15,16 +15,16 @@ export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections, difficulty 
     const [openIdx, setOpenIdx] = useState<number | null>(null);
 
     return (
-        <div className="group bg-slate-50 border-r-4 border-r-red-600 border-y border-l border-slate-200 rounded-xl my-6 shadow-sm font-sans hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/20 hover:border-slate-400/50 dark:hover:border-slate-500/50" dir="rtl">
+        <div className="group bg-muted border-r-4 border-r-destructive border-y border-l border-border rounded-xl my-6 shadow-sm font-sans hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:border-primary/40" dir="rtl">
             <div className="p-5 flex justify-between items-start">
                 <div>
                     <div className="flex items-center gap-3 mb-1">
-                        <Zap className="w-5 h-5 text-red-600" />
-                        <h4 className="text-lg font-bold text-slate-800 uppercase tracking-tight">{title}</h4>
+                        <Zap className="w-5 h-5 text-destructive" />
+                        <h4 className="text-lg font-bold text-foreground uppercase tracking-tight">{title}</h4>
                     </div>
                 </div>
                 {difficulty && (
-                    <span className="bg-red-100 text-red-700 text-xs font-black uppercase tracking-widest px-2.5 py-1 rounded border border-red-200">
+                    <span className="bg-error-bg text-destructive text-xs font-black uppercase tracking-widest px-2.5 py-1 rounded border border-error-border">
                         {difficulty === 'graduate' ? 'מומחה' : 'מתקדם'}
                     </span>
                 )}
@@ -43,7 +43,7 @@ export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections, difficulty 
                         return (
                             <div
                                 key={idx}
-                                className={`border rounded-lg overflow-hidden transition-all duration-200 ${isOpen ? 'border-red-200 bg-white shadow-md' : 'border-slate-200 bg-white/60 hover:bg-white'
+                                className={`border rounded-lg overflow-hidden transition-all duration-200 ${isOpen ? 'border-error-border bg-card shadow-md' : 'border-border bg-card/60 hover:bg-card'
                                     }`}
                             >
                                 <button
@@ -51,24 +51,24 @@ export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections, difficulty 
                                     className="w-full flex items-center justify-between p-4 text-right transition-colors"
                                 >
                                     <div className="flex items-center gap-3">
-                                        <div className={`w-8 h-8 rounded-md flex items-center justify-center border transition-colors ${isOpen ? 'bg-red-50 border-red-100 text-red-600' : 'bg-slate-100 border-slate-200 text-slate-500'}`}>
+                                        <div className={`w-8 h-8 rounded-md flex items-center justify-center border transition-colors ${isOpen ? 'bg-error-bg border-error-border text-destructive' : 'bg-muted border-border text-muted-foreground'}`}>
                                             <Icon className="w-4 h-4" />
                                         </div>
-                                        <h3 className={`font-bold text-base leading-none ${isOpen ? 'text-red-700' : 'text-slate-700'}`}>{section.title}</h3>
+                                        <h3 className={`font-bold text-base leading-none ${isOpen ? 'text-destructive' : 'text-foreground'}`}>{section.title}</h3>
                                     </div>
-                                    <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180 text-red-500' : ''}`} />
+                                    <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${isOpen ? 'rotate-180 text-destructive' : ''}`} />
                                 </button>
 
                                 {isOpen && (
-                                    <div className="px-4 pb-4 pt-1 border-t border-slate-100 animate-in slide-in-from-top-1 duration-200">
+                                    <div className="px-4 pb-4 pt-1 border-t border-border animate-in slide-in-from-top-1 duration-200">
                                         <div className="pr-11">
-                                            <div className="text-sm leading-relaxed text-slate-600 markdown-content">
+                                            <div className="text-sm leading-relaxed text-foreground markdown-content">
                                                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{section.content}</ReactMarkdown>
                                             </div>
 
                                             {examples.length > 0 && (
                                                 <div className="space-y-2 mt-4">
-                                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+                                                    <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest flex items-center gap-1.5">
                                                         <Tag className="w-3 h-3" />
                                                         דוגמאות
                                                     </p>
@@ -76,7 +76,7 @@ export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections, difficulty 
                                                         {examples.map((ex, i) => (
                                                             <span
                                                                 key={i}
-                                                                className="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 border border-slate-200 text-slate-600"
+                                                                className="px-2.5 py-1 rounded-md text-xs font-medium bg-muted border border-border text-foreground"
                                                             >
                                                                 {ex}
                                                             </span>
