@@ -13,7 +13,7 @@ interface AiLecturerProps {
 export function AiLecturer({ context }: AiLecturerProps) {
     // TEMPORARILY DISABLED - API call skipped
     return null;
-    
+
     const [isOpen, setIsOpen] = useState(false);
     const [input, setInput] = useState("");
 
@@ -77,7 +77,7 @@ export function AiLecturer({ context }: AiLecturerProps) {
                         </div>
                         {error && (
                             <div className="bg-red-50 border-b border-red-200 p-2 text-xs text-red-700 text-center">
-                                שגיאה: {error.message || "משהו השתבש, נסה שוב."}
+                                שגיאה: {error?.message || "משהו השתבש, נסה שוב."}
                             </div>
                         )}
 

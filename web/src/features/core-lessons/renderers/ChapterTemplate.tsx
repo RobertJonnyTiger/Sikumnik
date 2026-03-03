@@ -51,12 +51,8 @@ export const ChapterTemplate: React.FC<ChapterTemplateProps> = ({
         } else if (data.navigation?.next) {
             // Navigate to next chapter - try data.navigation.next.href first, 
             // then construct a robust fallback to avoid /undefined
-            const courseId = data.course === "מיקרו-כלכלה" ? "microeconomics" :
-                data.course === "חשבונאות" ? "accounting" :
-                    data.course === "מבוא להתנהגות ארגונית" ? "organizational-behavior" : "unknown";
-
-            const nextId = (data.navigation.next as any).id?.replace("chapter-", "") || "";
-            const href = data.navigation.next.href || `/courses/${courseId}/chapter-${nextId}`;
+            const nextId = (data.navigation.next as any).id?.replace("chapter-", "") || (data.navigation.next as any).chapterId || "";
+            const href = data.navigation.next.href || `/courses/math/chapter-${nextId}`;
 
             window.location.href = href;
         }

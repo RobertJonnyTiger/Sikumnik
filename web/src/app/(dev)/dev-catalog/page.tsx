@@ -10,21 +10,15 @@ import { Hook } from "@/features/core-lessons/blocks/Hook";
 import { Explanation } from "@/features/core-lessons/blocks/Explanation";
 import { Definition } from "@/features/core-lessons/blocks/Definition";
 import { List } from "@/features/core-lessons/blocks/List";
-import { ChapterImage } from "@/features/core-lessons/blocks/ChapterImage";
 
 // Narrative & Tone
 import { Analogy } from "@/features/core-lessons/blocks/Analogy";
 import { StreetSmartSketch } from "@/features/core-lessons/blocks/StreetSmartSketch";
 import { DeepDive } from "@/features/core-lessons/blocks/DeepDive";
-import { RealWorldExample } from "@/features/core-lessons/blocks/RealWorldExample";
-import { ToneBreak } from "@/features/core-lessons/blocks/ToneBreak";
-
 // Interactive & Assessment
 import { GuidedExercise } from "@/features/core-lessons/blocks/GuidedExercise";
 import { CheckpointQuiz } from "@/features/core-lessons/blocks/CheckpointQuiz";
-import { KnowledgeExam } from "@/features/core-lessons/blocks/KnowledgeExam";
-import { ExamQuestionBlock } from "@/features/core-lessons/blocks/ExamQuestionBlock";
-import { MaslowPyramid } from "@/features/core-lessons/blocks/MaslowPyramid";
+
 
 // Math & Technical
 import { FormulaCard } from "@/features/core-lessons/blocks/FormulaCard";
@@ -38,11 +32,6 @@ import { TopicNavigation } from "@/features/core-lessons/blocks/TopicNavigation"
 import { CourseBreadcrumb } from "@/features/core-lessons/renderers/CourseBreadcrumb";
 import { ChapterProgressionBar } from "@/features/core-lessons/renderers/ChapterProgressionBar";
 
-// Domain Specific (Org Behavior)
-import { AttributionFlowchart } from "@/features/organizational-behavior/components/AttributionFlowchart";
-import { DiagnosticCaseStudy } from "@/features/organizational-behavior/components/DiagnosticCaseStudy";
-import { SituationalLeadershipGuide } from "@/features/organizational-behavior/components/SituationalLeadershipGuide";
-
 // --- Configuration ---
 
 const CATEGORIES = [
@@ -55,7 +44,6 @@ const CATEGORIES = [
             { id: "explanation", name: "Explanation" },
             { id: "definition", name: "Definition" },
             { id: "list", name: "List" },
-            { id: "chapter-image", name: "ChapterImage" },
         ]
     },
     {
@@ -66,8 +54,6 @@ const CATEGORIES = [
             { id: "analogy", name: "Analogy" },
             { id: "street-smart-sketch", name: "StreetSmartSketch" },
             { id: "deep-dive", name: "DeepDive" },
-            { id: "real-world-example", name: "RealWorldExample" },
-            { id: "tone-break", name: "ToneBreak" },
         ]
     },
     {
@@ -77,9 +63,6 @@ const CATEGORIES = [
         components: [
             { id: "guided-exercise", name: "GuidedExercise" },
             { id: "checkpoint-quiz", name: "CheckpointQuiz" },
-            { id: "knowledge-exam", name: "KnowledgeExam" },
-            { id: "exam-question-block", name: "ExamQuestionBlock" },
-            { id: "maslow-pyramid", name: "MaslowPyramid" },
         ]
     },
     {
@@ -101,16 +84,6 @@ const CATEGORIES = [
             { id: "topic-navigation", name: "Topic Navigation" },
             { id: "topic-summary", name: "Topic Summary" },
             { id: "narrative-summary", name: "Narrative Summary" },
-        ]
-    },
-    {
-        id: "specialized",
-        name: "Specialized",
-        icon: Beaker,
-        components: [
-            { id: "attribution", name: "Attribution Flow" },
-            { id: "case-study", name: "Case Study" },
-            { id: "leadership", name: "Leadership Guide" },
         ]
     }
 ];
@@ -205,14 +178,6 @@ export default function DevCatalogPage() {
                                 ]}
                             />
                         </Section>
-
-                        <Section id="chapter-image" name="ChapterImage">
-                            <ChapterImage
-                                src="https://images.unsplash.com/photo-1596496050827-8299e0220de1?q=80&w=2070&auto=format&fit=crop"
-                                alt="לוח גיר"
-                                caption="מציאת שורשי המשוואה הריבועית"
-                            />
-                        </Section>
                     </SectionGroup>
 
                     {/* --- NARRATIVE --- */}
@@ -230,7 +195,6 @@ export default function DevCatalogPage() {
                                 content="אם קניתם כרטיס לקולנוע ב-50 שקל, ואחרי חצי שעה הסרט גרוע בטירוף. **אל תישארו רק כי שילמתם!**"
                             />
                         </Section>
-
                         <Section id="deep-dive" name="DeepDive">
                             <DeepDive
                                 title="פרדוקס הערך (יהלומים מול מים)"
@@ -239,22 +203,6 @@ export default function DevCatalogPage() {
                                     { title: "הצגת הבעיה", content: "מים הכרחיים אך זולים. יהלומים לא הכרחיים אך יקרים." },
                                     { title: "הפתרון", content: "ההבחנה בין תועלת כוללת לתועלת שולית." }
                                 ]}
-                            />
-                        </Section>
-
-                        <Section id="real-world-example" name="RealWorldExample">
-                            <RealWorldExample
-                                title="השפעת הקורונה"
-                                scenario="בשנת 2020, סגרים בסין גרמו לעצירה בייצור שבבים."
-                                connection="זוהי דוגמה מושלמת למצב בו יש במקביל זעזוע צד היצע וזעזוע צד ביקוש."
-                                source="The Wall Street Journal"
-                            />
-                        </Section>
-
-                        <Section id="tone-break" name="ToneBreak">
-                            <ToneBreak
-                                opener="קחו שלוק מים, המוח שלכם עבד קשה."
-                                content="אנחנו עוברים לדבר על חישובים. אל תיבהלו מה-X, זה רק מספר שמתחבא."
                             />
                         </Section>
                     </SectionGroup>
@@ -284,39 +232,6 @@ export default function DevCatalogPage() {
                                     explanation: "צרכנים יעברו לקנות את המוצר שלנו."
                                 }]}
                             />
-                        </Section>
-
-                        <Section id="knowledge-exam" name="KnowledgeExam">
-                            <KnowledgeExam
-                                questions={[{
-                                    id: "ke1",
-                                    question: "איזו פעולה תגרום לתזוזה ימינה של עקומת הביקוש?",
-                                    options: ["ירידת מחיר", "עליית מחיר תחליף", "עליית מחיר גבינה", "ירידת הכנסה"],
-                                    correctIndex: 1,
-                                    explanation: "עליית מחיר תחליף מגדילה את הביקוש אלינו."
-                                }]}
-                            />
-                        </Section>
-
-                        <Section id="exam-question-block" name="ExamQuestionBlock">
-                            <ExamQuestionBlock
-                                questions={[
-                                    {
-                                        id: "eq1",
-                                        number: 1,
-                                        type: "multiple-choice",
-                                        points: 10,
-                                        question: "במצב $P < AVC$, מה על הפירמה לעשות?",
-                                        options: ["להמשיך", "להגדיל", "לסגור", "להעלות מחיר"],
-                                        correctIndex: 2,
-                                        modelAnswer: "לסגור. ההפסד גדול מדי."
-                                    }
-                                ]}
-                            />
-                        </Section>
-
-                        <Section id="maslow-pyramid" name="MaslowPyramid">
-                            <MaslowPyramid />
                         </Section>
                     </SectionGroup>
 
@@ -403,44 +318,11 @@ export default function DevCatalogPage() {
                     </SectionGroup>
 
                     {/* --- SPECIALIZED --- */}
-                    <SectionGroup title="Specialized Domain Components">
-                        <Section id="attribution" name="Attribution Flowchart">
-                            <AttributionFlowchart mode="reference" />
-                        </Section>
-
-                        <Section id="case-study" name="Case Study">
-                            <DiagnosticCaseStudy
-                                title="משבר המנהיגות ב'טק-נובה'"
-                                subtitle="אבחון בעיות ארגוניות"
-                                scenario="חברת סטארטאפ צומחת מהר, המייסד איבד שליטה על התרבות הארגונית."
-                                sections={[
-                                    {
-                                        id: "s1",
-                                        title: "תפיסה וייחוס",
-                                        theory: "טעות הייחוס הבסיסית",
-                                        analysis: "המנהלים מאשימים את אופי העובדים במקום את המערכת.",
-                                        evidence: ["תלונות על איחורים", "חוסר אמון"],
-                                        questions: [{
-                                            question: "מהי טעות הייחוס הבסיסית?",
-                                            options: ["האשמת המצב", "האשמת האדם", "התעלמות מהבעיה"],
-                                            correctIndex: 1,
-                                            explanation: "נטייה לייחס התנהגות לאופי ולא למצב."
-                                        }]
-                                    }
-                                ]}
-                                conclusion="יש צורך בשינוי מבני ושיפור התקשורת."
-                                keyTakeaways={["תקשורת היא המפתח", "ייחוס נכון מציל צוותים"]}
-                            />
-                        </Section>
-
-                        <Section id="leadership" name="Situational Leadership Guide">
-                            <SituationalLeadershipGuide />
-                        </Section>
-                    </SectionGroup>
+                    {/* --- MATH --- */}
 
                 </div>
-            </main>
-        </div>
+            </main >
+        </div >
     );
 }
 

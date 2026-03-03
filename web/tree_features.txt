@@ -1,0 +1,40 @@
+Folder PATH listing for volume OS
+Volume serial number is B8AB-ECAC
+C:\USERS\ROBER\AI PROJECTS\SIKUMNIK\WEB\SRC\FEATURES
++---core-lessons
+¦   +---blocks
+¦   ¦       Alert.tsx
+¦   ¦       Analogy.tsx
+¦   ¦       ChapterImage.tsx
+¦   ¦       CheckpointQuiz.tsx
+¦   ¦       DeepDive.tsx
+¦   ¦       Definition.tsx
+¦   ¦       DidYouKnow.tsx
+¦   ¦       Explanation.tsx
+¦   ¦       FormulaCard.tsx
+¦   ¦       GuidedExercise.tsx
+¦   ¦       Hook.tsx
+¦   ¦       LessonMarkdown.tsx
+¦   ¦       List.tsx
+¦   ¦       NarrativeSummary.tsx
+¦   ¦       StreetSmartSketch.tsx
+¦   ¦       TopicNavigation.tsx
+¦   ¦       TopicSummary.tsx
+¦   ¦       WorkedExample.tsx
+¦   ¦       
+¦   +---renderers
+¦           BlockRenderer.tsx
+¦           ChapterLanding.tsx
+¦           ChapterProgressionBar.tsx
+¦           ChapterTemplate.tsx
+¦           CourseBreadcrumb.tsx
+¦           LessonFooter.tsx
+¦           TopicTab.tsx
+¦           
++---math
+    +---components
+            ConceptTranslation.tsx
+            HeroFormula.tsx
+            ReferenceTable.tsx
+            StreetNarratorBlock.tsx
+            

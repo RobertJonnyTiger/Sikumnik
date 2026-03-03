@@ -1,0 +1,5 @@
+src/features/core-lessons/renderers/BlockRenderer.tsx(19,31): error TS2307: Cannot find module '../blocks/KnowledgeExam' or its corresponding type declarations.
+src/features/core-lessons/renderers/BlockRenderer.tsx(20,34): error TS2307: Cannot find module '../blocks/RealWorldExample' or its corresponding type declarations.
+src/features/core-lessons/renderers/BlockRenderer.tsx(22,31): error TS2307: Cannot find module '../blocks/MaslowPyramid' or its corresponding type declarations.
+src/features/core-lessons/renderers/BlockRenderer.tsx(23,61): error TS2307: Cannot find module '../blocks/ExamQuestionBlock' or its corresponding type declarations.
+tests/lib/chapter-metadata.test.ts(2,39): error TS2307: Cannot find module '@/lib/chapter-metadata' or its corresponding type declarations.

@@ -12,18 +12,11 @@ import { WorkedExample } from "../blocks/WorkedExample";
 import { DeepDive } from "../blocks/DeepDive";
 import { GuidedExercise } from "../blocks/GuidedExercise";
 import { Alert } from "../blocks/Alert";
-import { ChapterImage } from "../blocks/ChapterImage";
+
 import { CheckpointQuiz } from "../blocks/CheckpointQuiz";
 import { Hook } from "../blocks/Hook";
 import { StreetSmartSketch } from "../blocks/StreetSmartSketch";
-import { KnowledgeExam } from "../blocks/KnowledgeExam";
-import { RealWorldExample } from "../blocks/RealWorldExample";
 import { List } from "../blocks/List";
-import { MaslowPyramid } from "../blocks/MaslowPyramid";
-import { ExamQuestionBlock as ExamQuestionsComponent } from "../blocks/ExamQuestionBlock";
-import { AttributionFlowchart } from "@/features/organizational-behavior/components/AttributionFlowchart";
-import { DiagnosticCaseStudy } from "@/features/organizational-behavior/components/DiagnosticCaseStudy";
-import { SituationalLeadershipGuide } from "@/features/organizational-behavior/components/SituationalLeadershipGuide";
 import { HeroFormula } from "@/features/math/components/HeroFormula";
 import { ReferenceTable } from "@/features/math/components/ReferenceTable";
 import { TopicSummary } from "../blocks/TopicSummary";
@@ -112,15 +105,6 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
                 />
             );
 
-        case "real-world-example":
-            return (
-                <RealWorldExample
-                    title={block.title}
-                    scenario={block.scenario}
-                    connection={block.connection}
-                    source={block.source}
-                />
-            );
 
         case "list":
             return <List items={block.items} />;
@@ -140,44 +124,10 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
             return <Alert variant={alertVariant} title={block.title}><LessonMarkdown>{block.content}</LessonMarkdown></Alert>;
         }
 
-        case "image":
-            return <ChapterImage src={block.src} alt={block.alt} caption={block.caption} />;
-
-        case "maslow-pyramid":
-            return <MaslowPyramid />;
 
         case "checkpoint":
             return <CheckpointQuiz questions={block.questions} />;
 
-        case "exam-questions":
-            return (
-                <ExamQuestionsComponent
-                    questions={block.questions}
-                    showAnswersAtEnd={block.showAnswersAtEnd}
-                />
-            );
-
-        case "attribution-flowchart":
-            return (
-                <AttributionFlowchart
-                    mode={block.mode}
-                />
-            );
-
-        case "diagnostic-case-study":
-            return (
-                <DiagnosticCaseStudy
-                    title={block.title}
-                    subtitle={block.subtitle}
-                    scenario={block.scenario}
-                    sections={block.sections}
-                    conclusion={block.conclusion}
-                    keyTakeaways={block.keyTakeaways}
-                />
-            );
-
-        case "situational-leadership-guide":
-            return <SituationalLeadershipGuide />;
 
         case "reference-table":
             return (

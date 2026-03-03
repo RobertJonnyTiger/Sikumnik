@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { ChapterTemplate } from "@/components/core/ChapterTemplate";
+import { ChapterTemplate } from "@/features/core-lessons/renderers/ChapterTemplate";
 import type { ChapterData } from "@/types/chapter";
 
 interface PageProps {

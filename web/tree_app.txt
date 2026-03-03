@@ -1,0 +1,34 @@
+Folder PATH listing for volume OS
+Volume serial number is B8AB-ECAC
+C:\USERS\ROBER\AI PROJECTS\SIKUMNIK\WEB\SRC\APP
+¦   error.tsx
+¦   favicon.ico
+¦   globals.css
+¦   layout.tsx
+¦   loading.tsx
+¦   not-found.tsx
+¦   page.tsx
+¦   robots.ts
+¦   sitemap.ts
+¦   
++---(dev)
+¦   ¦   layout.tsx
+¦   ¦   
+¦   +---components-audit
+¦   +---dev-catalog
+¦           page.tsx
+¦           
++---api
+¦   +---chat
+¦   ¦       route.ts
+¦   ¦       
+¦   +---trivia
+¦           route.ts
+¦           
++---courses
+    ¦   page.tsx
+    ¦   
+    +---math
+        +---[chapterId]
+                page.tsx
+                

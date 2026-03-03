@@ -53,88 +53,6 @@ const navigationData: Degree[] = [
         icon: GraduationCap,
         items: [
             {
-                title: "חשבונאות א'",
-                courseId: "accounting-a",
-                href: "/courses/accounting",
-                topics: [
-                    {
-                        id: "foundations",
-                        title: "יסודות החשבונאות",
-                        items: [
-                            { title: "פרק 1: מבוא ומושגי יסוד", href: "/courses/accounting/chapter-0" },
-                            { title: "פרק 1: עריכת מאזן", href: "/courses/accounting/chapter-1" },
-                            { title: "פרק 2: עריכת מאזן", href: "/courses/accounting/chapter-2" },
-                        ]
-                    },
-                    {
-                        id: "financial-statements",
-                        title: "דוחות כספיים",
-                        items: [
-                            { title: "פרק 3: דוח רווח והפסד", href: "/courses/accounting/chapter-3" },
-                            { title: "פרק 4: פקודות יומן", href: "/courses/accounting/chapter-4" },
-                            { title: "פרק 5: מאזן בוחן", href: "/courses/accounting/chapter-5" },
-                        ]
-                    },
-                    {
-                        id: "accounting-cycle",
-                        title: "התהליך החשבונאי",
-                        items: [
-                            { title: "פרק 6: התהליך החשבונאי", href: "/courses/accounting/chapter-6" },
-                            { title: "פרק 7: כרטיסי חתך", href: "/courses/accounting/chapter-7" },
-                        ]
-                    },
-                    {
-                        id: "inventory",
-                        title: "מלאי",
-                        items: [
-                            { title: "פרק 8: חישובי מלאי", href: "/courses/accounting/chapter-8" },
-                            { title: "פרק 9: שיטות מלאי (FIFO)", href: "/courses/accounting/chapter-9" },
-                        ]
-                    },
-                    {
-                        id: "long-term-assets",
-                        title: "רכוש קבוע",
-                        items: [
-                            { title: "פרק 10: רכוש קבוע", href: "/courses/accounting/chapter-10" },
-                        ]
-                    },
-                    {
-                        id: "receivables",
-                        title: "חייבים ולקוחות",
-                        items: [
-                            { title: "פרק 11: לקוחות וחומ\"ס", href: "/courses/accounting/chapter-11" },
-                            { title: "פרק 12: גיול חובות", href: "/courses/accounting/chapter-12" },
-                        ]
-                    }
-                ]
-            },
-            {
-                title: "מיקרו כלכלה", courseId: "micro", href: "/courses/microeconomics",
-                topics: [
-                    {
-                        id: "foundations",
-                        title: "יסודות",
-                        items: [
-                            { title: "פרק 1: מדע הכלכלה", href: "/courses/microeconomics/chapter-1" },
-                            { title: "פרק 2: עלות אלטרנטיבית", href: "/courses/microeconomics/chapter-2" },
-                            { title: "פרק 3: גורמי ייצור ויתרון יחסי", href: "/courses/microeconomics/chapter-3" },
-                            { title: "פרק 4: צמיחה ומענקים", href: "/courses/microeconomics/chapter-4" },
-                            { title: "פרק 5: מסחר בינלאומי א'", href: "/courses/microeconomics/chapter-5" },
-                            { title: "פרק 6: ...", href: "/courses/microeconomics/chapter-6" },
-                            { title: "פרק 7: ...", href: "/courses/microeconomics/chapter-7" },
-                            { title: "פרק 8: הביקוש", href: "/courses/microeconomics/chapter-8" },
-                        ]
-                    },
-                    {
-                        id: "assessment",
-                        title: "הערכה וסימולציה",
-                        items: [
-                            { title: "סימולציית מבחן א׳", href: "/courses/microeconomics/exam" },
-                        ]
-                    }
-                ]
-            },
-            {
                 title: "מתמטיקה א'",
                 courseId: "math",
                 href: "/courses/math",
@@ -145,49 +63,6 @@ const navigationData: Degree[] = [
                         items: [
                             { title: "פרק 1: אלגברה בסיסית", href: "/courses/math/chapter-01" },
                             { title: "פרק 2: הגדרת גבול של פונקציה", href: "/courses/math/chapter-02" },
-                        ]
-                    }
-                ]
-            },
-            { title: "סטטיסטיקה א'", courseId: "stat-a", href: "/courses/statistics" },
-            {
-                title: "התנהגות ארגונית",
-                courseId: "organizational-behavior",
-                href: "/courses/organizational-behavior",
-                topics: [
-                    {
-                        id: "ob-foundations",
-                        title: "יסודות (הפרט)",
-                        items: [
-                            { title: "פרק 1: מבוא והתנהגות ארגונית", href: "/courses/organizational-behavior/chapter-1" },
-                            { title: "פרק 2: הפרט בארגון", href: "/courses/organizational-behavior/chapter-2" },
-                            { title: "פרק 3: תפיסה וקבלת החלטות", href: "/courses/organizational-behavior/chapter-3" },
-                            { title: "פרק 4: מוטיבציה", href: "/courses/organizational-behavior/chapter-4" },
-                        ]
-                    },
-                    {
-                        id: "ob-groups",
-                        title: "התנהגות קבוצתית",
-                        items: [
-                            { title: "פרק 5: התנהגות קבוצתית", href: "/courses/organizational-behavior/chapter-5" },
-                        ]
-                    },
-                    {
-                        id: "ob-leadership",
-                        title: "מנהיגות וסיכום",
-                        items: [
-                            { title: "פרק 6: מנהיגות", href: "/courses/organizational-behavior/chapter-6" },
-                            { title: "כלי עזר: מנהיגות מצבית", href: "/courses/organizational-behavior/situational-leadership" },
-                            { title: "פרק 7: תרגול וסיכום", href: "/courses/organizational-behavior/chapter-7" },
-                        ]
-                    },
-                    {
-                        id: "ob-exam-prep",
-                        title: "הכנה למבחן",
-                        items: [
-                            { title: "מבחן סימולציה", href: "/courses/organizational-behavior/exam-simulation" },
-                            { title: "סדנת אבחון מקרים", href: "/courses/organizational-behavior/diagnostic-workshop" },
-                            { title: "סיום וסטטיסטיקות", href: "/courses/organizational-behavior/summary" },
                         ]
                     }
                 ]

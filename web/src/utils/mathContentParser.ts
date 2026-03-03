@@ -42,7 +42,10 @@ export class MathContentParser {
                 currentLesson = {
                     id: `${chapterId}-lesson-${lessonCounter++}`,
                     title: lessonTitle,
-                    blocks: [] // Empty array for the Lecturer agent to fill
+                    pages: [{
+                        pageTitle: lessonTitle,
+                        blocks: [] // Empty array for the Lecturer agent to fill
+                    }]
                 };
             } else if (line.startsWith('# ')) {
                 // Ignore H1 as it's usually the document title, handled by chapterTitle

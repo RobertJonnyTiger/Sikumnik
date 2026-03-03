@@ -375,7 +375,8 @@ export interface ChapterData {
         nextChapter: string;
     };
     narrativeSummary?: {
-        content: string;
+        summary: string;
+        keyTakeaway: string;
         tip: { title: string; content: string };
         pitfall: { title: string; content: string };
     };
