@@ -27,7 +27,7 @@ const VARIANTS = {
         defaultTitle: "שימו לב",
         containerClass: "border-warning/30 bg-warning/5 hover:border-warning hover:shadow-warning/10",
         iconColor: "text-warning",
-        titleColor: "text-[#92400E]",
+        titleColor: "text-[--color-warning-title]",
     },
     prerequisite: {
         icon: RotateCcw,

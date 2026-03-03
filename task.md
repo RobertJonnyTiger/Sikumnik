@@ -1,7 +1,12 @@
 # Task: Fix System-Wide KaTeX + Theme Color Regression
 
 ## Phase 1: Environment Scan & Diagnosis
-- [/] Run environment scan commands
+- [x] Token Consistency Cleanup
+    - [x] Replace hardcoded hex with token in Alert.tsx
+    - [x] Final full-directory scan — confirm zero residual issues
+    - [x] Check FormulaCard.tsx is Still Intact
+    - [x] Run Final TypeScript Check
+    - [x] Visual screenshot verification
 - [ ] Read `layout.tsx` — check KaTeX CSS import, font/theme provider
 - [ ] Read `globals.css` — check CSS custom properties
 - [ ] Read `LessonMarkdown.tsx` — check KaTeX invocation method
