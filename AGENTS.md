@@ -30,11 +30,9 @@ npx vitest run path/to/file.test.ts   # Run single test file
 
 ## Tech Stack
 
-- **Framework:** Next.js 16.1.6 (App Router)
-- **UI:** React 19.2.3
-- **Language:** TypeScript (strict mode)
-- **Styling:** Tailwind CSS v4 (CSS-first configuration)
-- **Animation:** Framer Motion 12.34.0
+- **Tech Stack**: Next.js 16.1.6 (App Router), React 19.2.3, Tailwind CSS v4, Framer Motion 12.34.0, KaTeX.
+- **Terminal Environment**: **Windows PowerShell** (Strict).
+    - **Forbidden**: `ls` (use `dir`), `&&` (use `;`).
 - **UI Primitives:** Radix UI (Accordion, Slider, Tooltip, etc.)
 - **Icons:** Lucide React
 - **Math:** KaTeX (react-katex)

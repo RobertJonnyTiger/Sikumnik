@@ -14,12 +14,18 @@ Visit `http://localhost:3001`
 ## Tech Stack
 
 - **Framework:** Next.js 16.1.6 (App Router)
-- **Language:** TypeScript (strict mode)
-- **Styling:** Tailwind CSS v4 + Framer Motion
-- **UI Primitives:** Radix UI
-- **Math:** KaTeX for LaTeX rendering
+- **Language:** TypeScript 5 (Strict Mode)
+- **Styling:** Tailwind CSS v4 + Framer Motion 12.34.0
+- **UI Primitives:** Radix UI (Headless)
+- **Math:** KaTeX + react-katex (standard)
 - **Icons:** Lucide React
-- **Testing:** Vitest
+- **Testing:** Vitest 4.0.18 + Playwright 1.58.2
+- **Agent SDK:** Agentation 2.2.0
+
+## Environment
+
+- **Terminal:** **Windows PowerShell** (Strict).
+- **Forbidden**: `ls` (use `dir`), `&&` (use `;`).
 
 ## Project Structure
 
@@ -49,22 +55,15 @@ web/src/
     └── chapter.ts           # ChapterData schema
 ```
 
-## Adding a New Chapter
+## Adding a New Chapter (Math)
 
+1. **Generate Data**: Use the `scripts/create-chapter.py` (if available) or create a JSON file in `web/src/data/chapters/math/chapter-N.json`.
+2. **Registry**: Add the course to `web/src/data/courses/registry.ts` (if not already there).
+3. **Dynamic Loading**: The platform automatically routes and loads chapters from the registry. No manual page creation is required for the Math course.
+
+## Adding Chapters (Other Courses)
 1. **Create data file:** `web/src/data/[course]/chapters/chapter-N.json`
-2. **Use schema:** See `web/src/types/chapter.ts` for the ChapterData interface
-3. **Create page:** `web/src/app/courses/[course]/chapter-N/page.tsx`
-
-```tsx
-import { ChapterTemplate } from "@/components/core/ChapterTemplate";
-import type { ChapterData } from "@/types/chapter";
-import chapterData from "@/data/[course]/chapters/chapter-N.json";
-
-export default function ChapterNPage() {
-  const data = chapterData as unknown as ChapterData;
-  return <ChapterTemplate data={data} />;
-}
-```
+2. **Create page:** `web/src/app/courses/[course]/chapter-N/page.tsx`
 
 ## Chapter Schema
 
