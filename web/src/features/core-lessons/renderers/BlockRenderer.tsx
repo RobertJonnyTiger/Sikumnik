@@ -134,6 +134,12 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
         case "alert":
             return <Alert variant={block.variant} title={block.title}><LessonMarkdown>{block.content}</LessonMarkdown></Alert>;
 
+        case "callout": {
+            const variantMap = { info: "tip", warning: "warning", tip: "tip" } as const;
+            const alertVariant = variantMap[block.variant ?? "info"];
+            return <Alert variant={alertVariant} title={block.title}><LessonMarkdown>{block.content}</LessonMarkdown></Alert>;
+        }
+
         case "image":
             return <ChapterImage src={block.src} alt={block.alt} caption={block.caption} />;
 

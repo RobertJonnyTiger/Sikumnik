@@ -1,6 +1,6 @@
 "use client";
 
-import { ChapterTemplate } from "@/components/core/ChapterTemplate";
+import { ChapterTemplate } from "@/features/core-lessons/renderers/ChapterTemplate";
 import type { ChapterData } from "@/types/chapter";
 import chapterData from "@/data/organizational-behavior/chapters/chapter-7.json";
 

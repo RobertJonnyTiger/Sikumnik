@@ -1,6 +1,6 @@
 "use client";
 
-import { CourseCompletionDashboard } from "@/components/core/dashboard/CourseCompletionDashboard";
+import { CourseCompletionDashboard } from "@/features/core-lessons/renderers/CourseCompletionDashboard";
 import { Clock, BookOpen, Layers } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
