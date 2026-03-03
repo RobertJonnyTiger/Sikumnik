@@ -133,15 +133,8 @@
     line-height: 1.6;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  .font-black.uppercase {
-    font-size: 1.125rem !important;
-    @apply tracking-wider;
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-wide;
   }
 }
 

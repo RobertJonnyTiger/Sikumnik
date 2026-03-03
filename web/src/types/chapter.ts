@@ -212,6 +212,7 @@ export interface ExamTipBlock {
 export interface TopicSummaryBlock {
     type: "topic-summary";
     content: string;
+    keyPoints?: string[];
 }
 
 export interface MaslowPyramidBlock {
