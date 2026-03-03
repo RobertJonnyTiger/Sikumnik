@@ -32,7 +32,7 @@ Every message you generate while assisting in this project **MUST** follow this 
 - **Next Steps**: Clearly state what needs to happen to move forward.
 
 ### 2. Model Recommendation
-- Recommend the best model from the guide below for the next step.
+- Recommend **ONLY** from the models listed below. **NEVER** recommend any model not in this list.
 - **Gemini 3.1 Pro (High)**: Complex system architecture, deep research, high-precision coding.
 - **Gemini 3.1 Pro (Low)**: Balanced for standard feature development.
 - **Claude Sonnet 4.6 (Thinking)**: Superior for complex debugging, logic, and reasoning.
@@ -41,13 +41,10 @@ Every message you generate while assisting in this project **MUST** follow this 
 
 ### 3. The Agent Prompt
 Provide a single markdown code block with the specific instructions for the Agent. It **MUST** include:
-- **Recommended Model**: Header.
 - **Task Tracking**: Mandatory `task.md` creation/update.
 - **Actionable Steps**: Clear numbered checklist.
 
 ```markdown
-## Recommended Model: [Model Name]
-
 ## Task Tracking
 Before starting any work, create a Task in your brain memory with:
 - Title: [Descriptive Title]
