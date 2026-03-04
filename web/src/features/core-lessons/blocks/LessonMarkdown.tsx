@@ -3,6 +3,7 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
+import remarkGfm from "remark-gfm";
 import rehypeKatex from "rehype-katex";
 import rehypeRaw from "rehype-raw";
 import remarkBreaks from "remark-breaks";
@@ -59,7 +60,7 @@ export const LessonMarkdown: React.FC<LessonMarkdownProps> = ({ children, classN
     return (
         <div className={`lesson-content ${className || ""}`} dir="rtl">
             <ReactMarkdown
-                remarkPlugins={[remarkMath, remarkBreaks]}
+                remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]}
                 rehypePlugins={[rehypeKatex, rehypeRaw]}
                 components={{
                     // Wrap math spans in dir="ltr" to fix RTL directionality issues (e.g., flipped equations)

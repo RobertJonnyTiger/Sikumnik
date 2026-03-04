@@ -315,3 +315,31 @@ html {
 .lesson-content ol {
   @apply list-decimal list-inside space-y-2 mb-4;
 }
+
+.hook-content p {
+  color: white !important;
+  font-weight: 700;
+}
+
+/* Stage 1+2 — inside gradient (white text area) */
+.hook-content strong {
+  color: white;
+  font-weight: 900;
+  text-decoration: underline;
+  text-decoration-color: var(--color-warning);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+
+/* Stage 3 — white background reveal panel */
+.hook-reveal-content strong {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Remove bold weight — use color only */
+.hook-content strong,
+.hook-reveal-content strong {
+  font-style: normal;
+}

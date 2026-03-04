@@ -100,7 +100,7 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
             );
 
         case "hook":
-            return <Hook opener={block.opener || (block as any).content || ""} question={block.question} context={block.context} />;
+            return null;
 
         case "street-smart":
             return (

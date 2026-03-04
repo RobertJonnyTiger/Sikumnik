@@ -100,7 +100,11 @@ Use the full range of block types below. Never limit yourself to only a few type
 
 **Context blocks:**
 - `exam-tip` — exam strategy from past papers
-- `hook` — attention-grabbing opening (use on first page only)
+- `hook` — attention-grabbing opening (use on first page only). Use `**bold**` to emphasize 1-3 key terms per field.
+  Examples:
+  - hook: "האם ידעת ש**פירוק לגורמים** הוא כמו פיצוח קוד סודי?"
+  - whyItMatters: "נוסחאות אלו הן **הכלי הראשון** בארגז הכלים שלך"
+  - reveal: "כאשר תלמד **כפל מקוצר**, תוכל לפשט ביטויים תוך **שניות**"
 - `topic-summary` — recap at end of page (use on every page)
 - `street-smart` — street-smart tip or shortcut
 - `list` — simple list of items
@@ -156,7 +160,8 @@ Before finalizing output, verify:
         "title": "כותרת",
         "opener": "האם תהיתם פעם...",
         "question": "מה קורה כאשר...?",
-        "context": "הקשר רחב יותר..."
+        "context": "הקשר רחב יותר...",
+        "reveal": "2-3 משפטים שמסבירים לעומק את התשובה לשאלת ה-hook. זה צריך להרגיש כמו 'אהה, עכשיו הבנתי למה אני לומד את זה'"
       },
       {
         "type": "hero-formula",

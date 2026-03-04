@@ -1,0 +1,69 @@
+
+> web@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Turbopack build encountered 1 warnings:
+./
+Failed to find font override values for font `Playpen Sans Hebrew`
+Skipping generating a fallback font.
+
+
+Ô£ô Compiled successfully in 10.7s
+  Running TypeScript ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/16) ...
+[ChapterLanding] introduction: {
+  content: 'ÎæÎñÎ¿Îº ÎûÎö ÎáÎ£Î×Îô ÎÉÎ¬ ÎÖÎíÎòÎôÎòÎ¬ ÎöÎÉÎ£ÎÆÎæÎ¿Îö Î®ÎÖÎ®Î×Î®Îò ÎÉÎòÎ¬ÎáÎò Î£ÎÉÎòÎ¿ÎÜ ÎøÎ£ ÎöÎºÎòÎ¿Îí.',
+  whyItMatters: 'ÎÉÎ£ÎÆÎæÎ¿Îö ÎöÎÖÎÉ ÎöÎ®ÎñÎö Î®ÎæÎö Î×Î¬Î×ÎÿÎÖÎºÎö Î×ÎôÎæÎ¿Î¬.',
+  hook: "ÎÉÎÖ ÎñÎóÎØ Î¬ÎöÎÖÎ¬ÎØ Î£Î×Îö $x$ Î¬Î×ÎÖÎô Î×ÎíÎ×Îƒ ÎÉÎ¬ ÎöÎáÎóÎ£ÎØ? ÎûÎö Î×ÎÆÎÖÎó Î×Î×ÎÖÎ£Îö ÎóÎ¿ÎæÎÖÎ¬ Î®Î×Î®Î×ÎóÎòÎ¬Îö 'ÎöÎôÎæÎ¿'."
+}
+[ChapterLanding] objectives: [
+  'ÎöÎæÎáÎ¬ ÎáÎòÎíÎùÎÉÎòÎ¬ ÎøÎñÎ£ Î×ÎºÎòÎªÎ¿',
+  'ÎñÎÖÎ¿ÎòÎº Î£ÎÆÎòÎ¿Î×ÎÖÎØ',
+  'Î¬ÎùÎòÎØ ÎöÎÆÎôÎ¿Îö Î®Î£ ÎñÎòÎáÎºÎªÎÖÎö',
+  'ÎñÎ¬Î¿ÎòÎƒ Î×Î®ÎòÎòÎÉÎòÎ¬ Î×Î×ÎóÎ£Îö Î®ÎáÎÖÎÖÎö'
+]
+  Generating static pages using 11 workers (4/16) 
+  Generating static pages using 11 workers (8/16) 
+[ChapterLanding] introduction: {
+  content: '',
+  hook: 'ÎöÎÉÎØ ÎÖÎôÎóÎ¬ Î®ÎñÎÖÎ¿ÎòÎº Î£ÎÆÎòÎ¿Î×ÎÖÎØ ÎöÎòÎÉ ÎøÎ×Îò ÎñÎÖÎªÎòÎù ÎºÎòÎô ÎíÎòÎôÎÖ?',
+  whyItMatters: 'ÎáÎòÎíÎùÎÉÎòÎ¬ ÎöÎøÎñÎ£ ÎöÎ×ÎºÎòÎªÎ¿ ÎöÎƒ ÎöÎ×ÎñÎ¬Îù ÎöÎ¿ÎÉÎ®ÎòÎƒ ÎæÎÉÎ¿ÎÆÎû ÎöÎøÎ£ÎÖÎØ Î®Î£ÎÜ Î£ÎñÎÖÎ®ÎòÎÿ ÎæÎÖÎÿÎòÎÖÎÖÎØ ÎÉÎ£ÎÆÎæÎ¿ÎÖÎÖÎØ Î×ÎòÎ¿ÎøÎæÎÖÎØ.'
+}
+[ChapterLanding] objectives: undefined
+[ChapterLanding] introduction: {
+  content: '',
+  hook: 'ÎöÎÉÎØ ÎÉÎÖ ÎñÎóÎØ ÎáÎÖÎíÎÖÎ¬ÎØ Î£ÎöÎ¬ÎºÎ¿Îæ Î£Î×Î®ÎöÎò ÎæÎ£ÎÖ Î£ÎÆÎóÎ¬ ÎæÎò?',
+  whyItMatters: 'ÎöÎÆÎæÎòÎ£ ÎöÎòÎÉ ÎÉÎùÎô ÎöÎ×ÎòÎ®ÎÆÎÖÎØ ÎöÎæÎíÎÖÎíÎÖÎÖÎØ ÎòÎöÎùÎûÎºÎÖÎØ ÎæÎÖÎòÎ¬Î¿ ÎæÎùÎ®ÎæÎòÎƒ ÎôÎÖÎñÎ¿ÎáÎªÎÖÎÉÎ£ÎÖ ÎòÎÉÎÖÎáÎÿÎÆÎ¿Î£ÎÖ. ÎöÎòÎÉ Î×ÎÉÎñÎ®Î¿ Î£ÎáÎò Î£ÎöÎæÎÖÎƒ ÎÉÎ¬ ÎöÎöÎ¬ÎáÎöÎÆÎòÎ¬ Î®Î£ ÎñÎòÎáÎºÎªÎÖÎòÎ¬ ÎæÎáÎºÎòÎôÎòÎ¬ ÎºÎ¿ÎÖÎÿÎÖÎòÎ¬, ÎøÎòÎ£Î£ ÎøÎÉÎ£Îö Î®ÎæÎöÎƒ ÎöÎñÎòÎáÎºÎªÎÖÎö ÎóÎªÎ×Îö ÎÉÎÖÎáÎö Î×ÎòÎÆÎôÎ¿Î¬.'
+}
+[ChapterLanding] objectives: undefined
+  Generating static pages using 11 workers (12/16) 
+Ô£ô Generating static pages using 11 workers (16/16) in 1994.5ms
+  Finalizing page optimization ...
+
+Route (app)
+Ôöî Ôùï /
+Ôö£ Ôùï /_not-found
+Ôö£ ãÆ /api/chat
+Ôö£ ãÆ /api/trivia
+Ôö£ Ôùï /courses
+Ôö£ Ôùï /courses/math
+Ôö£ ÔùÅ /courses/math/[chapterId]
+Ôöé Ôö£ /courses/math/chapter-01
+Ôöé Ôöö /courses/math/chapter-02
+Ôö£ Ôùï /robots.txt
+Ôö£ Ôùï /sitemap.xml
+Ôö£ Ôùï /workshop
+Ôö£ Ôùï /workshop/chapter-end
+Ôö£ Ôùï /workshop/chapter-start
+Ôöö Ôùï /workshop/colors
+
+
+Ôùï  (Static)   prerendered as static content
+ÔùÅ  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ãÆ  (Dynamic)  server-rendered on demand
+

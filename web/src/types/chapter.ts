@@ -194,6 +194,7 @@ export interface HookBlock {
     opener: string;
     question?: string;
     context?: string;
+    reveal?: string;
 }
 
 export interface StreetSmartBlock {
@@ -358,6 +359,7 @@ export interface ChapterData {
         content: string;
         whyItMatters?: string;
         hook?: string;
+        reveal?: string;
     };
 
     // THE CORE: topics → tabs

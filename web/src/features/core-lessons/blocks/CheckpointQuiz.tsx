@@ -11,6 +11,39 @@ interface CheckpointQuizProps {
     questions: QuizQuestion[];
 }
 
+type ChoiceState = "idle" | "selected" | "correct" | "wrong" | "reveal";
+
+function getChoiceState(
+    optIdx: number,
+    correctIndex: number,
+    selectedIdx: number | null | undefined,
+    isSubmitted: boolean
+): ChoiceState {
+    if (!isSubmitted) return selectedIdx === optIdx ? "selected" : "idle";
+    if (optIdx === correctIndex && selectedIdx === optIdx) return "correct";
+    if (optIdx !== correctIndex && selectedIdx === optIdx) return "wrong";
+    if (optIdx === correctIndex) return "reveal";
+    return "idle";
+}
+
+const choiceStyles: Record<ChoiceState, string> = {
+    idle: [
+        "bg-white border-2 border-gray-200 text-gray-700",
+        "hover:border-indigo-400 hover:bg-indigo-50/60",
+        "hover:shadow-[0_0_0_4px_rgba(99,102,241,0.12)]",
+        "hover:scale-[1.02] active:scale-[0.98]",
+    ].join(" "),
+    selected:
+        "bg-indigo-50 border-2 border-indigo-400 text-indigo-800 shadow-sm scale-[1.01]",
+    correct: "bg-emerald-50 border-2 border-emerald-400 text-emerald-800",
+    wrong: "bg-rose-50 border-2 border-rose-400 text-rose-800",
+    reveal: "bg-emerald-50/60 border-2 border-emerald-200 text-emerald-600",
+};
+
+function shouldUseGrid(options: string[]): boolean {
+    return options.length === 4 && options.every((o) => o.length < 24);
+}
+
 export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => {
     const [answers, setAnswers] = useState<Record<string, number | null>>({});
     const [submitted, setSubmitted] = useState<Record<string, boolean>>({});
@@ -30,93 +63,147 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
     const totalSubmitted = Object.keys(submitted).length;
 
     return (
-        <div className="group bg-card border border-[--color-border-card] rounded-2xl overflow-hidden my-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 hover:shadow-lg hover:shadow-foreground/10" dir="rtl">
-            <div className="flex items-center justify-between px-6 py-4 bg-muted/30 border-b border-border">
-                <div className="flex items-center gap-3">
-                    <div className="bg-card p-2 rounded-lg border border-border shadow-sm">
-                        <HelpCircle className="w-4 h-4 text-foreground" />
-                    </div>
-                    <h4 className="text-sm font-black text-foreground uppercase tracking-wider">בדיקת הבנה</h4>
-                </div>
+        <div
+            className="rounded-2xl overflow-hidden border-2 border-indigo-400 shadow-md my-6 transition-shadow duration-300 hover:shadow-lg"
+            dir="rtl"
+        >
+            {/* Header */}
+            <div className="bg-indigo-500 text-white px-5 py-3 flex items-center gap-2">
+                <HelpCircle className="w-4 h-4 shrink-0" />
+                <h4 className="font-black text-sm uppercase tracking-widest flex-1">
+                    בדיקת הבנה
+                </h4>
                 {totalSubmitted > 0 && (
-                    <span className="text-sm font-mono font-bold text-muted-foreground">
+                    <span className="text-xs font-bold bg-white/20 px-2.5 py-1 rounded-full font-mono">
                         {score}/{totalSubmitted}
                     </span>
                 )}
             </div>
 
-            <div className="p-6 space-y-8">
+            {/* Questions */}
+            <div className="bg-white p-4 space-y-6">
                 {questions.map((q, qIdx) => {
                     const isSubmitted = submitted[q.id];
                     const selectedIdx = answers[q.id];
                     const isCorrect = selectedIdx === q.correctIndex;
+                    const useGrid = shouldUseGrid(q.options);
 
                     return (
-                        <div key={q.id} className="bg-card border border-[--color-border-card] rounded-xl p-6 shadow-sm">
-                            <div className="text-foreground font-medium mb-4 flex items-start gap-2 markdown-content">
-                                <span className="text-muted-foreground font-bold bg-muted/50 px-2 py-0.5 rounded-full text-sm">{qIdx + 1}</span>
-                                <div className="mt-0.5 relative top-[-2px]">
-                                    <LessonMarkdown>
-                                        {q.question}
-                                    </LessonMarkdown>
+                        <div key={q.id}>
+                            {/* Question text */}
+                            <div className="flex items-start gap-2 mb-4">
+                                <span className="w-6 h-6 rounded-lg bg-indigo-500 text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
+                                    {qIdx + 1}
+                                </span>
+                                <div className="flex-1 font-medium text-gray-800 markdown-content">
+                                    <LessonMarkdown>{q.question}</LessonMarkdown>
                                 </div>
                             </div>
 
-                            <div className="space-y-2 mb-3">
+                            {/* Choices */}
+                            <div
+                                className={
+                                    useGrid
+                                        ? "grid grid-cols-2 gap-2 mb-3"
+                                        : "flex flex-col gap-2 mb-3"
+                                }
+                            >
                                 {q.options.map((opt, optIdx) => {
-                                    const isSelected = selectedIdx === optIdx;
-                                    const isAnswer = optIdx === q.correctIndex;
-
-                                    let style = "border-border hover:border-border/70 hover:bg-muted/20";
-                                    if (isSubmitted && isAnswer) style = "border-emerald-300 bg-emerald-50";
-                                    else if (isSubmitted && isSelected && !isAnswer) style = "border-red-300 bg-red-50";
-                                    else if (isSelected) style = "border-border bg-muted/50 ring-2 ring-border";
+                                    const state = getChoiceState(
+                                        optIdx,
+                                        q.correctIndex,
+                                        selectedIdx,
+                                        !!isSubmitted
+                                    );
 
                                     return (
                                         <button
                                             key={optIdx}
                                             onClick={() => select(q.id, optIdx)}
-                                            disabled={isSubmitted}
-                                            className={`w-full text-right px-4 py-3 rounded-xl border transition-all duration-200 ${style} ${isSubmitted ? "cursor-default" : "cursor-pointer"}`}
+                                            disabled={!!isSubmitted}
+                                            className={`
+                        w-full flex items-center justify-center gap-2
+                        px-4 py-3 rounded-2xl
+                        transition-all duration-200
+                        cursor-pointer disabled:cursor-default
+                        ${choiceStyles[state]}
+                      `}
                                         >
-                                            <div className="flex items-center justify-between">
-                                                <div className="text-foreground ml-4 flex-1 text-right">
-                                                    <LessonMarkdown>{opt}</LessonMarkdown>
-                                                </div>
-                                                {isSubmitted && isAnswer && <CheckCircle className="w-4 h-4 text-emerald-700" />}
-                                                {isSubmitted && isSelected && !isAnswer && <XCircle className="w-4 h-4 text-red-700" />}
-                                            </div>
+                                            {/* Status icon — only after submit */}
+                                            {state === "correct" && (
+                                                <span className="w-4 h-4 rounded-full bg-emerald-500 text-white text-[10px] font-black flex items-center justify-center shrink-0">
+                                                    ✓
+                                                </span>
+                                            )}
+                                            {state === "wrong" && (
+                                                <span className="w-4 h-4 rounded-full bg-rose-500 text-white text-[10px] font-black flex items-center justify-center shrink-0">
+                                                    ✗
+                                                </span>
+                                            )}
+                                            {state === "reveal" && (
+                                                <span className="w-4 h-4 rounded-full bg-emerald-300 text-white text-[10px] font-black flex items-center justify-center shrink-0">
+                                                    ✓
+                                                </span>
+                                            )}
+
+                                            {/* Option text — centered, markdown+math aware */}
+                                            <span className="text-center text-sm markdown-content">
+                                                <LessonMarkdown>{opt}</LessonMarkdown>
+                                            </span>
                                         </button>
                                     );
                                 })}
                             </div>
 
-                            {!isSubmitted && selectedIdx !== null && selectedIdx !== undefined && (
-                                <button
-                                    onClick={() => submit(q.id)}
-                                    className="px-5 py-2.5 bg-foreground text-background rounded-lg text-sm font-bold hover:bg-foreground/90 transition-colors shadow-sm"
-                                >
-                                    בדוק תשובה
-                                </button>
-                            )}
+                            {/* Submit button */}
+                            {!isSubmitted &&
+                                selectedIdx !== null &&
+                                selectedIdx !== undefined && (
+                                    <button
+                                        onClick={() => submit(q.id)}
+                                        className="px-5 py-2.5 bg-indigo-500 text-white rounded-xl text-sm font-black hover:bg-indigo-600 transition-colors shadow-sm"
+                                    >
+                                        בדוק תשובה
+                                    </button>
+                                )}
 
+                            {/* Explanation — smooth Framer Motion reveal */}
                             <AnimatePresence>
                                 {isSubmitted && (
                                     <motion.div
+                                        key="explanation"
                                         initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                                        animate={{ opacity: 1, height: "auto", marginTop: 16 }}
+                                        animate={{ opacity: 1, height: "auto", marginTop: 12 }}
                                         exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                                        transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
                                         className="overflow-hidden"
                                     >
-                                        <div className={`px-5 py-4 rounded-xl text-sm border ${isCorrect ? "bg-emerald-50 text-emerald-800 border-emerald-200" : "bg-red-50 text-red-800 border-red-200"}`}>
-                                            <p className="font-bold mb-2 flex items-center gap-2">
-                                                {isCorrect ? <CheckCircle className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
+                                        <div
+                                            className={`px-5 py-4 rounded-2xl border-2 text-sm ${isCorrect
+                                                    ? "bg-emerald-50 border-emerald-200"
+                                                    : "bg-rose-50 border-rose-200"
+                                                }`}
+                                        >
+                                            {/* Explanation header */}
+                                            <p
+                                                className={`font-black mb-2 flex items-center gap-2 ${isCorrect ? "text-emerald-700" : "text-rose-700"
+                                                    }`}
+                                            >
+                                                <span
+                                                    className={`w-5 h-5 rounded-full text-white text-xs font-black flex items-center justify-center ${isCorrect ? "bg-emerald-500" : "bg-rose-500"
+                                                        }`}
+                                                >
+                                                    {isCorrect ? "✓" : "✗"}
+                                                </span>
                                                 {isCorrect ? "נכון!" : "לא מדויק"}
                                             </p>
-                                            <div className="text-foreground/90 markdown-content leading-relaxed">
-                                                <LessonMarkdown>
-                                                    {q.explanation}
-                                                </LessonMarkdown>
+
+                                            {/* Explanation body */}
+                                            <div
+                                                className={`leading-relaxed markdown-content ${isCorrect ? "text-emerald-900" : "text-rose-900"
+                                                    }`}
+                                            >
+                                                <LessonMarkdown>{q.explanation}</LessonMarkdown>
                                             </div>
                                         </div>
                                     </motion.div>

@@ -1,0 +1,4 @@
+.next/types/validator.ts(53,39): error TS2307: Cannot find module '../../src/app/(dev)/dev-catalog/page.js' or its corresponding type declarations.
+.next/types/validator.ts(89,39): error TS2307: Cannot find module '../../src/app/workshop/chapter-end/page.js' or its corresponding type declarations.
+.next/types/validator.ts(98,39): error TS2307: Cannot find module '../../src/app/workshop/chapter-start/page.js' or its corresponding type declarations.
+.next/types/validator.ts(107,39): error TS2307: Cannot find module '../../src/app/workshop/page.js' or its corresponding type declarations.

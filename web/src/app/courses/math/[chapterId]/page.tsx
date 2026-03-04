@@ -34,13 +34,27 @@ export default async function MathChapterPage(props: PageProps) {
             chapterNumber,
             totalChapters: 12,
             title: raw[0]?.pageTitle ?? chapterId,
+            pageMap: {
+                estimatedTime: "45 דקות",
+                learningObjectives: raw.map((page: any) => page.pageTitle).filter(Boolean),
+            },
             topics: raw.map((page: any, idx: number) => ({
                 id: `page-${idx}`,
                 title: page.pageTitle || `חלק ${idx + 1}`,
                 blocks: page.blocks,
             })),
         }
-        : raw;
+        : {
+            ...raw,
+            pageMap: {
+                ...raw.pageMap,
+                learningObjectives: raw.learningObjectives
+                    ?? raw.pageMap?.learningObjectives
+                    ?? raw.objectives
+                    ?? raw.topics?.map((t: any) => t.title).filter(Boolean)
+                    ?? [],
+            }
+        };
 
     return <ChapterTemplate data={normalized} />;
 }

@@ -23,13 +23,37 @@ export const ChapterTemplate: React.FC<ChapterTemplateProps> = ({
     data,
     interactiveRegistry,
 }) => {
+    // Enrich data if introduction.hook is missing
+    const enrichedData = React.useMemo(() => {
+        const newData = { ...data };
+        if (!newData.introduction?.hook) {
+            // Find first block of type hook
+            let hookBlock: any = null;
+            for (const topic of newData.topics || []) {
+                hookBlock = topic.blocks?.find(b => b.type === "hook");
+                if (hookBlock) break;
+            }
+
+            if (hookBlock) {
+                newData.introduction = {
+                    ...newData.introduction,
+                    content: newData.introduction?.content || "",
+                    hook: hookBlock.opener || hookBlock.title || "",
+                    whyItMatters: hookBlock.context || "",
+                    reveal: hookBlock.reveal || "",
+                };
+            }
+        }
+        return newData;
+    }, [data]);
+
     const [activeTab, setActiveTab] = React.useState(-1);
 
     // Build tabs: intro (if exists) + topics + wrap-up (if exists)
-    const hasWrapUp = !!(data.checkpoint || data.independentExercises || data.quickReference || data.narrativeSummary);
+    const hasWrapUp = !!(enrichedData.checkpoint || enrichedData.independentExercises || enrichedData.quickReference || enrichedData.narrativeSummary);
 
     const tabs = [
-        ...data.topics.map((t) => ({ id: t.id, title: t.title })),
+        ...enrichedData.topics.map((t) => ({ id: t.id, title: t.title })),
         ...(hasWrapUp ? [{ id: "wrap-up", title: "סיכום ותרגול" }] : []),
     ];
 
@@ -48,11 +72,11 @@ export const ChapterTemplate: React.FC<ChapterTemplateProps> = ({
     const handleNext = () => {
         if (activeTab < tabs.length - 1) {
             handleTabChange(activeTab + 1);
-        } else if (data.navigation?.next) {
+        } else if (enrichedData.navigation?.next) {
             // Navigate to next chapter - try data.navigation.next.href first, 
             // then construct a robust fallback to avoid /undefined
-            const nextId = (data.navigation.next as any).id?.replace("chapter-", "") || (data.navigation.next as any).chapterId || "";
-            const href = data.navigation.next.href || `/courses/math/chapter-${nextId}`;
+            const nextId = (enrichedData.navigation.next as any).id?.replace("chapter-", "") || (enrichedData.navigation.next as any).chapterId || "";
+            const href = enrichedData.navigation.next.href || `/courses/math/chapter-${nextId}`;
 
             window.location.href = href;
         }
@@ -65,8 +89,8 @@ export const ChapterTemplate: React.FC<ChapterTemplateProps> = ({
 
             {/* Header: Breadcrumbs (Visible on all tabs) */}
             <CourseBreadcrumb
-                courseName={data.course}
-                chapterTitle={data.title}
+                courseName={enrichedData.course}
+                chapterTitle={enrichedData.title}
                 currentTabTitle={currentTabTitle}
                 currentTabIndex={activeTab === -1 ? 0 : activeTab + 1}
                 totalTabs={tabs.length}
@@ -75,7 +99,7 @@ export const ChapterTemplate: React.FC<ChapterTemplateProps> = ({
             {/* Chapter Intro/Lobby - Only on Intro State (-1) */}
             {activeTab === -1 && (
                 <ChapterLanding
-                    data={data}
+                    data={enrichedData}
                     onStart={() => handleTabChange(0)}
                 />
             )}
@@ -84,7 +108,7 @@ export const ChapterTemplate: React.FC<ChapterTemplateProps> = ({
             {activeTab >= 0 && (
                 <main className="max-w-4xl mx-auto px-4 py-8 pb-32">
                     {/* Topic Tabs */}
-                    {data.topics.map((topic, idx) => (
+                    {enrichedData.topics.map((topic, idx) => (
                         <TopicTab key={topic.id} isActive={activeTab === idx}>
                             {topic.blocks.map((block, blockIdx) => (
                                 <BlockRenderer
@@ -101,22 +125,22 @@ export const ChapterTemplate: React.FC<ChapterTemplateProps> = ({
                         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
 
                             {/* Narrative Summary (The "Bird's Eye" View) */}
-                            {data.narrativeSummary && (
+                            {enrichedData.narrativeSummary && (
                                 <NarrativeSummary
-                                    data={data.narrativeSummary}
-                                    nextChapter={data.navigation?.next}
+                                    data={enrichedData.narrativeSummary}
+                                    nextChapter={enrichedData.navigation?.next}
                                 />
                             )}
 
                             {/* Legacy Topic Summary (Fallback if no narrative) */}
-                            {data.quickReference && !data.narrativeSummary && (
+                            {enrichedData.quickReference && !enrichedData.narrativeSummary && (
                                 <TopicSummary
                                     content="סיכום הנושאים המרכזיים"
-                                    keyPoints={data.quickReference.definitions.map(d => `${d.term}: ${d.definition}`)}
+                                    keyPoints={enrichedData.quickReference.definitions.map(d => `${d.term}: ${d.definition}`)}
                                 />
                             )}
-                            {data.checkpoint && (
-                                <CheckpointQuiz questions={data.checkpoint} />
+                            {enrichedData.checkpoint && (
+                                <CheckpointQuiz questions={enrichedData.checkpoint} />
                             )}
                         </div>
                     )}
@@ -127,22 +151,22 @@ export const ChapterTemplate: React.FC<ChapterTemplateProps> = ({
                         tabs={tabs}
                         onPrevious={handlePrevious}
                         onNext={handleNext}
-                        facts={data.trivia?.map((item) => ({
+                        facts={enrichedData.trivia?.map((item) => ({
                             category: item.source || "הידעת?",
                             fact: item.fact,
                         }))}
-                        topicData={activeTab >= 0 && activeTab < data.topics.length ? {
-                            title: data.topics[activeTab].title,
-                            blocks: data.topics[activeTab].blocks // Just for trivia context if needed
+                        topicData={activeTab >= 0 && activeTab < enrichedData.topics.length ? {
+                            title: enrichedData.topics[activeTab].title,
+                            blocks: enrichedData.topics[activeTab].blocks // Just for trivia context if needed
                         } : undefined}
-                        courseName={data.course}
-                        nextChapterTitle={activeTab === tabs.length - 1 ? data.navigation?.next?.title : undefined}
+                        courseName={enrichedData.course}
+                        nextChapterTitle={activeTab === tabs.length - 1 ? enrichedData.navigation?.next?.title : undefined}
                     />
                 </main>
             )}
 
             {/* AI Lecturer Chat */}
-            <AiLecturer context={data} />
+            <AiLecturer context={enrichedData} />
 
             {/* Global Chapter Progression Bar */}
             {/* Global Chapter Progression Bar */}
@@ -150,11 +174,11 @@ export const ChapterTemplate: React.FC<ChapterTemplateProps> = ({
                 tabs={tabs}
                 activeTab={activeTab}
                 onTabChange={handleTabChange}
-                course={data.course}
-                chapterTitle={data.title}
-                nextChapter={data.bridge ? {
-                    title: data.bridge.nextChapterTitle,
-                    id: data.bridge.nextChapter
+                course={enrichedData.course}
+                chapterTitle={enrichedData.title}
+                nextChapter={enrichedData.bridge ? {
+                    title: enrichedData.bridge.nextChapterTitle,
+                    id: enrichedData.bridge.nextChapter
                 } : undefined}
             />
         </div>
