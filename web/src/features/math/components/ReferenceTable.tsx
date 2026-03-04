@@ -26,16 +26,24 @@ export const ReferenceTable: React.FC<ReferenceTableProps> = ({
         streetExplanation: columnHeaders.streetExplanation || 'הסבר רחוב'
     };
 
+    const renderSafeMath = (text: string) => {
+        if (!text) return null;
+        if (!text.includes('$') && !/[\u0590-\u05FF]/.test(text)) {
+            return renderMathText(`$${text}$`);
+        }
+        return renderMathText(text);
+    };
+
     return (
-        <div className="group my-10 w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gray-400/60 hover:shadow-lg hover:shadow-gray-400/20 dark:border-gray-800 dark:bg-gray-950 dark:hover:border-gray-500/50 dark:hover:shadow-gray-500/20" dir="rtl">
+        <div className="group my-10 w-full overflow-hidden rounded-xl border border-[--color-border-card] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gray-400/60 hover:shadow-lg hover:shadow-gray-400/20 dark:border-gray-800 dark:bg-gray-950 dark:hover:border-gray-500/50 dark:hover:shadow-gray-500/20" dir="rtl">
             {/* Table Header / Category */}
-            <div className="border-b border-gray-200 bg-gray-50 px-6 py-4 dark:border-gray-800 dark:bg-gray-900/50 text-right">
+            <div className="border-b border-[--color-border-card] bg-gray-50 px-6 py-4 dark:border-gray-800 dark:bg-gray-900/50 text-right">
                 <h3 className="text-lg font-semibold tracking-tight text-gray-900 dark:text-gray-100">
-                    {block.tableCategory}
+                    {renderMathText(block.tableCategory)}
                 </h3>
                 {block.title && (
                     <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                        {block.title}
+                        {renderMathText(block.title)}
                     </p>
                 )}
             </div>
@@ -72,16 +80,16 @@ export const ReferenceTable: React.FC<ReferenceTableProps> = ({
                                 </td>
 
                                 {/* General Form (KaTeX) */}
-                                <td className="whitespace-nowrap px-6 py-5 text-lg" dir="ltr">
-                                    <div className="inline-flex w-max whitespace-nowrap rounded bg-blue-50/50 px-3 py-1.5 text-left text-blue-900 dark:bg-blue-900/20 dark:text-blue-100">
-                                        <InlineMath math={row.generalForm} />
+                                <td className="whitespace-nowrap px-6 py-5 text-lg" dir="rtl">
+                                    <div className="inline-flex w-max whitespace-nowrap rounded bg-blue-50/50 px-3 py-1.5 text-right text-blue-900 dark:bg-blue-900/20 dark:text-blue-100">
+                                        {renderSafeMath(row.generalForm)}
                                     </div>
                                 </td>
 
                                 {/* Numeric Example (KaTeX) */}
-                                <td className="whitespace-nowrap px-6 py-5 text-lg" dir="ltr">
-                                    <div className="inline-flex w-max whitespace-nowrap rounded bg-amber-50/50 px-3 py-1.5 text-left text-amber-900 dark:bg-amber-900/20 dark:text-amber-100">
-                                        <InlineMath math={row.numericExample} />
+                                <td className="whitespace-nowrap px-6 py-5 text-lg" dir="rtl">
+                                    <div className="inline-flex w-max whitespace-nowrap rounded bg-amber-50/50 px-3 py-1.5 text-right text-amber-900 dark:bg-amber-900/20 dark:text-amber-100">
+                                        {renderSafeMath(row.numericExample)}
                                     </div>
                                 </td>
 

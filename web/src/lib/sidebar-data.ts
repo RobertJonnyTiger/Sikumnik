@@ -1,4 +1,5 @@
 import { GraduationCap, Calculator, TrendingUp, Brain, Landmark, Scale } from "lucide-react";
+import { COURSE_REGISTRY } from "@/data/courses/registry";
 
 interface ChapterItem {
     id?: string;
@@ -68,11 +69,7 @@ function extractTopicsFromSyllabus(syllabus: CourseSyllabusItem[], courseId: str
 export async function getSidebarData(): Promise<Degree[]> {
     const degrees: Degree[] = [];
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const courseRegistry: Record<string, () => Promise<any>> = {
-        math: () => import("@/data/math"),
-    };
-
+    // Map course IDs to their degree titles
     const degreeCourses: Record<string, string[]> = {
         "בית הספר לניהול (B.A)": ["math"],
     };
@@ -81,14 +78,15 @@ export async function getSidebarData(): Promise<Degree[]> {
         const degreeCoursesList: Course[] = [];
 
         for (const courseId of courseIds) {
-            const loadCourse = courseRegistry[courseId];
+            // Use the shared registry
+            const loadCourse = (COURSE_REGISTRY as any)[courseId];
             if (!loadCourse) continue;
 
             try {
-                const courseModule = await loadCourse();
-                const courseData: CourseData = courseModule.default || courseModule;
+                // COURSE_REGISTRY already selects .courseData via .then()
+                const courseData: CourseData = await loadCourse();
 
-                const degreeInfo = DEGREE_MAP[courseId] || DEGREE_MAP.default;
+                if (!courseData) continue;
 
                 degreeCoursesList.push({
                     title: courseData.title,

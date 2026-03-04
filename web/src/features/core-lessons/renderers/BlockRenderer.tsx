@@ -66,7 +66,8 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, interactive
                         title: block.title,
                         subtitle: block.subtitle || (block as any).description || "",
                         katexString: block.formula || block.katexString || "",
-                        streetNarrator: block.streetNarrator || ""
+                        streetNarrator: block.streetNarrator || "",
+                        variables: block.variables || []
                     }}
                 />
             );

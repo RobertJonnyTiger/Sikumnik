@@ -1,16 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { WorkshopNav } from "../_components/WorkshopNav";
 import { MOCK_CHAPTER_DATA, MOCK_TABS, SHELL_STYLE_DNA } from "../_data/mockChapter";
-import { CourseBreadcrumb } from "@/features/core-lessons/renderers/CourseBreadcrumb";
+import { ChapterLanding } from "@/features/core-lessons/renderers/ChapterLanding";
 import { ChapterProgressionBar } from "@/features/core-lessons/renderers/ChapterProgressionBar";
-import { LessonFooter } from "@/features/core-lessons/renderers/LessonFooter";
-import { NarrativeSummary } from "@/features/core-lessons/blocks/NarrativeSummary";
-import { CheckpointQuiz } from "@/features/core-lessons/blocks/CheckpointQuiz";
+import { CourseBreadcrumb } from "@/features/core-lessons/renderers/CourseBreadcrumb";
 
 // ═══════════════════════════════════════════════════════════════════
-// Style Inspector (reused pattern)
+// Style Inspector (reused pattern from main workshop)
 // ═══════════════════════════════════════════════════════════════════
 
 function StyleRow({ label, value, color }: { label: string; value: string; color: string }) {
@@ -76,96 +73,66 @@ function ShellStyleInspector({ componentName }: { componentName: string }) {
 // MAIN PAGE
 // ═══════════════════════════════════════════════════════════════════
 
-export default function ChapterEndPage() {
+export default function ChapterStartPage() {
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
-    const lastTabIndex = MOCK_TABS.length - 1;
-    const COMPONENTS_ON_PAGE = ["CourseBreadcrumb", "NarrativeSummary", "CheckpointQuiz", "LessonFooter", "ChapterProgressionBar"];
+    const COMPONENTS_ON_PAGE = ["CourseBreadcrumb", "ChapterLanding", "ChapterProgressionBar"];
 
     return (
         <div className="min-h-screen bg-background text-foreground" dir="rtl">
-            <WorkshopNav />
-
             {/* Debug Banner */}
-            <div className="fixed top-[52px] left-0 right-0 z-40 bg-rose-950/90 backdrop-blur-sm border-b border-rose-800/50 px-6 py-1.5 flex items-center justify-between" dir="ltr">
-                <span className="text-rose-400 text-xs font-mono font-bold">
-                    🔬 Workshop: Chapter End Simulation
+            <div className="fixed top-[52px] left-0 right-0 z-40 bg-emerald-950/90 backdrop-blur-sm border-b border-emerald-800/50 px-6 py-1.5 flex items-center justify-between" dir="ltr">
+                <span className="text-emerald-400 text-xs font-mono font-bold">
+                    🔬 Workshop: Chapter Start Simulation
                 </span>
                 <button
                     onClick={() => setSidebarOpen(!sidebarOpen)}
-                    className="text-rose-500 text-xs font-mono hover:text-rose-300 transition-colors cursor-pointer"
+                    className="text-emerald-500 text-xs font-mono hover:text-emerald-300 transition-colors cursor-pointer"
                 >
                     {sidebarOpen ? "◂ Hide Inspector" : "▸ Show Inspector"}
                 </button>
             </div>
 
             <div className="flex w-full">
-                {/* Main Content — the wrap-up simulation */}
+                {/* Main Content — the actual simulation */}
                 <main className={`flex-1 pt-[88px] transition-all duration-300 ${sidebarOpen ? "lg:pl-80" : ""}`}>
 
-                    {/* CourseBreadcrumb — showing last tab "סיכום ותרגול" */}
+                    {/* CourseBreadcrumb — exactly as in ChapterTemplate */}
                     <CourseBreadcrumb
                         courseName={MOCK_CHAPTER_DATA.course}
                         chapterTitle={MOCK_CHAPTER_DATA.title}
-                        currentTabTitle="סיכום ותרגול"
-                        currentTabIndex={MOCK_TABS.length}
+                        currentTabTitle="הקדמה"
+                        currentTabIndex={0}
                         totalTabs={MOCK_TABS.length}
                     />
 
-                    {/* Content Area — mirroring ChapterTemplate wrap-up */}
-                    <div className="max-w-4xl mx-auto px-4 py-8 pb-32">
-                        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-
-                            {/* NarrativeSummary */}
-                            {MOCK_CHAPTER_DATA.narrativeSummary && (
-                                <NarrativeSummary
-                                    data={MOCK_CHAPTER_DATA.narrativeSummary}
-                                    nextChapter={MOCK_CHAPTER_DATA.navigation?.next}
-                                />
-                            )}
-
-                            {/* CheckpointQuiz */}
-                            {MOCK_CHAPTER_DATA.checkpoint && (
-                                <CheckpointQuiz questions={MOCK_CHAPTER_DATA.checkpoint} />
-                            )}
-                        </div>
-
-                        {/* LessonFooter — last tab state */}
-                        <LessonFooter
-                            currentTabIndex={lastTabIndex}
-                            tabs={MOCK_TABS}
-                            onPrevious={() => alert("🔬 Workshop: Previous tab clicked — would go to last topic tab.")}
-                            onNext={() => alert("🔬 Workshop: Next chapter clicked — would navigate to chapter 2.")}
-                            facts={MOCK_CHAPTER_DATA.trivia?.map((item) => ({
-                                category: item.source || "הידעת?",
-                                fact: item.fact,
-                            }))}
-                            courseName={MOCK_CHAPTER_DATA.course}
-                            nextChapterTitle={MOCK_CHAPTER_DATA.navigation?.next?.title}
-                        />
-                    </div>
+                    {/* ChapterLanding — full width, real render */}
+                    <ChapterLanding
+                        data={MOCK_CHAPTER_DATA}
+                        onStart={() => alert("🎯 Workshop: Start button clicked! In production this would navigate to the first topic tab.")}
+                    />
 
                     {/* Spacer for progression bar */}
-                    <div className="h-24" />
+                    <div className="h-32" />
 
-                    {/* ChapterProgressionBar — last tab active */}
+                    {/* ChapterProgressionBar — fixed bottom dock, pre-start state */}
                     <ChapterProgressionBar
                         tabs={MOCK_TABS}
-                        activeTab={lastTabIndex}
+                        activeTab={-1}
                         onTabChange={(idx) => alert(`🔬 Workshop: Tab ${idx + 1} clicked (${MOCK_TABS[idx]?.title || "הקדמה"})`)}
                         course={MOCK_CHAPTER_DATA.course}
                         chapterTitle={MOCK_CHAPTER_DATA.title}
                     />
                 </main>
 
-                {/* Style Inspector Sidebar */}
+                {/* Style Inspector Sidebar — LEFT side (since page is RTL, left = visual right) */}
                 {sidebarOpen && (
                     <aside className="fixed top-[88px] left-0 w-80 h-[calc(100vh-88px)] z-30 bg-zinc-950/95 backdrop-blur-xl border-r border-zinc-800 hidden lg:block overflow-hidden transition-all duration-300" dir="ltr">
                         <div className="flex flex-col h-full">
                             {/* Header */}
                             <div className="p-4 border-b border-zinc-800">
-                                <h3 className="text-sm font-black text-rose-400 uppercase tracking-widest">
-                                    🔬 Wrap-up Components
+                                <h3 className="text-sm font-black text-emerald-400 uppercase tracking-widest">
+                                    🔬 Shell Components
                                 </h3>
                                 <p className="text-[10px] text-zinc-500 font-mono mt-1">
                                     {COMPONENTS_ON_PAGE.length} components on this page
@@ -182,7 +149,7 @@ export default function ChapterEndPage() {
                             {/* Footer */}
                             <div className="p-3 border-t border-zinc-800 bg-zinc-950">
                                 <p className="text-[10px] text-center text-zinc-600 font-mono">
-                                    Chapter End • Last Tab Active
+                                    Chapter Start • Pre-entry State
                                 </p>
                             </div>
                         </div>

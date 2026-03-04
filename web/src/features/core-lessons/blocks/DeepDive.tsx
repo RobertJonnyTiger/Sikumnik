@@ -2,8 +2,7 @@
 
 import React, { useState } from "react";
 import { ChevronDown, Box, Tag, Zap } from "lucide-react";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
+import { LessonMarkdown } from "./LessonMarkdown";
 
 interface DeepDiveProps {
     title: string;
@@ -15,7 +14,7 @@ export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections, difficulty 
     const [openIdx, setOpenIdx] = useState<number | null>(null);
 
     return (
-        <div className="group bg-muted border-r-4 border-r-destructive border-y border-l border-border rounded-xl my-6 shadow-sm font-sans hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:border-primary/40" dir="rtl">
+        <div className="group bg-muted border-r-4 border-r-destructive border-y border-l border-[--color-border-card] rounded-xl my-6 shadow-sm font-sans hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:border-primary/40" dir="rtl">
             <div className="p-5 flex justify-between items-start">
                 <div>
                     <div className="flex items-center gap-3 mb-1">
@@ -43,7 +42,7 @@ export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections, difficulty 
                         return (
                             <div
                                 key={idx}
-                                className={`border rounded-lg overflow-hidden transition-all duration-200 ${isOpen ? 'border-error-border bg-card shadow-md' : 'border-border bg-card/60 hover:bg-card'
+                                className={`border rounded-lg overflow-hidden transition-all duration-200 ${isOpen ? 'border-error-border bg-card shadow-md' : 'border-[--color-border-card] bg-card/60 hover:bg-card'
                                     }`}
                             >
                                 <button
@@ -63,7 +62,7 @@ export const DeepDive: React.FC<DeepDiveProps> = ({ title, sections, difficulty 
                                     <div className="px-4 pb-4 pt-1 border-t border-border animate-in slide-in-from-top-1 duration-200">
                                         <div className="pr-11">
                                             <div className="text-sm leading-relaxed text-foreground markdown-content">
-                                                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{section.content}</ReactMarkdown>
+                                                <LessonMarkdown>{section.content}</LessonMarkdown>
                                             </div>
 
                                             {examples.length > 0 && (

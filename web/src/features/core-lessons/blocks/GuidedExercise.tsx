@@ -54,7 +54,13 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
     };
 
     return (
-        <div className="academic-card group p-0 overflow-hidden my-10" dir="rtl">
+        <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="bg-card border border-[--color-border-card] rounded-2xl overflow-hidden my-10 shadow-sm hover:shadow-md transition-all duration-300 ease-in-out"
+            dir="rtl"
+        >
             {/* Header */}
             <div className="p-6 pb-4">
                 <div className="flex items-center justify-between mb-6">
@@ -99,7 +105,7 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
             {/* Steps */}
             <div className="px-6 pb-6 space-y-4">
                 {(steps || []).map((step, idx) => (
-                    <div key={idx} className="border border-border/60 rounded-xl overflow-hidden shadow-sm bg-card/30">
+                    <div key={idx} className="border border-[--color-border-card] rounded-xl overflow-hidden shadow-sm bg-card/30">
                         <button
                             onClick={() => toggleStep(idx)}
                             className="w-full px-5 py-4 flex items-center justify-between text-right hover:bg-muted/50 transition-colors"
@@ -108,7 +114,9 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
                                 <span className="w-8 h-8 rounded-lg bg-primary/10 text-primary border border-primary/20 text-xs font-black flex items-center justify-center">
                                     {idx + 1}
                                 </span>
-                                <LessonMarkdown className="font-bold text-lg text-foreground">{step.title}</LessonMarkdown>
+                                <div className="font-bold text-lg text-foreground">
+                                    <LessonMarkdown>{step.title}</LessonMarkdown>
+                                </div>
                             </div>
                             <ChevronDown
                                 className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${revealedSteps.has(idx) ? "rotate-180" : ""}`}
@@ -122,7 +130,7 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
                                     exit={{ opacity: 0, height: 0 }}
                                     className="overflow-hidden"
                                 >
-                                    <div className="px-5 pb-6 pt-2 space-y-4 border-t border-border/40">
+                                    <div className="px-5 pb-6 pt-2 space-y-4 border-t border-[--color-border-card]">
                                         <div className="bg-primary/5 p-4 rounded-lg border border-primary/10">
                                             <LessonMarkdown className="text-foreground text-base leading-relaxed">{step.action}</LessonMarkdown>
                                         </div>
@@ -158,7 +166,7 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
             </div>
 
             {/* Final Answer */}
-            <div className="border-t border-border/50">
+            <div className="border-t border-[--color-border-card]">
                 <button
                     onClick={() => setShowAnswer(!showAnswer)}
                     className="w-full px-6 py-5 flex items-center justify-between hover:bg-success/5 transition-colors group/answer"
@@ -186,6 +194,6 @@ export const GuidedExercise: React.FC<GuidedExerciseProps> = ({
                     )}
                 </AnimatePresence>
             </div>
-        </div>
+        </motion.div>
     );
 };

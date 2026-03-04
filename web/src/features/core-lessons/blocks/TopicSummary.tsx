@@ -2,8 +2,7 @@
 
 import React from "react";
 import { ClipboardList, Check } from "lucide-react";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
+import { LessonMarkdown } from "./LessonMarkdown";
 
 interface TopicSummaryProps {
     content: string;
@@ -20,9 +19,7 @@ export const TopicSummary: React.FC<TopicSummaryProps> = ({ content, keyPoints }
                 <h4 className="text-sm font-black text-primary uppercase tracking-wider">סיכום</h4>
             </div>
 
-            <div className="text-foreground leading-relaxed mb-4 markdown-content">
-                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
-            </div>
+            <LessonMarkdown className="text-foreground leading-relaxed mb-4 markdown-content">{content}</LessonMarkdown>
 
             {keyPoints && keyPoints.length > 0 && (
                 <div className="space-y-2">
@@ -32,7 +29,7 @@ export const TopicSummary: React.FC<TopicSummaryProps> = ({ content, keyPoints }
                                 <Check className="w-3 h-3 text-primary" />
                             </div>
                             <div className="text-foreground text-sm leading-relaxed markdown-content">
-                                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{point}</ReactMarkdown>
+                                <LessonMarkdown>{point}</LessonMarkdown>
                             </div>
                         </div>
                     ))}

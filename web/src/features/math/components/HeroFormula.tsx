@@ -3,14 +3,31 @@
 import React, { useState, useRef } from 'react';
 import { HeroFormulaBlock } from '@/types/math-course';
 import 'katex/dist/katex.min.css';
-import { BlockMath } from 'react-katex';
+import { BlockMath, InlineMath } from 'react-katex';
 import { motion, AnimatePresence } from 'framer-motion';
 import { renderMathText } from '@/utils/renderMathText';
 
 interface HeroFormulaProps {
-    block: HeroFormulaBlock;
+    block: HeroFormulaBlock & { variables?: Array<{ symbol: string; name: string; desc?: string }> };
     hasStreetNarrator?: boolean;
 }
+const VAR_COLORS = [
+    { bg: "rgba(96,165,250,0.15)", border: "rgba(96,165,250,0.4)", text: "#93c5fd" }, // Blue
+    { bg: "rgba(52,211,153,0.15)", border: "rgba(52,211,153,0.4)", text: "#6ee7b7" }, // Emerald
+    { bg: "rgba(251,146,60,0.15)", border: "rgba(251,146,60,0.4)", text: "#fdba74" }, // Orange
+    { bg: "rgba(232,121,249,0.15)", border: "rgba(232,121,249,0.4)", text: "#f0abfc" }, // Fuchsia
+    { bg: "rgba(250,204,21,0.15)", border: "rgba(250,204,21,0.4)", text: "#fde047" }, // Yellow
+    { bg: "rgba(248,113,113,0.15)", border: "rgba(248,113,113,0.4)", text: "#fca5a5" }, // Red
+];
+
+function chunkPairs<T>(arr: T[]): T[][] {
+    const rows: T[][] = [];
+    for (let i = 0; i < arr.length; i += 2) {
+        rows.push(arr.slice(i, i + 2));
+    }
+    return rows;
+}
+
 
 const MATH_SYMBOLS = ["∫", "∑", "√", "∂", "∞", "π", "Δ", "∇", "×", "÷", "±", "≈", "≠", "≤", "≥", "∈", "⊂", "∏", "lim", "dx"];
 
@@ -20,6 +37,8 @@ export const HeroFormula: React.FC<HeroFormulaProps> = ({
 }) => {
     const [narratorVisible, setNarratorVisible] = useState(true);
     const hasNarratorData = hasStreetNarrator && !!block.streetNarrator;
+    const variables = block.variables || [];
+    const varRows = chunkPairs(variables);
 
     return (
         <div className="my-12 w-full max-w-4xl mx-auto" dir="rtl">
@@ -88,6 +107,55 @@ export const HeroFormula: React.FC<HeroFormulaProps> = ({
                         <BlockMath math={block.katexString} />
                     </div>
                 </div>
+
+                {/* VARIABLES GRID */}
+                {variables.length > 0 && (
+                    <div className="relative z-10 px-8 pb-8">
+                        <div className="mb-4 text-right text-[0.62rem] font-bold uppercase tracking-[0.12em] text-[#7eb8ff] opacity-80">
+                            מקרא משתנים
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            {varRows.map((row, rowIdx) => (
+                                <div
+                                    key={rowIdx}
+                                    className="grid gap-3"
+                                    style={{ gridTemplateColumns: row.length === 2 ? "1fr 1fr" : "1fr" }}
+                                >
+                                    {row.map((v, colIdx) => {
+                                        const globalIdx = rowIdx * 2 + colIdx;
+                                        const c = VAR_COLORS[globalIdx % VAR_COLORS.length];
+                                        return (
+                                            <div
+                                                key={globalIdx}
+                                                className="flex items-center justify-start gap-3 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.03)] px-3 py-2 transition-colors hover:bg-[rgba(255,255,255,0.05)]"
+                                            >
+                                                <span
+                                                    dir="ltr"
+                                                    className="shrink-0 rounded-lg border px-2 py-0.5 text-center font-serif font-bold shadow-sm flex items-center justify-center min-w-10"
+                                                    style={{
+                                                        color: c.text, background: c.bg, borderColor: c.border
+                                                    }}
+                                                >
+                                                    <InlineMath math={v.symbol} />
+                                                </span>
+                                                <div className="flex flex-col text-right w-full">
+                                                    <span className="text-sm font-semibold text-[#e8f0ff]">
+                                                        {v.name}
+                                                    </span>
+                                                    {v.desc && (
+                                                        <span className="text-xs text-[#8ca8d8] mt-0.5">
+                                                            {v.desc}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
 
                 {/* NARRATOR TOGGLE */}
                 {hasNarratorData && (

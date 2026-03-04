@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { BlockRenderer } from "@/features/core-lessons/renderers/BlockRenderer";
 import type { ContentBlock } from "@/types/chapter";
 import { Badge } from "@/components/ui/badge";
-import { WorkshopNav } from "./_components/WorkshopNav";
 
 // ═══════════════════════════════════════════════════════════════════
 // STYLE DNA — Extracted Tailwind classes from each component source
@@ -568,8 +567,7 @@ export default function WorkshopPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground" dir="rtl">
-      <WorkshopNav />
-      <div className="flex w-full pt-14">
+      <div className="flex w-full">
 
         {/* Main Content Area */}
         <main className="flex-1 p-8 lg:pr-80 overflow-x-hidden pt-6">

@@ -10,9 +10,13 @@ import {
   Trophy,
   ArrowLeft,
   PlayCircle,
-  MoreHorizontal,
+  Settings,
   Sparkles,
-  Calendar
+  Calendar,
+  Beaker,
+  HelpCircle,
+  Brain,
+  Lock
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -92,13 +96,25 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex items-center gap-3 bg-card border border-border/50 p-2 rounded-2xl shadow-sm">
-            <div className="bg-primary/10 p-2 rounded-xl">
-              <CalendarIcon className="w-5 h-5 text-sky-800" />
-            </div>
-            <div className="px-2">
-              <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">תקופת מבחנים</p>
-              <p className="text-sm font-black">נותרו 14 ימים</p>
+          <div className="flex flex-wrap items-center gap-4">
+            <Link href="/workshop">
+              <div className="flex items-center gap-3 bg-zinc-950 text-white p-2 px-4 rounded-2xl shadow-lg hover:bg-zinc-900 transition-colors border border-zinc-800 group">
+                <Beaker className="w-5 h-5 text-amber-500 group-hover:scale-110 transition-transform" />
+                <div className="text-right">
+                  <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest leading-none mb-1">Developer</p>
+                  <p className="text-sm font-black leading-none">Workshop</p>
+                </div>
+              </div>
+            </Link>
+
+            <div className="flex items-center gap-3 bg-card border border-border/50 p-2 rounded-2xl shadow-sm">
+              <div className="bg-primary/10 p-2 rounded-xl">
+                <Calendar className="w-5 h-5 text-sky-800" />
+              </div>
+              <div className="px-2">
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-none mb-1">תקופת מבחנים</p>
+                <p className="text-sm font-black leading-none">נותרו 14 ימים</p>
+              </div>
             </div>
           </div>
         </div>
@@ -295,22 +311,10 @@ function SparklesIcon(props: React.ComponentProps<"svg">) {
   return <Sparkles {...props} />;
 }
 
-function CalendarIcon(props: React.ComponentProps<"svg">) {
-  return <Calendar {...props} />;
-}
-
 function BrainCircuit(props: React.ComponentProps<"svg">) {
-  return <Flame {...props} />; // Placeholder
-}
-
-function Settings(props: React.ComponentProps<"svg">) {
-  return <MoreHorizontal {...props} />; // Placeholder import
-}
-
-function HelpCircle(props: React.ComponentProps<"div">) {
-  return <div {...props}>?</div>; // Placeholder
+  return <Brain {...props} />;
 }
 
 function LockIcon(props: React.ComponentProps<"svg">) {
-  return <LayoutDashboard {...props} />; // Placeholder
+  return <Lock {...props} />;
 }

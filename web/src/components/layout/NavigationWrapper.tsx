@@ -6,10 +6,9 @@ import { Sidebar } from "@/components/layout/Sidebar"; // Ensure correct import 
 export function NavigationWrapper({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
 
-    // Hide sidebar on landing page, courses grid, and standalone prototypes (Zen Mode)
+    // Hide sidebar on landing page and standalone prototypes (Zen Mode)
     const isFullWidthPage =
         pathname === "/" ||
-        pathname === "/courses" ||
         pathname?.startsWith("/golden-prototype");
 
     return (

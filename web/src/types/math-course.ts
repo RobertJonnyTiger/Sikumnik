@@ -59,6 +59,7 @@ export interface HeroFormulaBlock extends BaseConceptBlock {
     subtitle?: string;
     katexString: string;
     streetNarrator: string;
+    variables?: Array<{ symbol: string; name: string; desc?: string }>;
 }
 
 export interface FormulaCardBlock extends BaseConceptBlock {

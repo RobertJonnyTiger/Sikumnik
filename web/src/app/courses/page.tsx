@@ -1,14 +1,44 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { Search, User, ChevronDown, Filter, BookOpen, Calculator, TrendingUp, Landmark, Brain, MessageSquare, Settings, Bookmark, Sparkles, Menu, X, GraduationCap, LayoutDashboard, ChevronLeft, Lock, Users } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Search, User, ChevronDown, Filter, BookOpen, Calculator, TrendingUp, Landmark, Brain, MessageSquare, Settings, Bookmark, Sparkles, Menu, X, GraduationCap, LayoutDashboard, ChevronLeft, Lock, Users, Loader2 } from "lucide-react";
+import { COURSE_REGISTRY } from "@/data/courses/registry";
 
 export default function CoursesPage() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [courses, setCourses] = useState<any[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        async function loadCourses() {
+            const courseIds = Object.keys(COURSE_REGISTRY);
+            const loadedCourses = [];
+
+            for (const id of courseIds) {
+                try {
+                    const data = await (COURSE_REGISTRY as any)[id]();
+                    loadedCourses.push({ ...data, id });
+                } catch (e) {
+                    console.error(`Failed to load course ${id}`, e);
+                }
+            }
+            setCourses(loadedCourses);
+            setIsLoading(false);
+        }
+        loadCourses();
+    }, []);
+
+    const iconMap: Record<string, any> = {
+        math: Calculator,
+        accounting: Landmark,
+        "organizational-behavior": Users,
+        default: BookOpen
+    };
 
     return (
         <div className="min-h-screen bg-background font-sans text-foreground pb-24 relative overflow-hidden" dir="rtl">
+            {/* ... (previous sidebar overlay and background glows code) */}
 
             {/* Sidebar Overlay (Mobile) */}
             {isSidebarOpen ? (
@@ -105,75 +135,58 @@ export default function CoursesPage() {
                 </section>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gap-y-10">
-                    <Link href="/courses/accounting/chapter-0" className="group">
-                        <div className="relative overflow-hidden bg-card border border-border p-10 rounded-[3rem] hover:border-primary/40 hover:shadow-premium transition-all flex flex-col h-full group-hover:translate-y-[-8px] duration-500">
-                            {/* Decorative Corner */}
-                            <div className="absolute top-0 left-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2 group-hover:bg-primary/10 transition-colors" />
-
-                            <div className="flex justify-between items-start mb-10 relative z-10">
-                                <div className="bg-primary/10 p-4 rounded-2xl border border-primary/10 group-hover:bg-primary group-hover:text-foreground transition-all duration-500 shadow-sm">
-                                    <Calculator className="w-8 h-8" />
-                                </div>
-                                <span className="text-[11px] font-black text-accent px-4 py-2 rounded-xl bg-accent/5 border border-accent/10 uppercase tracking-widest shadow-sm">מומלץ לך</span>
-                            </div>
-
-                            <h3 className="text-3xl font-black text-foreground mb-4 group-hover:text-foreground transition-colors font-sans tracking-tight">חשבונאות א'</h3>
-                            <p className="text-foreground/60 text-lg leading-relaxed mb-10 font-medium">
-                                איך לנהל את הכיסים שלך כששכר הדירה בפלורנטין חונק והבירה בבר התייקרה.
-                                <br />
-                                <span className="inline-block mt-4 text-accent font-black underline underline-offset-8 decoration-accent/30 decoration-2 italic">מה בתכל'ס.. אינפלציה</span>
-                            </p>
-
-                            <div className="mt-auto pt-8 border-t border-border flex items-center justify-between">
-                                <div className="flex -space-x-3">
-                                    <div className="w-10 h-10 rounded-2xl border-4 border-card bg-primary text-[11px] font-black text-foreground flex items-center justify-center shadow-sm">AJ</div>
-                                    <div className="w-10 h-10 rounded-2xl border-4 border-card bg-accent text-[11px] font-black text-foreground flex items-center justify-center shadow-sm">RS</div>
-                                </div>
-                                <div className="flex items-center gap-3 text-foreground text-base font-black group-hover:gap-5 transition-all">
-                                    <span>לסילבוס</span>
-                                    <ChevronLeft className="w-6 h-6 rotate-180" />
-                                </div>
-                            </div>
+                    {isLoading ? (
+                        <div className="col-span-full flex flex-col items-center justify-center py-24 gap-4">
+                            <Loader2 className="w-12 h-12 animate-spin text-primary" />
+                            <p className="text-muted-foreground font-bold italic">טוען את עולם הידע שלך...</p>
                         </div>
-                    </Link>
+                    ) : (
+                        courses.map((course) => {
+                            const Icon = iconMap[course.id] || iconMap.default;
+                            return (
+                                <Link key={course.id} href={`/courses/${course.id}`} className="group">
+                                    <div className="relative overflow-hidden bg-card border border-border p-10 rounded-[3rem] hover:border-primary/40 hover:shadow-premium transition-all flex flex-col h-full group-hover:translate-y-[-8px] duration-500">
+                                        <div className="absolute top-0 left-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2 group-hover:bg-primary/10 transition-colors" />
 
-                    <Link href="/courses/organizational-behavior/chapter-1" className="group">
-                        <div className="relative overflow-hidden bg-card border border-border p-10 rounded-[3rem] hover:border-primary/40 hover:shadow-premium transition-all flex flex-col h-full group-hover:translate-y-[-8px] duration-500">
-                            {/* Decorative Corner */}
-                            <div className="absolute top-0 left-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2 group-hover:bg-primary/10 transition-colors" />
+                                        <div className="flex justify-between items-start mb-10 relative z-10">
+                                            <div className="bg-primary/10 p-4 rounded-2xl border border-primary/10 group-hover:bg-primary group-hover:text-foreground transition-all duration-500 shadow-sm">
+                                                <Icon className="w-8 h-8" />
+                                            </div>
+                                            {course.id === "math" && (
+                                                <span className="text-[11px] font-black text-accent px-4 py-2 rounded-xl bg-accent/5 border border-accent/10 uppercase tracking-widest shadow-sm">מומלץ לך</span>
+                                            )}
+                                        </div>
 
-                            <div className="flex justify-between items-start mb-10 relative z-10">
-                                <div className="bg-primary/10 p-4 rounded-2xl border border-primary/10 group-hover:bg-primary group-hover:text-foreground transition-all duration-500 shadow-sm">
-                                    <Users className="w-8 h-8" />
-                                </div>
-                                <span className="text-[11px] font-black text-tip-foreground px-4 py-2 rounded-xl bg-tip border border-tip/30 uppercase tracking-widest shadow-sm">חדש</span>
-                            </div>
+                                        <h3 className="text-3xl font-black text-foreground mb-4 group-hover:text-foreground transition-colors font-sans tracking-tight">{course.title}</h3>
+                                        <p className="text-foreground/60 text-lg leading-relaxed mb-10 font-medium">
+                                            {course.description || course.subtitle}
+                                        </p>
 
-                            <h3 className="text-3xl font-black text-foreground mb-4 group-hover:text-foreground transition-colors font-sans tracking-tight">התנהגות ארגונית</h3>
-                            <p className="text-foreground/60 text-lg leading-relaxed mb-10 font-medium">
-                                למה עובדים באותה חברה מתנהגים כל כך שונה? מה הופך צוות אחד למצליח ואחר לכושל?
-                                <br />
-                                <span className="inline-block mt-4 text-tip-foreground font-black underline underline-offset-8 decoration-tip/30 decoration-2 italic">להבין אנשים בארגון</span>
-                            </p>
+                                        <div className="mt-auto pt-8 border-t border-border flex items-center justify-between">
+                                            <div className="flex -space-x-3">
+                                                {course.stats?.map((stat: any, i: number) => (
+                                                    <div key={i} className="w-10 h-10 rounded-2xl border-4 border-card bg-muted text-[11px] font-black text-foreground flex items-center justify-center shadow-sm" title={stat.label}>
+                                                        {stat.value}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            <div className="flex items-center gap-3 text-foreground text-base font-black group-hover:gap-5 transition-all">
+                                                <span>לסילבוס</span>
+                                                <ChevronLeft className="w-6 h-6 rotate-180" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Link>
+                            );
+                        })
+                    )}
 
-                            <div className="mt-auto pt-8 border-t border-border flex items-center justify-between">
-                                <div className="flex -space-x-3">
-                                    <div className="w-10 h-10 rounded-2xl border-4 border-card bg-tip0 text-[11px] font-black text-foreground flex items-center justify-center shadow-sm">OB</div>
-                                </div>
-                                <div className="flex items-center gap-3 text-foreground text-base font-black group-hover:gap-5 transition-all">
-                                    <span>לסילבוס</span>
-                                    <ChevronLeft className="w-6 h-6 rotate-180" />
-                                </div>
-                            </div>
-                        </div>
-                    </Link>
-
-                    {/* Placeholder Cards with Airy styling */}
+                    {/* Placeholder Cards for coming soon courses */}
                     {[
-                        { title: "סטטיסטיקה א'", icon: TrendingUp, desc: "להבין למה המרצה אומר שיש סיכוי של 95% שתכשל, ואיך להוכיח לו שהוא טועה בעזרת התפלגות נורמלית.", color: "indigo" },
-                        { title: "מימון חברות", icon: Landmark, desc: "איך להחליט אם שווה להשקיע בסטארטאפ של חבר שלך או פשוט לשים הכל על S&P 500 וללכת לישון בשקט.", color: "emerald" },
+                        { title: "חשבונאות א'", icon: Landmark, desc: "איך לנהל את הכיסים שלך כששכר הדירה בפלורנטין חונק והבירה בבר התייקרה.", color: "indigo" },
+                        { title: "התנהגות ארגונית", icon: Users, desc: "למה עובדים באותה חברה מתנהגים כל כך שונה? מה הופך צוות אחד למצליח ואחר לכושל.", color: "emerald" },
                         { title: "מבוא לפסיכולוגיה", icon: Brain, desc: "למה אנחנו עושים את מה שאנחנו עושים, ואיך להשתמש בזה כדי לשכנע את אמא שלך שאתה לא עצלן.", color: "pink" }
-                    ].map((course, idx) => (
+                    ].filter(c => !courses.find(rc => rc.title === c.title)).map((course, idx) => (
                         <div key={idx} className="relative overflow-hidden bg-card/40 border border-border p-10 rounded-[3rem] opacity-60 hover:opacity-100 transition-all flex flex-col h-full group hover:bg-card">
                             <div className="flex justify-between items-start mb-10">
                                 <div className="bg-foreground/5 p-4 rounded-2xl border border-border">

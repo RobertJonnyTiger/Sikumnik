@@ -118,6 +118,17 @@
   --radius: 0.5rem;
   --radius-4xl: 2rem;
   --radius-5xl: 2.5rem;
+
+  /* Card Borders */
+  --color-border-card: #E7E5E4;
+  /* Stone 200 - subtle default */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-border-card: #292524;
+    /* Stone 800 */
+  }
 }
 
 @layer base {
@@ -165,6 +176,10 @@
 
 .hover-lift {
   @apply transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-temple cursor-pointer;
+}
+
+.academic-card {
+  @apply bg-card border border-[--color-border-card] rounded-xl shadow-premium overflow-hidden;
 }
 
 @keyframes entry-fade {
@@ -267,4 +282,36 @@ html {
   color: var(--color-foreground);
   font-style: italic;
   line-height: 1.8;
+}
+
+/* --- Lesson Content & Markdown Polish --- */
+.lesson-content {
+  @apply text-foreground;
+  line-height: 1.8;
+  max-width: 72ch;
+  margin-inline: auto;
+}
+
+.lesson-content p {
+  @apply mb-4 last:mb-0;
+  white-space: pre-line;
+  /* Essential for Hebrew list/line-break support */
+}
+
+.lesson-content strong {
+  font-weight: 700;
+  color: inherit;
+}
+
+.lesson-content code {
+  @apply bg-accent/30 text-accent-foreground px-1.5 py-0.5 rounded text-[0.9em] font-mono;
+  border: 1px solid var(--color-accent);
+}
+
+.lesson-content ul {
+  @apply list-disc list-inside space-y-2 mb-4;
+}
+
+.lesson-content ol {
+  @apply list-decimal list-inside space-y-2 mb-4;
 }

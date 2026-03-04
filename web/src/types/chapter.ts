@@ -92,6 +92,7 @@ export interface HeroFormulaBlock {
     katexString?: string; // Allow either field name
     description?: string;
     streetNarrator?: string;
+    variables?: Variable[];
 }
 
 export interface FormulaCardBlock {

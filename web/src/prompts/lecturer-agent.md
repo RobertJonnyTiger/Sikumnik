@@ -78,7 +78,7 @@ Use the full range of block types below. Never limit yourself to only a few type
 - `text` — theory with `formalText` and `streetNarrator`
 - `definition` — formal term definition. Use `"variant": "academic"` for formal academic definitions
 - `formula` — secondary formula (use when sub-topic has multiple formulas)
-- `formula-card` — standalone formula with title, description, and optional variables
+- `formula-card` — standalone formula with title, subtitle, and optional variables
 - `reference-table` — structured comparison table (minimum 3 rows)
 - `analogy` — real-world metaphor that builds intuition. Use `"icon": "💡"` for fun facts
 - `deep-dive` — extended analysis for complex concepts
@@ -153,15 +153,23 @@ Before finalizing output, verify:
     "blocks": [
       {
         "type": "hook",
-        "opener": "...",
-        "question": "...",
-        "context": "..."
+        "title": "כותרת",
+        "opener": "האם תהיתם פעם...",
+        "question": "מה קורה כאשר...?",
+        "context": "הקשר רחב יותר..."
       },
       {
         "type": "hero-formula",
-        "title": "...",
-        "formula": "...",
-        "description": "..."
+        "title": "שם הנוסחה",
+        "katexString": "E = mc^2",
+        "subtitle": "משפט תיאורי קצר",
+        "description": "הסבר מפורט של הנוסחה",
+        "streetNarrator": "בשפה פשוטה: ...",
+        "variables": [
+          {"symbol": "E", "description": "אנרגיה בג'אול"},
+          {"symbol": "m", "description": "מסה בקילוגרם"},
+          {"symbol": "c", "description": "מהירות האור"}
+        ]
       },
       {
         "type": "text",

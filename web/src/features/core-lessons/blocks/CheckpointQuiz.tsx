@@ -2,10 +2,7 @@
 
 import React, { useState } from "react";
 import { CheckCircle, XCircle, HelpCircle } from "lucide-react";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
+import { LessonMarkdown } from "./LessonMarkdown";
 import { motion, AnimatePresence } from "framer-motion";
 import "katex/dist/katex.min.css";
 import type { QuizQuestion } from "@/types/chapter";
@@ -33,7 +30,7 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
     const totalSubmitted = Object.keys(submitted).length;
 
     return (
-        <div className="group bg-card border border-border rounded-2xl overflow-hidden my-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 hover:-translate-y-1 hover:shadow-lg hover:shadow-foreground/10 hover:border-border" dir="rtl">
+        <div className="group bg-card border border-[--color-border-card] rounded-2xl overflow-hidden my-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 hover:shadow-lg hover:shadow-foreground/10" dir="rtl">
             <div className="flex items-center justify-between px-6 py-4 bg-muted/30 border-b border-border">
                 <div className="flex items-center gap-3">
                     <div className="bg-card p-2 rounded-lg border border-border shadow-sm">
@@ -55,13 +52,13 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
                     const isCorrect = selectedIdx === q.correctIndex;
 
                     return (
-                        <div key={q.id} className="bg-card border border-muted/50 rounded-xl p-6 shadow-sm">
+                        <div key={q.id} className="bg-card border border-[--color-border-card] rounded-xl p-6 shadow-sm">
                             <div className="text-foreground font-medium mb-4 flex items-start gap-2 markdown-content">
                                 <span className="text-muted-foreground font-bold bg-muted/50 px-2 py-0.5 rounded-full text-sm">{qIdx + 1}</span>
                                 <div className="mt-0.5 relative top-[-2px]">
-                                    <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
+                                    <LessonMarkdown>
                                         {q.question}
-                                    </ReactMarkdown>
+                                    </LessonMarkdown>
                                 </div>
                             </div>
 
@@ -83,7 +80,9 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
                                             className={`w-full text-right px-4 py-3 rounded-xl border transition-all duration-200 ${style} ${isSubmitted ? "cursor-default" : "cursor-pointer"}`}
                                         >
                                             <div className="flex items-center justify-between">
-                                                <span className="text-foreground">{opt}</span>
+                                                <div className="text-foreground ml-4 flex-1 text-right">
+                                                    <LessonMarkdown>{opt}</LessonMarkdown>
+                                                </div>
                                                 {isSubmitted && isAnswer && <CheckCircle className="w-4 h-4 text-emerald-700" />}
                                                 {isSubmitted && isSelected && !isAnswer && <XCircle className="w-4 h-4 text-red-700" />}
                                             </div>
@@ -115,9 +114,9 @@ export const CheckpointQuiz: React.FC<CheckpointQuizProps> = ({ questions }) => 
                                                 {isCorrect ? "נכון!" : "לא מדויק"}
                                             </p>
                                             <div className="text-foreground/90 markdown-content leading-relaxed">
-                                                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
+                                                <LessonMarkdown>
                                                     {q.explanation}
-                                                </ReactMarkdown>
+                                                </LessonMarkdown>
                                             </div>
                                         </div>
                                     </motion.div>

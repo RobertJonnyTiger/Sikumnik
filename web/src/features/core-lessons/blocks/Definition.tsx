@@ -24,7 +24,7 @@ export const Definition: React.FC<DefinitionProps> = ({
     if (variant === 'academic') {
         return (
             <div className={`w-full max-w-4xl mx-auto my-8 ${className}`} dir="rtl">
-                <div className="academic-card group p-0 overflow-hidden border-2 border-primary/20">
+                <div className="academic-card group p-0 overflow-hidden border border-[--color-border-card]">
                     <div className="p-5 bg-primary/5 border-b border-primary/10">
                         <div className="flex items-center gap-3">
                             <div className="bg-primary p-2 rounded-lg text-primary-foreground shadow-sm">
@@ -68,7 +68,7 @@ export const Definition: React.FC<DefinitionProps> = ({
 
     // Simple variant
     return (
-        <div className={`group academic-card border-r-4 border-r-primary p-5 my-6 flex flex-col sm:flex-row items-start gap-4 ${className}`} dir="rtl">
+        <div className={`group academic-card border-r-4 border-r-primary border border-l border-y border-token-[--color-border-card] p-5 my-6 flex flex-col sm:flex-row items-start gap-4 ${className}`} dir="rtl">
             <div className="bg-primary/10 p-2.5 rounded-lg shrink-0 border border-primary/10 shadow-sm">
                 <BookOpen className="w-5 h-5 text-primary" />
             </div>

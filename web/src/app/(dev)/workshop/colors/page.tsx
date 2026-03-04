@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import { WorkshopNav } from "../_components/WorkshopNav";
 
 const RAW_CSS_ROOT = `@theme {
   /* Theme - "Accessible Education Indigo" */
@@ -228,8 +227,6 @@ function ColorSwatch({ token }: { token: TokenDef }) {
 export default function ColorSystemPage() {
     return (
         <div className="min-h-screen bg-background pb-20">
-            <WorkshopNav />
-
             <div className="bg-primary/20 border-b border-primary/30 pt-24 pb-6 px-6 mb-12" style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-primary-foreground)' }}>
                 <div className="max-w-7xl mx-auto flex items-center justify-center">
                     <p className="font-bold font-mono text-sm py-2 px-4 rounded-full bg-white/20 backdrop-blur-sm border border-white/30">
