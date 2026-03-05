@@ -1,5 +1,0 @@
-
-FullName
---------
-C:\Users\rober\AI Projects\Sikumnik\web\src\features\core-lessons\blocks\LessonMarkdown.tsx
-
