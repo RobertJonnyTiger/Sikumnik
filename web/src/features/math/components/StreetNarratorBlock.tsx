@@ -17,11 +17,11 @@ export const StreetNarratorBlock: React.FC<StreetNarratorBlockProps> = ({ block 
                     className="mt-[0.1rem] flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm shadow-[0_0_12px_rgba(99,102,241,0.4)]"
                     style={{ background: "linear-gradient(135deg, #6366f1, #818cf8)" }}
                 >
-                    💬
+                    ðŸ’¬
                 </div>
                 <div className="flex-1 border-r-[3px] border-indigo-400/60 pr-4">
                     <div className="mb-2 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-indigo-500 dark:text-indigo-400">
-                        הסבר רחוב
+                        ×”×¡×‘×¨ ×¨×—×•×‘
                     </div>
                     <div className="text-base font-medium leading-relaxed text-indigo-900 dark:text-indigo-200">
                         {renderMathText(block.standaloneNarration)}
